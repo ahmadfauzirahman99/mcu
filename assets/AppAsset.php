@@ -23,7 +23,9 @@ class AppAsset extends AssetBundle
     public $css = [
         // "css/bootstrap.min.css",
         "css/icons.css",
+        '../plugin/fontawesome-free/css/all.min.css',
         "css/style.css",
+
 
         "js/modernizr.min.js"
     ];
