@@ -7,7 +7,7 @@ use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
+use app\components\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\helpers\Url;
 
@@ -60,9 +60,9 @@ AppAsset::register($this);
 
                         <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
-                           
 
-                        
+
+
 
                         </ul>
                     </nav>
@@ -96,11 +96,15 @@ AppAsset::register($this);
                         </li>
 
                         <li>
-                            <a href="typography.html" class="waves-effect"><i class="mdi mdi-google-street-view"></i> <span> Unit Pemeriksaan </span> </a>
+                            <a href="<?= Url::to(['/unit-pemeriksaan/pemeriksaan-fisik']) ?>" class="waves-effect"><i class="mdi mdi-google-street-view"></i> <span> Unit Pemeriksaan </span> </a>
                         </li>
 
+                        <li class="text-muted menu-title">Data Pelayanan</li>
 
 
+                        <li>
+                            <a href="<?= Url::to(['/data-layanan/index']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Data Pelayanan </span> </a>
+                        </li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -121,17 +125,19 @@ AppAsset::register($this);
             <!-- Start content -->
             <div class="content">
                 <div class="container-fluid">
-                    <?= Breadcrumbs::widget([
-                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                    ]) ?>
-                    <?= Alert::widget() ?>
-                    <?= $content ?>
+                    <div class="card card-body">
+                        <?= Breadcrumbs::widget([
+                            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                        ]) ?>
+                        <?= Alert::widget() ?>
+                        <?= $content ?>
+                    </div>
                 </div> <!-- container -->
 
             </div> <!-- content -->
 
             <footer class="footer text-right">
-                2016 - 2019 © Adminto. Coderthemes.com
+                <?= date('Y') ?> © RSUD ARIFIN ACHMAD
             </footer>
 
         </div>
