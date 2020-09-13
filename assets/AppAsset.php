@@ -21,7 +21,7 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web/theme';
     public $css = [
-        "css/bootstrap.min.css",
+        // "css/bootstrap.min.css",
         "css/icons.css",
         "css/style.css",
 
@@ -47,6 +47,6 @@ class AppAsset extends AssetBundle
         'yii\web\YiiAsset',
         'yii\web\JqueryAsset',
 
-        // 'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap4\BootstrapAsset',
     ];
 }

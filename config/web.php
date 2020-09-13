@@ -66,6 +66,15 @@ $config = [
                     ]
                 ],
 
+                'yii\bootstrap\BootstrapAsset' => [
+                    'sourcePath' => null,
+                    'basePath' => '@webroot',
+                    'baseUrl' => '@web/theme',
+                    'css' => [
+                        'css/bootstrap.min.css',
+                    ]
+                ],
+
             ],
         ],
     ],
