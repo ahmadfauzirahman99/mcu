@@ -125,4 +125,16 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    //------------------------------------------------
+    public function actionErrorni()
+    {
+        return $this->render('errorni');
+    }
+    public function actionNggaNemu($no_rm)
+    {
+        return $this->render('ngga-nemu', [
+            'no_rm' => $no_rm
+        ]);
+    }
 }
