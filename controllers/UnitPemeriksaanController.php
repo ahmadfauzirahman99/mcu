@@ -14,8 +14,19 @@ class UnitPemeriksaanController extends \yii\web\Controller
 
 
     // pemeriksaan
-    public function actionPemeriksaanFisik()
+    public function actionPemeriksaanFisik($nomor_rekem_medik = null)
     {
+
+        if (Yii::$app->request->isPost) {
+            $p = Yii::$app->request->post();
+            $no_rekam_medik = $p['DataLayanan']['nama'];
+            $dataLayanan = DataLayanan::findOne(['no_rekam_medik'=>$no_rekam_medik]);
+            // var_dump($_POST);
+            // exit();
+
+            return $this->render('pemeriksaan-fisik',['dataLayanan'=>$dataLayanan]);
+        }
+
         $dataLayanan = new DataLayanan();
         return $this->render('pemeriksaan-fisik', [
             'dataLayanan' => $dataLayanan
@@ -29,9 +40,10 @@ class UnitPemeriksaanController extends \yii\web\Controller
 
         if (!is_null($q)) {
             $dataPelayanan = DataLayanan::find()->select(["no_rekam_medik as id", "concat(nama,' ',no_rekam_medik) as text"])
-                ->where(['Ilike', 'no_rekam_medik', $q . '%', false])
-                ->orWhere(['Ilike', 'nama', $q . '%', false])
+                // ->where(['ilike', 'no_rekam_medik', $q . '%', false])
+                ->Where(['ilike', 'nama', $q . '%', false])
                 ->orderBy('nama ASC')
+                ->asArray()
                 ->all();
             $out['results'] = array_values($dataPelayanan);
         } else if ($id > 0) {
