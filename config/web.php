@@ -5,6 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'language' => 'id-ID',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -12,6 +13,10 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'nullDisplay' => '',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => md5('mcu-rsud-arifin'),
@@ -77,6 +82,26 @@ $config = [
 
             ],
         ],
+    ],
+    'container' => [
+        'definitions' => [
+            // yii\bootstrap4\ActiveField::class => [
+            //     'options' => [
+            //         'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+            //             $id = str_replace(['[', ']'], '-', $name) . $index;
+            //             return \yii\helpers\Html::radio(
+            //                 $name,
+            //                 $checked,
+            //                 [
+            //                     'value' => $value,
+            //                     'label' => $label,
+            //                     'id' => $id
+            //                 ]
+            //             );
+            //         }
+            //     ]
+            // ]
+        ]
     ],
     'params' => $params,
 ];

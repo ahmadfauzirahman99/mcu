@@ -23,9 +23,11 @@ class AppAsset extends AssetBundle
     public $css = [
         // "css/bootstrap.min.css",
         "css/icons.css",
+        '../plugin/fontawesome-free/css/all.min.css',
         "css/style.css",
-
-        "js/modernizr.min.js"
+        
+        "js/modernizr.min.js",
+        'plugins/toastr/toastr.min.css',
     ];
     public $js = [
         // jQuery
@@ -42,6 +44,8 @@ class AppAsset extends AssetBundle
         // App js
         "js/jquery.core.js",
         "js/jquery.app.js",
+        'plugins/toastr/toastr.min.js',
+        '../js/app.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
