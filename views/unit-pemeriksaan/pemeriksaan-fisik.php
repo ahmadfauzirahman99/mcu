@@ -12,6 +12,8 @@ FormWizard::register($this);
 
 
 /* @var $dataLayanan app\models\MasterPemeriksaanFisik */
+/* @var $anamnesis app\models\Anamnesis */
+/* @var $jenis_pekerjaan app\models\JenisPekerjaan */
 /* @var $form ActiveForm */
 
 $this->title = 'UNIT MEDICAL CHEK UP RSUD ARIFIN ACHMAD PROVINSI RIAU';
@@ -82,8 +84,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <div id="progressbarwizard" class="pull-in">
         <ul class="nav nav-tabs nav-justified">
             <li class="nav-item"><a href="#account-2" data-toggle="tab" class="nav-link">Data Pelayanan</a></li>
-            <li class="nav-item"><a href="#profile-tab-2" data-toggle="tab" class="nav-link">Profile</a></li>
-            <li class="nav-item"><a href="#finish-2" data-toggle="tab" class="nav-link">Finish</a></li>
+            <li class="nav-item"><a href="#profile-tab-2" data-toggle="tab" class="nav-link">I. ANAMNESIS</a></li>
+            <li class="nav-item"><a href="#finish-2" data-toggle="tab" class="nav-link">II. ANAMNESIS OKUPASI</a></li>
         </ul>
 
         <div class="tab-content b-0 mb-0">
@@ -96,46 +98,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $this->render('data-layanan', ['model' => $dataLayanan]) ?>
             </div>
             <div class="tab-pane p-t-10 fade" id="profile-tab-2">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="form-group row clearfix">
-                            <label class="col-lg-2 control-label" for="name1"> First name *</label>
-                            <div class="col-lg-10">
-                                <input id="name1" name="name" type="text" class="required form-control">
-                            </div>
-                        </div>
-                        <div class="form-group row clearfix">
-                            <label class="col-lg-2 control-label " for="surname1"> Last name *</label>
-                            <div class="col-lg-10">
-                                <input id="surname1" name="surname" type="text" class="required form-control">
-
-                            </div>
-                        </div>
-
-                        <div class="form-group row clearfix">
-                            <label class="col-lg-2 control-label " for="email1">Email *</label>
-                            <div class="col-lg-10">
-                                <input id="email1" name="email" type="text" class="required email form-control">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?= $this->render('anamnesis.php', ['model' => $anamnesis, 'dataLayanan' => $dataLayanan]) ?>
             </div>
             <div class="tab-pane p-t-10 fade" id="finish-2">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="form-group row clearfix">
-                            <div class="col-lg-12">
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox-h1" type="checkbox">
-                                    <label for="checkbox-h1">
-                                        I agree with the Terms and Conditions.
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?= $this->render('anamnesis-okupasi.php', ['model' => $jenis_pekerjaan]) ?>
             </div>
             <ul class="list-inline mb-0 wizard">
                 <li class="previous list-inline-item first" style="display:none;"><a href="#">First</a>

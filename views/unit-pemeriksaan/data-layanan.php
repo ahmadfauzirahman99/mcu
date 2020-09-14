@@ -53,9 +53,13 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'tanggal_pemeriksaan')->textInput() ?>
         </div>
         <div class="col-lg-6">
+            <?= $form->field($model, 'jenis_kelamin')->textInput() ?>
+        </div>
+        <div class="col-lg-6">
             <img src="<?= $model->pas_foto_offline ?>" width="50%" alt="">
         </div>
     </div>
     <?php ActiveForm::end(); ?>
 
 </div>
+<hr>
