@@ -6,15 +6,15 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-15 00:00:57
+ * @Last Modified time: 2020-09-15 01:25:20
  */
 
 use app\components\Helper;
 use app\models\DataLayanan;
+use app\models\spesialis\BaseModel;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
-use yii\di\Container;
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
@@ -71,7 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php
     echo $form->field($model, 'cari_pasien')->widget(Select2::classname(), [
-        'data' => ArrayHelper::map(DataLayanan::find()->select(['no_rekam_medik', 'nama'])->all(), 'no_rekam_medik', 'nama'),
+        'data' => BaseModel::getListPasien(),
         'theme' => 'bootstrap',
         'options' => ['placeholder' => 'Cari Pasien ...'],
         'pluginOptions' => [
@@ -79,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         'pluginEvents' => [
             "select2:select" => "function(e) { 
-                window.location = baseUrl + '/spesialis-audiometri/periksa?no_rm=' + e.params.data.id
+                window.location = baseUrl + 'spesialis-audiometri/periksa?no_rm=' + e.params.data.id
             }",
         ],
     ]);

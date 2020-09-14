@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 12:12:24 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-14 23:56:01
+ * @Last Modified time: 2020-09-15 00:20:11
  */
 
 
@@ -179,10 +179,5 @@ class McuSpesialisAudiometri extends BaseAR
     public static function find()
     {
         return new McuSpesialisAudiometriQuery(get_called_class());
-    }
-
-    public function getNama_no_rm()
-    {
-        return $this->pasien->nama . ' (' . $this->no_rekam_medik . ')';
     }
 }
