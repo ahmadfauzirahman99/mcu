@@ -28,4 +28,18 @@ class Helper
 
         return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
     }
+
+    public static function radioList($index, $label, $name, $checked, $value, $model)
+    {
+        $id = str_replace(['[', ']'], '_', $name) . $index;
+        return \yii\helpers\Html::radio(
+            $name,
+            $checked,
+            [
+                'value' => $value,
+                'label' => $label,
+                'id' => $id
+            ]
+        );
+    }
 }
