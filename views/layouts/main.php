@@ -114,6 +114,9 @@ AppAsset::register($this);
                         <li>
                             <a href="<?= Url::to(['/spesialis-tht/index']) ?>" class="waves-effect"><i class="fas fa-head-side-virus"></i> <span> THT </span> </a>
                         </li>
+                        <li>
+                            <a href="<?= Url::to(['/spesialis-kejiwaan/index']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Kejiwaan </span> </a>
+                        </li>
 
                         <li class="text-muted menu-title">Data Pelayanan</li>
 
