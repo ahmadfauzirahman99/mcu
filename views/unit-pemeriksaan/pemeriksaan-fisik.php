@@ -101,7 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $this->render('anamnesis.php', ['model' => $anamnesis, 'dataLayanan' => $dataLayanan]) ?>
             </div>
             <div class="tab-pane p-t-10 fade" id="finish-2">
-                <?= $this->render('anamnesis-okupasi.php', ['model' => $jenis_pekerjaan]) ?>
+                <?= $this->render('anamnesis-okupasi.php', ['jenisPekerjaan' => $jenis_pekerjaan, 'dataLayanan' => $dataLayanan]) ?>
             </div>
             <ul class="list-inline mb-0 wizard">
                 <li class="previous list-inline-item first" style="display:none;"><a href="#">First</a>
