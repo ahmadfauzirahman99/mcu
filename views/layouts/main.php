@@ -120,9 +120,14 @@ AppAsset::register($this);
 
                         <li class="text-muted menu-title">Data Pelayanan</li>
 
-
                         <li>
                             <a href="<?= Url::to(['/data-layanan/index']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Data Pelayanan </span> </a>
+                        </li>
+
+                        <li class="text-muted menu-title">Laporan</li>
+
+                        <li>
+                            <a href="<?= Url::to(['/laporan/index']) ?>" class="waves-effect"><i class="fas fa-file"></i> <span> Laporan </span> </a>
                         </li>
                     </ul>
                     <div class="clearfix"></div>

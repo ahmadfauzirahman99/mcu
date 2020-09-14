@@ -14,8 +14,7 @@ use Yii;
  * @property int|null $created_by
  * @property int|null $updated_by
  * @property string $rs_pendukung
- * @property string $status
- * @property string $tanggal_created
+ * @property string|null $status
  */
 class SpesialisKejiwaan extends \yii\db\ActiveRecord
 {
@@ -33,8 +32,8 @@ class SpesialisKejiwaan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['no_rekam_medik', 'rs_pendukung', 'status', 'tanggal_created'], 'required'],
-            [['created_at', 'updated_at', 'tanggal_created'], 'safe'],
+            [['no_rekam_medik', 'rs_pendukung'], 'required'],
+            [['created_at', 'updated_at'], 'safe'],
             [['created_by', 'updated_by'], 'default', 'value' => null],
             [['created_by', 'updated_by'], 'integer'],
             [['no_rekam_medik'], 'string', 'max' => 120],
@@ -54,9 +53,8 @@ class SpesialisKejiwaan extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',
             'updated_by' => 'Updated By',
-            'rs_pendukung' => 'Rs Pendukung',
+            'rs_pendukung' => 'Rumah Sakit Pendukung',
             'status' => 'Status',
-            'tanggal_created' => 'Tanggal Created',
         ];
     }
 }

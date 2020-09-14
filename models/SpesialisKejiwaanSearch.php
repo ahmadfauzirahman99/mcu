@@ -18,7 +18,7 @@ class SpesialisKejiwaanSearch extends SpesialisKejiwaan
     {
         return [
             [['id_spesialis_kejiwaan', 'created_by', 'updated_by'], 'integer'],
-            [['no_rekam_medik', 'created_at', 'updated_at', 'rs_pendukung', 'status', 'tanggal_created'], 'safe'],
+            [['no_rekam_medik', 'created_at', 'updated_at', 'rs_pendukung', 'status'], 'safe'],
         ];
     }
 
@@ -63,7 +63,6 @@ class SpesialisKejiwaanSearch extends SpesialisKejiwaan
             'updated_at' => $this->updated_at,
             'created_by' => $this->created_by,
             'updated_by' => $this->updated_by,
-            'tanggal_created' => $this->tanggal_created,
         ]);
 
         $query->andFilterWhere(['ilike', 'no_rekam_medik', $this->no_rekam_medik])

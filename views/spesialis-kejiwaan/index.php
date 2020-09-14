@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\SpesialisKejiwaanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Spesialis Kejiwaans';
+$this->title = 'Spesialis Kejiwaan';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="spesialis-kejiwaan-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Spesialis Kejiwaan', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Tambah Pemeriksaan Kejiwaan', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -28,13 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id_spesialis_kejiwaan',
             'no_rekam_medik',
-            'created_at',
-            'updated_at',
-            'created_by',
-            //'updated_by',
-            //'rs_pendukung',
-            //'status',
-            //'tanggal_created',
+            // 'created_at',
+            // 'updated_at',
+            // 'created_by',
+            // 'updated_by',
+            'rs_pendukung',
+            'status',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
