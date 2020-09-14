@@ -23,6 +23,9 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <script>
+        const baseUrl = '<?= Yii::$app->homeUrl ?>';
+    </script>
     <?php $this->head() ?>
 </head>
 
@@ -98,6 +101,19 @@ AppAsset::register($this);
                         <li>
                             <a href="<?= Url::to(['/unit-pemeriksaan/pemeriksaan-fisik']) ?>" class="waves-effect"><i class="mdi mdi-google-street-view"></i> <span> Unit Pemeriksaan </span> </a>
                         </li>
+                        <li class="text-muted menu-title">Pemeriksaan Spesialis</li>
+                        <li>
+                            <a href="<?= Url::to(['/spesialis-audiometri/index']) ?>" class="waves-effect"><i class="fas fa-assistive-listening-systems"></i> <span> Audiometri </span> </a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(['/spesialis-gigi/index']) ?>" class="waves-effect"><i class="fas fa-tooth"></i> <span> Gigi </span> </a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(['/spesialis-mata/index']) ?>" class="waves-effect"><i class="fas fa-eye"></i> <span> Mata </span> </a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(['/spesialis-tht/index']) ?>" class="waves-effect"><i class="fas fa-head-side-virus"></i> <span> THT </span> </a>
+                        </li>
 
                         <li class="text-muted menu-title">Data Pelayanan</li>
 
@@ -124,7 +140,7 @@ AppAsset::register($this);
         <div class="content-page">
             <!-- Start content -->
             <div class="content">
-                <div class="container-fluid">
+                <div class="container-fluid" style="margin-bottom: 25px;">
                     <div class="card card-body">
                         <?= Breadcrumbs::widget([
                             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
