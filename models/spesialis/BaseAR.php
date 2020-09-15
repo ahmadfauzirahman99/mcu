@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 12:12:24 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-14 23:17:57
+ * @Last Modified time: 2020-09-15 00:20:21
  */
 
 namespace app\models\spesialis;
@@ -55,12 +55,14 @@ class BaseAR extends \yii\db\ActiveRecord
             $this->riwayat = Json::encode($oldRiwayat, JSON_PRETTY_PRINT);
             $this->updateAttributes(['riwayat']);
         } else {
-            $newRow = $this->attributes;
-            unset($newRow['riwayat']);
-            $oldRiwayat = Json::decode($this->riwayat);
-            array_push($oldRiwayat, $newRow);
-            $this->riwayat = Json::encode($oldRiwayat, JSON_PRETTY_PRINT);
-            $this->updateAttributes(['riwayat']);
+            if (count($changedAttributes) > 0) {
+                $newRow = $this->attributes;
+                unset($newRow['riwayat']);
+                $oldRiwayat = Json::decode($this->riwayat);
+                array_push($oldRiwayat, $newRow);
+                $this->riwayat = Json::encode($oldRiwayat, JSON_PRETTY_PRINT);
+                $this->updateAttributes(['riwayat']);
+            }
         }
     }
 
@@ -68,5 +70,10 @@ class BaseAR extends \yii\db\ActiveRecord
     public function getPasien()
     {
         return $this->hasOne(DataLayanan::className(), ['no_rekam_medik' => 'no_rekam_medik']);
+    }
+
+    public function getNama_no_rm()
+    {
+        return $this->pasien->nama . ' (' . $this->no_rekam_medik . ')';
     }
 }

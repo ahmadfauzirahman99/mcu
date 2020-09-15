@@ -13,6 +13,7 @@ use app\models\spesialis\McuSpesialisAudiometri;
 class McuSpesialisAudiometriSearch extends McuSpesialisAudiometri
 {
     public $nama_no_rm;
+    
     /**
      * {@inheritdoc}
      */
