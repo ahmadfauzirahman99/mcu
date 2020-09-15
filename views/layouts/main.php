@@ -121,6 +121,9 @@ AppAsset::register($this);
                         <li>
                             <a href="<?= Url::to(['/data-layanan/index']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Data Pelayanan </span> </a>
                         </li>
+                        <li>
+                            <a href="<?= Url::to(['/spesialis-gigi-kondisi/index']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Data Kondisi Gigi </span> </a>
+                        </li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>

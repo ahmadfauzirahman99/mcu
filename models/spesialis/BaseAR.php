@@ -55,12 +55,14 @@ class BaseAR extends \yii\db\ActiveRecord
             $this->riwayat = Json::encode($oldRiwayat, JSON_PRETTY_PRINT);
             $this->updateAttributes(['riwayat']);
         } else {
-            $newRow = $this->attributes;
-            unset($newRow['riwayat']);
-            $oldRiwayat = Json::decode($this->riwayat);
-            array_push($oldRiwayat, $newRow);
-            $this->riwayat = Json::encode($oldRiwayat, JSON_PRETTY_PRINT);
-            $this->updateAttributes(['riwayat']);
+            if (count($changedAttributes) > 0) {
+                $newRow = $this->attributes;
+                unset($newRow['riwayat']);
+                $oldRiwayat = Json::decode($this->riwayat);
+                array_push($oldRiwayat, $newRow);
+                $this->riwayat = Json::encode($oldRiwayat, JSON_PRETTY_PRINT);
+                $this->updateAttributes(['riwayat']);
+            }
         }
     }
 

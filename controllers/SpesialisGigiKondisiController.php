@@ -2,18 +2,17 @@
 
 namespace app\controllers;
 
-use app\models\DataLayanan;
 use Yii;
-use app\models\spesialis\McuSpesialisGigi;
-use app\models\spesialis\McuSpesialisGigiSearch;
+use app\models\spesialis\McuSpesialisGigiKondisi;
+use app\models\spesialis\McuSpesialisGigiKondisiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * SpesialisGigiController implements the CRUD actions for McuSpesialisGigi model.
+ * SpesialisGigiKondisiController implements the CRUD actions for McuSpesialisGigiKondisi model.
  */
-class SpesialisGigiController extends Controller
+class SpesialisGigiKondisiController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -31,12 +30,12 @@ class SpesialisGigiController extends Controller
     }
 
     /**
-     * Lists all McuSpesialisGigi models.
+     * Lists all McuSpesialisGigiKondisi models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new McuSpesialisGigiSearch();
+        $searchModel = new McuSpesialisGigiKondisiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,7 +45,7 @@ class SpesialisGigiController extends Controller
     }
 
     /**
-     * Displays a single McuSpesialisGigi model.
+     * Displays a single McuSpesialisGigiKondisi model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -59,16 +58,16 @@ class SpesialisGigiController extends Controller
     }
 
     /**
-     * Creates a new McuSpesialisGigi model.
+     * Creates a new McuSpesialisGigiKondisi model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new McuSpesialisGigi();
+        $model = new McuSpesialisGigiKondisi();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_spesialis_gigi]);
+            return $this->redirect(['view', 'id' => $model->id_spesialis_gigi_kondisi]);
         }
 
         return $this->render('create', [
@@ -77,7 +76,7 @@ class SpesialisGigiController extends Controller
     }
 
     /**
-     * Updates an existing McuSpesialisGigi model.
+     * Updates an existing McuSpesialisGigiKondisi model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -88,7 +87,7 @@ class SpesialisGigiController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_spesialis_gigi]);
+            return $this->redirect(['view', 'id' => $model->id_spesialis_gigi_kondisi]);
         }
 
         return $this->render('update', [
@@ -97,7 +96,7 @@ class SpesialisGigiController extends Controller
     }
 
     /**
-     * Deletes an existing McuSpesialisGigi model.
+     * Deletes an existing McuSpesialisGigiKondisi model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -111,62 +110,18 @@ class SpesialisGigiController extends Controller
     }
 
     /**
-     * Finds the McuSpesialisGigi model based on its primary key value.
+     * Finds the McuSpesialisGigiKondisi model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return McuSpesialisGigi the loaded model
+     * @return McuSpesialisGigiKondisi the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = McuSpesialisGigi::findOne($id)) !== null) {
+        if (($model = McuSpesialisGigiKondisi::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-    //------------------------------------------------
-    public function actionPeriksa($no_rm = null)
-    {
-        if ($no_rm != null) {
-            $pasien = DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one();
-            if (!$pasien) {
-                return $this->redirect(['/site/ngga-nemu', 'no_rm' => $no_rm]);
-            }
-            $model = McuSpesialisGigi::find()->where(['no_rekam_medik' => $no_rm])->one();
-            if (!$model)
-                $model = new McuSpesialisGigi();
-            $model->cari_pasien = $no_rm;
-        } else {
-            $pasien = null;
-            $model = new McuSpesialisGigi();
-        }
-
-        if ($model->load(Yii::$app->request->post())) {
-            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-
-            if ($model->save()) {
-                return [
-                    's' => true,
-                    'e' => null
-                ];
-            } else {
-                return [
-                    's' => false,
-                    'e' => $model->errors
-                ];
-            }
-        }
-
-        return $this->render('periksa', [
-            'model' => $model,
-            'no_rm' => $no_rm,
-            'pasien' => $pasien,
-        ]);
-    }
 }
-
-// Backup
-// $model->g18 = $model->g18 ? implode(',', $model->g18) : null ;
-// $model->g18 =  explode(',', $model->g18);

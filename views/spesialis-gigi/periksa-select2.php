@@ -6,12 +6,13 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-15 15:43:30
+ * @Last Modified time: 2020-09-15 14:48:36
  */
 
 use app\components\Helper;
 use app\models\DataLayanan;
 use app\models\spesialis\BaseModel;
+use app\models\spesialis\McuSpesialisGigiKondisi;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
@@ -25,10 +26,7 @@ $this->title = 'Pemeriksaan Kesehatan Gigi Tenaga Kerja';
 $this->params['breadcrumbs'][] = ['label' => 'Unit Medical Check Up', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-$dataG = [
-    'Normal' => 'Normal',
-    'Tidak Normal' => 'Tidak Normal',
-];
+$dataG = McuSpesialisGigiKondisi::find()->select2();
 
 ?>
 
@@ -118,161 +116,577 @@ $dataG = [
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="18" sdnum="1033;">18</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g18')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g18')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => [
+                        'placeholder' => 'Pilih ...',
+                        'multiple' => true,
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                    }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="38" sdnum="1033;">38</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g38')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g38')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="17" sdnum="1033;">17</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g17')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g17')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="37" sdnum="1033;">37</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g37')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g37')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="16" sdnum="1033;">16</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g16')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g16')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="36" sdnum="1033;">36</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g36')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g36')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="15" sdnum="1033;">15</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g15')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g15')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="35" sdnum="1033;">35</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g35')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g35')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="14" sdnum="1033;">14</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g14')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g14')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="34" sdnum="1033;">34</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g34')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g34')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="13" sdnum="1033;">13</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g13')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g13')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="33" sdnum="1033;">33</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g33')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g33')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="12" sdnum="1033;">12</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g12')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g12')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="32" sdnum="1033;">32</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g32')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g32')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="11" sdnum="1033;">11</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g11')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g11')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="31" sdnum="1033;">31</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g31')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g31')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="21" sdnum="1033;">21</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g21')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g21')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="41" sdnum="1033;">41</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g41')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g41')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="22" sdnum="1033;">22</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g22')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g22')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="42" sdnum="1033;">42</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g42')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g42')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="23" sdnum="1033;">23</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g23')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g23')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="43" sdnum="1033;">43</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g43')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g43')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="24" sdnum="1033;">24</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g24')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g24')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="44" sdnum="1033;">44</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g44')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g44')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="25" sdnum="1033;">25</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g25')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g25')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="45" sdnum="1033;">45</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g45')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g45')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="26" sdnum="1033;">26</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g26')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g26')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="46" sdnum="1033;">46</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g46')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g46')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="27" sdnum="1033;">27</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g27')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g27')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="47" sdnum="1033;">47</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g47')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g47')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=middle sdval="28" sdnum="1033;">28</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom>
-                <?= $form->field($model, 'g28')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g28')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="48" sdnum="1033;">48</td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
-                <?= $form->field($model, 'g48')->textInput(['maxlength' => true])->label(false) ?>
+                <?php
+                echo $form->field($model, 'g48')->widget(Select2::classname(), [
+                    'data' => $dataG,
+                    'theme' => 'bootstrap',
+                    'options' => ['placeholder' => 'Pilih ...'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>

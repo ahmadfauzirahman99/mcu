@@ -83,7 +83,8 @@ class McuSpesialisGigi extends BaseAR
             [['created_by', 'updated_by'], 'integer'],
             [['lain_lain', 'kesimpulan', 'saran', 'riwayat'], 'string'],
             [['no_rekam_medik'], 'string', 'max' => 120],
-            [['g18', 'g17', 'g16', 'g15', 'g14', 'g13', 'g12', 'g11', 'g21', 'g22', 'g23', 'g24', 'g25', 'g26', 'g27', 'g28', 'g38', 'g37', 'g36', 'g35', 'g34', 'g33', 'g32', 'g31', 'g41', 'g42', 'g43', 'g44', 'g45', 'g46', 'g47', 'g48'], 'string', 'max' => 100],
+            // [['g18', 'g17', 'g16', 'g15', 'g14', 'g13', 'g12', 'g11', 'g21', 'g22', 'g23', 'g24', 'g25', 'g26', 'g27', 'g28', 'g38', 'g37', 'g36', 'g35', 'g34', 'g33', 'g32', 'g31', 'g41', 'g42', 'g43', 'g44', 'g45', 'g46', 'g47', 'g48'], 'string', 'max' => 100],
+            [['g18', 'g17', 'g16', 'g15', 'g14', 'g13', 'g12', 'g11', 'g21', 'g22', 'g23', 'g24', 'g25', 'g26', 'g27', 'g28', 'g38', 'g37', 'g36', 'g35', 'g34', 'g33', 'g32', 'g31', 'g41', 'g42', 'g43', 'g44', 'g45', 'g46', 'g47', 'g48'], 'safe',],
             [['oklusi', 'torus_palatinus', 'torus_mandibularis', 'palatum', 'supernumerary_teeth', 'diastema', 'spacing', 'oral_hygiene', 'gingiva_periodontal', 'oral_mucosa', 'tongue'], 'string', 'max' => 30],
 
             ['no_rekam_medik', 'unique'],
