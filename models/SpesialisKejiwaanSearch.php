@@ -18,7 +18,7 @@ class SpesialisKejiwaanSearch extends SpesialisKejiwaan
     {
         return [
             [['id_spesialis_kejiwaan', 'created_by', 'updated_by'], 'integer'],
-            [['no_rekam_medik', 'created_at', 'updated_at', 'rs_pendukung', 'status'], 'safe'],
+            [['no_rekam_medik', 'created_at', 'updated_at', 'rs_pendukung', 'dokter', 'skala_l', 'skala_p', 'skala_k', 'skala_1_hs', 'skala_2_d', 'skala_3_hy', 'skala_4_pd', 'skala_5_mf', 'skala_6_pa', 'skala_7_pt', 'skala_8_sc', 'skala_9_ma', 'skala_0_si', 'kesimpulan'], 'safe'],
         ];
     }
 
@@ -67,7 +67,21 @@ class SpesialisKejiwaanSearch extends SpesialisKejiwaan
 
         $query->andFilterWhere(['ilike', 'no_rekam_medik', $this->no_rekam_medik])
             ->andFilterWhere(['ilike', 'rs_pendukung', $this->rs_pendukung])
-            ->andFilterWhere(['ilike', 'status', $this->status]);
+            ->andFilterWhere(['ilike', 'dokter', $this->dokter])
+            ->andFilterWhere(['ilike', 'skala_l', $this->skala_l])
+            ->andFilterWhere(['ilike', 'skala_p', $this->skala_p])
+            ->andFilterWhere(['ilike', 'skala_k', $this->skala_k])
+            ->andFilterWhere(['ilike', 'skala_1_hs', $this->skala_1_hs])
+            ->andFilterWhere(['ilike', 'skala_2_d', $this->skala_2_d])
+            ->andFilterWhere(['ilike', 'skala_3_hy', $this->skala_3_hy])
+            ->andFilterWhere(['ilike', 'skala_4_pd', $this->skala_4_pd])
+            ->andFilterWhere(['ilike', 'skala_5_mf', $this->skala_5_mf])
+            ->andFilterWhere(['ilike', 'skala_6_pa', $this->skala_6_pa])
+            ->andFilterWhere(['ilike', 'skala_7_pt', $this->skala_7_pt])
+            ->andFilterWhere(['ilike', 'skala_8_sc', $this->skala_8_sc])
+            ->andFilterWhere(['ilike', 'skala_9_ma', $this->skala_9_ma])
+            ->andFilterWhere(['ilike', 'skala_0_si', $this->skala_0_si])
+            ->andFilterWhere(['ilike', 'kesimpulan', $this->kesimpulan]);
 
         return $dataProvider;
     }
