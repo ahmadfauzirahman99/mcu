@@ -54,7 +54,7 @@ class SpesialisKejiwaan extends \yii\db\ActiveRecord
             'created_by' => 'Created By',
             'updated_by' => 'Updated By',
             'rs_pendukung' => 'Rumah Sakit Pendukung',
-            'status' => 'Status',
+            'status' => 'Status Gangguan Jiwa',
         ];
     }
 }

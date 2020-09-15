@@ -18,11 +18,15 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Tambah Pemeriksaan Kejiwaan', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php 
+    // echo $this->render('_search', ['model' => $searchModel]); 
+    $ket_kejiwaan = array("Tidak Ditemukan Gangguan Jiwa", "DItemukan Gangguan Jiwa");
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        //'model' => $model,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -34,6 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'updated_by',
             'rs_pendukung',
             'status',
+            // [
+            //     'value' => function ($model) {
+            //         $v = $ket_kejiwaan[$model->status];
+            //         return $v;
+            //     },
+            // ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
