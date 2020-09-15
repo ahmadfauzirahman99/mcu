@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\Anamnesis;
 use app\models\DataLayanan;
+use app\models\JenisPekerjaan;
 use Yii;
 
 class UnitPemeriksaanController extends \yii\web\Controller
@@ -20,16 +22,24 @@ class UnitPemeriksaanController extends \yii\web\Controller
         if (Yii::$app->request->isPost) {
             $p = Yii::$app->request->post();
             $no_rekam_medik = $p['DataLayanan']['nama'];
-            $dataLayanan = DataLayanan::findOne(['no_rekam_medik'=>$no_rekam_medik]);
-            // var_dump($_POST);
-            // exit();
-
-            return $this->render('pemeriksaan-fisik',['dataLayanan'=>$dataLayanan]);
+            $dataLayanan = DataLayanan::findOne(['no_rekam_medik' => $no_rekam_medik]);
+            $anamnesis = Anamnesis::findOne(['nomor_rekam_medik' => $no_rekam_medik]);
+            $jenis_pekerjaann = JenisPekerjaan::findOne(['no_rekam_medik' => $no_rekam_medik]);
+            return $this->render('pemeriksaan-fisik', [
+                'dataLayanan' => $dataLayanan,
+                'anamnesis' =>  $anamnesis,
+                'jenis_pekerjaan' => $jenis_pekerjaann
+            ]);
         }
 
         $dataLayanan = new DataLayanan();
+        $anamnesis = new Anamnesis();
+        $jenis_pekerjaann = new JenisPekerjaan();
         return $this->render('pemeriksaan-fisik', [
-            'dataLayanan' => $dataLayanan
+            'dataLayanan' => $dataLayanan,
+            'anamnesis' => $anamnesis,
+            'jenis_pekerjaan' => $jenis_pekerjaann
+
         ]);
     }
 
