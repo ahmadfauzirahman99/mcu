@@ -57,6 +57,12 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'skala_0_si') ?>
 
+    <?php // echo $form->field($model, 'validitas') ?>
+
+    <?php // echo $form->field($model, 'interpretasi_subtantif') ?>
+
+    <?php // echo $form->field($model, 'saran') ?>
+
     <?php // echo $form->field($model, 'kesimpulan') ?>
 
     <div class="form-group">

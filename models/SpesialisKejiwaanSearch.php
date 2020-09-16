@@ -17,8 +17,8 @@ class SpesialisKejiwaanSearch extends SpesialisKejiwaan
     public function rules()
     {
         return [
-            [['id_spesialis_kejiwaan', 'created_by', 'updated_by'], 'integer'],
-            [['no_rekam_medik', 'created_at', 'updated_at', 'rs_pendukung', 'dokter', 'skala_l', 'skala_p', 'skala_k', 'skala_1_hs', 'skala_2_d', 'skala_3_hy', 'skala_4_pd', 'skala_5_mf', 'skala_6_pa', 'skala_7_pt', 'skala_8_sc', 'skala_9_ma', 'skala_0_si', 'kesimpulan'], 'safe'],
+            [['id_spesialis_kejiwaan', 'created_by', 'updated_by', 'status'], 'integer'],
+            [['no_rekam_medik', 'created_at', 'updated_at', 'rs_pendukung', 'dokter', 'skala_l', 'skala_p', 'skala_k', 'skala_1_hs', 'skala_2_d', 'skala_3_hy', 'skala_4_pd', 'skala_5_mf', 'skala_6_pa', 'skala_7_pt', 'skala_8_sc', 'skala_9_ma', 'skala_0_si', 'validitas', 'interpretasi_subtantif', 'saran', 'kesimpulan'], 'safe'],
         ];
     }
 
@@ -81,7 +81,11 @@ class SpesialisKejiwaanSearch extends SpesialisKejiwaan
             ->andFilterWhere(['ilike', 'skala_8_sc', $this->skala_8_sc])
             ->andFilterWhere(['ilike', 'skala_9_ma', $this->skala_9_ma])
             ->andFilterWhere(['ilike', 'skala_0_si', $this->skala_0_si])
-            ->andFilterWhere(['ilike', 'kesimpulan', $this->kesimpulan]);
+            ->andFilterWhere(['ilike', 'validitas', $this->validitas])
+            ->andFilterWhere(['ilike', 'interpretasi_subtantif', $this->interpretasi_subtantif])
+            ->andFilterWhere(['ilike', 'saran', $this->saran])
+            ->andFilterWhere(['ilike', 'kesimpulan', $this->kesimpulan])
+            ->andFilterWhere(['ilike', 'status', $this->status]);
 
         return $dataProvider;
     }

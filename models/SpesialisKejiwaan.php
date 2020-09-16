@@ -28,6 +28,9 @@ use Yii;
  * @property string|null $skala_8_sc
  * @property string|null $skala_9_ma
  * @property string|null $skala_0_si
+ * @property string|null $validitas
+ * @property string|null $interpretasi_subtantif
+ * @property string|null $saran
  * @property string|null $kesimpulan
  */
 class SpesialisKejiwaan extends \yii\db\ActiveRecord
@@ -49,11 +52,14 @@ class SpesialisKejiwaan extends \yii\db\ActiveRecord
             [['no_rekam_medik', 'rs_pendukung'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['created_by', 'updated_by'], 'default', 'value' => null],
-            [['created_by', 'updated_by'], 'integer'],
+            [['created_by', 'updated_by', 'status'], 'integer'],
             [['no_rekam_medik'], 'string', 'max' => 120],
-            [['rs_pendukung', 'kesimpulan'], 'string', 'max' => 50],
+            [['rs_pendukung'], 'string', 'max' => 50],
             [['dokter'], 'string', 'max' => 35],
             [['skala_l', 'skala_p', 'skala_k', 'skala_1_hs', 'skala_2_d', 'skala_3_hy', 'skala_4_pd', 'skala_5_mf', 'skala_6_pa', 'skala_7_pt', 'skala_8_sc', 'skala_9_ma', 'skala_0_si'], 'string', 'max' => 15],
+            [['validitas', 'saran'], 'string', 'max' => 200],
+            [['interpretasi_subtantif'], 'string', 'max' => 500],
+            [['kesimpulan'], 'string', 'max' => 200],
         ];
     }
 
@@ -84,7 +90,11 @@ class SpesialisKejiwaan extends \yii\db\ActiveRecord
             'skala_8_sc' => 'Skala 8 Sc',
             'skala_9_ma' => 'Skala 9 Ma',
             'skala_0_si' => 'Skala 0 Si',
+            'validitas' => 'Validitas',
+            'interpretasi_subtantif' => 'Interpretasi Subtantif',
+            'saran' => 'Saran',
             'kesimpulan' => 'Kesimpulan',
+            'status' => 'Status',
         ];
     }
 }

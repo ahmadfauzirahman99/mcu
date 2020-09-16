@@ -50,6 +50,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'skala_8_sc',
             'skala_9_ma',
             'skala_0_si',
+            'validitas',
+            'interpretasi_subtantif',
+            'saran',
             'kesimpulan',
         ],
     ]) ?>

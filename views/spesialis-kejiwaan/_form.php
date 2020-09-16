@@ -71,7 +71,6 @@ use yii\bootstrap4\ActiveForm;
 
     <br/>
     <table class="table">
-        <colgroup span="19" width="53"></colgroup>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top><b>
                 <font color="#000000">ASPEK KEJIWAAN</font>
@@ -82,122 +81,180 @@ use yii\bootstrap4\ActiveForm;
         </tr>
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-                <font color="#000000"><b>Skala L (Lie Scale) </b></font> <br/> Kebohongan Ketidak Jujuran Jawaban
-                </td>
+                <font color="#000000"><b>Skala L (Lie Scale) </b></font> (Kebohongan Ketidak Jujuran Jawaban)
+            </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <?= $form->field($model, 'skala_l')->label(false)->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'skala_l')->inline()->radioList(['0' => '0', '1' => '1', '2' => '2'], [
+            'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala F </b></font> <br/> Salah mengerti terhadap makna pertanyaan atau tidak menangkap arti pertanyaan / sengaja tidak mau membaca tetapi dijawab dengan asal mengisi
+            <font color="#000000"><b>Skala F </b></font> (Salah mengerti terhadap makna pertanyaan atau tidak menangkap arti pertanyaan / sengaja tidak mau membaca tetapi dijawab dengan asal mengisi)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $form->field($model, 'skala_p')->label(false)->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'skala_p')->inline()->radioList(['0' => '0', '1' => '1', '2' => '2'], [
+            'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala K </b></font> <br/> Sikap defensive, mengelak atau menghindar
+            <font color="#000000"><b>Skala K </b></font> (Sikap defensive, mengelak atau menghindar)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $form->field($model, 'skala_k')->label(false)->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'skala_k')->inline()->radioList(['0' => '0', '1' => '1', '2' => '2'], [
+            'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 1 - Hs : Hipocondriasis </b></font> <br/> Keluhan fisik, gangguan fisik dan fungsi tubuh
+            <font color="#000000"><b>Skala 1 - Hs : Hipocondriasis </b></font> (Keluhan fisik, gangguan fisik dan fungsi tubuh)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $form->field($model, 'skala_1_hs')->label(false)->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'skala_1_hs')->inline()->radioList(['0' => '0', '1' => '1', '2' => '2'], [
+            'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 2 - D : Depresi </b></font> <br/> Sedih, tidak bahagia dan tertekan
+            <font color="#000000"><b>Skala 2 - D : Depresi </b></font> (Sedih, tidak bahagia dan tertekan)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $form->field($model, 'skala_2_d')->label(false)->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'skala_2_d')->inline()->radioList(['0' => '0', '1' => '1', '2' => '2'], [
+            'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 3 - Hy : Histeria </b></font> <br/> Bereaksi terhadap stress dengan menolak masalah
+            <font color="#000000"><b>Skala 3 - Hy : Histeria </b></font> (Bereaksi terhadap stress dengan menolak masalah)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $form->field($model, 'skala_3_hy')->label(false)->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'skala_3_hy')->inline()->radioList(['0' => '0', '1' => '1', '2' => '2'], [
+            'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 4 - Pd : Psikopati Devien </b></font> <br/> Kurang patuh terhadap norma sosial
+            <font color="#000000"><b>Skala 4 - Pd : Psikopati Devien </b></font> (Kurang patuh terhadap norma sosial)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $form->field($model, 'skala_4_pd')->label(false)->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'skala_4_pd')->inline()->radioList(['0' => '0', '1' => '1', '2' => '2'], [
+            'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 5 - Mf : Maskulin Feminim </b></font> <br/> Orientasi feminim pada laki-laki dan orientasi maskulin pada wanita
+            <font color="#000000"><b>Skala 5 - Mf : Maskulin Feminim </b></font> (Orientasi feminim pada laki-laki dan orientasi maskulin pada wanita)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $form->field($model, 'skala_5_mf')->label(false)->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'skala_5_mf')->inline()->radioList(['0' => '0', '1' => '1', '2' => '2'], [
+            'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 6 - Pa : Paranoia </b></font> <br/> Curiga, Bermusuhan 
+            <font color="#000000"><b>Skala 6 - Pa : Paranoia </b></font> (Curiga, Bermusuhan)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $form->field($model, 'skala_6_pa')->label(false)->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'skala_6_pa')->inline()->radioList(['0' => '0', '1' => '1', '2' => '2'], [
+            'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 7 - Pt : Psikastenia </b></font> <br/> Cemas, Khawatir, Fobia, Obsesi Kompulsif
+            <font color="#000000"><b>Skala 7 - Pt : Psikastenia </b></font> (Cemas, Khawatir, Fobia, Obsesi Kompulsif)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $form->field($model, 'skala_7_pt')->label(false)->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'skala_7_pt')->inline()->radioList(['0' => '0', '1' => '1', '2' => '2'], [
+            'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 8 - Sc : Schizophrenia </b></font> <br/> Menarik diri, Pikiran aneh, Kacau
+            <font color="#000000"><b>Skala 8 - Sc : Schizophrenia </b></font> (Menarik diri, Pikiran aneh, Kacau)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $form->field($model, 'skala_8_sc')->label(false)->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'skala_8_sc')->inline()->radioList(['0' => '0', '1' => '1', '2' => '2'], [
+            'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 9 - Ma : Hipomania </b></font> <br/> Impulsif pikiran dan aktivitas yang berlebihan
+            <font color="#000000"><b>Skala 9 - Ma : Hipomania </b></font> (Impulsif pikiran dan aktivitas yang berlebihan)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $form->field($model, 'skala_9_ma')->label(false)->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'skala_9_ma')->inline()->radioList(['0' => '0', '1' => '1', '2' => '2'], [
+            'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 0 - D : Intervensi Sosial </b></font> <br/> Intovert, pemalu, tertutup, minat sosial
+            <font color="#000000"><b>Skala 0 - D : Intervensi Sosial </b></font> (Intovert, pemalu, tertutup, minat sosial)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $form->field($model, 'skala_0_si')->label(false)->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'skala_0_si')->inline()->radioList(['0' => '0', '1' => '1', '2' => '2'], [
+            'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>
             </td>
         </tr>   
     </table>
 
+    <?= $form->field($model, 'validitas')->textarea(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'interpretasi_subtantif')->textarea(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'saran')->textarea(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'kesimpulan')->textarea(['maxlength' => true]) ?>
+    <br/>
     <div class="form-group row col-sm-12">
         <label for="inputEmail3" class="col-sm-3 col-form-label"><b></b></label>
         <div class="col-sm-9">
-        <?= $form->field($model, 'kesimpulan')->inline()->radioList(['0' => 'Tidak Ditemukan Gangguan Jiwa', '1' => 'DItemukan Gangguan Jiwa',], [
+        <?= $form->field($model, 'status')->inline()->radioList(['0' => 'Tidak Ditemukan Gangguan Jiwa', '1' => 'DItemukan Gangguan Jiwa',], [
             'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
                 return Helper::radioList($index, $label, $name, $checked, $value, $model);
             }
         ])->label(false) ?>
         </div>
     </div>
-    
-    
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
