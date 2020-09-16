@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-15 15:43:30
+ * @Last Modified time: 2020-09-16 09:52:57
  */
 
 use app\components\Helper;
@@ -104,7 +104,7 @@ $dataG = [
 
     <br>
 
-    <table class="table tabel-gigi">
+    <table class="table table-sm tabel-gigi">
         <colgroup width="41"></colgroup>
         <colgroup width="158"></colgroup>
         <colgroup width="30"></colgroup>
