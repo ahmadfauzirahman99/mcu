@@ -800,6 +800,7 @@ if(isset($_GET["id"])){
 							},
 							error:function(){
 								toastr.error('Gagal Koneksi Server');
+								$('#tombolsimpan').html(textdefaulttombolsimpan);
 							},
 						});
 						}
