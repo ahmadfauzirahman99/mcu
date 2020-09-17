@@ -66,9 +66,7 @@ $helper = [
                         <?= $form->field($master_pemeriksaan_fisik, 'status_gizi_lingkaran_pinggang')->textInput(['placeholder' => 'Lingkaran Pinggang']) ?>
                     </div>
                     <div class="col-lg-12">
-                        <?= $form->field($master_pemeriksaan_fisik, 'status_gizi_bentuk_badan')->radioList($helper, [
-                            
-                        ]) ?>
+                        <?= $form->field($master_pemeriksaan_fisik, 'status_gizi_bentuk_badan')->radioList($helper, []) ?>
                     </div>
                     <div class="col-lg-12">
                         <?= $form->field($master_pemeriksaan_fisik, 'status_gizi_imt')->textInput(['readonly' => true]) ?>
@@ -85,4 +83,14 @@ $helper = [
         <?php ActiveForm::end(); ?>
     </div>
     <hr>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <div class="form-group">
+                <h4 class="header-title m-t-0 m-b-30">3. Tingkat Kesadaran dan Keadaan Umum</h4>
+            </div>
+        </div>
+    </div>
 </div>

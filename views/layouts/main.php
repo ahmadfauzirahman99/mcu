@@ -55,17 +55,13 @@ AppAsset::register($this);
                             </button>
                         </li>
                         <li class="list-inline-item">
-                            <h4 class="page-title"><?= $this->title ?></h4>
+                            <h6 class="page-title"><?= $this->title ?></h6>
                         </li>
                     </ul>
 
                     <nav class="navbar-custom">
 
                         <ul class="list-unstyled topbar-right-menu float-right mb-0">
-
-
-
-
 
                         </ul>
                     </nav>
