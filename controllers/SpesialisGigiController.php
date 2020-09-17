@@ -4,16 +4,16 @@ namespace app\controllers;
 
 use app\models\DataLayanan;
 use Yii;
-use app\models\spesialis\McuSpesialisAudiometri;
-use app\models\spesialis\McuSpesialisAudiometriSearch;
+use app\models\spesialis\McuSpesialisGigi;
+use app\models\spesialis\McuSpesialisGigiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * SpesialisAudiometriController implements the CRUD actions for McuSpesialisAudiometri model.
+ * SpesialisGigiController implements the CRUD actions for McuSpesialisGigi model.
  */
-class SpesialisAudiometriController extends Controller
+class SpesialisGigiController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -31,13 +31,14 @@ class SpesialisAudiometriController extends Controller
     }
 
     /**
-     * Lists all McuSpesialisAudiometri models.
+     * Lists all McuSpesialisGigi models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new McuSpesialisAudiometriSearch();
+        $searchModel = new McuSpesialisGigiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -45,7 +46,7 @@ class SpesialisAudiometriController extends Controller
     }
 
     /**
-     * Displays a single McuSpesialisAudiometri model.
+     * Displays a single McuSpesialisGigi model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,16 +59,16 @@ class SpesialisAudiometriController extends Controller
     }
 
     /**
-     * Creates a new McuSpesialisAudiometri model.
+     * Creates a new McuSpesialisGigi model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new McuSpesialisAudiometri();
+        $model = new McuSpesialisGigi();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_spesialis_audiometri]);
+            return $this->redirect(['view', 'id' => $model->id_spesialis_gigi]);
         }
 
         return $this->render('create', [
@@ -76,7 +77,7 @@ class SpesialisAudiometriController extends Controller
     }
 
     /**
-     * Updates an existing McuSpesialisAudiometri model.
+     * Updates an existing McuSpesialisGigi model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -87,7 +88,7 @@ class SpesialisAudiometriController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_spesialis_audiometri]);
+            return $this->redirect(['view', 'id' => $model->id_spesialis_gigi]);
         }
 
         return $this->render('update', [
@@ -96,7 +97,7 @@ class SpesialisAudiometriController extends Controller
     }
 
     /**
-     * Deletes an existing McuSpesialisAudiometri model.
+     * Deletes an existing McuSpesialisGigi model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +111,15 @@ class SpesialisAudiometriController extends Controller
     }
 
     /**
-     * Finds the McuSpesialisAudiometri model based on its primary key value.
+     * Finds the McuSpesialisGigi model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return McuSpesialisAudiometri the loaded model
+     * @return McuSpesialisGigi the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = McuSpesialisAudiometri::findOne($id)) !== null) {
+        if (($model = McuSpesialisGigi::findOne($id)) !== null) {
             return $model;
         }
 
@@ -133,17 +134,18 @@ class SpesialisAudiometriController extends Controller
             if (!$pasien) {
                 return $this->redirect(['/site/ngga-nemu', 'no_rm' => $no_rm]);
             }
-            $model = McuSpesialisAudiometri::find()->where(['no_rekam_medik' => $no_rm])->one();
+            $model = McuSpesialisGigi::find()->where(['no_rekam_medik' => $no_rm])->one();
             if (!$model)
-                $model = new McuSpesialisAudiometri();
+                $model = new McuSpesialisGigi();
             $model->cari_pasien = $no_rm;
         } else {
             $pasien = null;
-            $model = new McuSpesialisAudiometri();
+            $model = new McuSpesialisGigi();
         }
 
         if ($model->load(Yii::$app->request->post())) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
             if ($model->save()) {
                 return [
                     's' => true,
@@ -164,3 +166,7 @@ class SpesialisAudiometriController extends Controller
         ]);
     }
 }
+
+// Backup
+// $model->g18 = $model->g18 ? implode(',', $model->g18) : null ;
+// $model->g18 =  explode(',', $model->g18);

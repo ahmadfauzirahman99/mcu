@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-13 18:14:33
+ * @Last Modified time: 2020-09-14 23:43:54
  */
 
 use yii\helpers\Html;
@@ -16,13 +16,18 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\spesialis\McuSpesialisAudiometriSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pemeriksaan Kesehatan THT Tenaga Kerja';
+$this->title = 'Pemeriksaan Kesehatan Audiometri Tenaga Kerja';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mcu-spesialis-audiometri-index">
 
+    <p>
+        <?= Html::a('Tambah Pemeriksaan', ['periksa'], ['class' => 'btn btn-success']) ?>
+    </p>
+
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

@@ -28,6 +28,7 @@ class AppAsset extends AssetBundle
         
         "js/modernizr.min.js",
         'plugins/toastr/toastr.min.css',
+        '../css/app.css'
     ];
     public $js = [
         // jQuery

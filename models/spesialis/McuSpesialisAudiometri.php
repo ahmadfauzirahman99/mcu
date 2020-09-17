@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 12:12:24 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-13 18:12:27
+ * @Last Modified time: 2020-09-15 00:20:11
  */
 
 
@@ -100,7 +100,9 @@ class McuSpesialisAudiometri extends BaseAR
             [['kesimpulan', 'gambar'], 'string'],
             [['no_rekam_medik'], 'string', 'max' => 120],
             [['ac_125_kanan', 'ac_250_kanan', 'ac_500_kanan', 'ac_1000_kanan', 'ac_2000_kanan', 'ac_3000_kanan', 'ac_4000_kanan', 'ac_5000_kanan', 'ac_6000_kanan', 'ac_7000_kanan', 'ac_8000_kanan', 'bc_125_kanan', 'bc_250_kanan', 'bc_500_kanan', 'bc_1000_kanan', 'bc_2000_kanan', 'bc_3000_kanan', 'bc_4000_kanan', 'bc_5000_kanan', 'bc_6000_kanan', 'bc_7000_kanan', 'bc_8000_kanan', 'ac_125_kiri', 'ac_250_kiri', 'ac_500_kiri', 'ac_1000_kiri', 'ac_2000_kiri', 'ac_3000_kiri', 'ac_4000_kiri', 'ac_5000_kiri', 'ac_6000_kiri', 'ac_7000_kiri', 'ac_8000_kiri', 'bc_125_kiri', 'bc_250_kiri', 'bc_500_kiri', 'bc_1000_kiri', 'bc_2000_kiri', 'bc_3000_kiri', 'bc_4000_kiri', 'bc_5000_kiri', 'bc_6000_kiri', 'bc_7000_kiri', 'bc_8000_kiri'], 'number',],
-            [['kesimpulan_kanan', 'kesimpulan_kiri', 'rata_kanan_ac', 'rata_kanan_bc', 'rata_kiri_ac', 'rata_kiri_bc'], 'string', 'max' => 30],
+            [['kesimpulan_kanan', 'kesimpulan_kiri',], 'string', 'max' => 30],
+            [['rata_kanan_ac', 'rata_kanan_bc', 'rata_kiri_ac', 'rata_kiri_bc'], 'number'],
+            ['riwayat', 'safe'],
 
             ['no_rekam_medik', 'unique'],
         ];
@@ -166,6 +168,7 @@ class McuSpesialisAudiometri extends BaseAR
             'rata_kiri_ac' => 'Rata Kiri Ac',
             'rata_kiri_bc' => 'Rata Kiri Bc',
             'gambar' => 'Gambar',
+            'riwayat' => 'Riwayat',
         ]);
     }
 
@@ -176,10 +179,5 @@ class McuSpesialisAudiometri extends BaseAR
     public static function find()
     {
         return new McuSpesialisAudiometriQuery(get_called_class());
-    }
-
-    public function getNama_no_rm()
-    {
-        return $this->pasien->nama . ' (' . $this->no_rekam_medik . ')';
     }
 }
