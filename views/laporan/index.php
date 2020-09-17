@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="laporan-form">
 
-<form method="post" action="<?= Url::to(['laporan/cetak']) ?>" name="form-lapRekap" target="_blank" class="form">
+<form method="post" action="<?= Url::to(['laporan/cetak']) ?>" id="PilihFieldRekap" name="form-lapRekap" target="_blank" class="form">
     <fieldset>
     <legend>Silahkan pilih field yang akan ditampilkan? </legend> 
     <?= Html::input('hidden','laporan[type]','lapRekap') ?>
@@ -1131,7 +1131,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <br>
     </fieldset>  
     <?= Html::submitButton(Yii::t('app', '<i class="far fa-file-excel"></i> Export Excel'), ['id'=>'exportExcel','class' => 'btn btn-success','name'=>'submit','value'=>'excel']) ?> &nbsp; &nbsp; 
-    <?= Html::submitButton('<i class="fa fa-print"></i> Cetak PDF',['class'=>'btn ink-reaction btn-warning']) ?>
+    <?= Html::submitButton('<i class="fa fa-print"></i> Cetak PDF',['class'=>'btn ink-reaction btn-warning', 'id'=>'PrintRekap',]) ?>
     <?= Html::hiddenInput(Yii::$app->request->csrfParam,Yii::$app->request->csrfToken) ?>
 </form>
 
@@ -1139,6 +1139,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php
 $script = <<< JS
+
+// var datastring = $("#PilihFieldRekap").serialize();
+// alert(datastring);
 
 $(document).ready(function() {   
     // Iterate each checkbox
@@ -1362,6 +1365,12 @@ $('#kulit_all').click(function(event) {
         $("#tampil_kulit").show()
     }
 });
+
+//Aksinya
+// $("#PrintRekap").on('click',function(){
+//     var no_test= $("#no_test").val();
+//     alert(no_test);
+// })
 
 JS;
 $this->registerJs($script);

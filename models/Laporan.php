@@ -15,20 +15,32 @@ set_time_limit(0);
 
 class Laporan extends Model
 {
-    // public function getPerkembanganPegawai()
-    // {    
-    //     $data = \Yii::$app->db->createCommand("
-    //         SELECT a.*, b.pemberhentian_tertanggal, c.catatan, 
-    //         (select d.id from ".RiwayatKepangkatan::tableName()." d where d.nip=a.id_nip_nrp order by d.sk_tanggal_pangkat desc limit 1) as pangkat,
-    //         (select e.id from ".RiwayatJabatan::tableName()." e where e.nip=a.id_nip_nrp order by e.sk_pelantikan_tanggal desc limit 1) as jabatan,
-    //         (select f.id from ".RiwayatPendidikan::tableName()." f where f.nip=a.id_nip_nrp order by f.tanggal_sttb desc limit 1) as pendidikan
-    //         FROM ".Pegawai::tableName()." a
-    //         LEFT JOIN ".MutasiPemberhentian::tableName()." b ON b.nip = a.id_nip_nrp
-    //         LEFT JOIN ".CatatanMutasiJabatan::tableName()." c ON c.nip = a.id_nip_nrp
-    //         WHERE a.status_kepegawaian_id ='121' OR a.status_kepegawaian_id ='122'
-    //         ORDER BY b.pemberhentian_tertanggal DESC")->queryAll();
+    public function getdataMCU()
+    {    
+        $data = \Yii::$app->db->createCommand("
+        select
+        data_pelayanan.nama as nama_peserta,
+        data_pelayanan.no_rekam_medik as no_rekam_medik,
+        data_pelayanan.no_ujian as no_ujian,
+        date_part('year',age('now',data_pelayanan.tgl_lahir)) as Umur,
+        data_pelayanan.jenis_kelamin as jenis_kelamin,
+        m_pemeriksaan_fisik.status_gizi_tinggi_badan as tinggi_badan,
+        m_pemeriksaan_fisik.status_gizi_berat_badan as berat_badan,
+        m_pemeriksaan_fisik.tanda_vital_tekanan_darah as tensi,
+        m_pemeriksaan_fisik.id_m_pemeriksaan_fisik as id_m_pemeriksaan_fisik,
+        validasi_rekap.score,
+        validasi_rekap.ket,
+        'kosong'
+    from
+        mcu.m_pemeriksaan_fisik
+    inner join mcu.lampiran_jaksa on
+        mcu.lampiran_jaksa.no_mr = m_pemeriksaan_fisik.no_rekam_medik
+    inner join mcu.data_pelayanan on
+        data_pelayanan.no_rekam_medik = m_pemeriksaan_fisik.no_rekam_medik
+    left join mcu.validasi_rekap on
+        validasi_rekap.id_m_pemeriksaan_fisik =  cast (m_pemeriksaan_fisik.id_m_pemeriksaan_fisik as varchar)")->queryAll();
         
-    //     return $data;
-    // }
+        return $data;
+    }
     
 }
