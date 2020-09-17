@@ -81,7 +81,7 @@ AppAsset::register($this);
                         <img src="<?= Yii::$app->request->baseUrl ?>/img/user.png" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail img-responsive">
                         <div class="user-status offline"><i class="mdi mdi-adjust"></i></div>
                     </div>
-                    <h5><a href="#">Ahmad Fauzi Rahman</a> </h5>
+                    <h5><a href="#">Pak Mardi</a> </h5>
                 </div>
                 <!-- End User -->
 
@@ -123,7 +123,7 @@ AppAsset::register($this);
                             <a href="<?= Url::to(['/data-layanan/index']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Data Pelayanan </span> </a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['/spesialis-gigi-kondisi/index']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Data Kondisi Gigi </span> </a>
+                            <!-- <a href="<?php Url::to(['/spesialis-gigi-kondisi/index']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Data Kondisi Gigi </span> </a> -->
                         </li>
 
                         <li class="text-muted menu-title">Laporan</li>
