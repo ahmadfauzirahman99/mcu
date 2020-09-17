@@ -145,6 +145,7 @@ AppAsset::register($this);
                         <li>
                             <a href="<?= Url::to(['/laporan/index']) ?>" class="waves-effect"><i class="fas fa-file"></i> <span> Laporan </span> </a>
                         </li>
+                        
                     </ul>
                     <div class="clearfix"></div>
                 </div>

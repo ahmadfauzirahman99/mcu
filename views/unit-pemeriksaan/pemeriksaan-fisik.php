@@ -87,6 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <li class="nav-item"><a href="#account-2" data-toggle="tab" class="nav-link">Data Pelayanan</a></li>
             <li class="nav-item"><a href="#profile-tab-2" data-toggle="tab" class="nav-link">I. ANAMNESIS</a></li>
             <li class="nav-item"><a href="#finish-2" data-toggle="tab" class="nav-link">II. ANAMNESIS OKUPASI</a></li>
+            <li class="nav-item"><a href="#finish-4" data-toggle="tab" class="nav-link">Body Discomfort Map</a></li>
             <li class="nav-item"><a href="#finish-3" data-toggle="tab" class="nav-link">III. PEMERIKSAAN FISIK</a></li>
         </ul>
 
@@ -110,6 +111,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         'dataLayanan' => $dataLayanan,
                         'anamnesis' => $anamnesis,
                         'dataBiodataUser' => $dataBiodataUser
+                    ]
+                ) ?>
+            </div>
+            <div class="tab-pane p-t-10 fade" id="finish-4">
+                <?= $this->render(
+                    'body-discomfort-map.php',
+                    [
+                        'dataLayanan' => $dataLayanan,
                     ]
                 ) ?>
             </div>
