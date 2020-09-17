@@ -114,15 +114,26 @@ AppAsset::register($this);
                         <li>
                             <a href="<?= Url::to(['/spesialis-tht/index']) ?>" class="waves-effect"><i class="fas fa-head-side-virus"></i> <span> THT </span> </a>
                         </li>
+                        <li>
+                            <a href="<?= Url::to(['/spesialis-kejiwaan/index']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Kejiwaan </span> </a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(['/spesialis-narkoba/index']) ?>" class="waves-effect"><i class="fas fa-eyedropper"></i> <span> Narkoba </span> </a>
+                        </li>
 
                         <li class="text-muted menu-title">Data Pelayanan</li>
-
 
                         <li>
                             <a href="<?= Url::to(['/data-layanan/index']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Data Pelayanan </span> </a>
                         </li>
                         <li>
                             <a href="<?= Url::to(['/spesialis-gigi-kondisi/index']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Data Kondisi Gigi </span> </a>
+                        </li>
+
+                        <li class="text-muted menu-title">Laporan</li>
+
+                        <li>
+                            <a href="<?= Url::to(['/laporan/index']) ?>" class="waves-effect"><i class="fas fa-file"></i> <span> Laporan </span> </a>
                         </li>
                     </ul>
                     <div class="clearfix"></div>
