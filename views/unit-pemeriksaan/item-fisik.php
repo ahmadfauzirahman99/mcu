@@ -1,11 +1,14 @@
 <?php
 
+use app\assets\ItemFisikAsset;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $master_pemeriksaan_fisik app\models\MasterPemeriksaanFisik */
 /* @var $form yii\bootstrap4\ActiveForm */
+
+ItemFisikAsset::register($this);
 
 $helper = [
     'Normal' => 'Normal',
@@ -63,10 +66,12 @@ $helper = [
                         <?= $form->field($master_pemeriksaan_fisik, 'status_gizi_lingkaran_pinggang')->textInput(['placeholder' => 'Lingkaran Pinggang']) ?>
                     </div>
                     <div class="col-lg-12">
-                        <?= $form->field($master_pemeriksaan_fisik, 'status_gizi_bentuk_badan')->radioList($helper,[]) ?>
+                        <?= $form->field($master_pemeriksaan_fisik, 'status_gizi_bentuk_badan')->radioList($helper, [
+                            
+                        ]) ?>
                     </div>
                     <div class="col-lg-12">
-                        <?= $form->field($master_pemeriksaan_fisik, 'status_gizi_imt')->textInput() ?>
+                        <?= $form->field($master_pemeriksaan_fisik, 'status_gizi_imt')->textInput(['readonly' => true]) ?>
                     </div>
                 </div>
             </div>
