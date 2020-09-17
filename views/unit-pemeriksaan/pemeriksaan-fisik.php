@@ -14,6 +14,7 @@ FormWizard::register($this);
 /* @var $dataLayanan app\models\MasterPemeriksaanFisik */
 /* @var $anamnesis app\models\Anamnesis */
 /* @var $jenis_pekerjaan app\models\JenisPekerjaan */
+/* @var $master_pemeriksaan_fisik app\models\MasterPemeriksaanFisik */
 /* @var $form ActiveForm */
 
 $this->title = 'UNIT MEDICAL CHEK UP RSUD ARIFIN ACHMAD PROVINSI RIAU';
@@ -86,6 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <li class="nav-item"><a href="#account-2" data-toggle="tab" class="nav-link">Data Pelayanan</a></li>
             <li class="nav-item"><a href="#profile-tab-2" data-toggle="tab" class="nav-link">I. ANAMNESIS</a></li>
             <li class="nav-item"><a href="#finish-2" data-toggle="tab" class="nav-link">II. ANAMNESIS OKUPASI</a></li>
+            <li class="nav-item"><a href="#finish-3" data-toggle="tab" class="nav-link">III. PEMERIKSAAN FISIK</a></li>
         </ul>
 
         <div class="tab-content b-0 mb-0">
@@ -101,7 +103,22 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $this->render('anamnesis.php', ['model' => $anamnesis, 'dataLayanan' => $dataLayanan]) ?>
             </div>
             <div class="tab-pane p-t-10 fade" id="finish-2">
-                <?= $this->render('anamnesis-okupasi.php', ['jenisPekerjaan' => $jenis_pekerjaan, 'dataLayanan' => $dataLayanan]) ?>
+                <?= $this->render(
+                    'anamnesis-okupasi.php',
+                    [
+                        'jenisPekerjaan' => $jenis_pekerjaan,
+                        'dataLayanan' => $dataLayanan,
+                        'anamnesis' => $anamnesis,
+                        'dataBiodataUser' => $dataBiodataUser
+                    ]
+                ) ?>
+            </div>
+            <div class="tab-pane p-t-10 fade" id="finish-3">
+                <?= $this->render('item-fisik.php', [
+                    'master_pemeriksaan_fisik' => $master_pemeriksaan_fisik,
+                    'dataLayanan' => $dataLayanan,
+
+                ]) ?>
             </div>
             <ul class="list-inline mb-0 wizard">
                 <li class="previous list-inline-item first" style="display:none;"><a href="#">First</a>
