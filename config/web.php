@@ -48,6 +48,21 @@ $config = [
             ],
         ],
         'db' => $db,
+        'db_postgre' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'pgsql:host=192.168.254.70;port=5432;dbname=simrs;',
+            'username' => 'postgres',
+            'password' => '1satu2dua',
+            'tablePrefix' => '',
+        ],
+        'db_sqlsrv' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'sqlsrv:Server=192.168.252.250;Database=RS_AASimrs',
+            'username' => 'sa',
+            'password' => 'data_123',
+            'charset' => 'utf8',
+            'tablePrefix' => 'dbo.',
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
