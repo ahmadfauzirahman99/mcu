@@ -1,5 +1,7 @@
 <?php
 
+use app\models\spesialis\BaseModel;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -41,10 +43,27 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?php
+    echo $form->field($model, 'cari_pasien')->widget(Select2::classname(), [
+        'data' => BaseModel::getListPasien(),
+        'theme' => 'bootstrap',
+        'options' => ['placeholder' => 'Cari Pasien ...'],
+        'pluginOptions' => [
+            'allowClear' => false
+        ],
+        'pluginEvents' => [
+            "select2:select" => "function(e) { 
+                window.location = baseUrl + 'spesialis-narkoba/create?no_rm=' + e.params.data.id
+            }",
+        ],
+    ]);
+    ?>
+    
     <div class="row">
         <div class="col-sm-3">
             <label for="">No. Rekam Medik</label>
             <?php
+            $model->no_rekam_medik = $no_rm;
             echo $form->field($model, 'no_rekam_medik')->textInput(['maxlength' => true, 'readonly' => true,])->label(false)
             ?>
         </div>

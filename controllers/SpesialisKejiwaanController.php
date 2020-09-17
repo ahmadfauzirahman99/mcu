@@ -87,6 +87,8 @@ class SpesialisKejiwaanController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'no_rm' => $no_rm,
+            'pasien' => $pasien,
         ]);
     }
 

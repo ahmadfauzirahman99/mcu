@@ -79,17 +79,31 @@
 use app\components\Helper;
 ?>
 
+<?php
+    if(isset($laporan['test']['no_test'])) {
+        if($laporan['test']['no_test'] == 'on') {
+            $name_test ="style='display:block'";
+        } 
+    } else {
+            $name_test ="style='display:none'";
+    }
+?>
+
+
+
 
 <body>
 	<h3 align="center">REKAPITULASI HASIL PEMERIKSAAN CPNS BENGKALIS</h3>
 	<h3 align="center">TAHUN <?= date('Y')?></h3>
 
 	<table width="100%" border='1'>
-		<thead>
+		<thead></thead>
 			<tr>
 				<th align="center">NO</th>
-				<th align="center">Nama</th>
-				<th align="center">No. Test</th>
+                <th align="center">Nama</th>
+                <div <?= $name_test ?>>
+                <th align="center">No. Test</th>
+                </div>
 				<th align="center">Umur</th>
 				<th align="center">Jenis Pekerjaan</th>
 				<th align="center">Tensi (Mm/Hg)</th>
@@ -100,9 +114,6 @@ use app\components\Helper;
 		<tbody>
 
 <?php
-// echo "<pre>";
-// print_r($laporan);
-// die();
 
 $no=1;
 		foreach ($datamcu as $data) {	
@@ -113,8 +124,10 @@ $no=1;
 			?>
 			<tr>
 				<td ><?= $no ?></td>
-				<td ><?= $data['nama_peserta'] ?></td>
-				<td ><?= $data['no_ujian'] ?></td>
+                <td ><?= $data['nama_peserta'] ?></td>
+                <div <?= $name_test ?> >
+                <td><?= $data['no_ujian'] ?></td>
+                </div>
 				<td ><?= $data['umur'] ?></td>
 				<td ><?= "Kosong" ?></td>
 				<td ><?= $data['tensi']?></td>

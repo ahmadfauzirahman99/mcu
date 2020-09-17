@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "mcu.spesialis_kejiwaan".
@@ -46,6 +47,19 @@ class SpesialisKejiwaan extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public $cari_pasien;
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => date('Y-m-d H:i:s'),
+            ],
+            // BlameableBehavior::className(),
+        ];
+    }
+
     public function rules()
     {
         return [
@@ -60,6 +74,7 @@ class SpesialisKejiwaan extends \yii\db\ActiveRecord
             [['validitas', 'saran'], 'string', 'max' => 200],
             [['interpretasi_subtantif'], 'string', 'max' => 500],
             [['kesimpulan'], 'string', 'max' => 200],
+            [['cari_pasien'], 'safe'],
         ];
     }
 

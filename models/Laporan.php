@@ -15,8 +15,10 @@ set_time_limit(0);
 
 class Laporan extends Model
 {
-    public function getdataMCU()
+    public function getdataMCU($laporan)
     {    
+    
+
         $data = \Yii::$app->db->createCommand("
         select
         data_pelayanan.nama as nama_peserta,

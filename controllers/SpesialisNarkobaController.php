@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\DataLayanan;
 use Yii;
 use app\models\SpesialisNarkoba;
 use app\models\SpesialisNarkobaSearch;
@@ -62,9 +63,23 @@ class SpesialisNarkobaController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($no_rm = null)
     {
         $model = new SpesialisNarkoba();
+
+        if ($no_rm != null) {
+            $pasien = DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one();
+            if (!$pasien) {
+                return $this->redirect(['/site/ngga-nemu', 'no_rm' => $no_rm]);
+            }
+            $model = SpesialisNarkoba::find()->where(['no_rekam_medik' => $no_rm])->one();
+            if (!$model)
+                $model = new SpesialisNarkoba();
+            $model->cari_pasien = $no_rm;
+        } else {
+            $pasien = null;
+            $model = new SpesialisNarkoba();
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_spesialis_narkoba]);
@@ -72,6 +87,8 @@ class SpesialisNarkobaController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'no_rm' => $no_rm,
+            'pasien' => $pasien,
         ]);
     }
 

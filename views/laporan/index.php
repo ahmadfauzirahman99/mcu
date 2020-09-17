@@ -22,15 +22,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row col-sm-12">
     <div class="col-sm-3">
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="check custom-control-input" id="no_test">
+            <input name="laporan[test][no_test]" type="checkbox" class="check custom-control-input" id="no_test">
             <label class="custom-control-label" for="no_test">Nomor Test</label>
         </div>
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="check custom-control-input" id="nama">
+            <input name="laporan[test][nama]" type="checkbox" class="check custom-control-input" id="nama">
             <label class="custom-control-label" for="nama">Nama</label>
         </div>
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="check custom-control-input" id="umur">
+            <input name="laporan[test][umur]" type="checkbox" class="check custom-control-input" id="umur">
             <label class="custom-control-label" for="umur">Umur</label>
         </div>
         <div class="custom-control custom-checkbox">
@@ -83,9 +83,9 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="check custom-control-input" id="status_gizi">
-            <label class="custom-control-label" for="status_gizi">Status Gizi</label>
-            <div id="gizi" style="display:none">
+            <input type="checkbox" class="check custom-control-input" id="gizi_all">
+            <label class="custom-control-label" for="gizi_all">Status Gizi</label>
+            <div id="tampil_gizi" style="display:none">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="gizi custom-control-input" id="berat_badan">
                     <label class="custom-control-label" for="berat_badan">Berat Badan</label>
@@ -1168,12 +1168,12 @@ $('#tanda_vital').click(function(event) {
     }
 });
 
-$('#status_gizi').click(function(event) {   
+$('#gizi_all').click(function(event) {   
     if(this.checked) {
         // Iterate each checkbox
-        $("#gizi").hide()
+        $("#tampil_gizi").hide()
     } else {
-        $("#gizi").show()
+        $("#tampil_gizi").show()
     }
 });
 
@@ -1369,6 +1369,9 @@ $('#kulit_all').click(function(event) {
 //Aksinya
 // $("#PrintRekap").on('click',function(){
 //     var no_test= $("#no_test").val();
+//     var nama= $("#nama").val();
+//     var umur= $("#umur").val();
+//     var jenis_kelamin= $("#jenis_kelamin").val();
 //     alert(no_test);
 // })
 

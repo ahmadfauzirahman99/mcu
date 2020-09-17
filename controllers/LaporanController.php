@@ -48,7 +48,8 @@ class LaporanController extends Controller
 
     public function actionCetak()
     {
-        $laporan = \Yii::$app->request->post('laporan',false);
+        $laporan = \Yii::$app->request->post('laporan');
+
         if(!$laporan){
             throw new NotFoundHttpException();
         }
@@ -73,7 +74,7 @@ class LaporanController extends Controller
     private function RekapMCU($laporan)
     {           
         $lap = new Laporan();
-        $datamcu = $lap->getdataMCU();
+        $datamcu = $lap->getdataMCU($laporan);
 
         $mode = Yii::$app->request->post('submit');
 
@@ -99,6 +100,11 @@ class LaporanController extends Controller
             return $mpdf->Output();
             exit;
         }
+    }
+
+    public function actionCetakRekapMcu()
+    {
+
     }
 
 }
