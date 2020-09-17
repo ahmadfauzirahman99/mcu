@@ -159,6 +159,52 @@ class SpesialisGigiController extends Controller
             }
         }
 
+        if($model->isNewRecord) {
+            $model->g18 = 'Normal';
+            $model->g38 = 'Normal';
+            $model->g17 = 'Normal';
+            $model->g37 = 'Normal';
+            $model->g16 = 'Normal';
+            $model->g36 = 'Normal';
+            $model->g15 = 'Normal';
+            $model->g35 = 'Normal';
+            $model->g14 = 'Normal';
+            $model->g34 = 'Normal';
+            $model->g13 = 'Normal';
+            $model->g33 = 'Normal';
+            $model->g12 = 'Normal';
+            $model->g32 = 'Normal';
+            $model->g11 = 'Normal';
+            $model->g31 = 'Normal';
+            $model->g21 = 'Normal';
+            $model->g41 = 'Normal';
+            $model->g22 = 'Normal';
+            $model->g42 = 'Normal';
+            $model->g23 = 'Normal';
+            $model->g43 = 'Normal';
+            $model->g24 = 'Normal';
+            $model->g44 = 'Normal';
+            $model->g25 = 'Normal';
+            $model->g45 = 'Normal';
+            $model->g26 = 'Normal';
+            $model->g46 = 'Normal';
+            $model->g27 = 'Normal';
+            $model->g47 = 'Normal';
+            $model->g28 = 'Normal';
+            $model->g48 = 'Normal';
+            $model->oklusi = 'Normal Bite';
+            $model->torus_palatinus = 'Tidak Ada';
+            $model->torus_mandibularis = 'Tidak Ada';
+            $model->palatum = 'Tinggi';
+            $model->supernumerary_teeth = 'Tidak Ada';
+            $model->diastema = 'Tidak Ada';
+            $model->spacing = 'Tidak Ada';
+            $model->oral_hygiene = 'Baik';
+            $model->gingiva_periodontal = 'Normal';
+            $model->oral_mucosa = 'Normal';
+            $model->tongue = 'Normal';
+        }
+
         return $this->render('periksa', [
             'model' => $model,
             'no_rm' => $no_rm,
