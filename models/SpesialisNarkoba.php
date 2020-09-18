@@ -66,7 +66,7 @@ class SpesialisNarkoba extends \yii\db\ActiveRecord
     {
         return [
             'id_spesialis_narkoba' => 'Id Spesialis Narkoba',
-            'no_rekam_medik' => 'No Rekam Medik',
+            'nama_no_rm' => 'Nama / No RM',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',
@@ -76,5 +76,15 @@ class SpesialisNarkoba extends \yii\db\ActiveRecord
             'golongan_narkotika' => 'Golongan Narkotika',
             'hasil_narkotika' => 'Hasil Narkotika',
         ];
+    }
+
+    public function getPasien()
+    {
+        return $this->hasOne(DataLayanan::className(), ['no_rekam_medik' => 'no_rekam_medik']);
+    }
+
+    public function getNama_no_rm()
+    {
+        return $this->pasien->nama . ' (' . $this->no_rekam_medik . ')';
     }
 }

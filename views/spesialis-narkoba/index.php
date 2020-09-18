@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id_spesialis_narkoba',
-            'no_rekam_medik',
+            'nama_no_rm',
             'created_at',
             'updated_at',
             'created_by',

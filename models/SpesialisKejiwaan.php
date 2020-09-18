@@ -85,7 +85,7 @@ class SpesialisKejiwaan extends \yii\db\ActiveRecord
     {
         return [
             'id_spesialis_kejiwaan' => 'Id Spesialis Kejiwaan',
-            'no_rekam_medik' => 'No Rekam Medik',
+            'nama_no_rm' => 'Nama / No RM',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',
@@ -111,5 +111,15 @@ class SpesialisKejiwaan extends \yii\db\ActiveRecord
             'kesimpulan' => 'Kesimpulan',
             'status' => 'Status',
         ];
+    }
+
+    public function getPasien()
+    {
+        return $this->hasOne(DataLayanan::className(), ['no_rekam_medik' => 'no_rekam_medik']);
+    }
+
+    public function getNama_no_rm()
+    {
+        return $this->pasien->nama . ' (' . $this->no_rekam_medik . ')';
     }
 }
