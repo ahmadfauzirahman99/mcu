@@ -46,8 +46,9 @@ $this->params['breadcrumbs'][] = $this->title;
             //'skala_9_ma',
             //'skala_0_si',
             //'kesimpulan',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'app\components\ActionColumnSpesialis',
+            ],
         ],
     ]); ?>
 

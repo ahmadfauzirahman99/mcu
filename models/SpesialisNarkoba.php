@@ -54,7 +54,7 @@ class SpesialisNarkoba extends \yii\db\ActiveRecord
             [['created_by', 'updated_by'], 'default', 'value' => null],
             [['created_by', 'updated_by'], 'integer'],
             [['no_rekam_medik'], 'string', 'max' => 120],
-            [['golongan_psikotropika', 'hasil_psikotropika', 'golongan_narkotika', 'hasil_narkotika'], 'string', 'max' => 30],
+            [['benzodiazepin_hasil', 'benzodiazepin_keterangan', 'thc_hasil', 'thc_keterangan', 'piat_hasil', 'piat_keterangan', 'amphetammin_hasil', 'amphetammin_keterangan', 'kokain_hasil', 'kokain_keterangan', 'methamphetamin_hasil', 'methamphetamin_keterangan', 'carisoprodol_hasil', 'carisoprodol_keterangan'], 'string', 'max' => 30],
             [['cari_pasien'], 'safe'],
         ];
     }
@@ -71,10 +71,20 @@ class SpesialisNarkoba extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',
             'updated_by' => 'Updated By',
-            'golongan_psikotropika' => 'Golongan Psikotropika',
-            'hasil_psikotropika' => 'Hasil Psikotropika',
-            'golongan_narkotika' => 'Golongan Narkotika',
-            'hasil_narkotika' => 'Hasil Narkotika',
+            'benzodiazepin_hasil' => 'Benzodiazepin Hasil',
+            'benzodiazepin_keterangan' => 'Benzodiazepin Keterangan',
+            'thc_hasil' => 'THC Hasil',
+            'thc_keterangan' => 'THC Keterangan',
+            'piat_hasil' => 'Piat Hasil',
+            'piat_keterangan' => 'Piat Keterangan',
+            'amphetammin_hasil' => 'Amphetammin Hasil',
+            'amphetammin_keterangan' => 'Amphetammin Keterangan',
+            'kokain_hasil' => 'Kokain Hasil',
+            'kokain_keterangan' => 'Kokain Keterangan',
+            'methamphetamin_hasil' => 'Kokain Keterangan',
+            'methamphetamin_keterangan' => 'Methamphetamin Keterangan',
+            'carisoprodol_hasil' => 'Carisoprodol Hasil',
+            'carisoprodol_keterangan' => 'Crisoprodol Keterangan'
         ];
     }
 

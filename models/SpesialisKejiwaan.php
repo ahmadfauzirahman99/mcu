@@ -91,7 +91,7 @@ class SpesialisKejiwaan extends \yii\db\ActiveRecord
             'created_by' => 'Created By',
             'updated_by' => 'Updated By',
             'rs_pendukung' => 'Rs Pendukung',
-            'dokter' => 'Dokter',
+            'dokter' => 'Psikolog',
             'skala_l' => 'Skala L',
             'skala_p' => 'Skala P',
             'skala_k' => 'Skala K',

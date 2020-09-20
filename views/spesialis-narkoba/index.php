@@ -34,8 +34,9 @@ $this->params['breadcrumbs'][] = $this->title;
             //'hasil_psikotropika',
             //'golongan_narkotika',
             //'hasil_narkotika',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'app\components\ActionColumnSpesialis',
+            ],
         ],
     ]); ?>
 
