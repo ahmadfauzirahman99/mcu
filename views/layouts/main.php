@@ -55,17 +55,13 @@ AppAsset::register($this);
                             </button>
                         </li>
                         <li class="list-inline-item">
-                            <h4 class="page-title"><?= $this->title ?></h4>
+                            <h6 class="page-title"><?= $this->title ?></h6>
                         </li>
                     </ul>
 
                     <nav class="navbar-custom">
 
                         <ul class="list-unstyled topbar-right-menu float-right mb-0">
-
-
-
-
 
                         </ul>
                     </nav>
@@ -85,7 +81,7 @@ AppAsset::register($this);
                         <img src="<?= Yii::$app->request->baseUrl ?>/img/user.png" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail img-responsive">
                         <div class="user-status offline"><i class="mdi mdi-adjust"></i></div>
                     </div>
-                    <h5><a href="#">Ahmad Fauzi Rahman</a> </h5>
+                    <h5><a href="#">Dr. Mardian Syah</a> </h5>
                 </div>
                 <!-- End User -->
 
@@ -138,13 +134,28 @@ AppAsset::register($this);
                         <li>
                             <a href="<?= Url::to(['/spesialis-tht/index']) ?>" class="waves-effect"><i class="fas fa-head-side-virus"></i> <span> THT </span> </a>
                         </li>
+                        <li>
+                            <a href="<?= Url::to(['/spesialis-kejiwaan/index']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Kejiwaan </span> </a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(['/spesialis-narkoba/index']) ?>" class="waves-effect"><i class="fas fa-eyedropper"></i> <span> Narkoba </span> </a>
+                        </li>
 
                         <li class="text-muted menu-title">Data Pelayanan</li>
-
 
                         <li>
                             <a href="<?= Url::to(['/data-layanan/index']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Data Pelayanan </span> </a>
                         </li>
+                        <li>
+                            <!-- <a href="<?php Url::to(['/spesialis-gigi-kondisi/index']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Data Kondisi Gigi </span> </a> -->
+                        </li>
+
+                        <li class="text-muted menu-title">Laporan</li>
+
+                        <li>
+                            <a href="<?= Url::to(['/laporan/index']) ?>" class="waves-effect"><i class="fas fa-file"></i> <span> Laporan </span> </a>
+                        </li>
+                        
                     </ul>
                     <div class="clearfix"></div>
                 </div>

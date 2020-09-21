@@ -2,12 +2,14 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$dbRegisterMcu = require __DIR__ . '/dbRegisterMcu.php';
 
 $config = [
     'id' => 'basic',
     'language' => 'id-ID',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'timeZone' => 'Asia/Jakarta', 
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -48,6 +50,8 @@ $config = [
             ],
         ],
         'db' => $db,
+        'dbRegisterMcu' => $dbRegisterMcu,
+
         'db_postgre' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'pgsql:host=192.168.254.70;port=5432;dbname=simrs;',

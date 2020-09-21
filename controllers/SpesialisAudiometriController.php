@@ -128,19 +128,19 @@ class SpesialisAudiometriController extends Controller
     //------------------------------------------------
     public function actionPeriksa($no_rm = null)
     {
-        if (Yii::$app->request->isGet && $no_rm == null) {
-            return $this->redirect(['/site/errorni']);
-        }
-
-        $pasien = DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one();
-
-        if (!$pasien) {
-            return $this->redirect(['/site/ngga-nemu', 'no_rm' => $no_rm]);
-        }
-
-        $model = McuSpesialisAudiometri::find()->where(['no_rekam_medik' => $no_rm])->one();
-        if (!$model)
+        if ($no_rm != null) {
+            $pasien = DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one();
+            if (!$pasien) {
+                return $this->redirect(['/site/ngga-nemu', 'no_rm' => $no_rm]);
+            }
+            $model = McuSpesialisAudiometri::find()->where(['no_rekam_medik' => $no_rm])->one();
+            if (!$model)
+                $model = new McuSpesialisAudiometri();
+            $model->cari_pasien = $no_rm;
+        } else {
+            $pasien = null;
             $model = new McuSpesialisAudiometri();
+        }
 
         if ($model->load(Yii::$app->request->post())) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;

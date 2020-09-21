@@ -6,19 +6,22 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-13 20:20:01
+ * @Last Modified time: 2020-09-15 01:25:20
  */
 
 use app\components\Helper;
+use app\models\DataLayanan;
+use app\models\spesialis\BaseModel;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
-use yii\di\Container;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\spesialis\McuSpesialisAudiometri */
 /* @var $form yii\widgets\ActiveForm */
 
-$this->title = 'Pemeriksaan Kesehatan THT Tenaga Kerja';
+$this->title = 'Pemeriksaan Kesehatan Audiometri Tenaga Kerja';
 $this->params['breadcrumbs'][] = ['label' => 'Unit Medical Check Up', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -66,6 +69,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'validateOnSubmit' => false, // agar submit ajax tidak 2 kali saat pertama kali reload
     ]); ?>
 
+    <?php
+    echo $form->field($model, 'cari_pasien')->widget(Select2::classname(), [
+        'data' => BaseModel::getListPasien(),
+        'theme' => 'bootstrap',
+        'options' => ['placeholder' => 'Cari Pasien ...'],
+        'pluginOptions' => [
+            'allowClear' => false
+        ],
+        'pluginEvents' => [
+            "select2:select" => "function(e) { 
+                window.location = baseUrl + 'spesialis-audiometri/periksa?no_rm=' + e.params.data.id
+            }",
+        ],
+    ]);
+    ?>
+    <br>
+
     <div class="row">
         <div class="col-sm-3">
             <label for="">No. Rekam Medik</label>
@@ -77,7 +97,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-sm-9">
             <div class="form-group">
                 <label for="">Nama</label>
-                <input readonly type="text" class="form-control" value="<?= $pasien->nama ?>" id="nama_pasien">
+                <input readonly type="text" class="form-control" value="<?= $pasien->nama ?? null ?>" id="nama_pasien">
             </div>
         </div>
     </div>
@@ -88,7 +108,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <colgroup span="19" width="53"></colgroup>
         <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=10 height="19" align="center" valign=top><b>
-                    <font color="#000000">Righ/Kanan</font>
+                    <font color="#000000">Right/Kanan</font>
                 </b></td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=9 align="center" valign=top><b>
                     <font color="#000000">Left/Kiri</font>
@@ -332,6 +352,40 @@ $this->params['breadcrumbs'][] = $this->title;
                 <font color="#000000"><br></font>
             </td>
             <td align="center" valign=bottom>
+                AC
+            </td>
+            <td colspan=8 valign=bottom>
+                <?= $form->field($model, 'rata_kanan_ac')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td valign=bottom>
+                AC
+            </td>
+            <td style="border-right: 1px solid #000000" colspan=8 valign=bottom>
+                <?= $form->field($model, 'rata_kiri_ac')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-left: 1px solid #000000" height="19" align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="center" valign=bottom>
+                BC
+            </td>
+            <td colspan=8 valign=bottom>
+                <?= $form->field($model, 'rata_kanan_bc')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td valign=bottom>
+                BC
+            </td>
+            <td style="border-right: 1px solid #000000" colspan=8 valign=bottom>
+                <?= $form->field($model, 'rata_kiri_bc')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-left: 1px solid #000000" height="19" align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="center" valign=bottom>
                 <font color="#000000">Kanan</font>
             </td>
             <td colspan=8 valign=bottom>
@@ -438,7 +492,10 @@ $this->params['breadcrumbs'][] = $this->title;
     </table>
 
     <div class="form-group">
-        <?= Html::submitButton('Simpan', ['class' => 'btn btn-success']) ?>
+        <?php
+        if (array_key_exists('no_rm', $_GET))
+            echo Html::submitButton('Simpan', ['class' => 'btn btn-success']);
+        ?>
     </div>
 
     <?php ActiveForm::end(); ?>
