@@ -54,7 +54,7 @@ class SpesialisNarkoba extends \yii\db\ActiveRecord
             [['created_by', 'updated_by'], 'default', 'value' => null],
             [['created_by', 'updated_by'], 'integer'],
             [['no_rekam_medik'], 'string', 'max' => 120],
-            [['benzodiazepin_hasil', 'benzodiazepin_keterangan', 'thc_hasil', 'thc_keterangan', 'piat_hasil', 'piat_keterangan', 'amphetammin_hasil', 'amphetammin_keterangan', 'kokain_hasil', 'kokain_keterangan', 'methamphetamin_hasil', 'methamphetamin_keterangan', 'carisoprodol_hasil', 'carisoprodol_keterangan'], 'string', 'max' => 30],
+            [['benzodiazepin_hasil', 'benzodiazepin_keterangan', 'thc_hasil', 'thc_keterangan', 'opiat_hasil', 'opiat_keterangan', 'amphetammin_hasil', 'amphetammin_keterangan', 'kokain_hasil', 'kokain_keterangan', 'methamphetamin_hasil', 'methamphetamin_keterangan', 'carisoprodol_hasil', 'carisoprodol_keterangan'], 'string', 'max' => 30],
             [['cari_pasien'], 'safe'],
         ];
     }
@@ -75,8 +75,8 @@ class SpesialisNarkoba extends \yii\db\ActiveRecord
             'benzodiazepin_keterangan' => 'Benzodiazepin Keterangan',
             'thc_hasil' => 'THC Hasil',
             'thc_keterangan' => 'THC Keterangan',
-            'piat_hasil' => 'Piat Hasil',
-            'piat_keterangan' => 'Piat Keterangan',
+            'opiat_hasil' => 'Opiat Hasil',
+            'opiat_keterangan' => 'Opiat Keterangan',
             'amphetammin_hasil' => 'Amphetammin Hasil',
             'amphetammin_keterangan' => 'Amphetammin Keterangan',
             'kokain_hasil' => 'Kokain Hasil',

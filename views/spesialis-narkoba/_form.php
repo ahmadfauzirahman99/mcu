@@ -117,13 +117,13 @@ use yii\widgets\ActiveForm;
         </tr>
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            PiatHasil
+            Opiat Hasil
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-                <?= $form->field($model, 'piat_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
+                <?= $form->field($model, 'opiat_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <?= $form->field($model, 'piat_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'opiat_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
             </td>
         </tr>
         <tr class="tr-ac-bc">

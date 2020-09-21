@@ -20,7 +20,7 @@ class SpesialisNarkobaSearch extends SpesialisNarkoba
     {
         return [
             [['id_spesialis_narkoba', 'created_by', 'updated_by'], 'integer'],
-            [['no_rekam_medik', 'created_at', 'updated_at', 'benzodiazepin_hasil', 'benzodiazepin_keterangan', 'thc_hasil', 'thc_keterangan', 'piat_hasil', 'piat_keterangan', 'amphetammin_hasil', 'amphetammin_keterangan', 'kokain_hasil', 'kokain_keterangan', 'methamphetamin_hasil', 'methamphetamin_keterangan', 'carisoprodol_hasil', 'carisoprodol_keterangan'], 'safe'],
+            [['no_rekam_medik', 'created_at', 'updated_at', 'benzodiazepin_hasil', 'benzodiazepin_keterangan', 'thc_hasil', 'thc_keterangan', 'opiat_hasil', 'opiat_keterangan', 'amphetammin_hasil', 'amphetammin_keterangan', 'kokain_hasil', 'kokain_keterangan', 'methamphetamin_hasil', 'methamphetamin_keterangan', 'carisoprodol_hasil', 'carisoprodol_keterangan'], 'safe'],
             ['nama_no_rm', 'safe'],
         ];
     }
@@ -78,8 +78,8 @@ class SpesialisNarkobaSearch extends SpesialisNarkoba
             ->andFilterWhere(['ilike', 'benzodiazepin_keterangan', $this->benzodiazepin_keterangan])
             ->andFilterWhere(['ilike', 'thc_hasil', $this->thc_hasil])
             ->andFilterWhere(['ilike', 'thc_keterangan', $this->thc_keterangan])
-            ->andFilterWhere(['ilike', 'piat_hasil', $this->piat_hasil])
-            ->andFilterWhere(['ilike', 'piat_keterangan', $this->piat_keterangan])
+            ->andFilterWhere(['ilike', 'opiat_hasil', $this->opiat_hasil])
+            ->andFilterWhere(['ilike', 'opiat_keterangan', $this->opiat_keterangan])
             ->andFilterWhere(['ilike', 'amphetammin_hasil', $this->amphetammin_hasil])
             ->andFilterWhere(['ilike', 'amphetammin_keterangan', $this->amphetammin_keterangan])
             ->andFilterWhere(['ilike', 'kokain_hasil', $this->kokain_hasil])
