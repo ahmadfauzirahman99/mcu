@@ -14,10 +14,20 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $updated_at
  * @property int|null $created_by
  * @property int|null $updated_by
- * @property string|null $golongan_psikotropika
- * @property string|null $hasil_psikotropika
- * @property string|null $golongan_narkotika
- * @property string|null $hasil_narkotika
+ * @property string|null $benzodiazepin_hasil
+ * @property string|null $benzodiazepin_keterangan
+ * @property string|null $thc_hasil
+ * @property string|null $thc_keterangan
+ * @property string|null $piat_hasil
+ * @property string|null $piat_keterangan
+ * @property string|null $amphetammin_hasil
+ * @property string|null $amphetammin_keterangan
+ * @property string|null $kokain_hasil
+ * @property string|null $kokain_keterangan
+ * @property string|null $methamphetamin_hasil
+ * @property string|null $methamphetamin_keterangan
+ * @property string|null $carisoprodol_hasil
+ * @property string|null $carisoprodol_keterangan
  */
 class SpesialisNarkoba extends \yii\db\ActiveRecord
 {
@@ -54,7 +64,8 @@ class SpesialisNarkoba extends \yii\db\ActiveRecord
             [['created_by', 'updated_by'], 'default', 'value' => null],
             [['created_by', 'updated_by'], 'integer'],
             [['no_rekam_medik'], 'string', 'max' => 120],
-            [['benzodiazepin_hasil', 'benzodiazepin_keterangan', 'thc_hasil', 'thc_keterangan', 'opiat_hasil', 'opiat_keterangan', 'amphetammin_hasil', 'amphetammin_keterangan', 'kokain_hasil', 'kokain_keterangan', 'methamphetamin_hasil', 'methamphetamin_keterangan', 'carisoprodol_hasil', 'carisoprodol_keterangan'], 'string', 'max' => 30],
+            [['benzodiazepin_hasil', 'thc_hasil', 'opiat_hasil', 'amphetammin_hasil', 'kokain_hasil', 'methamphetamin_hasil', 'carisoprodol_hasil'], 'string', 'max' => 30],
+            [['benzodiazepin_keterangan', 'thc_keterangan', 'opiat_keterangan', 'amphetammin_keterangan', 'kokain_keterangan', 'methamphetamin_keterangan', 'carisoprodol_keterangan'], 'string', 'max' => 50],
             [['cari_pasien'], 'safe'],
         ];
     }
@@ -66,25 +77,25 @@ class SpesialisNarkoba extends \yii\db\ActiveRecord
     {
         return [
             'id_spesialis_narkoba' => 'Id Spesialis Narkoba',
-            'nama_no_rm' => 'Nama / No RM',
+            'no_rekam_medik' => 'No Rekam Medik',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',
             'updated_by' => 'Updated By',
             'benzodiazepin_hasil' => 'Benzodiazepin Hasil',
             'benzodiazepin_keterangan' => 'Benzodiazepin Keterangan',
-            'thc_hasil' => 'THC Hasil',
-            'thc_keterangan' => 'THC Keterangan',
+            'thc_hasil' => 'Thc Hasil',
+            'thc_keterangan' => 'Thc Keterangan',
             'opiat_hasil' => 'Opiat Hasil',
             'opiat_keterangan' => 'Opiat Keterangan',
             'amphetammin_hasil' => 'Amphetammin Hasil',
             'amphetammin_keterangan' => 'Amphetammin Keterangan',
             'kokain_hasil' => 'Kokain Hasil',
             'kokain_keterangan' => 'Kokain Keterangan',
-            'methamphetamin_hasil' => 'Kokain Keterangan',
+            'methamphetamin_hasil' => 'Methamphetamin Hasil',
             'methamphetamin_keterangan' => 'Methamphetamin Keterangan',
             'carisoprodol_hasil' => 'Carisoprodol Hasil',
-            'carisoprodol_keterangan' => 'Crisoprodol Keterangan'
+            'carisoprodol_keterangan' => 'Carisoprodol Keterangan',
         ];
     }
 

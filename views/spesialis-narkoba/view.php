@@ -13,8 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="spesialis-narkoba-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id_spesialis_narkoba], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id_spesialis_narkoba], [
@@ -39,8 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'benzodiazepin_keterangan',
             'thc_hasil',
             'thc_keterangan',
-            'opiat_hasil',
-            'opiat_keterangan',
+            'piat_hasil',
+            'piat_keterangan',
             'amphetammin_hasil',
             'amphetammin_keterangan',
             'kokain_hasil',

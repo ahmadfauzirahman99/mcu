@@ -75,14 +75,6 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
 
-    <!-- <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?> -->
-
     <br/>
     <table class="table">
         <tr>
