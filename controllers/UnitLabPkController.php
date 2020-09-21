@@ -2,7 +2,6 @@
 
 namespace app\controllers;
 
-use app\models\Anamnesis;
 use app\models\DataLayanan;
 use app\models\JenisPekerjaan;
 use app\models\PenunjangValidasiLab;
