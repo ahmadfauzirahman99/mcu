@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'golongan_narkotika',
             //'hasil_narkotika',
             [
-                'class' => 'app\components\ActionColumnSpesialis',
+                'class' => 'app\components\ActionColumnPemeriksaan',
             ],
         ],
     ]); ?>

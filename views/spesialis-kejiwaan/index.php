@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'skala_0_si',
             //'kesimpulan',
             [
-                'class' => 'app\components\ActionColumnSpesialis',
+                'class' => 'app\components\ActionColumnPemeriksaan',
             ],
         ],
     ]); ?>
