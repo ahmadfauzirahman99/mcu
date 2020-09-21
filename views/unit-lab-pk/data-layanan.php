@@ -13,14 +13,20 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
+        <div class="col-lg-6">
+            <?= $form->field($model, 'no_rekam_medik')->textInput(['id'=> 'DataNoPasien', 'maxlength' => true, 'readonly'=>true]) ?>
+        </div>
+        <div class="col-lg-6">
+            <?= $form->field($model, 'no_registrasi')->textInput(['id'=> 'DataNoRegistrasi', 'maxlength' => true, 'readonly'=>true]) ?>
+        </div>
         <div class="col-lg-4">
-            <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'nama')->textInput(['id'=>'DataNamaPasien', 'maxlength' => true]) ?>
         </div>
         <div class="col-lg-4">
             <?= $form->field($model, 'tempat')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-lg-4">
-          <?php $model->tgl_lahir =  Helper::tgl_indo(date('Y-m-d', strtotime($model->tgl_lahir))) ?>
+            <?php $model->tgl_lahir =  Helper::tgl_indo(date('Y-m-d', strtotime($model->tgl_lahir))) ?>
 
             <?= $form->field($model, 'tgl_lahir')->textInput() ?>
         </div>
