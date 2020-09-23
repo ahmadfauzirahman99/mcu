@@ -113,22 +113,22 @@ AppAsset::register($this);
 
                         <li class="text-muted menu-title">Pemeriksaan Spesialis</li>
                         <li>
-                            <a href="<?= Url::to(['/spesialis-audiometri/index']) ?>" class="waves-effect"><i class="fas fa-assistive-listening-systems"></i> <span> Audiometri </span> </a>
+                            <a href="<?= Url::to(['/spesialis-audiometri/periksa']) ?>" class="waves-effect"><i class="fas fa-assistive-listening-systems"></i> <span> Audiometri </span> </a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['/spesialis-gigi/index']) ?>" class="waves-effect"><i class="fas fa-tooth"></i> <span> Gigi </span> </a>
+                            <a href="<?= Url::to(['/spesialis-gigi/periksa']) ?>" class="waves-effect"><i class="fas fa-tooth"></i> <span> Gigi </span> </a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['/spesialis-mata/index']) ?>" class="waves-effect"><i class="fas fa-eye"></i> <span> Mata </span> </a>
+                            <a href="<?= Url::to(['/spesialis-mata/periksa']) ?>" class="waves-effect"><i class="fas fa-eye"></i> <span> Mata </span> </a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['/spesialis-tht/index']) ?>" class="waves-effect"><i class="fas fa-head-side-virus"></i> <span> THT </span> </a>
+                            <a href="<?= Url::to(['/spesialis-tht/periksa']) ?>" class="waves-effect"><i class="fas fa-head-side-virus"></i> <span> THT </span> </a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['/spesialis-kejiwaan/index']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Kejiwaan </span> </a>
+                            <a href="<?= Url::to(['/spesialis-kejiwaan/periksa']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Kejiwaan </span> </a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['/spesialis-narkoba/index']) ?>" class="waves-effect"><i class="fas fa-eyedropper"></i> <span> Narkoba </span> </a>
+                            <a href="<?= Url::to(['/spesialis-narkoba/periksa']) ?>" class="waves-effect"><i class="fas fa-eyedropper"></i> <span> Narkoba </span> </a>
                         </li>
 
                         <li class="text-muted menu-title">Data Pelayanan</li>

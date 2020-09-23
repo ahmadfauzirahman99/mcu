@@ -89,6 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <li class="nav-item"><a href="#finish-2" data-toggle="tab" class="nav-link">II. ANAMNESIS OKUPASI</a></li>
             <li class="nav-item"><a href="#finish-4" data-toggle="tab" class="nav-link">Body Discomfort Map</a></li>
             <li class="nav-item"><a href="#finish-3" data-toggle="tab" class="nav-link">III. PEMERIKSAAN FISIK</a></li>
+            <li class="nav-item"><a href="#finish-5" data-toggle="tab" class="nav-link">Pemeriksaan Fisik Khusus</a></li>
         </ul>
 
         <div class="tab-content b-0 mb-0">
@@ -124,6 +125,13 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="tab-pane p-t-10 fade" id="finish-3">
                 <?= $this->render('item-fisik.php', [
+                    'master_pemeriksaan_fisik' => $master_pemeriksaan_fisik,
+                    'dataLayanan' => $dataLayanan,
+
+                ]) ?>
+            </div>
+            <div class="tab-pane p-t-10 fade" id="finish-5">
+                <?= $this->render('pemeriksaan-khusus.php', [
                     'master_pemeriksaan_fisik' => $master_pemeriksaan_fisik,
                     'dataLayanan' => $dataLayanan,
 
