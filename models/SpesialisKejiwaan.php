@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "mcu.spesialis_kejiwaan".
@@ -46,6 +47,19 @@ class SpesialisKejiwaan extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public $cari_pasien;
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => date('Y-m-d H:i:s'),
+            ],
+            // BlameableBehavior::className(),
+        ];
+    }
+
     public function rules()
     {
         return [
@@ -60,6 +74,7 @@ class SpesialisKejiwaan extends \yii\db\ActiveRecord
             [['validitas', 'saran'], 'string', 'max' => 200],
             [['interpretasi_subtantif'], 'string', 'max' => 500],
             [['kesimpulan'], 'string', 'max' => 200],
+            [['cari_pasien'], 'safe'],
         ];
     }
 
@@ -70,13 +85,13 @@ class SpesialisKejiwaan extends \yii\db\ActiveRecord
     {
         return [
             'id_spesialis_kejiwaan' => 'Id Spesialis Kejiwaan',
-            'no_rekam_medik' => 'No Rekam Medik',
+            'nama_no_rm' => 'Nama / No RM',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',
             'updated_by' => 'Updated By',
             'rs_pendukung' => 'Rs Pendukung',
-            'dokter' => 'Dokter',
+            'dokter' => 'Psikolog',
             'skala_l' => 'Skala L',
             'skala_p' => 'Skala P',
             'skala_k' => 'Skala K',
@@ -96,5 +111,15 @@ class SpesialisKejiwaan extends \yii\db\ActiveRecord
             'kesimpulan' => 'Kesimpulan',
             'status' => 'Status',
         ];
+    }
+
+    public function getPasien()
+    {
+        return $this->hasOne(DataLayanan::className(), ['no_rekam_medik' => 'no_rekam_medik']);
+    }
+
+    public function getNama_no_rm()
+    {
+        return $this->pasien->nama . ' (' . $this->no_rekam_medik . ')';
     }
 }

@@ -110,6 +110,16 @@ AppAsset::register($this);
                             </ul>
                         </li>
 
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> Setting </span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="<?= Url::to(['/kategori-setting/index']) ?>"">Kategori Setting</a></li>
+                                <li><a href="<?= Url::to(['/item-setting/index']) ?>"">Item Setting</a></li>
+                                <li><a href="<?= Url::to(['/setting-manual/index']) ?>"">Setting Manual</a></li>
+                                <li><a href="<?= Url::to(['/setting-global/index']) ?>"">Setting Global</a></li>
+                            </ul>
+                        </li>
+
 
                         <li class="text-muted menu-title">Pemeriksaan Spesialis</li>
                         <li>

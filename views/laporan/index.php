@@ -15,22 +15,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="laporan-form">
 
-<form method="post" action="<?= Url::to(['laporan/cetak']) ?>" name="form-lapRekap" target="_blank" class="form">
+<form method="post" action="<?= Url::to(['laporan/cetak']) ?>" id="PilihFieldRekap" name="form-lapRekap" target="_blank" class="form">
     <fieldset>
     <legend>Silahkan pilih field yang akan ditampilkan? </legend> 
     <?= Html::input('hidden','laporan[type]','lapRekap') ?>
     <div class="row col-sm-12">
     <div class="col-sm-3">
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="check custom-control-input" id="no_test">
+            <input name="laporan[test][no_test]" type="checkbox" class="check custom-control-input" id="no_test">
             <label class="custom-control-label" for="no_test">Nomor Test</label>
         </div>
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="check custom-control-input" id="nama">
+            <input name="laporan[test][nama]" type="checkbox" class="check custom-control-input" id="nama">
             <label class="custom-control-label" for="nama">Nama</label>
         </div>
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="check custom-control-input" id="umur">
+            <input name="laporan[test][umur]" type="checkbox" class="check custom-control-input" id="umur">
             <label class="custom-control-label" for="umur">Umur</label>
         </div>
         <div class="custom-control custom-checkbox">
@@ -83,9 +83,9 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="check custom-control-input" id="status_gizi">
-            <label class="custom-control-label" for="status_gizi">Status Gizi</label>
-            <div id="gizi" style="display:none">
+            <input type="checkbox" class="check custom-control-input" id="gizi_all">
+            <label class="custom-control-label" for="gizi_all">Status Gizi</label>
+            <div id="tampil_gizi" style="display:none">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="gizi custom-control-input" id="berat_badan">
                     <label class="custom-control-label" for="berat_badan">Berat Badan</label>
@@ -1131,7 +1131,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <br>
     </fieldset>  
     <?= Html::submitButton(Yii::t('app', '<i class="far fa-file-excel"></i> Export Excel'), ['id'=>'exportExcel','class' => 'btn btn-success','name'=>'submit','value'=>'excel']) ?> &nbsp; &nbsp; 
-    <?= Html::submitButton('<i class="fa fa-print"></i> Cetak PDF',['class'=>'btn ink-reaction btn-warning']) ?>
+    <?= Html::submitButton('<i class="fa fa-print"></i> Cetak PDF',['class'=>'btn ink-reaction btn-warning', 'id'=>'PrintRekap',]) ?>
     <?= Html::hiddenInput(Yii::$app->request->csrfParam,Yii::$app->request->csrfToken) ?>
 </form>
 
@@ -1139,6 +1139,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php
 $script = <<< JS
+
+// var datastring = $("#PilihFieldRekap").serialize();
+// alert(datastring);
 
 $(document).ready(function() {   
     // Iterate each checkbox
@@ -1165,12 +1168,12 @@ $('#tanda_vital').click(function(event) {
     }
 });
 
-$('#status_gizi').click(function(event) {   
+$('#gizi_all').click(function(event) {   
     if(this.checked) {
         // Iterate each checkbox
-        $("#gizi").hide()
+        $("#tampil_gizi").hide()
     } else {
-        $("#gizi").show()
+        $("#tampil_gizi").show()
     }
 });
 
@@ -1362,6 +1365,15 @@ $('#kulit_all').click(function(event) {
         $("#tampil_kulit").show()
     }
 });
+
+//Aksinya
+// $("#PrintRekap").on('click',function(){
+//     var no_test= $("#no_test").val();
+//     var nama= $("#nama").val();
+//     var umur= $("#umur").val();
+//     var jenis_kelamin= $("#jenis_kelamin").val();
+//     alert(no_test);
+// })
 
 JS;
 $this->registerJs($script);
