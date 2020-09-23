@@ -350,8 +350,6 @@ $helper = [
                         </td>
                     </tr>
                 </table>
-                <?= $form->field($master_pemeriksaan_fisik, 'tenggorokan_palatum')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal']) ?>
-                <?= $form->field($master_pemeriksaan_fisik, 'tenggorokan_lainn')->textInput() ?>
 
             </div>
         </div>
