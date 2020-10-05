@@ -737,12 +737,14 @@ if(isset($_GET["id"])){
             	$pegal="Pegal";
             	$baal="Baal";
             	$nyeriNyeri="Nyeri-nyeri";
+            	$tato="Tato";
             ?>
-				<button id="t_kosong" type="button" style="margin-right:20px" class="btn btn-lg btn-secondary btn-trans waves-effect w-md m-b-5"><?=$tidakAdaKeluhan?></button>
-				<button id="t_kesemutan" type="button" style="margin-right:20px" class="btn btn-lg btn-pink btn-bordred waves-effect w-md waves-light m-b-5"><?=$kesemutan?></button>
-				<button id="t_pegal" type="button" style="margin-right:20px" class="btn btn-lg btn-warning btn-bordred waves-effect w-md waves-light m-b-5"><?=$pegal?></button>
-				<button id="t_baal" type="button" style="margin-right:20px" class="btn btn-lg btn-secondary btn-bordred waves-effect w-md waves-light m-b-5"><?=$baal?></button>
-				<button id="t_nyeri" type="button" style="margin-right:20px" class="btn btn-lg btn-danger btn-bordred waves-effect w-md waves-light m-b-5"><?=$nyeriNyeri?></button>
+				<button id="t_kosong" type="button" style="margin-right:0px" class="btn btn-lg btn-secondary btn-trans waves-effect w-md m-b-5"><?=$tidakAdaKeluhan?></button>
+				<button id="t_kesemutan" type="button" style="margin-right:0px" class="btn btn-lg btn-pink btn-bordred waves-effect w-md waves-light m-b-5"><?=$kesemutan?></button>
+				<button id="t_pegal" type="button" style="margin-right:0px" class="btn btn-lg btn-warning btn-bordred waves-effect w-md waves-light m-b-5"><?=$pegal?></button>
+				<button id="t_baal" type="button" style="margin-right:0px" class="btn btn-lg btn-secondary btn-bordred waves-effect w-md waves-light m-b-5"><?=$baal?></button>
+				<button id="t_nyeri" type="button" style="margin-right:0px" class="btn btn-lg btn-danger btn-bordred waves-effect w-md waves-light m-b-5"><?=$nyeriNyeri?></button>
+				<button id="t_tato" type="button" style="margin-right:0px" class="btn btn-lg btn-primary btn-bordred waves-effect w-md waves-light m-b-5"><?=$tato?></button>
 
             </div>
         </div><!-- /.modal-content -->
@@ -874,6 +876,9 @@ if(isset($_GET["id"])){
 		        	function decodeValueKegambar(valuenya, name){
 		        		if(valuenya=='Nyeri-nyeri'){
 		        			$('#'+name).css({ fill: 'red' });
+		        		}		
+		        		if(valuenya=='Tato'){
+		        			$('#'+name).css({ fill: 'dodgerblue' });
 		        		}		        		        		
 		        		if(valuenya=='Baal'){
 		        			$('#'+name).css({ fill: 'grey' });
@@ -945,7 +950,14 @@ if(isset($_GET["id"])){
 		        //CLICKing button nyeri-nyeri RED
 		        $('#t_nyeri').on('click'  , function(e) {
 		        	focusKlikGambar.css({ fill: 'red' });
-		            focusText.val('".$nyeriNyeri."');
+		            focusText.val('".$nyeriNyeri."');	
+		            $('#id_modal').modal('hide');
+		        });
+
+		        //CLICKing button tato BLUE
+		        $('#t_tato').on('click'  , function(e) {
+		        	focusKlikGambar.css({ fill: 'dodgerblue' });
+		            focusText.val('".$tato."');
 		            $('#id_modal').modal('hide');
 		        });
 		");
