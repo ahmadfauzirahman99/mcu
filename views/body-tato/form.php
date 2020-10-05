@@ -21,7 +21,7 @@ if(isset($_GET["id"])){
 
 
 <div class="container-fluid">
-	<h1 align="center">BODY DISCOMFORT</h1>
+	<h1 align="center">BODY TATO</h1>
     <div class="row"> 
 		<div class="col-md-4 col-md-offset-3">				
 			    <!-- DEPAN -->
@@ -588,7 +588,7 @@ if(isset($_GET["id"])){
 		</div>
 
         <div class="col-md-4 col-md-offset-3">
-			<!-- <form id="myFormSearchPasien" action="<?=Url::to(['body-discomfort/form'])?>" method="post"> -->
+			<!-- <form id="myFormSearchPasien" action="<?=Url::to(['body-tato/form'])?>" method="post"> -->
 			<form id="myFormSearchPasien" action="#" method="post" onsubmit="return false">				
 				<div class="row">
 					<div class="col-md-12" >
@@ -615,9 +615,9 @@ if(isset($_GET["id"])){
 							<label class="control-label" for="inputrekammedistext">No Daftar</label>
 							<input type="text" readonly="true" id="inputrekammedistext" class="form-control" name="no_daftar" value="<?=$isian_no_daftar?>" aria-required="true" aria-invalid="false" placeholder="Masukkan RM" autofocus="true" required="true">
 							<div class="form-group required has-error"><label>&nbsp </label> <br>
-								<button type="submit" id="tombolsimpan" class="btn btn-lg btn-success btn-search-pasien"><i class="glyphicon glyphicon-floppy-save"></i> Simpan Body Discomfort</button>
+								<button type="submit" id="tombolsimpan" class="btn btn-lg btn-success btn-search-pasien"><i class="glyphicon glyphicon-floppy-save"></i> Simpan Body Tato</button>
 							</div>	
-							<img src="<?=Url::base()?>/img/ket_body_discomfort.jpg" alt="Trulli" width="320" height="250">
+							<img src="<?=Url::base()?>/img/ket_body_tato.jpg" alt="Trulli" width="320" height="250">
 							<span  id="sembunyiinputan" style="display:none;">
 								<label>No. 0 Depan</label><input type="text" readonly="true" class="form-control" name="no_0_depan" value="<?=($modelupdate!==null)?$modelupdate->no_0_depan:''?>"/>
 								<label>No. 1 Depan</label><input type="text" readonly="true" class="form-control" name="no_1_depan" value="<?=($modelupdate!==null)?$modelupdate->no_1_depan:''?>"/>
@@ -704,7 +704,7 @@ if(isset($_GET["id"])){
                                     <td><?= "<b>".$data['no_1_belakang']."</b>";?></td>
                                     <td><?= "<b>".$data['no_2_belakang']."</b>";?></td>
                                     <td>
-                                    	<a href="<?=Url::to(['body-discomfort/form','id'=>$data['no_rekam_medik']])?>" class="btn btn-primary btn-xs">
+                                    	<a href="<?=Url::to(['body-tato/form','id'=>$data['no_rekam_medik']])?>" class="btn btn-primary btn-xs">
                                     		<i class="fa fa-edit"></i> &nbsp;Ubah&nbsp; 
 									    </a>
 					    			</td>
@@ -724,26 +724,18 @@ if(isset($_GET["id"])){
 
 <!-- INI MODAL -->
 <div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;" id="id_modal" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-sm"> 
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myLargeModalLabel">Pilih Keterangan Body Discomfort (<span id="bagian"> - </span>)</h4> 
+                <h4 class="modal-title" id="myLargeModalLabel">Pilih Keterangan Body Tato (<span id="bagian"> - </span>)</h4> 
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body" style="text-align: center;">
             <?php
-            	$tidakAdaKeluhan="Tidak Ada Keluhan"; 
-            	$kesemutan="Kesemutan";
-            	$pegal="Pegal";
-            	$baal="Baal";
-            	$nyeriNyeri="Nyeri-nyeri";
-            	$tato="Tato";
+            	$tidakAdaKeluhan="Tidak Ada";
+            	$tato="Ada";
             ?>
 				<button id="t_kosong" type="button" style="margin-right:0px" class="btn btn-lg btn-secondary btn-trans waves-effect w-md m-b-5"><?=$tidakAdaKeluhan?></button>
-				<button id="t_kesemutan" type="button" style="margin-right:0px" class="btn btn-lg btn-pink btn-bordred waves-effect w-md waves-light m-b-5"><?=$kesemutan?></button>
-				<button id="t_pegal" type="button" style="margin-right:0px" class="btn btn-lg btn-warning btn-bordred waves-effect w-md waves-light m-b-5"><?=$pegal?></button>
-				<button id="t_baal" type="button" style="margin-right:0px" class="btn btn-lg btn-secondary btn-bordred waves-effect w-md waves-light m-b-5"><?=$baal?></button>
-				<button id="t_nyeri" type="button" style="margin-right:0px" class="btn btn-lg btn-danger btn-bordred waves-effect w-md waves-light m-b-5"><?=$nyeriNyeri?></button>
 				<button id="t_tato" type="button" style="margin-right:0px" class="btn btn-lg btn-primary btn-bordred waves-effect w-md waves-light m-b-5"><?=$tato?></button>
 
             </div>
@@ -777,7 +769,7 @@ if(isset($_GET["id"])){
 						$.ajax(
 						{
 							type:'post',
-							url:'".Url::to(['body-discomfort/simpanbody'])."',
+							url:'".Url::to(['body-tato/simpanbody'])."',
 							// data:anu,
 							data:{
 								no_rekam_medik	:anu[0].value, //scorenya
@@ -874,22 +866,10 @@ if(isset($_GET["id"])){
 		        	decodeValueKegambar( $('[name=\"no_17_belakang\"]').val(), 'no_17_belakang' );
 
 		        	function decodeValueKegambar(valuenya, name){
-		        		if(valuenya=='Nyeri-nyeri'){
-		        			$('#'+name).css({ fill: 'red' });
-		        		}		
-		        		if(valuenya=='Tato'){
+		        		if(valuenya=='Ada'){
 		        			$('#'+name).css({ fill: 'dodgerblue' });
-		        		}		        		        		
-		        		if(valuenya=='Baal'){
-		        			$('#'+name).css({ fill: 'grey' });
-		        		}	        		        		
-		        		if(valuenya=='Pegal'){
-		        			$('#'+name).css({ fill: 'gold' });
-		        		}		        		        		
-		        		if(valuenya=='Kesemutan'){
-		        			$('#'+name).css({ fill: 'pink' });
-		        		}		        		        		
-		        		if(valuenya=='' || valuenya=='Tidak Ada Keluhan'){
+		        		}		        	      		        		
+		        		if(valuenya=='' || valuenya=='Tidak Ada'){
 		        			$('#'+name).css({ fill: '' });
 		        		}
 
@@ -923,34 +903,6 @@ if(isset($_GET["id"])){
 		        $('#t_kosong').on('click'  , function(e) {
 		        	focusKlikGambar.css({ fill: '' });
 		            focusText.val('".$tidakAdaKeluhan."');
-		            $('#id_modal').modal('hide');
-		        });
-
-		        //CLICKing button kesemutan PINK
-		        $('#t_kesemutan').on('click'  , function(e) {
-		        	focusKlikGambar.css({ fill: 'pink' });
-		            focusText.val('".$kesemutan."');
-		            $('#id_modal').modal('hide');
-		        });
-
-		        //CLICKing button pegal YELLOW
-		        $('#t_pegal').on('click'  , function(e) {
-		        	focusKlikGambar.css({ fill: 'gold' });
-		            focusText.val('".$pegal."');
-		            $('#id_modal').modal('hide');
-		        });
-
-		        //CLICKing button baal GREY
-		        $('#t_baal').on('click'  , function(e) {
-		        	focusKlikGambar.css({ fill: 'grey' });
-		            focusText.val('".$baal."');
-		            $('#id_modal').modal('hide');
-		        });
-
-		        //CLICKing button nyeri-nyeri RED
-		        $('#t_nyeri').on('click'  , function(e) {
-		        	focusKlikGambar.css({ fill: 'red' });
-		            focusText.val('".$nyeriNyeri."');	
 		            $('#id_modal').modal('hide');
 		        });
 
