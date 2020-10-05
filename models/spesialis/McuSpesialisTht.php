@@ -23,6 +23,14 @@ use Yii;
  * @property string|null $tl_membrana_timpani_telinga_kiri
  * @property string|null $tl_test_berbisik_telinga_kanan
  * @property string|null $tl_test_berbisik_telinga_kiri
+ * @property string|null $tl_test_berbisik_telinga_kanan_6
+ * @property string|null $tl_test_berbisik_telinga_kiri_6
+ * @property string|null $tl_test_berbisik_telinga_kanan_4
+ * @property string|null $tl_test_berbisik_telinga_kiri_4
+ * @property string|null $tl_test_berbisik_telinga_kanan_3
+ * @property string|null $tl_test_berbisik_telinga_kiri_3
+ * @property string|null $tl_test_berbisik_telinga_kanan_1
+ * @property string|null $tl_test_berbisik_telinga_kiri_1
  * @property string|null $tl_test_garpu_tala_rinne_telinga_kanan
  * @property string|null $tl_test_garpu_tala_rinne_telinga_kiri
  * @property string|null $tl_weber_telinga_kanan
@@ -97,6 +105,14 @@ class McuSpesialisTht extends BaseAR
             'tl_membrana_timpani_telinga_kiri' => 'Tl Membrana Timpani Telinga Kiri',
             'tl_test_berbisik_telinga_kanan' => 'Tl Test Berbisik Telinga Kanan',
             'tl_test_berbisik_telinga_kiri' => 'Tl Test Berbisik Telinga Kiri',
+            'tl_test_berbisik_telinga_kanan_6' => 'Tl Test Berbisik Telinga Kanan 6',
+            'tl_test_berbisik_telinga_kiri_6' => 'Tl Test Berbisik Telinga Kiri 6',
+            'tl_test_berbisik_telinga_kanan_4' => 'Tl Test Berbisik Telinga Kanan 4',
+            'tl_test_berbisik_telinga_kiri_4' => 'Tl Test Berbisik Telinga Kiri 4',
+            'tl_test_berbisik_telinga_kanan_3' => 'Tl Test Berbisik Telinga Kanan 3',
+            'tl_test_berbisik_telinga_kiri_3' => 'Tl Test Berbisik Telinga Kiri 3',
+            'tl_test_berbisik_telinga_kanan_1' => 'Tl Test Berbisik Telinga Kanan 1',
+            'tl_test_berbisik_telinga_kiri_1' => 'Tl Test Berbisik Telinga Kiri 1',
             'tl_test_garpu_tala_rinne_telinga_kanan' => 'Tl Test Garpu Tata Rinne Telinga Kanan',
             'tl_test_garpu_tala_rinne_telinga_kiri' => 'Tl Test Garpu Tata Rinne Telinga Kiri',
             'tl_weber_telinga_kanan' => 'Tl Weber Telinga Kanan',

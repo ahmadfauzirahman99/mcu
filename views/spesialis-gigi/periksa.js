@@ -5,7 +5,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-05 20:45:35 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-15 00:59:56
+ * @Last Modified time: 2020-09-21 23:34:47
  */
 
 
@@ -25,5 +25,9 @@ $(document).ready(function () {
         }, 'JSON')
         return false
     })
+
+    $("#mcuspesialisgigi-g18, #mcuspesialisgigi-g38, #mcuspesialisgigi-g17, #mcuspesialisgigi-g37, #mcuspesialisgigi-g16, #mcuspesialisgigi-g36, #mcuspesialisgigi-g15, #mcuspesialisgigi-g35, #mcuspesialisgigi-g14, #mcuspesialisgigi-g34, #mcuspesialisgigi-g13, #mcuspesialisgigi-g33, #mcuspesialisgigi-g12, #mcuspesialisgigi-g32, #mcuspesialisgigi-g11, #mcuspesialisgigi-g31, #mcuspesialisgigi-g21, #mcuspesialisgigi-g41, #mcuspesialisgigi-g22, #mcuspesialisgigi-g42, #mcuspesialisgigi-g23, #mcuspesialisgigi-g43, #mcuspesialisgigi-g24, #mcuspesialisgigi-g44, #mcuspesialisgigi-g25, #mcuspesialisgigi-g45, #mcuspesialisgigi-g26, #mcuspesialisgigi-g46, #mcuspesialisgigi-g27, #mcuspesialisgigi-g47, #mcuspesialisgigi-g28, #mcuspesialisgigi-g48").on("click", function () {
+        $(this).select();
+    });
 
 })
