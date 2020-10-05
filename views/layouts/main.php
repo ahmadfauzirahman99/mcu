@@ -106,7 +106,7 @@ AppAsset::register($this);
                             <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> Setting Labs. </span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled">
                                 <li><a href="<?= Url::to(['/mcu-item-lab/index']) ?>"">Item Pemeriksaan</a></li>
-                                <li><a href="#">Setting Global</a></li>
+                                <li><a href=" #">Setting Global</a></li>
                             </ul>
                         </li>
 
@@ -114,9 +114,9 @@ AppAsset::register($this);
                             <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> Setting </span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled">
                                 <li><a href="<?= Url::to(['/kategori-setting/index']) ?>"">Kategori Setting</a></li>
-                                <li><a href="<?= Url::to(['/item-setting/index']) ?>"">Item Setting</a></li>
+                                <li><a href=" <?= Url::to(['/item-setting/index']) ?>"">Item Setting</a></li>
                                 <li><a href="<?= Url::to(['/setting-manual/index']) ?>"">Setting Manual</a></li>
-                                <li><a href="<?= Url::to(['/setting-global/index']) ?>"">Setting Global</a></li>
+                                <li><a href=" <?= Url::to(['/setting-global/index']) ?>"">Setting Global</a></li>
                             </ul>
                         </li>
 
@@ -135,10 +135,10 @@ AppAsset::register($this);
                             <a href="<?= Url::to(['/spesialis-tht/periksa']) ?>" class="waves-effect"><i class="fas fa-head-side-virus"></i> <span> THT </span> </a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['/spesialis-kejiwaan/periksa']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Kejiwaan </span> </a>
+                            <a href="<?= Url::to(['/spesialis-kejiwaan/create']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Kejiwaan </span> </a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['/spesialis-narkoba/periksa']) ?>" class="waves-effect"><i class="fas fa-eyedropper"></i> <span> Narkoba </span> </a>
+                            <a href="<?= Url::to(['/spesialis-narkoba/create']) ?>" class="waves-effect"><i class="fas fa-eyedropper"></i> <span> Narkoba </span> </a>
                         </li>
 
                         <li class="text-muted menu-title">Data Pelayanan</li>
@@ -155,7 +155,7 @@ AppAsset::register($this);
                         <li>
                             <a href="<?= Url::to(['/laporan/index']) ?>" class="waves-effect"><i class="fas fa-file"></i> <span> Laporan </span> </a>
                         </li>
-                        
+
                     </ul>
                     <div class="clearfix"></div>
                 </div>
