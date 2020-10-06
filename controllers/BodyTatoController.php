@@ -21,6 +21,8 @@ use app\models\BodyTato;
 use app\models\DataLayanan;
 class BodyTatoController extends Controller
 {
+    public $layout = 'main-body';
+
     public static $tidak_ada="Tidak Ada";
     // public function behaviors()
     // {
