@@ -12,6 +12,18 @@ $(document).ready(function () {
         console.log(imt)
         $(`#masterpemeriksaanfisik-status_gizi_imt`).val(imt);
 
+        if(imt < 17.0){
+            $(`#i1`).prop('checked', true);
+        }else if (imt > 18.0 || imt < 18.4){
+            $(`#i2`).prop('checked', true);
+        }else if (imt > 18.5 || imt < 25.0){
+            $(`#i0`).prop('checked', true);
+        }else if(imt > 25.1 || imt < 27.0){
+            $(`#i3`).prop('checked', true);
+        }else if(imt > 27.0){
+            $(`#i4`).prop('checked', true);
+        }
+
     })
     $('.body-part').css({
         stroke: "green",

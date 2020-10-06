@@ -81,7 +81,7 @@ AppAsset::register($this);
                         <img src="<?= Yii::$app->request->baseUrl ?>/img/user.png" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail img-responsive">
                         <div class="user-status offline"><i class="mdi mdi-adjust"></i></div>
                     </div>
-                    <h5><a href="#">Dr. Mardian Syah</a> </h5>
+                    <h5><a href="#"><?= Yii::$app->user->identity->nama ?></a> </h5>
                 </div>
                 <!-- End User -->
 

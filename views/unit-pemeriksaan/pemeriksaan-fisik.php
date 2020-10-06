@@ -15,6 +15,7 @@ FormWizard::register($this);
 /* @var $anamnesis app\models\Anamnesis */
 /* @var $jenis_pekerjaan app\models\JenisPekerjaan */
 /* @var $master_pemeriksaan_fisik app\models\MasterPemeriksaanFisik */
+/* @var $modelRegister app\models\UserRegister */
 /* @var $form ActiveForm */
 
 $this->title = 'UNIT MEDICAL CHEK UP RSUD ARIFIN ACHMAD PROVINSI RIAU';
@@ -43,17 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'templateResult' => new JsExpression('function(data) { return data.text; }'),
             'templateSelection' => new JsExpression('function (data) { return data.text; }'),
         ],
-        // 'pluginEvents' => [
-        //     "select2:select" => "function(e) { 
-        //         let data = e.params.data
-        //         let diagnosis_kerja = $('#masterpemeriksaanfisik-diagnosis_kerja').val()
-        //         if(diagnosis_kerja==null || diagnosis_kerja=='')
-        //             diagnosis_kerja += data.id
-        //         else
-        //             diagnosis_kerja += ','+data.id
-        //         $('#masterpemeriksaanfisik-diagnosis_kerja').val(diagnosis_kerja)
-        //     }",
-        // ]
+
     ])->label(false);
     ?>
     <?= Html::submitButton('Cari <span class="mdi mdi-file-search"></span>', ['class' => 'btn btn-success']) ?>
@@ -89,7 +80,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <li class="nav-item"><a href="#finish-2" data-toggle="tab" class="nav-link">II. ANAMNESIS OKUPASI</a></li>
             <li class="nav-item"><a href="#finish-4" data-toggle="tab" class="nav-link">Body Discomfort Map</a></li>
             <li class="nav-item"><a href="#finish-3" data-toggle="tab" class="nav-link">III. PEMERIKSAAN FISIK</a></li>
-            <li class="nav-item"><a href="#finish-5" data-toggle="tab" class="nav-link">Pemeriksaan Fisik Khusus</a></li>
+            <li class="nav-item"><a href="#finish-5" data-toggle="tab" class="nav-link">Pemeriksaan Fisik Khusus</a>
+            </li>
         </ul>
 
         <div class="tab-content b-0 mb-0">
@@ -99,7 +91,9 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
             <div class="tab-pane p-t-10 fade" id="account-2">
-                <?= $this->render('data-layanan', ['model' => $dataLayanan]) ?>
+                <?= $this->render('data-layanan', ['model' => $dataLayanan,
+
+                    ]) ?>
             </div>
             <div class="tab-pane p-t-10 fade" id="profile-tab-2">
                 <?= $this->render('anamnesis.php', ['model' => $anamnesis, 'dataLayanan' => $dataLayanan]) ?>
@@ -140,9 +134,12 @@ $this->params['breadcrumbs'][] = $this->title;
             <ul class="list-inline mb-0 wizard">
                 <li class="previous list-inline-item first" style="display:none;"><a href="#">First</a>
                 </li>
-                <li class="previous list-inline-item"><a href="#" class="btn btn-primary waves-effect waves-light">Previous</a></li>
+                <li class="previous list-inline-item"><a href="#" class="btn btn-primary waves-effect waves-light">Previous</a>
+                </li>
                 <li class="next last list-inline-item" style="display:none;"><a href="#">Last</a></li>
-                <li class="next list-inline-item float-right"><a href="#" class="btn btn-primary waves-effect waves-light">Next</a></li>
+                <li class="next list-inline-item float-right"><a href="#"
+                                                                 class="btn btn-primary waves-effect waves-light">Next</a>
+                </li>
             </ul>
         </div>
     </div>

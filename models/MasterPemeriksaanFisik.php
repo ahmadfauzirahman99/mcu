@@ -273,6 +273,10 @@ use Yii;
  */
 class MasterPemeriksaanFisik extends \yii\db\ActiveRecord
 {
+
+    public $sistolik;
+    public $diastolik;
+
     /**
      * {@inheritdoc}
      */
@@ -287,7 +291,7 @@ class MasterPemeriksaanFisik extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status_gizi_tinggi_badan', 'status_gizi_berat_badan', 'status_gizi_lingkaran_perut', 'status_gizi_lingkaran_pinggang'], 'default', 'value' => null],
+            [['diastolik', 'sistolik', 'status_gizi_tinggi_badan', 'status_gizi_berat_badan', 'status_gizi_lingkaran_perut', 'status_gizi_lingkaran_pinggang'], 'default', 'value' => null],
             [['status_gizi_tinggi_badan', 'status_gizi_berat_badan', 'status_gizi_lingkaran_perut', 'status_gizi_lingkaran_pinggang'], 'integer'],
             [['status_gizi_imt'], 'number'],
             [['gigi', 'kulit_lain', 'resume_kelainan', 'hasil_body_map', 'hasil_brief_survey', 'diagnosis_kerja', 'diagnosis_diferensial', 'kategori_kesehatan'], 'string'],
@@ -302,6 +306,8 @@ class MasterPemeriksaanFisik extends \yii\db\ActiveRecord
     {
         return [
             'id_m_pemeriksaan_fisik' => 'Id M Pemeriksaan Fisik',
+            'diastolik' => 'Diastolik',
+            'sistolik' => 'Sistolik',
             'no_rekam_medik' => 'No Rekam Medik',
             'tanda_vital' => 'Tanda Vital',
             'tanda_vital_nadi' => 'Nadi',
@@ -312,7 +318,7 @@ class MasterPemeriksaanFisik extends \yii\db\ActiveRecord
             'status_gizi_tinggi_badan' => 'Tinggi Badan',
             'status_gizi_berat_badan' => 'Berat Badan',
             'status_gizi_lingkaran_perut' => 'Lingkaran Perut',
-            'status_gizi_lingkaran_pinggang' => 'Lingkaran Pinggang',
+            'status_gizi_lingkaran_pinggang' => 'Lingkaran Lengan',
             'status_gizi_bentuk_badan' => 'Bentuk Badan',
             'status_gizi_imt' => 'Imt',
             'tingkat_kesadaran' => 'Tingkat Kesadaran',
@@ -349,8 +355,8 @@ class MasterPemeriksaanFisik extends \yii\db\ActiveRecord
             'mata_bulu_mata_kiri' => 'Bulu Mata Kiri',
             'mata_tekanan_bola_mata_kanan' => 'Tekanan Bola Mata Kanan',
             'mata_tekanan_bola_mata_kiri' => 'Tekanan Bola Mata Kiri',
-            'mata_penglihatan_3dimensi_kanan' => 'Penglihatan 3dimensi Kanan',
-            'mata_penglihatan_3dimensi_kiri' => 'Penglihatan 3dimensi Kiri',
+            'mata_penglihatan_3dimensi_kanan' => 'Penglihatan 3 Dimensi Kanan',
+            'mata_penglihatan_3dimensi_kiri' => 'Penglihatan 3 Dimensi Kiri',
             'mata_visus_tanpa_koreksi' => 'Visus Tanpa Koreksi',
             'mata_visus_dengan_koreksi' => 'Visus Dengan Koreksi',
             'telinga' => 'Telinga',

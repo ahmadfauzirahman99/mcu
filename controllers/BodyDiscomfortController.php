@@ -21,6 +21,7 @@ use app\models\BodyDiscomfort;
 use app\models\DataLayanan;
 class BodyDiscomfortController extends Controller
 {
+   public $layout = 'main-body';
     public static $tidak_ada="Tidak Ada Keluhan";
     // public function behaviors()
     // {

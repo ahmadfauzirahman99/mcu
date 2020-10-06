@@ -9,7 +9,7 @@ $config = [
     'language' => 'id-ID',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'timeZone' => 'Asia/Jakarta', 
+    'timeZone' => 'Asia/Jakarta',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -21,14 +21,21 @@ $config = [
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => md5('mcu-rsud-arifin'),
+            'cookieValidationKey' => 'sso',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        // 'user' => [
+        //     'identityClass' => 'app\models\User',
+        //     'enableAutoLogin' => true,
+        // ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'class' => 'app\models\User',
+            'identityClass' => 'app\models\Identitas',
             'enableAutoLogin' => true,
+            'loginUrl' => '@.sso/masuk?b=http://mcu.rsud-arifin.localhost',
+            'identityCookie' => ['name' => '_identity-id', 'httpOnly' => true, 'domain' => 'rsud-arifin.localhost'],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

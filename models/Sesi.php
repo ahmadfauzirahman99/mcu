@@ -209,20 +209,13 @@ class Sesi extends \yii\db\ActiveRecord
         $this->isk = $isk;
     }
 
-    /**
-     * @return \yii\db\Connection the database connection used by this AR class.
-     */
-    public static function getDb()
-    {
-        return Yii::$app->get('dbSso');
-    }
 
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'akun.akn_session';
+        return 'sso.akn_session';
     }
 
     public function isKeluar()
