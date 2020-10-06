@@ -941,8 +941,10 @@ $helper = [
                     </div>
                     <hr>
                     <div class="col-lg-12">
-                        <img src="<?= Yii::$app->request->baseUrl ?>/img/18.JPG" style="width: 50%" alt="">
-
+                    <iframe src="http://mcu.rsud-arifin.localhost/body-tato/form?id=<?= $master_pemeriksaan_fisik->no_rekam_medik ?>"style="display: block;width: 1200px;height: 650px;border: none;"></iframe>
+                    </div>
+                    <hr>
+                    <div class="col-lg-12">
                         <?= $form->field($master_pemeriksaan_fisik, 'kulit_lain')->textarea(['rows' => 2]) ?>
                     </div>
                     <div class="col-lg-12">
