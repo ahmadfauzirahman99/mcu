@@ -3101,9 +3101,6 @@
                 "testing",
                 "xunit"
             ],
-<<<<<<< HEAD
-            "time": "2020-01-08T08:45:45+00:00"
-=======
             "funding": [
                 {
                     "url": "https://phpunit.de/donate.html",
@@ -3115,7 +3112,6 @@
                 }
             ],
             "time": "2020-06-22T07:06:58+00:00"
->>>>>>> 128c28927391867ae2197dfc0b0d47b15e15cba8
         },
         {
             "name": "psr/container",
@@ -3992,9 +3988,6 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-<<<<<<< HEAD
-            "time": "2020-09-02T07:07:21+00:00"
-=======
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -4010,7 +4003,6 @@
                 }
             ],
             "time": "2020-09-02T07:07:40+00:00"
->>>>>>> 128c28927391867ae2197dfc0b0d47b15e15cba8
         },
         {
             "name": "symfony/css-selector",
@@ -4063,9 +4055,6 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-<<<<<<< HEAD
-            "time": "2020-07-05T09:39:30+00:00"
-=======
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -4145,7 +4134,6 @@
                 }
             ],
             "time": "2020-09-07T11:33:47+00:00"
->>>>>>> 128c28927391867ae2197dfc0b0d47b15e15cba8
         },
         {
             "name": "symfony/dom-crawler",
@@ -4290,9 +4278,6 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-<<<<<<< HEAD
-            "time": "2020-08-13T14:18:44+00:00"
-=======
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -4308,7 +4293,6 @@
                 }
             ],
             "time": "2020-08-13T14:19:42+00:00"
->>>>>>> 128c28927391867ae2197dfc0b0d47b15e15cba8
         },
         {
             "name": "symfony/event-dispatcher-contracts",
@@ -4370,9 +4354,6 @@
                 "interoperability",
                 "standards"
             ],
-<<<<<<< HEAD
-            "time": "2020-07-06T13:19:58+00:00"
-=======
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -4388,7 +4369,6 @@
                 }
             ],
             "time": "2020-09-07T11:33:47+00:00"
->>>>>>> 128c28927391867ae2197dfc0b0d47b15e15cba8
         },
         {
             "name": "symfony/finder",
@@ -4437,9 +4417,6 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-<<<<<<< HEAD
-            "time": "2020-08-17T09:56:45+00:00"
-=======
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -4455,7 +4432,6 @@
                 }
             ],
             "time": "2020-08-17T10:01:29+00:00"
->>>>>>> 128c28927391867ae2197dfc0b0d47b15e15cba8
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -4534,8 +4510,6 @@
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "symfony/polyfill-intl-grapheme",
             "version": "v1.18.1",
             "source": {
@@ -4614,7 +4588,6 @@
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
->>>>>>> 128c28927391867ae2197dfc0b0d47b15e15cba8
             "name": "symfony/polyfill-php73",
             "version": "v1.18.1",
             "source": {
@@ -4830,9 +4803,6 @@
                 "interoperability",
                 "standards"
             ],
-<<<<<<< HEAD
-            "time": "2020-07-06T13:19:58+00:00"
-=======
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -4933,7 +4903,6 @@
                 }
             ],
             "time": "2020-08-17T07:48:54+00:00"
->>>>>>> 128c28927391867ae2197dfc0b0d47b15e15cba8
         },
         {
             "name": "symfony/yaml",
@@ -4992,9 +4961,6 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-<<<<<<< HEAD
-            "time": "2020-08-26T08:30:46+00:00"
-=======
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -5010,7 +4976,6 @@
                 }
             ],
             "time": "2020-08-26T08:30:57+00:00"
->>>>>>> 128c28927391867ae2197dfc0b0d47b15e15cba8
         },
         {
             "name": "theseer/tokenizer",
@@ -5050,9 +5015,6 @@
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
-<<<<<<< HEAD
-            "time": "2019-06-13T22:48:21+00:00"
-=======
             "funding": [
                 {
                     "url": "https://github.com/theseer",
@@ -5060,7 +5022,6 @@
                 }
             ],
             "time": "2020-07-12T23:59:07+00:00"
->>>>>>> 128c28927391867ae2197dfc0b0d47b15e15cba8
         },
         {
             "name": "webmozart/assert",

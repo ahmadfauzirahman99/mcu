@@ -81,7 +81,6 @@ AppAsset::register($this);
                         <img src="<?= Yii::$app->request->baseUrl ?>/img/user.png" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail img-responsive">
                         <div class="user-status offline"><i class="mdi mdi-adjust"></i></div>
                     </div>
-                    <h5><a href="#"><?= Yii::$app->user->identity->nama ?></a> </h5>
                 </div>
                 <!-- End User -->
 
@@ -122,18 +121,26 @@ AppAsset::register($this);
 
 
                         <li class="text-muted menu-title">Pemeriksaan Spesialis</li>
-                        <li>
+                        <!-- <li>
                             <a href="<?= Url::to(['/spesialis-audiometri/periksa']) ?>" class="waves-effect"><i class="fas fa-assistive-listening-systems"></i> <span> Audiometri </span> </a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="<?= Url::to(['/spesialis-gigi/periksa']) ?>" class="waves-effect"><i class="fas fa-tooth"></i> <span> Gigi </span> </a>
                         </li>
                         <li>
                             <a href="<?= Url::to(['/spesialis-mata/periksa']) ?>" class="waves-effect"><i class="fas fa-eye"></i> <span> Mata </span> </a>
                         </li>
-                        <li>
-                            <a href="<?= Url::to(['/spesialis-tht/periksa']) ?>" class="waves-effect"><i class="fas fa-head-side-virus"></i> <span> THT </span> </a>
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> THT </span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="<?= Url::to(['/spesialis-audiometri/periksa']) ?>"">Audiometri</a></li>
+                                <li><a href="<?= Url::to(['/spesialis-tht/periksa-berbisik']) ?>"">Tes Berbisik</a></li>
+                                <li><a href="<?= Url::to(['/spesialis-tht/periksa-garpu-tala']) ?>"">Tes Garpu Tala</a></li>
+                            </ul>
                         </li>
+                        <!-- <li>
+                            <a href="<?= Url::to(['/spesialis-tht/periksa']) ?>" class="waves-effect"><i class="fas fa-head-side-virus"></i> <span> THT </span> </a>
+                        </li> -->
                         <li>
                             <a href="<?= Url::to(['/spesialis-kejiwaan/create']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Kejiwaan </span> </a>
                         </li>
