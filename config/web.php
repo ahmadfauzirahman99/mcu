@@ -2,13 +2,14 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$dbRegisterMcu = require __DIR__ . '/dbRegisterMcu.php';
 
 $config = [
     'id' => 'basic',
     'language' => 'id-ID',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'timeZone' => 'Asia/Jakarta', 
+    'timeZone' => 'Asia/Jakarta',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -20,14 +21,21 @@ $config = [
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => md5('mcu-rsud-arifin'),
+            'cookieValidationKey' => 'sso',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        // 'user' => [
+        //     'identityClass' => 'app\models\User',
+        //     'enableAutoLogin' => true,
+        // ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'class' => 'app\models\User',
+            'identityClass' => 'app\models\Identitas',
             'enableAutoLogin' => true,
+            'loginUrl' => '@.sso/masuk?b=http://mcu.rsud-arifin.localhost',
+            'identityCookie' => ['name' => '_identity-id', 'httpOnly' => true, 'domain' => 'rsud-arifin.localhost'],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -49,6 +57,23 @@ $config = [
             ],
         ],
         'db' => $db,
+        'dbRegisterMcu' => $dbRegisterMcu,
+
+        'db_postgre' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'pgsql:host=192.168.254.70;port=5432;dbname=simrs;',
+            'username' => 'postgres',
+            'password' => '1satu2dua',
+            'tablePrefix' => '',
+        ],
+        'db_sqlsrv' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'sqlsrv:Server=192.168.252.250;Database=RS_AASimrs',
+            'username' => 'sa',
+            'password' => 'data_123',
+            'charset' => 'utf8',
+            'tablePrefix' => 'dbo.',
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,

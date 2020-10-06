@@ -1,18 +1,34 @@
 <?php
-/*
- * @Author: Dicky Ermawan S., S.T., MTA 
- * @Email: wanasaja@gmail.com 
- * @Web: dickyermawan.github.io 
- * @Linkedin: linkedin.com/in/dickyermawan 
- * @Date: 2020-09-13 20:08:44 
- * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-14 09:51:12
- */
 
 namespace app\components;
 
 class Helper
 {
+    static function tgl_indo($tanggal)
+    {
+        $bulan = array(
+            1 =>   'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+        );
+        $pecahkan = explode('-', $tanggal);
+
+        // variabel pecahkan 0 = tanggal
+        // variabel pecahkan 1 = bulan
+        // variabel pecahkan 2 = tahun
+
+        return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+    }
+    
     public static function radioList($index, $label, $name, $checked, $value, $model)
     {
         $id = str_replace(['[', ']'], '_', $name) . $index;
