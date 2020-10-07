@@ -276,6 +276,7 @@ class MasterPemeriksaanFisik extends \yii\db\ActiveRecord
 
     public $sistolik;
     public $diastolik;
+	public $visus;
 
     /**
      * {@inheritdoc}
@@ -412,8 +413,8 @@ class MasterPemeriksaanFisik extends \yii\db\ActiveRecord
             'paru_jantung_palpasi' => 'Palpasi',
             'paru_jantung_perkusi_kanan' => 'Perkusi Kanan',
             'paru_jantung_perkusi_kiri' => 'Perkusi Kiri',
-            'paru_jantung_perkusi_iktus_kanan' => 'Perkusi Iktus Kanan',
-            'paru_jantung_perkusi_iktus_kiri' => 'Perkusi Iktus Kiri',
+            'paru_jantung_perkusi_iktus_kanan' => 'Perkusi Dada Kanan',
+            'paru_jantung_perkusi_iktus_kiri' => 'Perkusi Dada Kiri',
             'paru_jantung_perkusi_iktus_kiri_sebut' => 'Perkusi Iktus Kiri Sebut',
             'paru_jantung_perkusi_batas_jantung_kanan' => 'Perkusi Batas Jantung Kanan',
             'paru_jantung_perkusi_batas_jantung_kiri' => 'Perkusi Batas Jantung Kiri',

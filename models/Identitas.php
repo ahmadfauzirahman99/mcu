@@ -30,7 +30,9 @@ class Identitas extends Model implements IdentityInterface
     public $batasWaktuText;
     public $kodeSesi;
     public $kodeAkun;
+
     private $_sesi = false;
+    
 
     public function __construct($config)
     {
@@ -436,5 +438,7 @@ class Identitas extends Model implements IdentityInterface
             return $sesi->getAkun();
         }
     }
+
+
 
 }

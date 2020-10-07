@@ -12,15 +12,22 @@ $(document).ready(function () {
         console.log(imt)
         $(`#masterpemeriksaanfisik-status_gizi_imt`).val(imt);
 
-        if(imt < 17.0){
+
+        //imt variabel
+        if (imt < 17.0) {
+            // Kekurangan Berat Badan Tingkat Berat
             $(`#i1`).prop('checked', true);
-        }else if (imt > 18.0 || imt < 18.4){
+        } else if (imt > 18.0 && imt < 18.5) {
+            // Kekurangan Berat Badan Tingkat Ringan
             $(`#i2`).prop('checked', true);
-        }else if (imt > 18.5 || imt < 25.0){
+        } else if (imt > 18.5 && imt < 25.0) {
+            // Normal
             $(`#i0`).prop('checked', true);
-        }else if(imt > 25.1 || imt < 27.0){
+        } else if (imt > 25.1 && imt < 27.0) {
+            // Kelebihan Berat Badan Tingkat Ringan
             $(`#i3`).prop('checked', true);
-        }else if(imt > 27.0){
+        } else if (imt > 27.0) {
+            // Kelebihan Berat Badan Tingkat Berat
             $(`#i4`).prop('checked', true);
         }
 

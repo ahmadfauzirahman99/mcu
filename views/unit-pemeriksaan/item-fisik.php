@@ -231,12 +231,19 @@ $helper = [
 
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td>
+                            <?= $form->field($master_pemeriksaan_fisik, 'mata_visus_tanpa_koreksi')->textInput(['maxlength' => true]) ?>
+
+                            <?= $form->field($master_pemeriksaan_fisik, 'mata_visus_dengan_koreksi')->textInput(['maxlength' => true]) ?>
+                        </td>
+                        <td >
                             <?= $form->field($master_pemeriksaan_fisik, 'mata_visus_tanpa_koreksi')->textInput(['maxlength' => true]) ?>
 
                             <?= $form->field($master_pemeriksaan_fisik, 'mata_visus_dengan_koreksi')->textInput(['maxlength' => true]) ?>
                         </td>
                     </tr>
+                 
+					
                 </table>
             </div>
         </div>
@@ -446,7 +453,7 @@ $helper = [
                         </td>
                     </tr>
                     <tr>
-                        <th>Trachea/th>
+                        <th>Trachea</th>
                         <td>
                             <?= $form->field($master_pemeriksaan_fisik, 'leher_trachea')->radioList(['Normal' => 'Normal', 'Deviasi' => 'Deviasi'])->label(false) ?>
                         </td>
@@ -521,7 +528,7 @@ $helper = [
                     <tr>
                         <th>Palpasi</th>
                         <td>
-                            <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_palpasi')->radioList(['Supel' => 'Supel', 'Rigit' => 'Rigit'])->label(false) ?>
+                            <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_palpasi')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal'])->label(false) ?>
                         </td>
                     </tr>
                     <tr class="tr-label">
@@ -585,9 +592,9 @@ $helper = [
                 <h4 class="header-title m-t-0 m-b-30">14. Abdomen</h4>
                 <table class="table table-bordered">
                     <tr>
-                        <th>Abdomen</th>
+                        <th>Palpasi</th>
                         <td>
-                            <?= $form->field($master_pemeriksaan_fisik, 'abdomen')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal'])->label(false) ?>
+                            <?= $form->field($master_pemeriksaan_fisik, 'abdomen')->radioList(['Supel' => 'Supel', 'Rigit' => 'Rigit'])->label(false) ?>
                         </td>
                     </tr>
                     <tr>
@@ -666,7 +673,7 @@ $helper = [
                 <h4 class="header-title m-t-0 m-b-30">15. Genitourinaria</h4>
                 <table class='table table-bordered table-striped'>
                     <tr>
-                        <th>Ikandung Kemih</th>
+                        <th>kandung Kemih</th>
                         <td><?= $form->field($master_pemeriksaan_fisik, 'genitourinaria_kandung_kemih')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal'])->label(false) ?>
                         </td>
                     </tr>
@@ -682,6 +689,7 @@ $helper = [
                             <?= $form->field($master_pemeriksaan_fisik, 'genitourinaria_genitalia_eksternal')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal'])->label(false) ?>
                         </td>
                     </tr>
+					
                     <tr>
                         <th>Prostat (Khusus Pria)</th>
                         <td>
@@ -900,7 +908,7 @@ $helper = [
     <div class="col-lg-12">
         <div class="card-box">
             <div class="form-group">
-                <h4 class="header-title m-t-0 m-b-30">22. Saraf dan Fungsi Luhur</h4>
+                <h4 class="header-title m-t-0 m-b-30">23. Refleks</h4>
                 <table class="table table-bordered table-striped">
                     <tr>
                         <td>
@@ -924,7 +932,7 @@ $helper = [
     <div class="col-lg-12">
         <div class="card-box">
             <div class="form-group">
-                <h4 class="header-title m-t-0 m-b-30">23. Kulit</h4>
+                <h4 class="header-title m-t-0 m-b-30">24. Kulit</h4>
                 <div class="row">
                     <div class="col-lg-4">
                         <?= $form->field($master_pemeriksaan_fisik, 'kulit_kulit')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal']) ?>
