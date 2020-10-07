@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $id_spesialis_tht_berbisik
  * @property string $no_rekam_medik
+ * @property string $no_daftar
  * @property string|null $created_at
  * @property string|null $updated_at
  * @property int|null $created_by
@@ -47,6 +48,8 @@ class McuSpesialisThtBerbisik extends BaseAR
             [['kesimpulan', 'riwayat'], 'string'],
             [['no_rekam_medik'], 'string', 'max' => 120],
             [['tl_test_berbisik_telinga_kanan_6', 'tl_test_berbisik_telinga_kiri_6', 'tl_test_berbisik_telinga_kanan_4', 'tl_test_berbisik_telinga_kiri_4', 'tl_test_berbisik_telinga_kanan_3', 'tl_test_berbisik_telinga_kiri_3', 'tl_test_berbisik_telinga_kanan_1', 'tl_test_berbisik_telinga_kiri_1'], 'string', 'max' => 70],
+        
+            ['no_daftar', 'unique'],
         ];
     }
 

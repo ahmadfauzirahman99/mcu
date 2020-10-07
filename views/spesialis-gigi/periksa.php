@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-16 09:52:57
+ * @Last Modified time: 2020-10-07 14:59:43
  */
 
 use app\components\Helper;
@@ -15,7 +15,11 @@ use app\models\spesialis\BaseModel;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use yii\data\ActiveDataProvider;
+use yii\debug\models\timeline\DataProvider;
+use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\spesialis\McuSpesialisGigi */
@@ -64,10 +68,7 @@ $dataG = [
 
     <hr>
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'form-spesialis-gigi',
-        'validateOnSubmit' => false, // agar submit ajax tidak 2 kali saat pertama kali reload
-    ]); ?>
+    <?php $form = ActiveForm::begin([]); ?>
 
     <?php
     echo $form->field($model, 'cari_pasien')->widget(Select2::classname(), [
@@ -79,12 +80,26 @@ $dataG = [
         ],
         'pluginEvents' => [
             "select2:select" => "function(e) { 
-                window.location = baseUrl + 'spesialis-gigi/periksa?no_rm=' + e.params.data.id
+                window.location = baseUrl + 'spesialis-gigi/periksa?id=' + e.params.data.id
             }",
         ],
     ]);
     ?>
     <br>
+    <div class="form-group" style="margin-top: 5px; display: none;">
+        <?php
+        echo Html::submitButton('Simpan', ['class' => 'btn btn-success', 'id' => 'btn-form-cari']);
+        ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
+
+    <?php $form = ActiveForm::begin([
+        'id' => 'form-spesialis-gigi',
+        'validateOnSubmit' => false, // agar submit ajax tidak 2 kali saat pertama kali reload
+    ]); ?>
+
+    <?= $form->field($model, 'cari_pasien')->hiddenInput()->label(false) ?>
 
     <div class="row">
         <div class="col-sm-3">
@@ -94,11 +109,18 @@ $dataG = [
             echo $form->field($model, 'no_rekam_medik')->textInput(['maxlength' => true, 'readonly' => true,])->label(false)
             ?>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-6">
             <div class="form-group">
                 <label for="">Nama</label>
                 <input readonly type="text" class="form-control" value="<?= $pasien->nama ?? null ?>" id="nama_pasien">
             </div>
+        </div>
+        <div class="col-sm-3">
+            <label for="">No. Daftar</label>
+            <?php
+            $model->no_daftar = $no_daftar;
+            echo $form->field($model, 'no_daftar')->textInput(['maxlength' => true, 'readonly' => true,])->label(false)
+            ?>
         </div>
     </div>
 
@@ -485,14 +507,111 @@ $dataG = [
         </tr>
     </table>
 
+    <?php
+    Pjax::begin(['id' => 'btn-cetak']);
+    if (!$model->isNewRecord) {
+        echo $form->field($model, 'id_spesialis_gigi')->hiddenInput()->label(false);
+    }
+    ?>
+
     <div class="form-group">
         <?php
-        if (array_key_exists('no_rm', $_GET))
+        if (array_key_exists('id', $_GET))
             echo Html::submitButton('Simpan', ['class' => 'btn btn-success']);
+        if (!$model->isNewRecord)
+            echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-gigi/cetak', 'no_rm' => $no_rm, 'no_daftar' => $no_daftar], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
+        ?>
+    </div>
+    <?php
+    Pjax::end();
+    ?>
+
+    <?php ActiveForm::end(); ?>
+
+    <hr>
+
+    <h3>
+        PERMASALAHAN PASIEN & RENCANAN PENATALAKSANAAN
+    </h3>
+
+    <?php $form = ActiveForm::begin([
+        'id' => 'form-spesialis-gigi-penata',
+        'validateOnSubmit' => false, // agar submit ajax tidak 2 kali saat pertama kali reload
+        'action' => ['/spesialis-gigi/simpan-penata'],
+    ]); ?>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <?php echo $form->field($modelPenata, 'jenis_permasalahan')->textArea(['rows' => 2]); ?>
+        </div>
+        <div class="col-sm-3">
+            <?php echo $form->field($modelPenata, 'rencana')->textArea(['rows' => 2]); ?>
+        </div>
+        <div class="col-sm-2">
+            <?php echo $form->field($modelPenata, 'target_waktu')->textInput(); ?>
+        </div>
+        <div class="col-sm-2">
+            <?php echo $form->field($modelPenata, 'hasil_yang_diharapkan')->textArea(['rows' => 2]); ?>
+        </div>
+        <div class="col-sm-2">
+            <?php echo $form->field($modelPenata, 'keterangan')->textArea(['rows' => 2]); ?>
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top: 5px;">
+        <?php
+        Pjax::begin(['id' => 'btn-cetak-penata']);
+        if (!$model->isNewRecord)
+            echo Html::submitButton('Simpan', ['class' => 'btn btn-success']);
+        if (!$model->isNewRecord && count($modelPenataList->all())) {
+            echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-gigi/cetak-penata', 'no_rm' => $no_rm], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
+        }
+        Pjax::end();
         ?>
     </div>
 
     <?php ActiveForm::end(); ?>
+    <br>
+    <?php Pjax::begin(['id' => 'tbl-penata']); ?>
+
+    <?= GridView::widget([
+        'dataProvider' => new ActiveDataProvider([
+            'query' => $modelPenataList,
+        ]),
+        'tableOptions' => ['class' => 'table table-sm table-hover table-bordered'],
+        'columns' => [
+            [
+                'class' => 'yii\grid\SerialColumn',
+                'headerOptions' => ['style' => 'background-color: #e7ebee;',],
+            ],
+            [
+                'headerOptions' => ['style' => 'width: 30%; background-color: #e7ebee;',],
+                'attribute' => 'jenis_permasalahan',
+                'label' => 'Jenis Permasalahan Medis & No Medis (Okupasi Dll)',
+            ],
+            [
+                'headerOptions' => ['style' => 'width: 30%; background-color: #e7ebee;',],
+                'attribute' => 'rencana',
+                'label' => 'Rencana Tindakan (materi & metode) Tatalaksana Medikamentoasa non media mentosa (nutrisi,olahraga,dll)',
+            ],
+            [
+                'headerOptions' => ['style' => 'width: 10%; background-color: #e7ebee;',],
+                'attribute' => 'target_waktu',
+            ],
+            [
+                'headerOptions' => ['style' => 'width: 15%; background-color: #e7ebee;',],
+                'attribute' => 'hasil_yang_diharapkan',
+            ],
+            [
+                'headerOptions' => ['style' => 'width: 15%; background-color: #e7ebee;',],
+                'attribute' => 'keterangan',
+            ],
+        ],
+        'pager' => [
+            'class' => 'app\components\GridPager',
+        ],
+    ]); ?>
+    <?php Pjax::end(); ?>
 
 </div>
 
