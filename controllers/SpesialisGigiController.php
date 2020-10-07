@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\DataLayanan;
+use app\models\spesialis\McuPenatalaksanaanMcu;
 use Yii;
 use app\models\spesialis\McuSpesialisGigi;
 use app\models\spesialis\McuSpesialisGigiSearch;
@@ -127,23 +128,40 @@ class SpesialisGigiController extends Controller
     }
 
     //------------------------------------------------
-    public function actionPeriksa($no_rm = null)
+    // public function actionPeriksa($no_rm = null, $no_daftar = null)
+    public function actionPeriksa($id = null)
     {
-        if ($no_rm != null) {
-            $pasien = DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one();
+
+        $id_cari = $id;
+
+        if ($id_cari != null) {
+            $pasien = DataLayanan::find()->where(['id_data_pelayanan' => $id_cari])->one();
             if (!$pasien) {
-                return $this->redirect(['/site/ngga-nemu', 'no_rm' => $no_rm]);
+                return $this->redirect(['/site/ngga-nemu', 'id' => $id_cari]);
             }
-            $model = McuSpesialisGigi::find()->where(['no_rekam_medik' => $no_rm])->one();
+
+            $model = McuSpesialisGigi::find()
+                ->where(['no_rekam_medik' => $pasien->no_rekam_medik])
+                ->andWhere(['no_daftar' => $pasien->no_registrasi])
+                ->one();
             if (!$model)
                 $model = new McuSpesialisGigi();
-            $model->cari_pasien = $no_rm;
+
+            $model->cari_pasien = $id_cari;
+            $no_rm = $pasien->no_rekam_medik;
+            $no_daftar = $pasien->no_registrasi;
         } else {
             $pasien = null;
+            $no_rm = null;
+            $no_daftar = null;
             $model = new McuSpesialisGigi();
         }
+        $modelPenataList = McuPenatalaksanaanMcu::find()
+            ->where(['jenis' => 'spesialis_gigi'])
+            ->andWhere(['id_fk' => $model->id_spesialis_gigi]);
+        $modelPenata = new McuPenatalaksanaanMcu();
 
-        if ($model->load(Yii::$app->request->post())) {
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
             if ($model->save()) {
@@ -159,7 +177,7 @@ class SpesialisGigiController extends Controller
             }
         }
 
-        if($model->isNewRecord) {
+        if ($model->isNewRecord) {
             $model->g18 = 'Normal';
             $model->g38 = 'Normal';
             $model->g17 = 'Normal';
@@ -207,9 +225,65 @@ class SpesialisGigiController extends Controller
 
         return $this->render('periksa', [
             'model' => $model,
+            'modelPenata' => $modelPenata,
+            'modelPenataList' => $modelPenataList,
             'no_rm' => $no_rm,
+            'no_daftar' => $no_daftar,
             'pasien' => $pasien,
         ]);
+    }
+
+    public function actionSimpanPenata($id = null)
+    {
+        $model = new McuPenatalaksanaanMcu();
+
+        if ($model->load(Yii::$app->request->post())) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            $model->jenis = 'spesialis_gigi';
+            $model->id_fk = $id;
+
+            if ($model->save()) {
+                return [
+                    's' => true,
+                    'e' => null
+                ];
+            } else {
+                return [
+                    's' => false,
+                    'e' => $model->errors
+                ];
+            }
+        }
+    }
+
+    public function actionCetak($no_rm, $no_daftar)
+    {
+        $model = McuSpesialisGigi::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
+
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'legal',
+            'margin_left' => 10,
+            'margin_right' => 10,
+            'margin_top' => 10,
+            'margin_bottom' => 10,
+            'margin_header' => 10,
+            'margin_footer' => 10
+        ]);
+        $mpdf->SetTitle('Spesialis Gigi ' . $model['no_rekam_medik']);
+        // return $this->renderPartial('cetak', [
+        //     'model' => $model,
+        //     'no_rm' => $no_rm,
+        //     'pasien' => DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one(),
+        // ]);
+        $mpdf->WriteHTML($this->renderPartial('cetak', [
+            'model' => $model,
+            'no_rm' => $no_rm,
+            'pasien' => DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one(),
+        ]));
+        $mpdf->Output('Spesialis Gigi ' . $model['no_rekam_medik'] . '.pdf', 'I');
+        exit;
     }
 }
 

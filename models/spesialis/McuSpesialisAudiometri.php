@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 12:12:24 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-15 00:20:11
+ * @Last Modified time: 2020-10-07 15:23:21
  */
 
 
@@ -19,6 +19,7 @@ use Yii;
  *
  * @property int $id_spesialis_audiometri
  * @property string $no_rekam_medik
+ * @property string $no_daftar
  * @property string|null $created_at
  * @property string|null $updated_at
  * @property int|null $created_by
@@ -104,7 +105,7 @@ class McuSpesialisAudiometri extends BaseAR
             [['rata_kanan_ac', 'rata_kanan_bc', 'rata_kiri_ac', 'rata_kiri_bc'], 'number'],
             ['riwayat', 'safe'],
 
-            ['no_rekam_medik', 'unique'],
+            ['no_daftar', 'unique'],
         ];
     }
 

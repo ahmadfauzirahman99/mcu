@@ -131,10 +131,10 @@ class SiteController extends Controller
     {
         return $this->render('errorni');
     }
-    public function actionNggaNemu($no_rm)
+    public function actionNggaNemu($id)
     {
         return $this->render('ngga-nemu', [
-            'no_rm' => $no_rm
+            'id' => $id
         ]);
     }
 }

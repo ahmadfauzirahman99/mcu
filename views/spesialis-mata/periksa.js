@@ -5,7 +5,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-05 20:45:35 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-16 09:53:28
+ * @Last Modified time: 2020-10-07 15:10:36
  */
 
 
@@ -15,9 +15,28 @@ $(document).ready(function () {
         e.preventDefault()
         e.stopImmediatePropagation()
         var kepalaform = $("#form-spesialis-mata").serialize()
-        $.post(baseUrl + 'spesialis-mata/periksa?no_rm=' + $('#mcuspesialismata-no_rekam_medik').val(), kepalaform, function (r) {
+        $.post(baseUrl + 'spesialis-mata/periksa?id=' + $('#mcuspesialismata-cari_pasien').val(), kepalaform, function (r) {
             console.log(r)
             if (r.s) {
+                $.pjax.reload({container: '#btn-cetak', async: false})
+                $.pjax.reload({container: '#btn-cetak-penata', async: false})
+                toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
+            } else {
+                toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))
+            }
+        }, 'JSON')
+        return false
+    })
+
+    $("#form-spesialis-mata-penata").on('submit', function (e) {
+        e.preventDefault()
+        e.stopImmediatePropagation()
+        var kepalaform = $("#form-spesialis-mata-penata").serialize()
+        $.post(baseUrl + 'spesialis-mata/simpan-penata?id=' + $('#mcuspesialismata-id_spesialis_mata').val(), kepalaform, function (r) {
+            console.log(r)
+            if (r.s) {
+                $.pjax.reload({container: '#btn-cetak-penata', async: false})
+                $.pjax.reload({container: '#tbl-penata', async: false})
                 toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
             } else {
                 toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))
