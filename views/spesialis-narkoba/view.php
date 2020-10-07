@@ -14,6 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="spesialis-narkoba-view">
 
     <p>
+        <?= Html::a('<i class="fa fa-backward"></i> Kembali', ['index'], ['class' => 'btn btn-warning']) ?>    
         <?= Html::a('Update', ['update', 'id' => $model->id_spesialis_narkoba], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id_spesialis_narkoba], [
             'class' => 'btn btn-danger',

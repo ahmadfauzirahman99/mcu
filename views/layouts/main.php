@@ -142,6 +142,9 @@ AppAsset::register($this);
                             <a href="<?= Url::to(['/spesialis-kejiwaan/index']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Kejiwaan </span> </a>
                         </li>
                         <li>
+                            <a href="<?= Url::to(['/spesialis-psikologi/index']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Psikologi </span> </a>
+                        </li>
+                        <li>
                             <a href="<?= Url::to(['/spesialis-narkoba/index']) ?>" class="waves-effect"><i class="fas fa-eyedropper"></i> <span> Narkoba </span> </a>
                         </li>
 
