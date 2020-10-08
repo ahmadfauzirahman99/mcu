@@ -77,25 +77,25 @@ class SpesialisPsikologi extends \yii\db\ActiveRecord
 
     public $cari_pasien;
 
-    public function behaviors()
-    {
-        return [
-            [
-                'class' => TimestampBehavior::className(),
-                'value' => date('Y-m-d H:i:s'),
-            ],
-            // BlameableBehavior::className(),
-        ];
-    }
+    // public function behaviors()
+    // {
+    //     return [
+    //         [
+    //             'class' => TimestampBehavior::className(),
+    //             'value' => date('Y-m-d H:i:s'),
+    //         ],
+    //         // BlameableBehavior::className(),
+    //     ];
+    // }
 
     public function rules()
     {
         return [
-            [['no_rekam_medik', 'rs_pendukung', 'dokter'], 'required'],
+            [['no_rekam_medik', 'no_daftar', 'rs_pendukung', 'dokter'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['created_by', 'updated_by', 'simptom_sakit_kepala', 'simptom_kurang_nafsu_makan', 'simptom_sulit_tidur', 'simptom_mudah_takut', 'simptom_tegang', 'simptom_cemas', 'simptom_gemetar', 'simptom_gangguan_perut', 'simptom_sulit_konsentrasi', 'simptom_sedih', 'simptom_sulit_mengambil_keputusan', 'simptom_kehilangan_minat', 'simptom_merasa_tidak_berguna', 'simptom_mudah_lupa', 'simptom_merasa_bersalah', 'simptom_mudah_lelah', 'simptom_putus_asa', 'simptom_mudah_marah', 'simptom_mudah_tersinggung', 'simptom_mimpi_buruk', 'simptom_tidak_percaya_diri'], 'default', 'value' => null],
             [['created_by', 'updated_by', 'simptom_sakit_kepala', 'simptom_kurang_nafsu_makan', 'simptom_sulit_tidur', 'simptom_mudah_takut', 'simptom_tegang', 'simptom_cemas', 'simptom_gemetar', 'simptom_gangguan_perut', 'simptom_sulit_konsentrasi', 'simptom_sedih', 'simptom_sulit_mengambil_keputusan', 'simptom_kehilangan_minat', 'simptom_merasa_tidak_berguna', 'simptom_mudah_lupa', 'simptom_merasa_bersalah', 'simptom_mudah_lelah', 'simptom_putus_asa', 'simptom_mudah_marah', 'simptom_mudah_tersinggung', 'simptom_mimpi_buruk', 'simptom_tidak_percaya_diri'], 'integer'],
-            [['no_rekam_medik'], 'string', 'max' => 120],
+            [['no_rekam_medik', 'no_daftar'], 'string', 'max' => 120],
             [['rs_pendukung'], 'string', 'max' => 50],
             [['dokter'], 'string', 'max' => 35],
             [['rp_diagnosa_dokter', 'rp_keluhan_fisik', 'rp_keluhan_psikologis', 'asesmen_observasi_du_penampilan_umum', 'asesmen_observasi_du_sikap_terhadap_pemeriksa', 'asesmen_observasi_du_afek', 'asesmen_observasi_du_roman_muka', 'asesmen_observasi_du_proses_pikir', 'asesmen_observasi_du_gangguan_persepsi', 'asesmen_observasi_fp_kognitif_memori', 'asesmen_observasi_fp_kognitif_konsentrasi', 'asesmen_observasi_fp_kognitif_orientasi', 'asesmen_observasi_fp_kognitif_kemampuan_verbal', 'asesmen_observasi_fp_kognitif_emosi', 'asesmen_observasi_fp_kognitif_perilaku', 'psikotes_pendukung_1', 'psikotes_pendukung_2', 'psikotes_pendukung_3', 'psikotes_pendukung_4', 'psikotes_pendukung_5'], 'string', 'max' => 15],

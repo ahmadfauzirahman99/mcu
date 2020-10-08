@@ -93,6 +93,7 @@ class SpesialisPsikologiSearch extends SpesialisPsikologi
         ]);
 
         $query->andFilterWhere(['ilike', 'no_rekam_medik', $this->no_rekam_medik])
+            ->andFilterWhere(['ilike', 'no_daftar', $this->rs_pendukung])
             ->andFilterWhere(['ilike', 'rs_pendukung', $this->rs_pendukung])
             ->andFilterWhere(['ilike', 'dokter', $this->dokter])
             ->andFilterWhere(['ilike', 'rp_diagnosa_dokter', $this->rp_diagnosa_dokter])

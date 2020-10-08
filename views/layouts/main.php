@@ -138,11 +138,12 @@ AppAsset::register($this);
                         <li>
                             <a href="<?= Url::to(['/spesialis-tht/index']) ?>" class="waves-effect"><i class="fas fa-head-side-virus"></i> <span> THT </span> </a>
                         </li>
-                        <li>
-                            <a href="<?= Url::to(['/spesialis-kejiwaan/index']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Kejiwaan </span> </a>
-                        </li>
-                        <li>
-                            <a href="<?= Url::to(['/spesialis-psikologi/index']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Psikologi </span> </a>
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> Kejiwaan </span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="<?= Url::to(['/spesialis-kejiwaan/index']) ?>">Psikiatri</a></li>
+                                <li><a href="<?= Url::to(['/spesialis-psikologi/index']) ?>">Psikologi</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="<?= Url::to(['/spesialis-narkoba/index']) ?>" class="waves-effect"><i class="fas fa-eyedropper"></i> <span> Narkoba </span> </a>

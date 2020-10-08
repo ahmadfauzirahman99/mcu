@@ -6,6 +6,7 @@ use app\models\DataLayanan;
 use Yii;
 use app\models\SpesialisPsikologi;
 use app\models\SpesialisPsikologiSearch;
+use Mpdf\Mpdf;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -81,8 +82,17 @@ class SpesialisPsikologiController extends Controller
             $model = new SpesialisPsikologi();
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_spesialis_psikologi]);
+        if ($model->load(Yii::$app->request->post())) {
+
+            $date = date('Y-m-d H:i:s');
+            //$id = \Yii::$app->user->getId();
+
+            //$model->created_id =$id;
+            $model->created_at =$date;
+
+            if($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id_spesialis_psikologi]);
+            }
         }
 
         return $this->render('create', [
@@ -140,5 +150,21 @@ class SpesialisPsikologiController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionCetakPsikologi()
+    { 
+        
+        // $pegawai = new Pegawai();
+        // $model = $pegawai->getPegawai($idpeg);
+
+        $mpdf = new Mpdf();
+        //$mpdf->AddPage('L');
+        $mpdf->WriteHTML($this->renderPartial('print-psikologi' , [
+            // 'model'=>$model, 
+        ]));
+        
+        return $mpdf->Output();
+        exit;
     }
 }
