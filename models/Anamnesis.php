@@ -57,7 +57,7 @@ class Anamnesis extends \yii\db\ActiveRecord
             'jawaban4' => 'Jawaban 4',
             'jawaban5' => 'Jawaban 5',
             'jawaban6' => 'Jawaban 6',
-            'jawaban7' => 'Jawaban 7',
+            'jawaban7' => 'Jawaban Hubungan Pekerjaan',
             'nomor_rekam_medik' => 'Nomor Rekam Medik',
             'g' => 'G',
             'p' => 'P',
