@@ -310,7 +310,7 @@ $this->params['breadcrumbs'][] = $this->title;
         if (array_key_exists('id', $_GET))
             echo Html::submitButton('Simpan', ['class' => 'btn btn-success']);
         if (!$model->isNewRecord)
-            echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-kejiwaan/cetak-kejiwaan', 'no_rm' => $no_rm, 'no_daftar' => $no_daftar], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
+            echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-kejiwaan/cetak', 'no_rm' => $no_rm, 'no_daftar' => $no_daftar], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
         ?>
     </div>
     <?php
