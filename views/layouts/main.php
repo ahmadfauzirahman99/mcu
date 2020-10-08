@@ -141,8 +141,8 @@ AppAsset::register($this);
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> Kejiwaan </span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="<?= Url::to(['/spesialis-kejiwaan/index']) ?>">Psikiatri</a></li>
-                                <li><a href="<?= Url::to(['/spesialis-psikologi/index']) ?>">Psikologi</a></li>
+                                <li><a href="<?= Url::to(['/spesialis-kejiwaan/periksa']) ?>">Psikiatri</a></li>
+                                <li><a href="<?= Url::to(['/spesialis-psikologi/periksa']) ?>">Psikologi</a></li>
                             </ul>
                         </li>
                         <li>

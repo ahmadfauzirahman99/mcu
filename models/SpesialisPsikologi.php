@@ -98,9 +98,11 @@ class SpesialisPsikologi extends \yii\db\ActiveRecord
             [['no_rekam_medik', 'no_daftar'], 'string', 'max' => 120],
             [['rs_pendukung'], 'string', 'max' => 50],
             [['dokter'], 'string', 'max' => 35],
-            [['rp_diagnosa_dokter', 'rp_keluhan_fisik', 'rp_keluhan_psikologis', 'asesmen_observasi_du_penampilan_umum', 'asesmen_observasi_du_sikap_terhadap_pemeriksa', 'asesmen_observasi_du_afek', 'asesmen_observasi_du_roman_muka', 'asesmen_observasi_du_proses_pikir', 'asesmen_observasi_du_gangguan_persepsi', 'asesmen_observasi_fp_kognitif_memori', 'asesmen_observasi_fp_kognitif_konsentrasi', 'asesmen_observasi_fp_kognitif_orientasi', 'asesmen_observasi_fp_kognitif_kemampuan_verbal', 'asesmen_observasi_fp_kognitif_emosi', 'asesmen_observasi_fp_kognitif_perilaku', 'psikotes_pendukung_1', 'psikotes_pendukung_2', 'psikotes_pendukung_3', 'psikotes_pendukung_4', 'psikotes_pendukung_5'], 'string', 'max' => 15],
+            [['rp_diagnosa_dokter', 'rp_keluhan_fisik', 'rp_keluhan_psikologis', 'asesmen_observasi_du_penampilan_umum', 'asesmen_observasi_du_sikap_terhadap_pemeriksa', 'asesmen_observasi_du_afek', 'asesmen_observasi_du_roman_muka', 'asesmen_observasi_du_proses_pikir', 'asesmen_observasi_du_gangguan_persepsi', 'asesmen_observasi_fp_kognitif_memori', 'asesmen_observasi_fp_kognitif_konsentrasi', 'asesmen_observasi_fp_kognitif_orientasi', 'asesmen_observasi_fp_kognitif_kemampuan_verbal', 'asesmen_observasi_fp_kognitif_emosi', 'asesmen_observasi_fp_kognitif_perilaku', 'psikotes_pendukung_1', 'psikotes_pendukung_2', 'psikotes_pendukung_3', 'psikotes_pendukung_4', 'psikotes_pendukung_5'], 'string', 'max' => 30],
             [['hasil_tes'], 'string', 'max' => 200],
             [['dinamika_psikologi', 'kesimpulan'], 'string', 'max' => 500],
+
+            ['no_daftar', 'unique'],
         ];
     }
 

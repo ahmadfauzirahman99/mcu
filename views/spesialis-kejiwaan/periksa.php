@@ -1,50 +1,55 @@
 <?php
+/*
+ * @Author: Dicky Ermawan S., S.T., MTA 
+ * @Email: wanasaja@gmail.com 
+ * @Web: dickyermawan.github.io 
+ * @Linkedin: linkedin.com/in/dickyermawan 
+ * @Date: 2020-09-13 18:14:13 
+ * @Last Modified by: Dicky Ermawan S., S.T., MTA
+ * @Last Modified time: 2020-10-07 15:09:19
+ */
 
 use app\components\Helper;
+use app\models\DataLayanan;
 use app\models\spesialis\BaseModel;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use yii\data\ActiveDataProvider;
+use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Url;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\SpesialisKejiwaan */
+/* @var $model app\models\spesialis\McuSpesialisMata */
 /* @var $form yii\widgets\ActiveForm */
+
+$this->title = 'Pemeriksaan Kesehatan Kejiwaan Tenaga Kerja';
+$this->params['breadcrumbs'][] = ['label' => 'Unit Medical Check Up', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 
 <style type="text/css">
-    .table {
-        border: 0.5px solid #000000;
-    }
-
-    .table-bordered>thead>tr>th,
-    .table-bordered>tbody>tr>th,
-    .table-bordered>tfoot>tr>th,
-    .table-bordered>thead>tr>td,
-    .table-bordered>tbody>tr>td,
-    .table-bordered>tfoot>tr>td {
-        border: 0.5px solid #000000;
-    }
-
     .form-group {
         margin-bottom: 0px !important;
     }
 
-    .tr-ac-bc td {
-        padding: 3px !important;
-    }
-
-    .tr-ac-bc .was-validated .form-control:valid,
-    .tr-ac-bc .form-control.is-valid {
-        padding: 0.75rem !important;
-        background-image: none;
+    .tabel-kejiwaan label {
+        margin-bottom: 0px !important;
     }
 </style>
 
-<div class="spesialis-kejiwaan-form">
+<div class="mcu-spesialis-kejiwaan-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <div style="text-align: center;">
+        <h3 style="font-weight: bold; margin-bottom: 0px;">Unit Medical Check Up</h3>
+        <h3 style="font-weight: bold; margin-top: 0px;"><?= Html::encode($this->title) ?></h3>
+    </div>
+
+    <hr>
+
+    <?php $form = ActiveForm::begin([]); ?>
 
     <?php
     echo $form->field($model, 'cari_pasien')->widget(Select2::classname(), [
@@ -56,12 +61,27 @@ use yii\helpers\Url;
         ],
         'pluginEvents' => [
             "select2:select" => "function(e) { 
-                window.location = baseUrl + 'spesialis-kejiwaan/create?no_rm=' + e.params.data.id
+                window.location = baseUrl + 'spesialis-kejiwaan/periksa?id=' + e.params.data.id
             }",
         ],
     ]);
     ?>
-    
+    <br>
+    <div class="form-group" style="margin-top: 5px; display: none;">
+        <?php
+        echo Html::submitButton('Simpan', ['class' => 'btn btn-success', 'id' => 'btn-form-cari']);
+        ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
+
+    <?php $form = ActiveForm::begin([
+        'id' => 'form-spesialis-kejiwaan',
+        'validateOnSubmit' => false, // agar submit ajax tidak 2 kali saat pertama kali reload
+    ]); ?>
+
+    <?= $form->field($model, 'cari_pasien')->hiddenInput()->label(false) ?>
+
     <div class="row">
         <div class="col-sm-3">
             <label for="">No. Rekam Medik</label>
@@ -70,21 +90,21 @@ use yii\helpers\Url;
             echo $form->field($model, 'no_rekam_medik')->textInput(['maxlength' => true, 'readonly' => true,])->label(false)
             ?>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-6">
             <div class="form-group">
                 <label for="">Nama</label>
                 <input readonly type="text" class="form-control" value="<?= $pasien->nama ?? null ?>" id="nama_pasien">
             </div>
         </div>
+        <div class="col-sm-3">
+            <label for="">No. Daftar</label>
+            <?php
+            $model->no_daftar = $no_daftar;
+            echo $form->field($model, 'no_daftar')->textInput(['maxlength' => true, 'readonly' => true,])->label(false)
+            ?>
+        </div>
     </div>
-
-    <!-- <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?> -->
+    <br/>
 
     <?= $form->field($model, 'rs_pendukung')->textInput(['maxlength' => true]) ?>
 
@@ -277,24 +297,30 @@ use yii\helpers\Url;
         </div>
     </div>
 
+    <br/>
+    <?php
+    Pjax::begin(['id' => 'btn-cetak']);
+    if (!$model->isNewRecord) {
+        echo $form->field($model, 'id_spesialis_kejiwaan')->hiddenInput()->label(false);
+    }
+    ?>
+
+    <div class="form-group">
+        <?php
+        if (array_key_exists('id', $_GET))
+            echo Html::submitButton('Simpan', ['class' => 'btn btn-success']);
+        if (!$model->isNewRecord)
+            echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-kejiwaan/cetak-kejiwaan', 'no_rm' => $no_rm, 'no_daftar' => $no_daftar], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
+        ?>
+    </div>
+    <?php
+    Pjax::end();
+    ?>
+
     <?php ActiveForm::end(); ?>
 
 </div>
 
-<?php 
-$this->registerJs(" 
+<?php
 
-   $('#cari').on('change',function(){
-       $.ajax({
-           url:'".Url::to(['atasan'])."',
-           type:'POST',
-           data:'kode='+$('#Penempatan option:selected').val(),
-           dataType:'json',
-           success:function(result){
-                   $('#spesialiskejiwaan-no_rekam_medik').val(result.kode_rumpun);
-                   $('#nama_pasien').val(result.kode_rumpun);
-           }
-       })
-   });
-");
-?>
+$this->registerJs($this->render('periksa.js'));

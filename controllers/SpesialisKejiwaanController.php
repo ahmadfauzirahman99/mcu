@@ -63,6 +63,57 @@ class SpesialisKejiwaanController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
+    
+    public function actionPeriksa($id = null)
+    {
+        $id_cari = $id;
+
+        if ($id_cari != null) {
+            $pasien = DataLayanan::find()->where(['id_data_pelayanan' => $id_cari])->one();
+            if (!$pasien) {
+                return $this->redirect(['/site/ngga-nemu', 'id' => $id_cari]);
+            }
+            
+            $model = SpesialisKejiwaan::find()
+            ->where(['no_rekam_medik' => $pasien->no_rekam_medik])
+            ->andWhere(['no_daftar' => $pasien->no_registrasi])
+            ->one();
+            if (!$model)
+                $model = new SpesialisKejiwaan();
+            $model->cari_pasien = $id_cari;
+            $no_rm = $pasien->no_rekam_medik;
+            $no_daftar = $pasien->no_registrasi;
+        } else {
+            $pasien = null;
+            $no_rm = null;
+            $no_daftar = null;
+            $model = new SpesialisKejiwaan();
+        }
+
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            if ($model->save()) {
+                return [
+                    's' => true,
+                    'e' => null
+                ];
+            } else {
+                return [
+                    's' => false,
+                    'e' => $model->errors
+                ];
+            }
+        }
+
+        return $this->render('periksa', [
+            'model' => $model,
+            'no_rm' => $no_rm,
+            'no_daftar' => $no_daftar,
+            'pasien' => $pasien,
+        ]);
+    }
+
     public function actionCreate($no_rm = null)
     {
         $model = new SpesialisKejiwaan();
