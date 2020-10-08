@@ -18,6 +18,12 @@ $helper = [
     'Kelebihan Berat Badan Tingkat Berat' => 'Kelebihan Berat Badan Tingkat Berat'
 ];
 ?>
+<style>
+iframe{
+    overflow:hidden;
+}
+
+</style>
 <?php $form = ActiveForm::begin(); ?>
 
 <div class="row">
@@ -949,7 +955,7 @@ $helper = [
                     </div>
                     <hr>
                     <div class="col-lg-12">
-                    <iframe src="http://mcu.rsud-arifin.localhost/body-tato/form?id=<?= $dataLayanan->no_rekam_medik ?>"style="display: block;width: 1200px;height: 650px;border: none;"></iframe>
+                        <iframe src="http://mcu.rsud-arifin.localhost/body-tato/form?id=<?= $dataLayanan->no_rekam_medik ?>"style="display: block;width: 1200px;height: 720px;border: none;"></iframe>
                     </div>
                     <hr>
                     <div class="col-lg-12">

@@ -55,3 +55,9 @@ use yii\helpers\Url;
     'dataLayanan' => $dataLayanan,
 
 ]) ?>
+
+<?= $this->render('pemeriksaan-khusus.php', [
+    'master_pemeriksaan_fisik' => $master_pemeriksaan_fisik,
+    'dataLayanan' => $dataLayanan,
+
+]) ?>

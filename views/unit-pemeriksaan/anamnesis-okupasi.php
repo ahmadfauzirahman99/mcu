@@ -74,6 +74,6 @@ $jenisPekerjaan->masa_kerja = null;
 </div>
 <div class="form-group">
     <iframe src="http://mcu.rsud-arifin.localhost/body-discomfort/form?id=<?= $dataLayanan->no_rekam_medik ?>"
-        style="display: block;width: 1200px;height: 650px;border: none;"></iframe>
+        style="display: block;width: 1200px;height: 720px;border: none;"></iframe>
 </div>
 <hr>

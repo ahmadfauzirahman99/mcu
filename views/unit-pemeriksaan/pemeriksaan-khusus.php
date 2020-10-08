@@ -8,7 +8,7 @@ use yii\bootstrap4\ActiveForm;
 /* @var $master_pemeriksaan_fisik app\models\MasterPemeriksaanFisik */
 /* @var $form yii\bootstrap4\ActiveForm */
 ?>
-
+<h1>I. RESUME KELAINAN YANG DIDAPAT :</h1>
 <div>
     <?php $form = ActiveForm::begin(); ?>
 

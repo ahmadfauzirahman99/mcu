@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
     $(`#masterpemeriksaanfisik-status_gizi_tinggi_badan, #masterpemeriksaanfisik-status_gizi_berat_badan`).on('input change', function (e) {
         // alert("asdsadas")
 
