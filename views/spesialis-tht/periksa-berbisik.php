@@ -28,6 +28,13 @@ $this->title = 'Pemeriksaan Kesehatan THT Tenaga Kerja (Tes Berbisik)';
 $this->params['breadcrumbs'][] = ['label' => 'Unit Medical Check Up', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
+$optionBerbisik = [
+    'Dalam Batas Normal' => 'Dalam Batas Normal', 
+    'Tuli Ringan' => 'Tuli Ringan',
+    'Tuli Sedang' => 'Tuli Sedang',
+    'Tuli Berat' => 'Tuli Berat',
+];
+
 ?>
 
 <style type="text/css">
@@ -143,23 +150,35 @@ $this->params['breadcrumbs'][] = $this->title;
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top>
                 <font color="#000000">:</font>
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_test_berbisik_telinga_kanan_6',  ['id' => 'mcuspesialistht_tl_test_berbisik_telinga_kanan_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
+            <td colspan="2" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <?php
+                echo $form->field($model, 'tl_test_berbisik_telinga_kanan_6')->widget(Select2::classname(), [
+                    'data' => $optionBerbisik,
+                    'theme' => 'bootstrap',
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <label>
-                    <input <?= ($model->tl_test_berbisik_telinga_kanan_6 == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_berbisik_telinga_kanan_1" name="McuSpesialisThtBerbisik[tl_test_berbisik_telinga_kanan_6]" value="Tidak Normal">
-                    Tidak Normal
-                </label>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_test_berbisik_telinga_kiri_6',  ['id' => 'mcuspesialistht_tl_test_berbisik_telinga_kiri_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <label>
-                    <input <?= ($model->tl_test_berbisik_telinga_kiri_6 == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_berbisik_telinga_kiri_1" name="McuSpesialisThtBerbisik[tl_test_berbisik_telinga_kiri_6]" value="Tidak Normal">
-                    Tidak Normal
-                </label>
+            <td colspan="2" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <?php
+                echo $form->field($model, 'tl_test_berbisik_telinga_kiri_6')->widget(Select2::classname(), [
+                    'data' => $optionBerbisik,
+                    'theme' => 'bootstrap',
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
@@ -169,23 +188,35 @@ $this->params['breadcrumbs'][] = $this->title;
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top>
                 <font color="#000000">:</font>
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_test_berbisik_telinga_kanan_4',  ['id' => 'mcuspesialistht_tl_test_berbisik_telinga_kanan_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
+            <td colspan="2" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <?php
+                echo $form->field($model, 'tl_test_berbisik_telinga_kanan_4')->widget(Select2::classname(), [
+                    'data' => $optionBerbisik,
+                    'theme' => 'bootstrap',
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <label>
-                    <input <?= ($model->tl_test_berbisik_telinga_kanan_4 == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_berbisik_telinga_kanan_1" name="McuSpesialisThtBerbisik[tl_test_berbisik_telinga_kanan_4]" value="Tidak Normal">
-                    Tidak Normal
-                </label>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_test_berbisik_telinga_kiri_4',  ['id' => 'mcuspesialistht_tl_test_berbisik_telinga_kiri_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <label>
-                    <input <?= ($model->tl_test_berbisik_telinga_kiri_4 == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_berbisik_telinga_kiri_1" name="McuSpesialisThtBerbisik[tl_test_berbisik_telinga_kiri_4]" value="Tidak Normal">
-                    Tidak Normal
-                </label>
+            <td colspan="2" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <?php
+                echo $form->field($model, 'tl_test_berbisik_telinga_kiri_4')->widget(Select2::classname(), [
+                    'data' => $optionBerbisik,
+                    'theme' => 'bootstrap',
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
@@ -195,23 +226,35 @@ $this->params['breadcrumbs'][] = $this->title;
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top>
                 <font color="#000000">:</font>
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_test_berbisik_telinga_kanan_3',  ['id' => 'mcuspesialistht_tl_test_berbisik_telinga_kanan_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
+            <td colspan="2" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <?php
+                echo $form->field($model, 'tl_test_berbisik_telinga_kanan_3')->widget(Select2::classname(), [
+                    'data' => $optionBerbisik,
+                    'theme' => 'bootstrap',
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <label>
-                    <input <?= ($model->tl_test_berbisik_telinga_kanan_3 == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_berbisik_telinga_kanan_1" name="McuSpesialisThtBerbisik[tl_test_berbisik_telinga_kanan_3]" value="Tidak Normal">
-                    Tidak Normal
-                </label>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_test_berbisik_telinga_kiri_3',  ['id' => 'mcuspesialistht_tl_test_berbisik_telinga_kiri_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <label>
-                    <input <?= ($model->tl_test_berbisik_telinga_kiri_3 == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_berbisik_telinga_kiri_1" name="McuSpesialisThtBerbisik[tl_test_berbisik_telinga_kiri_3]" value="Tidak Normal">
-                    Tidak Normal
-                </label>
+            <td colspan="2" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <?php
+                echo $form->field($model, 'tl_test_berbisik_telinga_kiri_3')->widget(Select2::classname(), [
+                    'data' => $optionBerbisik,
+                    'theme' => 'bootstrap',
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
@@ -221,23 +264,35 @@ $this->params['breadcrumbs'][] = $this->title;
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top>
                 <font color="#000000">:</font>
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_test_berbisik_telinga_kanan_1',  ['id' => 'mcuspesialistht_tl_test_berbisik_telinga_kanan_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
+            <td colspan="2" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <?php
+                echo $form->field($model, 'tl_test_berbisik_telinga_kanan_1')->widget(Select2::classname(), [
+                    'data' => $optionBerbisik,
+                    'theme' => 'bootstrap',
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <label>
-                    <input <?= ($model->tl_test_berbisik_telinga_kanan_1 == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_berbisik_telinga_kanan_1" name="McuSpesialisThtBerbisik[tl_test_berbisik_telinga_kanan_1]" value="Tidak Normal">
-                    Tidak Normal
-                </label>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_test_berbisik_telinga_kiri_1',  ['id' => 'mcuspesialistht_tl_test_berbisik_telinga_kiri_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <label>
-                    <input <?= ($model->tl_test_berbisik_telinga_kiri_1 == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_berbisik_telinga_kiri_1" name="McuSpesialisThtBerbisik[tl_test_berbisik_telinga_kiri_1]" value="Tidak Normal">
-                    Tidak Normal
-                </label>
+            <td colspan="2" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <?php
+                echo $form->field($model, 'tl_test_berbisik_telinga_kiri_1')->widget(Select2::classname(), [
+                    'data' => $optionBerbisik,
+                    'theme' => 'bootstrap',
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                        }",
+                    ],
+                ])->label(false);
+                ?>
             </td>
         </tr>
         <tr>
@@ -298,7 +353,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php echo $form->field($modelPenata, 'rencana')->textArea(['rows' => 2]); ?>
         </div>
         <div class="col-sm-2">
-            <?php echo $form->field($modelPenata, 'target_waktu')->textInput(); ?>
+            <?php echo $form->field($modelPenata, 'target_waktu')->textArea(['rows' => 2]); ?>
         </div>
         <div class="col-sm-2">
             <?php echo $form->field($modelPenata, 'hasil_yang_diharapkan')->textArea(['rows' => 2]); ?>
