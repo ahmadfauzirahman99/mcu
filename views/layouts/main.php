@@ -102,6 +102,10 @@ AppAsset::register($this);
                             <a href="<?= Url::to(['/unit-lab-pk/index']) ?>" class="waves-effect"><i class=" mdi mdi-microscope"></i> <span> Unit Lab. Patologi Klinik </span> </a>
                         </li>
 
+                        <li>
+                            <a href="<?= Url::to(['/radiologi/index']) ?>" class="waves-effect"><i class=" mdi mdi-clipboard-pulse"></i> <span> Unit Radiologi </span> </a>
+                        </li>
+
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> Setting Labs. </span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled">

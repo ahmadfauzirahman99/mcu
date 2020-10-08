@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Laporan;
 use app\models\MasterPemeriksaanFisik;
+use app\models\SettingGlobal;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -36,8 +37,19 @@ class LaporanController extends Controller
     public function actionIndex()
     {
         $model = MasterPemeriksaanFisik::find();
+
+        $dataSetting = SettingGlobal::find()
+        ->select(['setting_global.*', 'nama_kategori', 'nama_item_setting', 'kode_tes', 'nilai_normal'])
+        ->joinWith(['item' => function ($q){
+            $q ->joinWith(['kategori']);
+        }])
+        ->andWhere(['setting_global.status'=>2])
+        ->asArray()
+        ->all();
+
         return $this->render('index', [
             'model' => $model,
+            'dataSetting' => $dataSetting
         ]);
     }
 
