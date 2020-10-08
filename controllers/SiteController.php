@@ -9,6 +9,8 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\DataLayanan;
+use app\models\MasterPemeriksaanFisik;
 
 class SiteController extends Controller
 {
@@ -26,7 +28,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'dokter'],
+                        'actions' => ['logout', 'index', 'dokter', 'test'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -64,7 +66,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        
+
 
 
         // if ($data['kodejenis'] == 1) {
@@ -189,5 +191,29 @@ class SiteController extends Controller
         return $this->render('ngga-nemu', [
             'id' => $id
         ]);
+    }
+
+    public function actionTest()
+    {
+        $dataPemeriksaan = MasterPemeriksaanFisik::find()->where('no_rekam_medik is not null')->all();
+
+        echo '<pre>';
+        foreach ($dataPemeriksaan as $item) {
+            $dataPelayanan = DataLayanan::find()->where(['no_rekam_medik' => $item->no_rekam_medik])
+                ->andWhere(['not', ['no_rekam_medik' => null]])
+                ->andWhere(['not', ['no_registrasi' => null]])
+                ->one();
+            
+            // var_dump($dataPelayanan['no_rekam_medik']);
+            $id_regis = $dataPelayanan['no_registrasi'];
+            $id_da = $dataPelayanan['no_rekam_medik'];
+
+            Yii::$app->db->createCommand("UPDATE mcu.m_pemeriksaan_fisik SET no_rekam_medik='$item->no_rekam_medik' 
+            WHERE no_daftar='{$id_regis}'")->execute();
+            // var_dump($id_da == $item->no_rekam_medik);
+        }
+
+        echo "berhasil";
+        exit();
     }
 }

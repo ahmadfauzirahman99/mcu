@@ -622,6 +622,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php ActiveForm::end(); ?>
     <br>
     <?php Pjax::begin(['id' => 'tbl-penata']); ?>
+    <div style="display: none;">
 
     <?= GridView::widget([
         'dataProvider' => new ActiveDataProvider([
@@ -661,6 +662,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
     <?php Pjax::end(); ?>
+    </div>
 
 </div>
 

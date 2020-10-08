@@ -949,7 +949,7 @@ $helper = [
                     </div>
                     <hr>
                     <div class="col-lg-12">
-                    <iframe src="http://mcu.rsud-arifin.localhost/body-tato/form?id=<?= $master_pemeriksaan_fisik->no_rekam_medik ?>"style="display: block;width: 1200px;height: 650px;border: none;"></iframe>
+                    <iframe src="http://mcu.rsud-arifin.localhost/body-tato/form?id=<?= $dataLayanan->no_rekam_medik ?>"style="display: block;width: 1200px;height: 650px;border: none;"></iframe>
                     </div>
                     <hr>
                     <div class="col-lg-12">

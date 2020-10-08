@@ -350,7 +350,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <br>
     <?php Pjax::begin(['id' => 'tbl-penata']); ?>
 
-    <?= GridView::widget([
+  <div style="display: none;">
+  <?= GridView::widget([
         'dataProvider' => new ActiveDataProvider([
             'query' => $modelPenataList,
         ]),
@@ -388,6 +389,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
     <?php Pjax::end(); ?>
+  </div>
 
 </div>
 

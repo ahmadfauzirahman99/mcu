@@ -6,10 +6,11 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Anamnesis */
 /* @var $form yii\widgets\ActiveForm */
+$this->title ="MCU RSAA"
 ?>
 
 <div class="anamnesis-form">
-
+    <h3 class="text-center">Anamnesis</h3
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="form-group">

@@ -104,7 +104,7 @@ AppAsset::register($this);
                         </li>
 
                         <li>
-                            <a href="<?= Url::to(['/unit-pemeriksaan/pemeriksaan-fisik']) ?>" class="waves-effect"><i class="mdi mdi-google-street-view"></i> <span> Unit Pemeriksaan </span> </a>
+                            <a href="<?= Url::to(['/unit-pemeriksaan/unit-pemeriksaan']) ?>" class="waves-effect"><i class="mdi mdi-google-street-view"></i> <span> Unit Pemeriksaan </span> </a>
                         </li>
                         <?php $identitas_dokter = Helper::getRumpun()  ?>
 
@@ -121,6 +121,10 @@ AppAsset::register($this);
                         elseif ($identitas_dokter['kodejenis'] == 20) :
                         ?>
                             <?= $this->render('nav-okupasi') ?>
+                        <?php
+                        elseif ($identitas_dokter['kodejenis'] == 16) :
+                        ?>
+                            <?= $this->render('nav-mata') ?>
                         <?php else : ?>
                             <?= $this->render('nav-root') ?>
                         <?php endif ?>
