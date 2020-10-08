@@ -20,7 +20,6 @@ if ($modelupdate == null && $detailJikaBaru == null) {
 }
 
 ?>
-<h1 align="center">BODY DISCOMFORT</h1>
 <div class="row">
 	<div class="col-md-3 col-md-offset-3">
 		<!-- DEPAN -->

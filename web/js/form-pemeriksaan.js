@@ -1,5 +1,32 @@
 $(document).ready(function () {
-    
+    $('#btn-pemeriksaan-fisik').hide();
+
+    setTimeout(function () {
+        window.scrollTo(document.body, 0, 0);
+    }, 1000);
+
+    $.fn.isOnScreen = function () {
+        var win = $(window);
+        var viewport = {
+            top: win.scrollTop(),
+            left: win.scrollLeft()
+        };
+        viewport.right = viewport.left + win.width();
+        viewport.bottom = viewport.top + win.height();
+        var bounds = this.offset();
+        bounds.right = bounds.left + this.outerWidth();
+        bounds.bottom = bounds.top + this.outerHeight();
+        return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+    };
+
+    $(window).scroll(function () {
+        if ($('#pemeriksaan-fisik-mulai').isOnScreen() == true || $('#MasterPemeriksaanFisik').isOnScreen() == true) {
+            $('#btn-pemeriksaan-fisik').show();
+        } else {
+            $('#btn-pemeriksaan-fisik').hide();
+        }
+    });
+
     $(`#masterpemeriksaanfisik-status_gizi_tinggi_badan, #masterpemeriksaanfisik-status_gizi_berat_badan`).on('input change', function (e) {
         // alert("asdsadas")
 
@@ -48,5 +75,227 @@ $(document).ready(function () {
             fill: "yellow"
         });
         // alert("mardi")
+    });
+
+
+    //save-anamnesis
+    $("#Anamnesis").on('submit', function (e) {
+        var formData = new FormData(this);
+        var formURL = $("#Anamnesis").attr("action");
+        e.preventDefault();
+        e.stopImmediatePropagation()
+
+        console.log(formData);
+        console.log(formURL);
+        $.ajax({
+            url: formURL,
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (r) {
+                console.log(r)
+                if (r.s) {
+                    toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
+                } else {
+                    toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("gagal");
+            }
+        })
+    })
+
+    $("#id-hubungan-Anamnesis").on('submit', function (e) {
+        var formData = new FormData(this);
+        var formURL = $("#id-hubungan-Anamnesis").attr("action");
+        e.preventDefault();
+        e.stopImmediatePropagation()
+
+        console.log(formData);
+        console.log(formURL);
+        $.ajax({
+            url: formURL,
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (r) {
+                console.log(r)
+                if (r.s) {
+                    toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
+                } else {
+                    toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("gagal");
+            }
+        })
+    })
+
+
+    //ANAMNESIS OKUPASI JENIS PEKERJAAN
+    $("#id-JenisPekerjaan").on('submit', function (e) {
+        var formData = new FormData(this);
+        var formURL = $("#id-JenisPekerjaan").attr("action");
+        e.preventDefault()
+        e.stopImmediatePropagation()
+
+        $.ajax({
+            url: formURL,
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (r) {
+
+                console.log(r)
+                if (r.s) {
+                    $.pjax.reload({
+                        container: '#id-pjax-jenis-pekerjaan',
+                        timeout: false
+                    })
+                    $("#id-JenisPekerjaan")[0].reset();
+
+                    toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
+
+                } else {
+                    // $.pjax.reload({
+                    //     container: '#btn-save-jenis-pekerjaan',
+                    //     async: false,
+                    //     timeout: false
+
+                    // })
+                    $.pjax.reload({
+                        container: '#id-pjax-jenis-pekerjaan',
+                        timeout: false
+                    })
+
+                    toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))
+
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("gagal");
+            }
+        })
+
+        return false;
+    });
+
+    //ANAMNESIS OKUPASI BAHAYA POTENSIAL
+    $("#id-BahayaPotensial").on('submit', function (e) {
+        var formData = new FormData(this);
+        var formURL = $("#id-BahayaPotensial").attr("action");
+        e.preventDefault()
+        e.stopImmediatePropagation()
+
+        $.ajax({
+            url: formURL,
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (r) {
+
+                console.log(r)
+                if (r.s) {
+                    $.pjax.reload({
+                        container: '#id-pjax-bahaya-potensial',
+                        timeout: false
+                    })
+                    $("#id-BahayaPotensial")[0].reset();
+
+                    toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
+
+                } else {
+                    // $.pjax.reload({
+                    //     container: '#btn-save-jenis-pekerjaan',
+                    //     async: false,
+                    //     timeout: false
+
+                    // })
+                    $("#id-BahayaPotensial")[0].reset();
+
+                    $.pjax.reload({
+                        container: '#id-pjax-bahaya-potensial',
+                        timeout: false
+                    })
+
+                    toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))
+
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("gagal");
+            }
+        })
+
+        return false;
+    });
+
+    //ANAMENSI OKUPASI BRIEF SURVEY
+    $("#id_form_brief").on('submit', function (e) {
+        var formData = new FormData(this);
+        var formURL = $("#id_form_brief").attr("action");
+        e.preventDefault()
+        e.stopImmediatePropagation()
+
+        $.ajax({
+            url: formURL,
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (r) {
+
+                console.log(r)
+                if (r.s) {
+                    toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
+
+                } else {
+                    toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))
+
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("gagal");
+            }
+        })
+
+        return false;
+    });
+
+    $("#MasterPemeriksaanFisik").on('submit', function (e) {
+        var formData = new FormData(this);
+        var formURL = $("#MasterPemeriksaanFisik").attr("action");
+        e.preventDefault()
+        e.stopImmediatePropagation()
+
+        $.ajax({
+            url: formURL,
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (r) {
+
+                console.log(r)
+                if (r.s) {
+                    toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
+
+                } else {
+                    toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))
+
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("gagal");
+            }
+        })
+
+        return false;
     });
 })

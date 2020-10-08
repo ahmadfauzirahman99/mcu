@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
         <div class="col-sm-12">
             <div class="bg-picture">
                 <div class="profile-info-name">
-                    <img src="<?= $model->pas_foto_offline ?>" class="img-thumbnail" alt="profile-image">
+                    <img src="<?= $model->pas_foto_offline == null ? Yii::$app->request->baseUrl . "/img/user.png" : $model->pas_foto_offline ?>" class="img-thumbnail" alt="profile-image">
 
                     <div class="profile-info-detail">
                         <div class="row">

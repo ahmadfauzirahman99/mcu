@@ -3,7 +3,7 @@
 use yii\helpers\Url;
 
 ?>
-<li class="text-muted menu-title">Pemeriksaan Spesialis</li>
+<li class="text-muted menu-title">Pemeriksaan Khusus</li>
 <li>
     <a href="<?= Url::to(['/spesialis-gigi/periksa']) ?>" class="waves-effect"><i class="fas fa-tooth"></i> <span> Gigi </span> </a>
 </li>
