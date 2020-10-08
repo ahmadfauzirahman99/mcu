@@ -548,7 +548,7 @@ $dataG = [
             <?php echo $form->field($modelPenata, 'rencana')->textArea(['rows' => 2]); ?>
         </div>
         <div class="col-sm-2">
-            <?php echo $form->field($modelPenata, 'target_waktu')->textInput(); ?>
+            <?php echo $form->field($modelPenata, 'target_waktu')->textArea(['rows' => 2]); ?>
         </div>
         <div class="col-sm-2">
             <?php echo $form->field($modelPenata, 'hasil_yang_diharapkan')->textArea(['rows' => 2]); ?>

@@ -418,14 +418,14 @@ class SpesialisThtController extends Controller
         }
 
         if ($model->isNewRecord) {
-            $model->tl_test_berbisik_telinga_kanan_6 = 'Normal';
-            $model->tl_test_berbisik_telinga_kiri_6 = 'Normal';
-            $model->tl_test_berbisik_telinga_kanan_4 = 'Normal';
-            $model->tl_test_berbisik_telinga_kiri_4 = 'Normal';
-            $model->tl_test_berbisik_telinga_kanan_3 = 'Normal';
-            $model->tl_test_berbisik_telinga_kiri_3 = 'Normal';
-            $model->tl_test_berbisik_telinga_kanan_1 = 'Normal';
-            $model->tl_test_berbisik_telinga_kiri_1 = 'Normal';
+            // $model->tl_test_berbisik_telinga_kanan_6 = 'Normal';
+            // $model->tl_test_berbisik_telinga_kiri_6 = 'Normal';
+            // $model->tl_test_berbisik_telinga_kanan_4 = 'Normal';
+            // $model->tl_test_berbisik_telinga_kiri_4 = 'Normal';
+            // $model->tl_test_berbisik_telinga_kanan_3 = 'Normal';
+            // $model->tl_test_berbisik_telinga_kiri_3 = 'Normal';
+            // $model->tl_test_berbisik_telinga_kanan_1 = 'Normal';
+            // $model->tl_test_berbisik_telinga_kiri_1 = 'Normal';
         }
 
         return $this->render('periksa-berbisik', [
