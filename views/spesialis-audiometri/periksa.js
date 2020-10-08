@@ -5,7 +5,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-05 20:45:35 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-07 16:46:51
+ * @Last Modified time: 2020-10-08 16:54:22
  */
 
 const rataBerubah = _ => {
@@ -66,6 +66,15 @@ const rataBerubah = _ => {
 }
 
 $(document).ready(function () {
+
+    $('#mcuspesialisaudiometri-kesan').on('change', function (e) {
+        let kesimpulan = $('#McuSpesialisAudiometri_kesan_0').prop('checked')
+        console.log(kesimpulan);
+        if (kesimpulan)
+            $('.div-penata').hide('slow')
+        else
+            $('.div-penata').show('slow')
+    });
 
     $("#form-spesialis-audiometri").on('submit', function (e) {
         e.preventDefault()

@@ -263,6 +263,7 @@ class SpesialisMataController extends Controller
             $model->penglihatan_3_dimensi_mata_kiri = 'Normal';
             $model->virus_mata_tanpa_koreksi_mata_kanan = 'VOD: 20/20';
             $model->virus_mata_tanpa_koreksi_mata_kiri = 'VOS: 20/20';
+            $model->kesimpulan = 'Normal';
         }
 
         return $this->render('periksa', [

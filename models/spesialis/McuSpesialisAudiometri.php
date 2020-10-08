@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 12:12:24 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-07 15:23:21
+ * @Last Modified time: 2020-10-08 16:58:26
  */
 
 
@@ -76,6 +76,7 @@ use Yii;
  * @property string|null $rata_kiri_ac
  * @property string|null $rata_kiri_bc
  * @property string|null $gambar
+ * @property string|null $kesan
  */
 class McuSpesialisAudiometri extends BaseAR
 {
@@ -104,6 +105,7 @@ class McuSpesialisAudiometri extends BaseAR
             [['kesimpulan_kanan', 'kesimpulan_kiri',], 'string', 'max' => 30],
             [['rata_kanan_ac', 'rata_kanan_bc', 'rata_kiri_ac', 'rata_kiri_bc'], 'number'],
             ['riwayat', 'safe'],
+            ['kesan', 'safe'],
 
             ['no_daftar', 'unique'],
         ];
@@ -170,6 +172,7 @@ class McuSpesialisAudiometri extends BaseAR
             'rata_kiri_bc' => 'Rata Kiri Bc',
             'gambar' => 'Gambar',
             'riwayat' => 'Riwayat',
+            'kesan' => 'Kesan',
         ]);
     }
 

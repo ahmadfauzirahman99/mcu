@@ -5,11 +5,20 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-05 20:45:35 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-07 14:11:33
+ * @Last Modified time: 2020-10-08 15:50:56
  */
 
 
 $(document).ready(function () {
+
+    $('#mcuspesialisgigi-kesimpulan').on('change', function (e) {
+        let kesimpulan = $('#McuSpesialisGigi_kesimpulan_0').prop('checked')
+        console.log(kesimpulan);
+        if (kesimpulan)
+            $('.div-penata').hide('slow')
+        else
+            $('.div-penata').show('slow')
+    });
 
     $("#form-spesialis-gigi").on('submit', function (e) {
         e.preventDefault()
@@ -19,8 +28,14 @@ $(document).ready(function () {
         $.post(baseUrl + 'spesialis-gigi/periksa?id=' + $('#mcuspesialisgigi-cari_pasien').val(), kepalaform, function (r) {
             console.log(r)
             if (r.s) {
-                $.pjax.reload({container: '#btn-cetak', async: false})
-                $.pjax.reload({container: '#btn-cetak-penata', async: false})
+                $.pjax.reload({
+                    container: '#btn-cetak',
+                    async: false
+                })
+                $.pjax.reload({
+                    container: '#btn-cetak-penata',
+                    async: false
+                })
                 toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
             } else {
                 toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))
@@ -36,8 +51,14 @@ $(document).ready(function () {
         $.post(baseUrl + 'spesialis-gigi/simpan-penata?id=' + $('#mcuspesialisgigi-id_spesialis_gigi').val(), kepalaform, function (r) {
             console.log(r)
             if (r.s) {
-                $.pjax.reload({container: '#btn-cetak-penata', async: false})
-                $.pjax.reload({container: '#tbl-penata', async: false})
+                $.pjax.reload({
+                    container: '#btn-cetak-penata',
+                    async: false
+                })
+                $.pjax.reload({
+                    container: '#tbl-penata',
+                    async: false
+                })
                 toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
             } else {
                 toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))
