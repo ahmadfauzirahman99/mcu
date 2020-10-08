@@ -146,7 +146,7 @@ AppAsset::register($this);
                             </ul>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['/spesialis-narkoba/create']) ?>" class="waves-effect"><i class="fas fa-eyedropper"></i> <span> Narkoba </span> </a>
+                            <a href="<?= Url::to(['/spesialis-narkoba/periksa']) ?>" class="waves-effect"><i class="fas fa-eyedropper"></i> <span> Narkoba </span> </a>
                         </li>
 
                         <li class="text-muted menu-title">Data Pelayanan</li>

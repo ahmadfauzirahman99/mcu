@@ -67,6 +67,8 @@ class SpesialisNarkoba extends \yii\db\ActiveRecord
             [['benzodiazepin_hasil', 'thc_hasil', 'opiat_hasil', 'amphetammin_hasil', 'kokain_hasil', 'methamphetamin_hasil', 'carisoprodol_hasil'], 'string', 'max' => 30],
             [['benzodiazepin_keterangan', 'thc_keterangan', 'opiat_keterangan', 'amphetammin_keterangan', 'kokain_keterangan', 'methamphetamin_keterangan', 'carisoprodol_keterangan'], 'string', 'max' => 50],
             [['cari_pasien'], 'safe'],
+
+            ['no_daftar', 'unique'],
         ];
     }
 

@@ -179,157 +179,95 @@ $check=["", "V"];
 			</tr>
 		</tbody>
 	</table>
-	<br/>
-	<table class="table">
+    <br/>
+    <b>B.HASIL PEMERIKSAAN</b>
+	<table width="100%" class="table">
         <tr>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top><b>
-                <font color="#000000">ASPEK KEJIWAAN</font>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" colspan="2" valign=top><b>
+                <font color="#000000">Hasil Pemeriksaan Screening Tes</font>
             </b></td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top><b>
-                <font color="#000000">NILAI</font>
+                <font color="#000000">Keterangan</font>
             </b></td>
-		</tr>
+        </tr>
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-                <font color="#000000"><b>Skala L (Lie Scale) </b></font> (Kebohongan Ketidak Jujuran Jawaban)
+            Benzodiazepin Hasil
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            <?= $model->benzodiazepin_hasil ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $model->skala_l ?>
+            <?= $model->benzodiazepin_keterangan ?>
             </td>
-        </tr>   
+        </tr>
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala P </b></font> (Salah mengerti terhadap makna pertanyaan atau tidak menangkap arti pertanyaan / sengaja tidak mau membaca tetapi dijawab dengan asal mengisi)
-                </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $model->skala_p ?>
+            THC Hasil
             </td>
-        </tr>   
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            <?= $model->thc_hasil ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+            <?= $model->thc_keterangan ?>
+            </td>
+        </tr>
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala K </b></font> (Sikap defensive, mengelak atau menghindar)
-                </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $model->skala_k ?>
+            Opiat Hasil
             </td>
-        </tr>   
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            <?= $model->opiat_hasil ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+            <?= $model->opiat_keterangan ?>
+            </td>
+        </tr>
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 1 - Hs : Hipocondriasis </b></font> (Keluhan fisik, gangguan fisik dan fungsi tubuh)
-                </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $model->skala_1_hs ?>
+            Amphetammin Hasil
             </td>
-        </tr>   
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            <?= $model->amphetammin_hasil ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+            <?= $model->amphetammin_keterangan ?>
+            </td>
+        </tr>
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 2 - D : Depresi </b></font> (Sedih, tidak bahagia dan tertekan)
-                </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $model->skala_2_d ?>
+            Kokain Hasil
             </td>
-        </tr>   
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            <?= $model->kokain_hasil ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+            <?= $model->kokain_keterangan ?>
+            </td>
+        </tr>
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 3 - Hy : Histeria </b></font> (Bereaksi terhadap stress dengan menolak masalah)
-                </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $model->skala_3_hy ?>
+            Methamphetamin Hasil
             </td>
-        </tr>   
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            <?= $model->methamphetamin_hasil ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+            <?= $model->methamphetamin_keterangan ?>
+            </td>
+        </tr>
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 4 - Pd : Psikopati Devien </b></font> (Kurang patuh terhadap norma sosial)
-                </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $model->skala_4_pd ?>
+            Carisoprodol Hasil
             </td>
-        </tr>   
-        <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 5 - Mf : Maskulin Feminim </b></font> (Orientasi feminim pada laki-laki dan orientasi maskulin pada wanita)
-                </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $model->skala_5_mf ?>
+            <?= $model->carisoprodol_hasil ?>
             </td>
-        </tr>   
-        <tr class="tr-ac-bc">
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 6 - Pa : Paranoia </b></font> (Curiga, Bermusuhan)
-                </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $model->skala_6_pa ?>
+            <?= $model->carisoprodol_keterangan ?>
             </td>
-        </tr>   
-        <tr class="tr-ac-bc">
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 7 - Pt : Psikastenia </b></font> (Cemas, Khawatir, Fobia, Obsesi Kompulsif)
-                </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $model->skala_7_pt ?>
-            </td>
-        </tr>   
-        <tr class="tr-ac-bc">
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 8 - Sc : Schizophrenia </b></font> (Menarik diri, Pikiran aneh, Kacau)
-                </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $model->skala_8_sc ?>
-            </td>
-        </tr>   
-        <tr class="tr-ac-bc">
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 9 - Ma : Hipomania </b></font> (Impulsif pikiran dan aktivitas yang berlebihan)
-                </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $model->skala_9_ma ?>
-            </td>
-        </tr>   
-        <tr class="tr-ac-bc">
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala 0 - D : Intervensi Sosial </b></font> (Intovert, pemalu, tertutup, minat sosial)
-                </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            <?= $model->skala_0_si ?>
-            </td>
-        </tr>   
+        </tr>
     </table>
-	<br/>
-	<b>B. VALIDITAS</b>
-	<table width="100%" border='0'>
-		<tbody>
-			<tr>
-				<td align="left" width="100%" style="border-bottom: 1px solid #000000;"><?= $model->validitas ?></td>
-			</tr>
-		</tbody>
-	</table>
-	<br/>
-	<b>C. INTERPRETASI SUBTANTIF</b>
-	<table width="100%" border='0'>
-		<tbody>
-			<tr>
-				<td align="left" width="100%" style="border-bottom: 1px solid #000000;"><?= $model->interpretasi_subtantif ?></td>
-			</tr>
-		</tbody>
-	</table>
-	<br/>
-	<b>D. SARAN</b>
-	<table width="100%" border='0'>
-		<tbody>
-			<tr>
-				<td align="left" width="100%" style="border-bottom: 1px solid #000000;"><?= $model->saran ?></td>
-			</tr>
-		</tbody>
-	</table>
-	<br/>
-	<b>E. KESIMPULAN</b>
-	<table width="100%" border='0'>
-		<tbody>
-			<tr>
-				<td align="left" width="100%" style="border-bottom: 1px solid #000000;"><?= $model->kesimpulan ?></td>
-			</tr>
-		</tbody>
-	</table>
 
 </body>
 </html>
