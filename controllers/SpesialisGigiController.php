@@ -221,6 +221,7 @@ class SpesialisGigiController extends Controller
             $model->gingiva_periodontal = 'Normal';
             $model->oral_mucosa = 'Normal';
             $model->tongue = 'Normal';
+            $model->kesimpulan = 'Normal';
         }
 
         return $this->render('periksa', [

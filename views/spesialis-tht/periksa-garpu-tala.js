@@ -5,11 +5,20 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-05 20:45:35 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-07 17:47:20
+ * @Last Modified time: 2020-10-08 21:27:11
  */
 
 
 $(document).ready(function () {
+
+    $('#mcuspesialisthtgarputala-kesimpulan').on('change', function (e) {
+        let kesimpulan = $('#McuSpesialisThtGarpuTala_kesimpulan_0').prop('checked')
+        console.log(kesimpulan);
+        if (kesimpulan)
+            $('.div-penata').hide('slow')
+        else
+            $('.div-penata').show('slow')
+    });
 
     $("#form-spesialis-tht-garpu-tala").on('submit', function (e) {
         e.preventDefault()

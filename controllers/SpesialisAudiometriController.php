@@ -213,6 +213,10 @@ class SpesialisAudiometriController extends Controller
             }
         }
 
+        if($model->isNewRecord) {
+            $model->kesan = 'Normal';
+        }
+
         return $this->render('periksa', [
             'model' => $model,
             'modelPenata' => $modelPenata,

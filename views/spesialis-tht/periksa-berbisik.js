@@ -5,11 +5,20 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-05 20:45:35 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-07 17:28:03
+ * @Last Modified time: 2020-10-08 21:40:42
  */
 
 
 $(document).ready(function () {
+
+    $('#mcuspesialisthtberbisik-kesimpulan').on('change', function (e) {
+        let kesimpulan = $('#McuSpesialisThtBerbisik_kesimpulan_0').prop('checked')
+        console.log(kesimpulan);
+        if (kesimpulan)
+            $('.div-penata').hide('slow')
+        else
+            $('.div-penata').show('slow')
+    });
 
     $("#form-spesialis-tht-berbisik").on('submit', function (e) {
         e.preventDefault()
