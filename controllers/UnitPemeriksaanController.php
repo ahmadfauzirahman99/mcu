@@ -32,13 +32,25 @@ class UnitPemeriksaanController extends \yii\web\Controller
                 return $this->redirect(['/site/ngga-nemu', 'id' => $id]);
             }
             $anamnesis = Anamnesis::findOne(['nomor_rekam_medik' => $modelDataLayanan->no_rekam_medik]);
-            // $anamnesis = new Anamnesis();
             $jenis_pekerjaan = new JenisPekerjaan();
-            $master_pemeriksaan_fisik = MasterPemeriksaanFisik::findOne(['no_rekam_medik'=>$modelDataLayanan->no_rekam_medik]);
+            $master_pemeriksaan_fisik = MasterPemeriksaanFisik::findOne(['no_rekam_medik' => $modelDataLayanan->no_rekam_medik]);
             // var_dump($master_pemeriksaan_fisik);
             // exit();
             $modelBahayaPotensial = new BahayaPotensial();
             $modelBrief = McuBrief::findOne(['no_rekam_medik' => $modelDataLayanan->no_rekam_medik]);
+            if (!$anamnesis) {
+                $anamnesis = new Anamnesis();
+            }
+
+            if (!$master_pemeriksaan_fisik) {
+                $master_pemeriksaan_fisik = new MasterPemeriksaanFisik();
+            }
+
+            if (!$modelBrief) {
+                $modelBrief = new McuBrief();
+            }
+            // $anamnesis = new Anamnesis();
+
         } else {
             $anamnesis = new Anamnesis();
             $modelDataLayanan = new DataLayanan();
@@ -47,6 +59,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $modelBahayaPotensial = new BahayaPotensial();
             $modelBrief = new McuBrief();
         }
+
 
         return $this->render('unit-pemeriksaan', [
             'dataLayanan' => $modelDataLayanan,
@@ -89,8 +102,9 @@ class UnitPemeriksaanController extends \yii\web\Controller
         if ($anamnesis != null) {
             if ($anamnesis->load(Yii::$app->request->post())) {
                 Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-                if ($anamnesis->validate()) {
-                    $anamnesis->save(false);
+
+
+                if ($anamnesis->save(false)) {
                     return [
                         's' => true,
                         'e' => null
@@ -106,8 +120,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
 
         $model = new Anamnesis();
         if ($model->load(Yii::$app->request->post())) {
-            if ($anamnesis->validate()) {
-                $anamnesis->save(false);
+            if ($model->save()) {
                 return [
                     's' => true,
                     'e' => null
@@ -115,7 +128,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
             } else {
                 return [
                     's' => false,
-                    'e' => $anamnesis->errors
+                    'e' => $model->errors
                 ];
             }
         }
@@ -127,8 +140,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
         $model = new JenisPekerjaan();
         if ($model->load(Yii::$app->request->post())) {
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            if ($model->validate()) {
-                $model->save(false);
+            if ($model->save()) {
                 return [
                     's' => true,
                     'e' => null
@@ -150,8 +162,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
         $model = new BahayaPotensial();
         if ($model->load(Yii::$app->request->post())) {
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            if ($model->validate()) {
-                $model->save(false);
+            if ($model->save()) {
                 return [
                     's' => true,
                     'e' => null
@@ -176,8 +187,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
         if ($brief != null) {
             if ($brief->load(Yii::$app->request->post())) {
                 Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-                if ($brief->validate()) {
-                    $brief->save(false);
+                if ($brief->save()) {
                     return [
                         's' => true,
                         'e' => null
@@ -193,8 +203,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
 
         $model = new McuBrief();
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->validate()) {
-                $model->save(false);
+            if ($model->save()) {
                 return [
                     's' => true,
                     'e' => null
@@ -218,8 +227,8 @@ class UnitPemeriksaanController extends \yii\web\Controller
         if ($fisik != null) {
             if ($fisik->load(Yii::$app->request->post())) {
                 Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-                if ($fisik->validate()) {
-                    $fisik->save(false);
+                $fisik->id_dokter_pemeriksaan_fisik = (string)Yii::$app->user->identity->id;
+                if ($fisik->save()) {
                     return [
                         's' => true,
                         'e' => null
@@ -234,9 +243,13 @@ class UnitPemeriksaanController extends \yii\web\Controller
         }
 
         $model = new MasterPemeriksaanFisik();
+    
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->validate()) {
-                $model->save(false);
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            $model->id_dokter_pemeriksaan_fisik = (string)Yii::$app->user->identity->id;
+
+            if ($model->save()) {
                 return [
                     's' => true,
                     'e' => null

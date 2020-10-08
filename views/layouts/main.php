@@ -94,11 +94,12 @@ AppAsset::register($this);
                     </ul>
                 </div>
                 <!-- End User -->
+                <?php $identitas_dokter = Helper::getRumpun()  ?>
 
                 <!--- Sidemenu -->
                 <div id="sidebar-menu">
                     <ul>
-                        <li class="text-muted menu-title">Navigation</li>
+                        <li class="text-muted menu-title">Navigation <?= $identitas_dokter['kodejenis'] ?></li>
                         <li>
                             <a href="<?= Url::to(['/site/index']) ?>" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
                         </li>
@@ -106,7 +107,6 @@ AppAsset::register($this);
                         <li>
                             <a href="<?= Url::to(['/unit-pemeriksaan/unit-pemeriksaan']) ?>" class="waves-effect"><i class="mdi mdi-google-street-view"></i> <span> Unit Pemeriksaan </span> </a>
                         </li>
-                        <?php $identitas_dokter = Helper::getRumpun()  ?>
 
                         <?php
                         if ($identitas_dokter['kodejenis'] == 12) :
@@ -125,6 +125,15 @@ AppAsset::register($this);
                         elseif ($identitas_dokter['kodejenis'] == 16) :
                         ?>
                             <?= $this->render('nav-mata') ?>
+                        <?php
+                        elseif ($identitas_dokter['kodejenis'] == 36) :
+                        ?>
+                            <?= $this->render('nav-perawat') ?>
+                        <?php
+                        elseif ($identitas_dokter['kodejenis'] == 37) :
+                        ?>
+                            <?= $this->render('nav-perawat') ?>
+
                         <?php else : ?>
                             <?= $this->render('nav-root') ?>
                         <?php endif ?>

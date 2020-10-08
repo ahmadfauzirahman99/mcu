@@ -294,7 +294,7 @@ class MasterPemeriksaanFisik extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['mata_visus_dengan_koreksi_kiri', 'mata_visus_tanpa_koreksi_kiri', 'diastolik', 'sistolik', 'status_gizi_tinggi_badan', 'status_gizi_berat_badan', 'status_gizi_lingkaran_perut', 'status_gizi_lingkaran_pinggang'], 'default', 'value' => null],
+            [['mata_visus_dengan_koreksi_kiri', 'mata_visus_tanpa_koreksi_kiri', 'diastolik', 'sistolik', 'status_gizi_tinggi_badan', 'status_gizi_berat_badan', 'status_gizi_lingkaran_perut', 'status_gizi_lingkaran_pinggang'], 'default', 'value' => 0],
             [['status_gizi_tinggi_badan', 'status_gizi_berat_badan', 'status_gizi_lingkaran_perut', 'status_gizi_lingkaran_pinggang'], 'integer'],
             [['status_gizi_imt'], 'number'],
             [['gigi', 'kulit_lain', 'resume_kelainan', 'hasil_body_map', 'hasil_brief_survey', 'diagnosis_kerja', 'diagnosis_diferensial', 'kategori_kesehatan'], 'string'],

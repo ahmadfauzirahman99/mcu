@@ -68,7 +68,7 @@ $this->title = "MCU RSAA"
             </div>
         </div>
     <?php endif ?>
-    <?php if ($identitas_dokter['kodejenis'] == 20 ||$identitas_dokter['kodejenis'] == 1) { ?>
+    <?php if ($identitas_dokter['kodejenis'] == 20 ||$identitas_dokter['kodejenis'] == 1 || $identitas_dokter['kodejenis'] == 36 || $identitas_dokter['kodejenis'] == 37) { ?>
 
         <div class="form-group">
             <?= Html::submitButton('Save Anamnesis', ['class' => 'btn btn-success btn-block']) ?>
