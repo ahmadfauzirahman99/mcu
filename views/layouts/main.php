@@ -133,6 +133,10 @@ AppAsset::register($this);
                         elseif ($identitas_dokter['kodejenis'] == 37) :
                         ?>
                             <?= $this->render('nav-perawat') ?>
+                        <?php
+                        elseif ($identitas_dokter['kodejenis'] == 2) :
+                        ?>
+                            <?= $this->render('nav-gigi') ?>
 
                         <?php else : ?>
                             <?= $this->render('nav-root') ?>
