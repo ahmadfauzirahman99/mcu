@@ -194,15 +194,15 @@ $check=["", "V"];
                 <font color="#000000"><b>Skala L (Lie Scale) </b></font> (Kebohongan Ketidak Jujuran Jawaban)
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            
+            <?= $model->skala_l ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-            <font color="#000000"><b>Skala F </b></font> (Salah mengerti terhadap makna pertanyaan atau tidak menangkap arti pertanyaan / sengaja tidak mau membaca tetapi dijawab dengan asal mengisi)
+            <font color="#000000"><b>Skala P </b></font> (Salah mengerti terhadap makna pertanyaan atau tidak menangkap arti pertanyaan / sengaja tidak mau membaca tetapi dijawab dengan asal mengisi)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            
+            <?= $model->skala_p ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
@@ -210,7 +210,7 @@ $check=["", "V"];
             <font color="#000000"><b>Skala K </b></font> (Sikap defensive, mengelak atau menghindar)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            
+            <?= $model->skala_k ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
@@ -218,7 +218,7 @@ $check=["", "V"];
             <font color="#000000"><b>Skala 1 - Hs : Hipocondriasis </b></font> (Keluhan fisik, gangguan fisik dan fungsi tubuh)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            
+            <?= $model->skala_1_hs ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
@@ -226,7 +226,7 @@ $check=["", "V"];
             <font color="#000000"><b>Skala 2 - D : Depresi </b></font> (Sedih, tidak bahagia dan tertekan)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            
+            <?= $model->skala_2_d ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
@@ -234,7 +234,7 @@ $check=["", "V"];
             <font color="#000000"><b>Skala 3 - Hy : Histeria </b></font> (Bereaksi terhadap stress dengan menolak masalah)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-           
+            <?= $model->skala_3_hy ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
@@ -242,7 +242,7 @@ $check=["", "V"];
             <font color="#000000"><b>Skala 4 - Pd : Psikopati Devien </b></font> (Kurang patuh terhadap norma sosial)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-           
+            <?= $model->skala_4_pd ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
@@ -250,7 +250,7 @@ $check=["", "V"];
             <font color="#000000"><b>Skala 5 - Mf : Maskulin Feminim </b></font> (Orientasi feminim pada laki-laki dan orientasi maskulin pada wanita)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            
+            <?= $model->skala_5_mf ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
@@ -258,7 +258,7 @@ $check=["", "V"];
             <font color="#000000"><b>Skala 6 - Pa : Paranoia </b></font> (Curiga, Bermusuhan)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            
+            <?= $model->skala_6_pa ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
@@ -266,7 +266,7 @@ $check=["", "V"];
             <font color="#000000"><b>Skala 7 - Pt : Psikastenia </b></font> (Cemas, Khawatir, Fobia, Obsesi Kompulsif)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-           
+            <?= $model->skala_7_pt ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
@@ -274,7 +274,7 @@ $check=["", "V"];
             <font color="#000000"><b>Skala 8 - Sc : Schizophrenia </b></font> (Menarik diri, Pikiran aneh, Kacau)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            
+            <?= $model->skala_8_sc ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
@@ -282,7 +282,7 @@ $check=["", "V"];
             <font color="#000000"><b>Skala 9 - Ma : Hipomania </b></font> (Impulsif pikiran dan aktivitas yang berlebihan)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            
+            <?= $model->skala_9_ma ?>
             </td>
         </tr>   
         <tr class="tr-ac-bc">
@@ -290,7 +290,7 @@ $check=["", "V"];
             <font color="#000000"><b>Skala 0 - D : Intervensi Sosial </b></font> (Intovert, pemalu, tertutup, minat sosial)
                 </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-            
+            <?= $model->skala_0_si ?>
             </td>
         </tr>   
     </table>
@@ -299,7 +299,7 @@ $check=["", "V"];
 	<table width="100%" border='0'>
 		<tbody>
 			<tr>
-				<td align="left" width="100%" style="border-bottom: 1px solid #000000;"><?= $model->saran ?></td>
+				<td align="left" width="100%" style="border-bottom: 1px solid #000000;"><?= $model->validitas ?></td>
 			</tr>
 		</tbody>
 	</table>
@@ -308,7 +308,7 @@ $check=["", "V"];
 	<table width="100%" border='0'>
 		<tbody>
 			<tr>
-				<td align="left" width="100%" style="border-bottom: 1px solid #000000;"><?= $model->kesimpulan ?></td>
+				<td align="left" width="100%" style="border-bottom: 1px solid #000000;"><?= $model->interpretasi_subtantif ?></td>
 			</tr>
 		</tbody>
 	</table>
