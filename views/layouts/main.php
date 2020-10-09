@@ -99,7 +99,7 @@ AppAsset::register($this);
                 <!--- Sidemenu -->
                 <div id="sidebar-menu">
                     <ul>
-                        <li class="text-muted menu-title">Navigation <?= $identitas_dokter['kodejenis'] ?></li>
+                        <li class="text-muted menu-title">Navigation</li>
                         <li>
                             <a href="<?= Url::to(['/site/index']) ?>" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
                         </li>

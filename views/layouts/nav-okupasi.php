@@ -32,6 +32,16 @@ use yii\helpers\Url;
     </ul>
 </li>
 
+<li class="has_sub">
+    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> Kejiwaan </span> <span class="menu-arrow"></span></a>
+    <ul class="list-unstyled">
+        <li><a href="<?= Url::to(['/spesialis-kejiwaan/periksa']) ?>">Psikiatri</a></li>
+        <li><a href="<?= Url::to(['/spesialis-psikologi/periksa']) ?>">Psikologi</a></li>
+    </ul>
+</li>
+<li>
+    <a href="<?= Url::to(['/spesialis-narkoba/periksa']) ?>" class="waves-effect"><i class="fas fa-eyedropper"></i> <span> Narkoba </span> </a>
+</li>
 <li class=" text-muted menu-title">Laporan</li>
 
 <li>
