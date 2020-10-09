@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_at',
             'updated_at',
             'created_by',
-            //'updated_by',
+            'updated_by',
             //'benzodiazepin_hasil',
             //'benzodiazepin_keterangan',
             //'thc_hasil',

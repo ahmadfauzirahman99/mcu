@@ -4,16 +4,17 @@ namespace app\controllers;
 
 use app\models\DataLayanan;
 use Yii;
-use app\models\SpesialisKejiwaan;
-use app\models\SpesialisKejiwaanSearch;
+use app\models\SpesialisPsikologi;
+use app\models\SpesialisPsikologiSearch;
+use Mpdf\Mpdf;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * SpesialisKejiwaanController implements the CRUD actions for SpesialisKejiwaan model.
+ * SpesialisPsikologiController implements the CRUD actions for SpesialisPsikologi model.
  */
-class SpesialisKejiwaanController extends Controller
+class SpesialisPsikologiController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -31,12 +32,12 @@ class SpesialisKejiwaanController extends Controller
     }
 
     /**
-     * Lists all SpesialisKejiwaan models.
+     * Lists all SpesialisPsikologi models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new SpesialisKejiwaanSearch();
+        $searchModel = new SpesialisPsikologiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,7 +47,7 @@ class SpesialisKejiwaanController extends Controller
     }
 
     /**
-     * Displays a single SpesialisKejiwaan model.
+     * Displays a single SpesialisPsikologi model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -59,7 +60,7 @@ class SpesialisKejiwaanController extends Controller
     }
 
     /**
-     * Creates a new SpesialisKejiwaan model.
+     * Creates a new SpesialisPsikologi model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -74,12 +75,12 @@ class SpesialisKejiwaanController extends Controller
                 return $this->redirect(['/site/ngga-nemu', 'id' => $id_cari]);
             }
             
-            $model = SpesialisKejiwaan::find()
+            $model = SpesialisPsikologi::find()
             ->where(['no_rekam_medik' => $pasien->no_rekam_medik])
             ->andWhere(['no_daftar' => $pasien->no_registrasi])
             ->one();
             if (!$model)
-                $model = new SpesialisKejiwaan();
+                $model = new SpesialisPsikologi();
             $model->cari_pasien = $id_cari;
             $no_rm = $pasien->no_rekam_medik;
             $no_daftar = $pasien->no_registrasi;
@@ -87,7 +88,7 @@ class SpesialisKejiwaanController extends Controller
             $pasien = null;
             $no_rm = null;
             $no_daftar = null;
-            $model = new SpesialisKejiwaan();
+            $model = new SpesialisPsikologi();
         }
 
         if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
@@ -113,38 +114,57 @@ class SpesialisKejiwaanController extends Controller
             'pasien' => $pasien,
         ]);
     }
-
-    public function actionCreate($no_rm = null)
+    
+     public function actionCreate($id = null)
     {
-        $model = new SpesialisKejiwaan();
 
-        if ($no_rm != null) {
-            $pasien = DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one();
+        $id_cari = $id;
+
+        if ($id_cari != null) {
+            $pasien = DataLayanan::find()->where(['id_data_pelayanan' => $id_cari])->one();
             if (!$pasien) {
-                return $this->redirect(['/site/ngga-nemu', 'no_rm' => $no_rm]);
+                return $this->redirect(['/site/ngga-nemu', 'id' => $id_cari]);
             }
-            $model = SpesialisKejiwaan::find()->where(['no_rekam_medik' => $no_rm])->one();
+            
+            $model = SpesialisPsikologi::find()
+            ->where(['no_rekam_medik' => $pasien->no_rekam_medik])
+            ->andWhere(['no_daftar' => $pasien->no_registrasi])
+            ->one();
             if (!$model)
-                $model = new SpesialisKejiwaan();
-            $model->cari_pasien = $no_rm;
+                $model = new SpesialisPsikologi();
+            $model->cari_pasien = $id_cari;
+            $no_rm = $pasien->no_rekam_medik;
+            $no_daftar = $pasien->no_registrasi;
         } else {
             $pasien = null;
-            $model = new SpesialisKejiwaan();
+            $no_rm = null;
+            $no_daftar = null;
+            $model = new SpesialisPsikologi();
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_spesialis_kejiwaan]);
+        if ($model->load(Yii::$app->request->post())) {
+
+            $date = date('Y-m-d H:i:s');
+            //$id = \Yii::$app->user->getId();
+
+            //$model->created_id =$id;
+            $model->created_at =$date;
+
+            if($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id_spesialis_psikologi]);
+            }
         }
 
         return $this->render('create', [
             'model' => $model,
             'no_rm' => $no_rm,
+            'no_daftar' => $no_daftar,
             'pasien' => $pasien,
         ]);
     }
 
     /**
-     * Updates an existing SpesialisKejiwaan model.
+     * Updates an existing SpesialisPsikologi model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -155,7 +175,7 @@ class SpesialisKejiwaanController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_spesialis_kejiwaan]);
+            return $this->redirect(['view', 'id' => $model->id_spesialis_psikologi]);
         }
 
         return $this->render('update', [
@@ -164,7 +184,7 @@ class SpesialisKejiwaanController extends Controller
     }
 
     /**
-     * Deletes an existing SpesialisKejiwaan model.
+     * Deletes an existing SpesialisPsikologi model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -178,24 +198,40 @@ class SpesialisKejiwaanController extends Controller
     }
 
     /**
-     * Finds the SpesialisKejiwaan model based on its primary key value.
+     * Finds the SpesialisPsikologi model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return SpesialisKejiwaan the loaded model
+     * @return SpesialisPsikologi the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = SpesialisKejiwaan::findOne($id)) !== null) {
+        if (($model = SpesialisPsikologi::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
+    // public function actionCetakPsikologi()
+    // { 
+        
+    //     // $pegawai = new Pegawai();
+    //     // $model = $pegawai->getPegawai($idpeg);
+
+    //     $mpdf = new Mpdf();
+    //     //$mpdf->AddPage('L');
+    //     $mpdf->WriteHTML($this->renderPartial('print-psikologi' , [
+    //         // 'model'=>$model, 
+    //     ]));
+        
+    //     return $mpdf->Output();
+    //     exit;
+    // }
+
     public function actionCetak($no_rm, $no_daftar)
     {
-        $model = SpesialisKejiwaan::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
+        $model = SpesialisPsikologi::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
 
         $mpdf = new \Mpdf\Mpdf([
             'mode' => 'utf-8',
@@ -207,7 +243,7 @@ class SpesialisKejiwaanController extends Controller
             'margin_header' => 10,
             'margin_footer' => 10
         ]);
-        $mpdf->SetTitle('Spesialis Psikiatri ' . $model['no_rekam_medik']);
+        $mpdf->SetTitle('Spesialis Psikologi ' . $model['no_rekam_medik']);
         // return $this->renderPartial('cetak', [
         //     'model' => $model,
         //     'no_rm' => $no_rm,
@@ -218,7 +254,7 @@ class SpesialisKejiwaanController extends Controller
             'no_rm' => $no_rm,
             'pasien' => DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one(),
         ]));
-        $mpdf->Output('Spesialis Psikiatri ' . $model['no_rekam_medik'] . '.pdf', 'I');
+        $mpdf->Output('Spesialis Psikologi ' . $model['no_rekam_medik'] . '.pdf', 'I');
         exit;
     }
 }

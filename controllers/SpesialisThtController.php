@@ -426,7 +426,6 @@ class SpesialisThtController extends Controller
             // $model->tl_test_berbisik_telinga_kiri_3 = 'Normal';
             // $model->tl_test_berbisik_telinga_kanan_1 = 'Normal';
             // $model->tl_test_berbisik_telinga_kiri_1 = 'Normal';
-            $model->kesimpulan = 'Normal';
         }
 
         return $this->render('periksa-berbisik', [
@@ -533,7 +532,6 @@ class SpesialisThtController extends Controller
             $model->tl_swabach_telinga_kiri = 'Normal';
             // $model->tl_bing_telinga_kanan = 'Normal';
             // $model->tl_bing_telinga_kiri = 'Normal';
-            $model->kesimpulan = 'Normal';
         }
 
         return $this->render('periksa-garpu-tala', [

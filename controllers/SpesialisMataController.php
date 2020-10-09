@@ -263,7 +263,6 @@ class SpesialisMataController extends Controller
             $model->penglihatan_3_dimensi_mata_kiri = 'Normal';
             $model->virus_mata_tanpa_koreksi_mata_kanan = 'VOD: 20/20';
             $model->virus_mata_tanpa_koreksi_mata_kiri = 'VOS: 20/20';
-            $model->kesimpulan = 'Normal';
         }
 
         return $this->render('periksa', [
@@ -298,34 +297,5 @@ class SpesialisMataController extends Controller
                 ];
             }
         }
-    }
-
-    public function actionCetak($no_rm, $no_daftar)
-    {
-        $model = McuSpesialisMata::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
-
-        $mpdf = new \Mpdf\Mpdf([
-            'mode' => 'utf-8',
-            'format' => 'legal',
-            'margin_left' => 10,
-            'margin_right' => 10,
-            'margin_top' => 10,
-            'margin_bottom' => 10,
-            'margin_header' => 10,
-            'margin_footer' => 10
-        ]);
-        $mpdf->SetTitle('Spesialis Mata ' . $model['no_rekam_medik']);
-        // return $this->renderPartial('cetak', [
-        //     'model' => $model,
-        //     'no_rm' => $no_rm,
-        //     'pasien' => DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one(),
-        // ]);
-        $mpdf->WriteHTML($this->renderPartial('cetak', [
-            'model' => $model,
-            'no_rm' => $no_rm,
-            'pasien' => DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one(),
-        ]));
-        $mpdf->Output('Spesialis Mata ' . $model['no_rekam_medik'] . '.pdf', 'I');
-        exit;
     }
 }
