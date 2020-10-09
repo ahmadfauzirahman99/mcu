@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $id_spesialis_tht_garpu_tala
  * @property string $no_rekam_medik
+ * @property string $no_daftar
  * @property string|null $created_at
  * @property string|null $updated_at
  * @property int|null $created_by
@@ -47,6 +48,8 @@ class McuSpesialisThtGarpuTala extends BaseAR
             [['kesimpulan', 'riwayat'], 'string'],
             [['no_rekam_medik'], 'string', 'max' => 120],
             [['tl_test_garpu_tala_rinne_telinga_kanan', 'tl_test_garpu_tala_rinne_telinga_kiri', 'tl_weber_telinga_kanan', 'tl_weber_telinga_kiri', 'tl_swabach_telinga_kanan', 'tl_swabach_telinga_kiri', 'tl_bing_telinga_kanan', 'tl_bing_telinga_kiri'], 'string', 'max' => 70],
+            
+            ['no_daftar', 'unique'],
         ];
     }
 
