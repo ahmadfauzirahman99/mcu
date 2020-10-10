@@ -16,8 +16,12 @@ $itemPemeriksaan = [
     "Pemeriksaan Fisik",
     "Pemeriksaan Mata",
     "Pemeriksaan Gigi",
-    "Pemeriksaan Test Berbisik",
-    "Pemeriksaan Audio Metri"
+    "Pemeriksaan Tes Berbisik",
+    "Pemeriksaan AudioMetri",
+    "Pemeriksaan Tes Garpu Tala",
+    "Pemeriksaan Psikiatri",
+    "Pemeriksaan Psikologi",
+    "Pemeriksaan Narkoba",
 ];
 ?>
 <?php $form = ActiveForm::begin(); ?>
