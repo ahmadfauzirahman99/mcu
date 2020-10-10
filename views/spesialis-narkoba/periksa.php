@@ -117,80 +117,108 @@ $this->params['breadcrumbs'][] = $this->title;
             </b></td>
         </tr>
         <tr class="tr-ac-bc">
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="20" align="left" valign=middle>
             Benzodiazepin Hasil
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-                <?= $form->field($model, 'benzodiazepin_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="15" align="left" valign=middle>
+            <?= $form->field($model, 'benzodiazepin_hasil')->inline()->radioList(['Positif' => 'Positif', 'Negatif' => 'Negatif',], [
+                'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                    return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>    
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <?= $form->field($model, 'benzodiazepin_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'benzodiazepin_keterangan')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Text..."]) ?>
             </td>
         </tr>
         <tr class="tr-ac-bc">
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="20" align="left" valign=middle>
             THC Hasil
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-                <?= $form->field($model, 'thc_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="15" align="left" valign=middle>
+            <?= $form->field($model, 'thc_hasil')->inline()->radioList(['Positif' => 'Positif', 'Negatif' => 'Negatif',], [
+                'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                    return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>    
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <?= $form->field($model, 'thc_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'thc_keterangan')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Text..."]) ?>
             </td>
         </tr>
         <tr class="tr-ac-bc">
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="20" align="left" valign=middle>
             Opiat Hasil
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-                <?= $form->field($model, 'opiat_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="15" align="left" valign=middle>
+            <?= $form->field($model, 'opiat_hasil')->inline()->radioList(['Positif' => 'Positif', 'Negatif' => 'Negatif',], [
+                'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                    return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>    
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <?= $form->field($model, 'opiat_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'opiat_keterangan')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Text..."]) ?>
             </td>
         </tr>
         <tr class="tr-ac-bc">
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="20" align="left" valign=middle>
             Amphetammin Hasil
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-                <?= $form->field($model, 'amphetammin_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="15" align="left" valign=middle>
+            <?= $form->field($model, 'amphetammin_hasil')->inline()->radioList(['Positif' => 'Positif', 'Negatif' => 'Negatif',], [
+                'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                    return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>    
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <?= $form->field($model, 'amphetammin_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'amphetammin_keterangan')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Text..."]) ?>
             </td>
         </tr>
         <tr class="tr-ac-bc">
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="20" align="left" valign=middle>
             Kokain Hasil
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-                <?= $form->field($model, 'kokain_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="15" align="left" valign=middle>
+            <?= $form->field($model, 'kokain_hasil')->inline()->radioList(['Positif' => 'Positif', 'Negatif' => 'Negatif',], [
+                'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                    return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>    
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <?= $form->field($model, 'kokain_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'kokain_keterangan')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Text..."]) ?>
             </td>
         </tr>
         <tr class="tr-ac-bc">
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="20" align="left" valign=middle>
             Methamphetamin Hasil
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-                <?= $form->field($model, 'methamphetamin_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="15" align="left" valign=middle>
+            <?= $form->field($model, 'methamphetamin_hasil')->inline()->radioList(['Positif' => 'Positif', 'Negatif' => 'Negatif',], [
+                'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                    return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>    
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <?= $form->field($model, 'methamphetamin_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'methamphetamin_keterangan')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Text..."]) ?>
             </td>
         </tr>
         <tr class="tr-ac-bc">
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="20" align="left" valign=middle>
             Carisoprodol Hasil
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-                <?= $form->field($model, 'carisoprodol_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="15" align="left" valign=middle>
+            <?= $form->field($model, 'carisoprodol_hasil')->inline()->radioList(['Positif' => 'Positif', 'Negatif' => 'Negatif',], [
+                'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                    return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                }
+            ])->label(false) ?>    
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <?= $form->field($model, 'carisoprodol_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'carisoprodol_keterangan')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Text..."]) ?>
             </td>
         </tr>
     </table>
