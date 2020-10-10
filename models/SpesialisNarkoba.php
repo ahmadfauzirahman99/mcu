@@ -10,6 +10,7 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property int $id_spesialis_narkoba
  * @property string $no_rekam_medik
+ * @property string $no_daftar
  * @property string|null $created_at
  * @property string|null $updated_at
  * @property int|null $created_by
@@ -60,7 +61,7 @@ class SpesialisNarkoba extends \yii\db\ActiveRecord
     {
         return [
             [['no_rekam_medik'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at','no_daftar'], 'safe'],
             [['created_by', 'updated_by'], 'default', 'value' => null],
             [['created_by', 'updated_by'], 'integer'],
             [['no_rekam_medik'], 'string', 'max' => 120],

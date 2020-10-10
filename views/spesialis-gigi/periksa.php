@@ -539,46 +539,7 @@ $dataG = [
 
     <?php ActiveForm::end(); ?>
     <br>
-    <?php Pjax::begin(['id' => 'tbl-penata']); ?>
-
-    <?= GridView::widget([
-        'dataProvider' => new ActiveDataProvider([
-            'query' => $modelPenataList,
-        ]),
-        'tableOptions' => ['class' => 'table table-sm table-hover table-bordered'],
-        'columns' => [
-            [
-                'class' => 'yii\grid\SerialColumn',
-                'headerOptions' => ['style' => 'background-color: #e7ebee;',],
-            ],
-            [
-                'headerOptions' => ['style' => 'width: 30%; background-color: #e7ebee;',],
-                'attribute' => 'jenis_permasalahan',
-                'label' => 'Jenis Permasalahan Medis & No Medis (Okupasi Dll)',
-            ],
-            [
-                'headerOptions' => ['style' => 'width: 30%; background-color: #e7ebee;',],
-                'attribute' => 'rencana',
-                'label' => 'Rencana Tindakan (materi & metode) Tatalaksana Medikamentoasa non media mentosa (nutrisi,olahraga,dll)',
-            ],
-            [
-                'headerOptions' => ['style' => 'width: 10%; background-color: #e7ebee;',],
-                'attribute' => 'target_waktu',
-            ],
-            [
-                'headerOptions' => ['style' => 'width: 15%; background-color: #e7ebee;',],
-                'attribute' => 'hasil_yang_diharapkan',
-            ],
-            [
-                'headerOptions' => ['style' => 'width: 15%; background-color: #e7ebee;',],
-                'attribute' => 'keterangan',
-            ],
-        ],
-        'pager' => [
-            'class' => 'app\components\GridPager',
-        ],
-    ]); ?>
-    <?php Pjax::end(); ?>
+    
 
     <hr>
 
