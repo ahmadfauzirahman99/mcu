@@ -36,6 +36,8 @@ class McuPenatalaksanaanMcu extends \yii\db\ActiveRecord
             [['jenis_permasalahan', 'rencana', 'target_waktu', 'hasil_yang_diharapkan', 'keterangan', 'no_rekam_medik', 'jenis'], 'string'],
             [['id_fk'], 'default', 'value' => null],
             [['id_fk'], 'integer'],
+
+            [['jenis_permasalahan', 'rencana',], 'required'],
         ];
     }
 

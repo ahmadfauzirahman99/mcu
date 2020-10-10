@@ -61,6 +61,7 @@ use Yii;
  * @property string|null $kesimpulan
  * @property string|null $saran
  * @property string|null $riwayat
+ * @property string|null $status_pemeriksaan
  */
 class McuSpesialisGigi extends BaseAR
 {
@@ -89,6 +90,7 @@ class McuSpesialisGigi extends BaseAR
             [['oklusi', 'torus_palatinus', 'torus_mandibularis', 'palatum', 'supernumerary_teeth', 'diastema', 'spacing', 'oral_hygiene', 'gingiva_periodontal', 'oral_mucosa', 'tongue'], 'string', 'max' => 30],
 
             // ['no_daftar', 'required'],
+            ['kesan', 'required'],
             ['no_daftar', 'unique'],
         ];
     }

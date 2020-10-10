@@ -221,7 +221,7 @@ class SpesialisGigiController extends Controller
             $model->gingiva_periodontal = 'Normal';
             $model->oral_mucosa = 'Normal';
             $model->tongue = 'Normal';
-            $model->kesimpulan = 'Normal';
+            $model->kesan = 'Normal';
         }
 
         return $this->render('periksa', [
@@ -273,6 +273,9 @@ class SpesialisGigiController extends Controller
             'margin_footer' => 10
         ]);
         $mpdf->SetTitle('Spesialis Gigi ' . $model['no_rekam_medik']);
+        if ($model->kesan == 'Normal') {
+            $model->kesimpulan = 'Normal';
+        }
         // return $this->renderPartial('cetak', [
         //     'model' => $model,
         //     'no_rm' => $no_rm,

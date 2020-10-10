@@ -227,9 +227,12 @@ class SpesialisThtController extends Controller
         ]);
     }
 
-    public function actionCetak($no_rm)
+    public function actionCetak($no_rm, $no_daftar)
     {
-        $model = McuSpesialisTht::findOne(['no_rekam_medik' => $no_rm]);
+        $model = McuSpesialisThtBerbisik::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
+        $modelAudiometri = McuSpesialisAudiometri::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
+        $modelBerbisik = McuSpesialisThtBerbisik::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
+        $modelGarpuTala = McuSpesialisThtGarpuTala::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
 
         $mpdf = new \Mpdf\Mpdf([
             'mode' => 'utf-8',
@@ -237,22 +240,30 @@ class SpesialisThtController extends Controller
             'margin_left' => 10,
             'margin_right' => 10,
             'margin_top' => 10,
-            'margin_bottom' => 10,
+            'margin_bottom' => 5,
             'margin_header' => 10,
-            'margin_footer' => 10
+            'margin_footer' => 5
         ]);
-        $mpdf->SetTitle('Cetak Distribusi ' . $model['no_rekam_medik']);
+        $mpdf->shrink_tables_to_fit = 1;
+        $mpdf->use_kwt = true;
+        $mpdf->SetTitle('Spesialis THT ' . $model['no_rekam_medik']);
         // return $this->renderPartial('cetak', [
         //     'model' => $model,
+        //     'modelAudiometri' => $modelAudiometri,
+        //     'modelBerbisik' => $modelBerbisik,
+        //     'modelGarpuTala' => $modelGarpuTala,
         //     'no_rm' => $no_rm,
         //     'pasien' => DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one(),
         // ]);
         $mpdf->WriteHTML($this->renderPartial('cetak', [
             'model' => $model,
+            'modelAudiometri' => $modelAudiometri,
+            'modelBerbisik' => $modelBerbisik,
+            'modelGarpuTala' => $modelGarpuTala,
             'no_rm' => $no_rm,
             'pasien' => DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one(),
         ]));
-        $mpdf->Output('Cetak Distribusi ' . $model['no_rekam_medik'] . '.pdf', 'I');
+        $mpdf->Output('Spesialis THT ' . $model['no_rekam_medik'] . '.pdf', 'I');
         exit;
     }
 
@@ -426,7 +437,9 @@ class SpesialisThtController extends Controller
             // $model->tl_test_berbisik_telinga_kiri_3 = 'Normal';
             // $model->tl_test_berbisik_telinga_kanan_1 = 'Normal';
             // $model->tl_test_berbisik_telinga_kiri_1 = 'Normal';
-            $model->kesimpulan = 'Normal';
+            $model->tl_test_berbisik_telinga_kanan = 'Dalam Batas Normal';
+            $model->tl_test_berbisik_telinga_kiri = 'Dalam Batas Normal';
+            $model->kesan = 'Normal';
         }
 
         return $this->render('periksa-berbisik', [
@@ -533,7 +546,7 @@ class SpesialisThtController extends Controller
             $model->tl_swabach_telinga_kiri = 'Normal';
             // $model->tl_bing_telinga_kanan = 'Normal';
             // $model->tl_bing_telinga_kiri = 'Normal';
-            $model->kesimpulan = 'Normal';
+            $model->kesan = 'Normal';
         }
 
         return $this->render('periksa-garpu-tala', [
