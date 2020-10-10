@@ -10,4 +10,7 @@ use yii\helpers\Url;
     <a href="<?= Url::to(['/data-layanan/index']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Data Pelayanan </span> </a>
 </li>
 
-<li class=" text-muted menu-title">Laporan</li>
+<li class=" text-muted menu-title">Darurat</li>
+<li>
+    <a href="<?= Url::to(['/site/item-mcu']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Item MCU </span> </a>
+</li>

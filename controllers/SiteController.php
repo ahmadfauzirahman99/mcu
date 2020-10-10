@@ -28,7 +28,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'dokter', 'test'],
+                        'actions' => ['logout', 'index', 'dokter', 'test', 'item-mcu'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -203,7 +203,7 @@ class SiteController extends Controller
                 ->andWhere(['not', ['no_rekam_medik' => null]])
                 ->andWhere(['not', ['no_registrasi' => null]])
                 ->one();
-            
+
             // var_dump($dataPelayanan['no_rekam_medik']);
             $id_regis = $dataPelayanan['no_registrasi'];
             $id_da = $dataPelayanan['no_rekam_medik'];
@@ -215,5 +215,18 @@ class SiteController extends Controller
 
         echo "berhasil";
         exit();
+    }
+
+    public function actionItemMcu($id = null)
+    {
+        if ($id != null) {
+            $modelDataLayanan = DataLayanan::findOne(['id_data_pelayanan' => $id]);
+            if (!$modelDataLayanan) {
+                return $this->redirect(['/site/ngga-nemu', 'id' => $id]);
+            }
+        } else {
+            $model = new DataLayanan();
+        }
+        return $this->render('item-mcu', ['model' => $model]);
     }
 }
