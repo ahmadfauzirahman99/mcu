@@ -319,6 +319,100 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php ActiveForm::end(); ?>
 
+    <hr>
+
+    <?php
+    $displayPenata = 'none';
+    if ($model->status == '1')
+        $displayPenata = 'block';
+    ?>
+    <div class="div-penata" style="display: <?= $displayPenata ?>;">
+
+        <h3>
+            PERMASALAHAN PASIEN & RENCANAN PENATALAKSANAAN
+        </h3>
+
+        <?php $form = ActiveForm::begin([
+            'id' => 'form-spesialis-kejiwaan-penata',
+            'validateOnSubmit' => false, // agar submit ajax tidak 2 kali saat pertama kali reload
+            'action' => ['/spesialis-kejiwaan/simpan-penata'],
+        ]); ?>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <?php echo $form->field($modelPenata, 'jenis_permasalahan')->textArea(['rows' => 2]); ?>
+            </div>
+            <div class="col-sm-3">
+                <?php echo $form->field($modelPenata, 'rencana')->textArea(['rows' => 2]); ?>
+            </div>
+            <div class="col-sm-2">
+                <?php echo $form->field($modelPenata, 'target_waktu')->textArea(['rows' => 2]); ?>
+            </div>
+            <div class="col-sm-2">
+                <?php echo $form->field($modelPenata, 'hasil_yang_diharapkan')->textArea(['rows' => 2]); ?>
+            </div>
+            <div class="col-sm-2">
+                <?php echo $form->field($modelPenata, 'keterangan')->textArea(['rows' => 2]); ?>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 5px;">
+            <?php
+            Pjax::begin(['id' => 'btn-cetak-penata']);
+            if (!$model->isNewRecord)
+                echo Html::submitButton('Simpan', ['class' => 'btn btn-success']);
+            // if (!$model->isNewRecord && count($modelPenataList->all())) {
+            //     echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-mata/cetak-penata', 'no_rm' => $no_rm], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
+            // }
+            Pjax::end();
+            ?>
+        </div>
+
+        <?php ActiveForm::end(); ?>
+        <br>
+        <?php Pjax::begin(['id' => 'tbl-penata']); ?>
+
+        <?= GridView::widget([
+            'dataProvider' => new ActiveDataProvider([
+            'query' => $modelPenataList,
+            ]),
+            'tableOptions' => ['class' => 'table table-sm table-hover table-bordered'],
+            'columns' => [
+                [
+                    'class' => 'yii\grid\SerialColumn',
+                    'headerOptions' => ['style' => 'background-color: #e7ebee;',],
+                ],
+                [
+                    'headerOptions' => ['style' => 'width: 30%; background-color: #e7ebee;',],
+                    'attribute' => 'jenis_permasalahan',
+                    'label' => 'Jenis Permasalahan Medis & No Medis (Okupasi Dll)',
+                ],
+                [
+                    'headerOptions' => ['style' => 'width: 30%; background-color: #e7ebee;',],
+                    'attribute' => 'rencana',
+                    'label' => 'Rencana Tindakan (materi & metode) Tatalaksana Medikamentoasa non media mentosa (nutrisi,olahraga,dll)',
+                ],
+                [
+                    'headerOptions' => ['style' => 'width: 10%; background-color: #e7ebee;',],
+                    'attribute' => 'target_waktu',
+                ],
+                [
+                    'headerOptions' => ['style' => 'width: 15%; background-color: #e7ebee;',],
+                    'attribute' => 'hasil_yang_diharapkan',
+                ],
+                [
+                    'headerOptions' => ['style' => 'width: 15%; background-color: #e7ebee;',],
+                    'attribute' => 'keterangan',
+                ],
+            ],
+            'pager' => [
+                'class' => 'app\components\GridPager',
+            ],
+        ]); ?>
+        <?php Pjax::end(); ?>
+
+    </div>
+
 </div>
 
 <?php
