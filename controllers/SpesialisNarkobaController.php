@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\DataLayanan;
+use app\models\spesialis\McuPenatalaksanaanMcu;
 use Yii;
 use app\models\SpesialisNarkoba;
 use app\models\SpesialisNarkobaSearch;
@@ -63,56 +64,6 @@ class SpesialisNarkobaController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    
-    public function actionPeriksa($id = null)
-    {
-        $id_cari = $id;
-
-        if ($id_cari != null) {
-            $pasien = DataLayanan::find()->where(['id_data_pelayanan' => $id_cari])->one();
-            if (!$pasien) {
-                return $this->redirect(['/site/ngga-nemu', 'id' => $id_cari]);
-            }
-            
-            $model = SpesialisNarkoba::find()
-            ->where(['no_rekam_medik' => $pasien->no_rekam_medik])
-            ->andWhere(['no_daftar' => $pasien->no_registrasi])
-            ->one();
-            if (!$model)
-                $model = new SpesialisNarkoba();
-            $model->cari_pasien = $id_cari;
-            $no_rm = $pasien->no_rekam_medik;
-            $no_daftar = $pasien->no_registrasi;
-        } else {
-            $pasien = null;
-            $no_rm = null;
-            $no_daftar = null;
-            $model = new SpesialisNarkoba();
-        }
-
-        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
-            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-
-            if ($model->save()) {
-                return [
-                    's' => true,
-                    'e' => null
-                ];
-            } else {
-                return [
-                    's' => false,
-                    'e' => $model->errors
-                ];
-            }
-        }
-
-        return $this->render('periksa', [
-            'model' => $model,
-            'no_rm' => $no_rm,
-            'no_daftar' => $no_daftar,
-            'pasien' => $pasien,
-        ]);
-    }
     
     public function actionCreate($no_rm = null)
     {
@@ -191,6 +142,155 @@ class SpesialisNarkobaController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    // public function actionPeriksa($id = null)
+    // {
+    //     $id_cari = $id;
+
+    //     if ($id_cari != null) {
+    //         $pasien = DataLayanan::find()->where(['id_data_pelayanan' => $id_cari])->one();
+    //         if (!$pasien) {
+    //             return $this->redirect(['/site/ngga-nemu', 'id' => $id_cari]);
+    //         }
+            
+    //         $model = SpesialisNarkoba::find()
+    //         ->where(['no_rekam_medik' => $pasien->no_rekam_medik])
+    //         ->andWhere(['no_daftar' => $pasien->no_registrasi])
+    //         ->one();
+    //         if (!$model)
+    //             $model = new SpesialisNarkoba();
+    //         $model->cari_pasien = $id_cari;
+    //         $no_rm = $pasien->no_rekam_medik;
+    //         $no_daftar = $pasien->no_registrasi;
+    //     } else {
+    //         $pasien = null;
+    //         $no_rm = null;
+    //         $no_daftar = null;
+    //         $model = new SpesialisNarkoba();
+    //     }
+
+    //     $modelPenataList = McuPenatalaksanaanMcu::find()
+    //         ->where(['jenis' => 'spesialis_narkoba'])
+    //         ->andWhere(['id_fk' => $model->id_spesialis_narkoba]);
+    //     $modelPenata = new McuPenatalaksanaanMcu();
+
+    //     if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+    //         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+    //         if ($model->save()) {
+    //             return [
+    //                 's' => true,
+    //                 'e' => null
+    //             ];
+    //         } else {
+    //             return [
+    //                 's' => false,
+    //                 'e' => $model->errors
+    //             ];
+    //         }
+    //     }
+
+    //     return $this->render('periksa', [
+    //         'model' => $model,
+    //         'modelPenata' => $modelPenata,
+    //         'modelPenataList' => $modelPenataList,
+    //         'no_rm' => $no_rm,
+    //         'no_daftar' => $no_daftar,
+    //         'pasien' => $pasien,
+    //     ]);
+    // }
+
+    public function actionPeriksa($id = null)
+    {
+
+        $id_cari = $id;
+
+        if ($id_cari != null) {
+            $pasien = DataLayanan::find()->where(['id_data_pelayanan' => $id_cari])->one();
+            if (!$pasien) {
+                return $this->redirect(['/site/ngga-nemu', 'id' => $id_cari]);
+            }
+
+            $model = SpesialisNarkoba::find()
+                ->where(['no_rekam_medik' => $pasien->no_rekam_medik])
+                ->andWhere(['no_daftar' => $pasien->no_registrasi])
+                ->one();
+            if (!$model)
+                $model = new SpesialisNarkoba();
+
+            $model->cari_pasien = $id_cari;
+            $no_rm = $pasien->no_rekam_medik;
+            $no_daftar = $pasien->no_registrasi;
+        } else {
+            $pasien = null;
+            $no_rm = null;
+            $no_daftar = null;
+            $model = new SpesialisNarkoba();
+        }
+        $modelPenataList = McuPenatalaksanaanMcu::find()
+            ->where(['jenis' => 'spesialis_narkoba'])
+            ->andWhere(['id_fk' => $model->id_spesialis_narkoba]);
+        $modelPenata = new McuPenatalaksanaanMcu();
+
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            if ($model->save()) {
+                return [
+                    's' => true,
+                    'e' => null
+                ];
+            } else {
+                return [
+                    's' => false,
+                    'e' => $model->errors
+                ];
+            }
+        }
+
+        if ($model->isNewRecord) {
+            $model->benzodiazepin_hasil = 'Negatif';
+            $model->thc_hasil = 'Negatif';
+            $model->opiat_hasil = 'Negatif';
+            $model->amphetammin_hasil = 'Negatif';
+            $model->kokain_hasil = 'Negatif';
+            $model->methamphetamin_hasil = 'Negatif';
+            $model->carisoprodol_hasil = 'Negatif';
+        }
+
+        return $this->render('periksa', [
+            'model' => $model,
+            'modelPenata' => $modelPenata,
+            'modelPenataList' => $modelPenataList,
+            'no_rm' => $no_rm,
+            'no_daftar' => $no_daftar,
+            'pasien' => $pasien,
+        ]);
+    }
+    
+    public function actionSimpanPenata($id = null)
+    {
+        $model = new McuPenatalaksanaanMcu();
+
+        if ($model->load(Yii::$app->request->post())) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            $model->jenis = 'spesialis_narkoba';
+            $model->id_fk = $id;
+
+            if ($model->save()) {
+                return [
+                    's' => true,
+                    'e' => null
+                ];
+            } else {
+                return [
+                    's' => false,
+                    'e' => $model->errors
+                ];
+            }
+        }
     }
 
     public function actionCetak($no_rm, $no_daftar)
