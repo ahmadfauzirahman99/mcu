@@ -14,6 +14,8 @@ use Yii;
  * @property string|null $updated_at
  * @property int|null $created_by
  * @property int|null $updated_by
+ * @property string|null $tl_test_berbisik_telinga_kanan
+ * @property string|null $tl_test_berbisik_telinga_kiri
  * @property string|null $tl_test_berbisik_telinga_kanan_6
  * @property string|null $tl_test_berbisik_telinga_kiri_6
  * @property string|null $tl_test_berbisik_telinga_kanan_4
@@ -48,7 +50,13 @@ class McuSpesialisThtBerbisik extends BaseAR
             [['kesimpulan', 'riwayat'], 'string'],
             [['no_rekam_medik'], 'string', 'max' => 120],
             [['tl_test_berbisik_telinga_kanan_6', 'tl_test_berbisik_telinga_kiri_6', 'tl_test_berbisik_telinga_kanan_4', 'tl_test_berbisik_telinga_kiri_4', 'tl_test_berbisik_telinga_kanan_3', 'tl_test_berbisik_telinga_kiri_3', 'tl_test_berbisik_telinga_kanan_1', 'tl_test_berbisik_telinga_kiri_1'], 'string', 'max' => 70],
-        
+
+            [
+                [
+                    'tl_test_berbisik_telinga_kanan',
+                    'tl_test_berbisik_telinga_kiri',
+                ], 'safe'
+            ],
             ['no_daftar', 'unique'],
         ];
     }

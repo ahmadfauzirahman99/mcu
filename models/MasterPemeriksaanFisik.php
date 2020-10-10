@@ -270,12 +270,15 @@ use Yii;
  * @property string|null $telinga_timpani_kanan
  * @property string|null $telinga_timpani_kiri
  * @property string|null $icdt10
+ * @property string|null $sistolik
+ * @property string|null $diastolik
+ * @property string|null $mata_visus_tanpa_koreksi_kiri
+ * @property string|null $mata_visus_dengan_koreksi_kiri
  */
 class MasterPemeriksaanFisik extends \yii\db\ActiveRecord
 {
 
-    public $sistolik;
-    public $diastolik;
+  
 
     /**
      * {@inheritdoc}
@@ -291,7 +294,7 @@ class MasterPemeriksaanFisik extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['diastolik', 'sistolik', 'status_gizi_tinggi_badan', 'status_gizi_berat_badan', 'status_gizi_lingkaran_perut', 'status_gizi_lingkaran_pinggang'], 'default', 'value' => null],
+            [['mata_visus_dengan_koreksi_kiri', 'mata_visus_tanpa_koreksi_kiri', 'diastolik', 'sistolik', 'status_gizi_tinggi_badan', 'status_gizi_berat_badan', 'status_gizi_lingkaran_perut', 'status_gizi_lingkaran_pinggang'], 'default', 'value' => 0],
             [['status_gizi_tinggi_badan', 'status_gizi_berat_badan', 'status_gizi_lingkaran_perut', 'status_gizi_lingkaran_pinggang'], 'integer'],
             [['status_gizi_imt'], 'number'],
             [['gigi', 'kulit_lain', 'resume_kelainan', 'hasil_body_map', 'hasil_brief_survey', 'diagnosis_kerja', 'diagnosis_diferensial', 'kategori_kesehatan'], 'string'],
@@ -412,10 +415,10 @@ class MasterPemeriksaanFisik extends \yii\db\ActiveRecord
             'paru_jantung_palpasi' => 'Palpasi',
             'paru_jantung_perkusi_kanan' => 'Perkusi Kanan',
             'paru_jantung_perkusi_kiri' => 'Perkusi Kiri',
-            'paru_jantung_perkusi_iktus_kanan' => 'Perkusi Iktus Kanan',
-            'paru_jantung_perkusi_iktus_kiri' => 'Perkusi Iktus Kiri',
+            'paru_jantung_perkusi_iktus_kanan' => 'Perkusi Dada Kanan',
+            'paru_jantung_perkusi_iktus_kiri' => 'Perkusi Dada Kiri',
             'paru_jantung_perkusi_iktus_kiri_sebut' => 'Perkusi Iktus Kiri Sebut',
-            'paru_jantung_perkusi_batas_jantung_kanan' => 'Perkusi Batas Jantung Kanan',
+            'paru_jantung_perkusi_batas_jantung_kanan' => 'Perkusi Batas Jantung',
             'paru_jantung_perkusi_batas_jantung_kiri' => 'Perkusi Batas Jantung Kiri',
             'paru_jantung_perkusi_batas_jantung_kiri_sebut' => 'Perkusi Batas Jantung Kiri Sebut',
             'paru_jantung_auskultasi_bunyi_nafas_kanan' => 'Auskultasi Bunyi Nafas Kanan',

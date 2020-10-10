@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use app\components\Breadcrumbs;
 use app\assets\AppAsset;
+use app\components\Helper;
 use yii\helpers\Url;
 
 AppAsset::register($this);
@@ -81,32 +82,30 @@ AppAsset::register($this);
                         <img src="<?= Yii::$app->request->baseUrl ?>/img/user.png" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail img-responsive">
                         <div class="user-status offline"><i class="mdi mdi-adjust"></i></div>
                     </div>
+                    <h5><a href="#"><?= Yii::$app->user->identity->nama ?></a> </h5>
+                    <ul class="list-inline">
+
+
+                        <li class="list-inline-item">
+                            <a title="Logout" href="<?= Url::to(['keluar/index']) ?>" class="text-custom">
+                                <i class="mdi mdi-power"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <!-- End User -->
+                <?php $identitas_dokter = Helper::getRumpun()  ?>
 
                 <!--- Sidemenu -->
                 <div id="sidebar-menu">
                     <ul>
                         <li class="text-muted menu-title">Navigation</li>
-
                         <li>
                             <a href="<?= Url::to(['/site/index']) ?>" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
                         </li>
 
                         <li>
-                            <a href="<?= Url::to(['/unit-pemeriksaan/pemeriksaan-fisik']) ?>" class="waves-effect"><i class="mdi mdi-google-street-view"></i> <span> Unit Pemeriksaan </span> </a>
-                        </li>
-
-                        <li>
-                            <a href="<?= Url::to(['/unit-lab-pk/index']) ?>" class="waves-effect"><i class=" mdi mdi-microscope"></i> <span> Unit Lab. Patologi Klinik </span> </a>
-                        </li>
-
-                        <li class="has_sub">
-                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> Setting Labs. </span> <span class="menu-arrow"></span></a>
-                            <ul class="list-unstyled">
-                                <li><a href="<?= Url::to(['/mcu-item-lab/index']) ?>"">Item Pemeriksaan</a></li>
-                                <li><a href=" #">Setting Global</a></li>
-                            </ul>
+                            <a href="<?= Url::to(['/unit-pemeriksaan/unit-pemeriksaan']) ?>" class="waves-effect"><i class="mdi mdi-google-street-view"></i> <span> Unit Pemeriksaan </span> </a>
                         </li>
 
                         <li class="has_sub">
@@ -167,44 +166,45 @@ AppAsset::register($this);
                     </ul>
                     <div class="clearfix"></div>
                 </div>
-                <!-- Sidebar -->
-                <div class="clearfix"></div>
-
             </div>
-
-        </div>
-        <!-- Left Sidebar End -->
-
-
-
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
-        <div class="content-page">
-            <!-- Start content -->
-            <div class="content">
-                <div class="container-fluid" style="margin-bottom: 25px;">
-                    <div class="card card-body">
-                        <?= Breadcrumbs::widget([
-                            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                        ]) ?>
-                        <?= Alert::widget() ?>
-                        <?= $content ?>
-                    </div>
-                </div> <!-- container -->
-
-            </div> <!-- content -->
-
-            <footer class="footer text-right">
-                <?= date('Y') ?> © RSUD ARIFIN ACHMAD
-            </footer>
+            <!-- Sidebar -->
+            <div class="clearfix"></div>
 
         </div>
 
+    </div>
+    <!-- Left Sidebar End -->
 
-        <!-- ============================================================== -->
-        <!-- End Right content here -->
-        <!-- ============================================================== -->
+
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid" style="margin-bottom: 25px;">
+                <div class="card card-body">
+                    <?= Breadcrumbs::widget([
+                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                    ]) ?>
+                    <?= Alert::widget() ?>
+                    <?= $content ?>
+                </div>
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <footer class="footer text-right">
+            <?= date('Y') ?> © RSUD ARIFIN ACHMAD
+        </footer>
+
+    </div>
+
+
+    <!-- ============================================================== -->
+    <!-- End Right content here -->
+    <!-- ============================================================== -->
 
 
 

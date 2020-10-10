@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
+
 ?>
 <style type="text/css">
     /* .mcu-spesialis-audiometri-form {
@@ -79,6 +81,7 @@ use yii\helpers\Html;
         <tbody>
             <tr>
                 <td class="td-kop" style="width: 50%;">
+                    <img src="<?= Url::to('@web/img/kop.png') ?>" alt="" width="20px;">
                 </td>
                 <td class="td-kop" style="width: 50%;">
                     <table style="width: 100%; font-size: 11px;">

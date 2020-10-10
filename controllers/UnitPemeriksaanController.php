@@ -3,10 +3,12 @@
 namespace app\controllers;
 
 use app\models\Anamnesis;
+use app\models\BahayaPotensial;
 use app\models\BodyDiscomfort;
 use app\models\DataLayanan;
 use app\models\JenisPekerjaan;
 use app\models\MasterPemeriksaanFisik;
+use app\models\McuBrief;
 use app\models\UserKusionerBiodata;
 use app\models\UserRegister;
 use Yii;
@@ -20,70 +22,53 @@ class UnitPemeriksaanController extends \yii\web\Controller
 
 
     // pemeriksaan
-    public function actionPemeriksaanFisik($nomor_rekem_medik = null)
+    public function actionUnitPemeriksaan($id = null)
     {
 
-        if (Yii::$app->request->isPost) {
-            $p = Yii::$app->request->post();
-            $no_rekam_medik = $p['DataLayanan']['nama'];
-            $dataLayanan = DataLayanan::findOne(['no_rekam_medik' => $no_rekam_medik]);
-            $anamnesis = Anamnesis::findOne(['nomor_rekam_medik' => $no_rekam_medik]);
-            $jenis_pekerjaann = JenisPekerjaan::findOne(['no_rekam_medik' => $no_rekam_medik]);
-            $master_pemeriksaan_fisik = MasterPemeriksaanFisik::findOne(['no_rekam_medik' => $no_rekam_medik]);
 
-            $modelRegister = UserRegister::find()->where(['u_rm'=>$no_rekam_medik])->limit(1)->one();
-//            var_dump($modelRegister);
-//            exit();
-            // ambil data biodata dari register mcu
-            $dataUser = Yii::$app->dbRegisterMcu->createCommand("SELECT u.* , ukb.* FROM `user` u LEFT JOIN user_kusioner_biodata ukb  on u.u_id  = ukb.ukb_user_id WHERE u.u_rm = '$no_rekam_medik'"
-            )->queryAll();
-
-            return $this->render('pemeriksaan-fisik', [
-                'dataLayanan' => $dataLayanan,
-                'anamnesis' =>  $anamnesis,
-                'jenis_pekerjaan' => $jenis_pekerjaann,
-                'dataBiodataUser' => $dataUser,
-                'master_pemeriksaan_fisik' => $master_pemeriksaan_fisik,
-//                'modelRegister' => $modelRegister
-            ]);
-        }
-//jika edit view nya
-        $modelupdate=null;
-        $detailJikaBaru=null;
-        // if(isset($_GET["aksi"])){
-        // if($_GET["aksi"]=="ubah"){
-        if(isset($_GET["id"])){
-            $id=$_GET["id"];
-            // echo $id;exit;
-            $modelupdate = BodyDiscomfort::find()->where(['no_rekam_medik'=>$id])->one();
-            // echo "<pre>";var_dump($modelupdate);exit;
-
-            if($modelupdate==null){
-                $datalayanan = DataLayanan::find()->where(['no_rekam_medik'=>$id]);
-                $datalayananOne = $datalayanan->one();
-                $datalayananCount = $datalayanan->count();
-                if($datalayananCount>0){
-                    $detailJikaBaru=["no_daftar"=>$datalayananOne->no_registrasi, "no_rekam_medik"=>$id];
-                }
-                // echo "<pre>";print_r($detailJikaBaru);exit;
+        if ($id != null) {
+            $modelDataLayanan = DataLayanan::findOne(['id_data_pelayanan' => $id]);
+            if (!$modelDataLayanan) {
+                return $this->redirect(['/site/ngga-nemu', 'id' => $id]);
             }
+            $anamnesis = Anamnesis::findOne(['nomor_rekam_medik' => $modelDataLayanan->no_rekam_medik]);
+            $jenis_pekerjaan = new JenisPekerjaan();
+            $master_pemeriksaan_fisik = MasterPemeriksaanFisik::findOne(['no_rekam_medik' => $modelDataLayanan->no_rekam_medik]);
+            // var_dump($master_pemeriksaan_fisik);
+            // exit();
+            $modelBahayaPotensial = new BahayaPotensial();
+            $modelBrief = McuBrief::findOne(['no_rekam_medik' => $modelDataLayanan->no_rekam_medik]);
+            if (!$anamnesis) {
+                $anamnesis = new Anamnesis();
+            }
+
+            if (!$master_pemeriksaan_fisik) {
+                $master_pemeriksaan_fisik = new MasterPemeriksaanFisik();
+            }
+
+            if (!$modelBrief) {
+                $modelBrief = new McuBrief();
+            }
+            // $anamnesis = new Anamnesis();
+
+        } else {
+            $anamnesis = new Anamnesis();
+            $modelDataLayanan = new DataLayanan();
+            $jenis_pekerjaan = new JenisPekerjaan();
+            $master_pemeriksaan_fisik = new MasterPemeriksaanFisik();
+            $modelBahayaPotensial = new BahayaPotensial();
+            $modelBrief = new McuBrief();
         }
-        // }
-        $dataLayanan = new DataLayanan();
-        $anamnesis = new Anamnesis();
-        $jenis_pekerjaann = new JenisPekerjaan();
-        $master_pemeriksaan_fisik = new MasterPemeriksaanFisik();
-        $dataUser = new  UserKusionerBiodata();
 
-        return $this->render('pemeriksaan-fisik', [
-            'dataLayanan' => $dataLayanan,
+
+
+        return $this->render('unit-pemeriksaan', [
+            'dataLayanan' => $modelDataLayanan,
             'anamnesis' => $anamnesis,
-            'jenis_pekerjaan' => $jenis_pekerjaann,
+            'jenis_pekerjaan' => $jenis_pekerjaan,
             'master_pemeriksaan_fisik' => $master_pemeriksaan_fisik,
-            'dataBiodataUser' => $dataUser,
-            'modelupdate'=>$modelupdate,
-            'detailJikaBaru'=>$detailJikaBaru,
-
+            'modelBahayaPotensial' => $modelBahayaPotensial,
+            'modelBrief' => $modelBrief
         ]);
     }
 
@@ -104,5 +89,178 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $out['results'] = ['id' => $id, 'text' => DataLayanan::find($id)->no_rekam_medik];
         }
         return $out;
+    }
+
+
+    //save anamnesis 
+    public function actionSaveAnamnesis()
+    {
+        $p = Yii::$app->request->post();
+        $no_rekam_medik = $p['Anamnesis']['nomor_rekam_medik'];
+        $anamnesis = Anamnesis::findOne(['nomor_rekam_medik' => $no_rekam_medik]);
+
+
+        if ($anamnesis != null) {
+            if ($anamnesis->load(Yii::$app->request->post())) {
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+
+                if ($anamnesis->save(false)) {
+                    return [
+                        's' => true,
+                        'e' => null
+                    ];
+                } else {
+                    return [
+                        's' => false,
+                        'e' => $anamnesis->errors
+                    ];
+                }
+            }
+        }
+
+        $model = new Anamnesis();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                return [
+                    's' => true,
+                    'e' => null
+                ];
+            } else {
+                return [
+                    's' => false,
+                    'e' => $model->errors
+                ];
+            }
+        }
+    }
+
+    //save anamensis okupasis bagian pekerjaan
+    public function actionSaveAnamnesisOkupasi()
+    {
+        $model = new JenisPekerjaan();
+        if ($model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            if ($model->save()) {
+                return [
+                    's' => true,
+                    'e' => null
+                ];
+            } else {
+                return [
+                    's' => false,
+                    'e' => $model->errors
+                ];
+            }
+        }
+    }
+
+
+    //save anamensis okupasis bagian pekerjaan
+    public function actionSaveBahayaPotensial()
+    {
+        $p = Yii::$app->request->post();
+        $model = new BahayaPotensial();
+        if ($model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            if ($model->save()) {
+                return [
+                    's' => true,
+                    'e' => null
+                ];
+            } else {
+                return [
+                    's' => false,
+                    'e' => $model->errors
+                ];
+            }
+        }
+    }
+
+    //save anamnesis brief survey
+    public function actionSaveBrief()
+    {
+        $p = Yii::$app->request->post();
+        $no_rekam_medik = $p['McuBrief']['no_rekam_medik'];
+        $brief = McuBrief::findOne(['no_rekam_medik' => $no_rekam_medik]);
+
+
+        if ($brief != null) {
+            if ($brief->load(Yii::$app->request->post())) {
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                if ($brief->save()) {
+                    return [
+                        's' => true,
+                        'e' => null
+                    ];
+                } else {
+                    return [
+                        's' => false,
+                        'e' => $brief->errors
+                    ];
+                }
+            }
+        }
+
+        $model = new McuBrief();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                return [
+                    's' => true,
+                    'e' => null
+                ];
+            } else {
+                return [
+                    's' => false,
+                    'e' => $model->errors
+                ];
+            }
+        }
+    }
+
+    //save anamnesis brief survey
+    public function actionSavePemeriksaanFisik()
+    {
+        $p = Yii::$app->request->post();
+        $no_rekam_medik = $p['MasterPemeriksaanFisik']['no_rekam_medik'];
+        $fisik = MasterPemeriksaanFisik::findOne(['no_rekam_medik' => $no_rekam_medik]);
+
+        if ($fisik != null) {
+            if ($fisik->load(Yii::$app->request->post())) {
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                $fisik->id_dokter_pemeriksaan_fisik = (string)Yii::$app->user->identity->id;
+                if ($fisik->save()) {
+                    return [
+                        's' => true,
+                        'e' => null
+                    ];
+                } else {
+                    return [
+                        's' => false,
+                        'e' => $fisik->errors
+                    ];
+                }
+            }
+        }
+
+        $model = new MasterPemeriksaanFisik();
+    
+        if ($model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            $model->id_dokter_pemeriksaan_fisik = (string)Yii::$app->user->identity->id;
+
+            if ($model->save()) {
+                return [
+                    's' => true,
+                    'e' => null
+                ];
+            } else {
+                return [
+                    's' => false,
+                    'e' => $model->errors
+                ];
+            }
+        }
     }
 }

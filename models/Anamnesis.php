@@ -51,19 +51,19 @@ class Anamnesis extends \yii\db\ActiveRecord
     {
         return [
             'id_anamnesis' => 'Id Anamnesis',
-            'jawaban1' => 'Jawaban 1',
-            'jawaban2' => 'Jawaban 2',
-            'jawaban3' => 'Jawaban 3',
-            'jawaban4' => 'Jawaban 4',
-            'jawaban5' => 'Jawaban 5',
-            'jawaban6' => 'Jawaban 6',
+            'jawaban1' => 'Jawaban ',
+            'jawaban2' => 'Jawaban ',
+            'jawaban3' => 'Jawaban ',
+            'jawaban4' => 'Jawaban ',
+            'jawaban5' => 'Jawaban ',
+            'jawaban6' => 'Jawaban ',
             'jawaban7' => 'Jawaban Hubungan Pekerjaan',
             'nomor_rekam_medik' => 'Nomor Rekam Medik',
             'g' => 'G',
             'p' => 'P',
             'a' => 'A',
             'h' => 'H',
-            'jawaban8' => 'Jawaban8',
+            'jawaban8' => 'Jawaban',
         ];
     }
 }
