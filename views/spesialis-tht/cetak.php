@@ -1,5 +1,6 @@
 <?php
 
+use app\models\spesialis\BaseAR;
 use app\models\spesialis\McuPenatalaksanaanMcu;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -75,7 +76,7 @@ use yii\helpers\Url;
                             <tr>
                                 <td style="padding: 1px;">Jenis Kelamin</td>
                                 <td style="padding: 1px;">: </td>
-                                <td style="padding: 1px;"><?= $pasien->jenis_kelamin ?></td>
+                                <td style="padding: 1px;"><?= BaseAR::getJk($pasien->jenis_kelamin) ?></td>
                             </tr>
                             <tr>
                                 <td style="padding: 1px;" colspan="3">
@@ -477,11 +478,13 @@ use yii\helpers\Url;
             </tr>
             <tr>
                 <td class="col-1" style="border-left: 1px solid #000000;"></td>
-                <td class="col-2" style="text-align: center;border-right: 1px solid #000000; padding-bottom: 15px;">
+                <td class="col-2" style="text-align: center;border-right: 1px solid #000000;">
                     <br><br><br><br>
-                    drg. Nama Dokter
+                    <b>
+                        <?= $model->updatedByTeks->pegawai->nama ?>
+                    </b>
                     <br>
-                    nip
+                    <?= $model->updatedByTeks->pegawai->no ?>
                 </td>
             </tr>
         </tbody>

@@ -1,5 +1,6 @@
 <?php
 
+use app\models\spesialis\BaseAR;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -105,7 +106,7 @@ use yii\helpers\Url;
                             <tr>
                                 <td style="padding: 1px;">Jenis Kelamin</td>
                                 <td style="padding: 1px;">: </td>
-                                <td style="padding: 1px;"><?= $pasien->jenis_kelamin ?></td>
+                                <td style="padding: 1px;"><?= BaseAR::getJk($pasien->jenis_kelamin) ?></td>
                             </tr>
                             <tr>
                                 <td style="padding: 1px;" colspan="3">
