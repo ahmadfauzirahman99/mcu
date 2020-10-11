@@ -46,7 +46,7 @@ $helper = [
                 <div class="form-group">
                     <h4 class="header-title m-t-0 m-b-30">1. Tanda Vital</h4>
                     <hr>
-                    <?= $form->field($master_pemeriksaan_fisik, 'no_rekam_medik')->hiddenInput(['maxlength' => true,'value'=>$dataLayanan->no_rekam_medik])->label(false) ?>
+                    <?= $form->field($master_pemeriksaan_fisik, 'no_rekam_medik')->hiddenInput(['maxlength' => true, 'value' => $dataLayanan->no_rekam_medik])->label(false) ?>
 
                     <div class="row">
                         <div class="col-lg-6">
@@ -125,7 +125,7 @@ $helper = [
                         </tr>
                         <tr>
                             <th>Tampat Kesakitan</th>
-                            <td><?= $form->field($master_pemeriksaan_fisik, 'tingkat_kesadaran_tampak_kesakitan')->radioList(['Tidak Tampak Kesakitan' => 'Tidak Tampak Kesakitan', 'Ya, Tampak Kesakitan' => 'Ya, Tampak Kesakitan']) ?></td>
+                            <td><?= $form->field($master_pemeriksaan_fisik, 'tingkat_kesadaran_tampak_kesakitan')->radioList(['Tidak Tampak Kesakitan' => 'Tidak Tampak Kesakitan', 'Ya, Tampak Kesakitan' => 'Ya, Tampak Kesakitan'])->label(false) ?></td>
                         </tr>
                         <tr>
                             <th>Gangguan Saat Berjalan</th>
@@ -190,7 +190,7 @@ $helper = [
                                 </td>
                             </tr>
                             <tr>
-                                <th>Kulit Kepal</th>
+                                <th>Kulit Kepala</th>
                                 <td>
                                     <?= $form->field($master_pemeriksaan_fisik, 'kepala_kulit_kepala')->radioList(['Baik' => 'Baik', 'Tidak baik' => 'Tidak Baik'])->label(false) ?>
                                 </td>
@@ -205,6 +205,18 @@ $helper = [
                                 <th>Bentuk Wajah</th>
                                 <td>
                                     <?= $form->field($master_pemeriksaan_fisik, 'kepala_bentuk_wajah')->radioList(['Baik' => 'Baik', 'Tidak baik' => 'Tidak Baik'])->label(false) ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <input type="radio" aria-label="Radio button for following text input">
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control" style="width: 50px;" aria-label="Text input with radio button">
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -550,8 +562,8 @@ $helper = [
                                 <td colspan="2" class='text-center'><b>Perkusi</b></td>
                             </tr>
                             <tr class="tr-label">
-                                <td>Kanan</td>
                                 <td>Kiri</td>
+                                <td>Kanan</td>
                             </tr>
                             <tr>
                                 <td>
@@ -636,11 +648,7 @@ $helper = [
                                     <?= $form->field($master_pemeriksaan_fisik, 'abdomen_limpa')->radioList(['Tidak Teraba Schuffner' => 'Tidak Teraba Schuffner', 'Teraba Schuffner' => 'Teraba Schuffner'])->label(false) ?>
                                 </td>
                             </tr>
-                            <tr>
-                                <th></th>
-                                <td> <?= $form->field($master_pemeriksaan_fisik, 'abdomen_ballotement_kanan')->textInput(['maxlength' => true])->label(false) ?>
-                                </td>
-                            </tr>
+
                         </table>
 
                         <table class='table table-bordered table-striped'>
@@ -1015,7 +1023,7 @@ $helper = [
             <?php if ($identitas_dokter['kodejenis'] == 1) { ?>
                 <?= Html::submitButton('Save Pemeriksaan Fisik', ['class' => 'btn btn-success btn-block stiky', 'id' => 'btn-pemeriksaan-fisik']) ?>
             <?php } ?>
-            <?php if (($identitas_dokter['kodejenis'] == 36) OR $identitas_dokter['kodejenis'] == 37) { ?>
+            <?php if (($identitas_dokter['kodejenis'] == 36) or $identitas_dokter['kodejenis'] == 37) { ?>
                 <?= Html::submitButton('Save Pemeriksaan Fisik', ['class' => 'btn btn-success btn-block stiky', 'id' => 'btn-pemeriksaan-fisik']) ?>
             <?php } ?>
         </div>

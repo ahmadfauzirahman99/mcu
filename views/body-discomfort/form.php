@@ -10,12 +10,13 @@ if (isset($_GET["id"])) {
 	$get_id = $_GET["id"];
 }
 // print_r($model);exit;
+$info = "<h1>Data Pasien Belum Dipilih Atau Tidak Ada Didata Pelayanan MCU</h1>";
 ?>
 
 <?php
 //INTERUPSI JIKA nomor rekam medik tidak ada di tabel data pelayanan
 if ($modelupdate == null && $detailJikaBaru == null) {
-	echo "<pre>Data tidak ada di data pelayanan mcu </pre>";
+	echo $info;
 	return;
 }
 

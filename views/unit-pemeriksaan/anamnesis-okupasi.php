@@ -39,7 +39,7 @@ $jenisPekerjaan->masa_kerja = null;
         </div>
     </div>
     <?php $form->field($jenisPekerjaan, 'tanggal_created')->textInput() ?>
-    <?php if ($identitas_dokter['kodejenis'] == 20) { ?>
+    <?php if ($identitas_dokter['kodejenis'] == 20 || $identitas_dokter['kodejenis'] == 1) { ?>
 
         <div class="form-group">
             <?= Html::submitButton('Save Jenis Pekerjaan', ['class' => 'btn btn-success btn-block', 'id' => 'btn-save-jenis-pekerjaan']) ?>
@@ -409,7 +409,7 @@ $dataBiodataUser = Yii::$app->dbRegisterMcu->createCommand("SELECT count(1), u.u
             <?= $form->field($modelBahayaPotensial, 'psiko')->textInput(['maxlength' => true,]) ?>
         </div>
     </div>
-    <?php if ($identitas_dokter['kodejenis'] == 20) { ?>
+    <?php if ($identitas_dokter['kodejenis'] == 20 || $identitas_dokter['kodejenis'] == 1) { ?>
 
         <div class="form-group">
             <?= Html::submitButton('Save Bahaya Potensial', ['class' => 'btn btn-success btn-block', 'id' => 'btn-save-jenis-pekerjaan']) ?>
@@ -454,7 +454,7 @@ $dataBiodataUser = Yii::$app->dbRegisterMcu->createCommand("SELECT count(1), u.u
         (gejala / keluhan yang ada) (misalnya keluhan berkurang saat libur
         atau keluhan bertambah setelah bekerja beberapa saat) </p>
     <?= $form->field($anamnesis, 'jawaban8')->textarea(['rows' => 6]) ?>
-    <?php if ($identitas_dokter['kodejenis'] == 20) { ?>
+    <?php if ($identitas_dokter['kodejenis'] == 20 || $identitas_dokter['kodejenis'] == 1) { ?>
         <div class="form-group">
             <?= Html::submitButton('Save Hubungan Pekerjaan', ['class' => 'btn btn-success btn-block']) ?>
         </div>
