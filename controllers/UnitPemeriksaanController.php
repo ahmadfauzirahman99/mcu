@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\components\Helper;
+use app\models\AnamnesaBengkalis;
 use app\models\Anamnesis;
 use app\models\BahayaPotensial;
 use app\models\BodyDiscomfort;
@@ -10,6 +11,7 @@ use app\models\DataLayanan;
 use app\models\JenisPekerjaan;
 use app\models\MasterPemeriksaanFisik;
 use app\models\McuBrief;
+use app\models\PemeriksaanDokterBengkalis;
 use app\models\UserKusionerBiodata;
 use app\models\UserRegister;
 use Yii;
@@ -39,6 +41,9 @@ class UnitPemeriksaanController extends \yii\web\Controller
             // exit();
             $modelBahayaPotensial = new BahayaPotensial();
             $modelBrief = McuBrief::findOne(['no_rekam_medik' => $modelDataLayanan->no_rekam_medik]);
+
+            $modelAnamnesaBengkalis = AnamnesaBengkalis::findOne(['no_rekam_medik' => $modelDataLayanan->no_rekam_medik]);
+            $modelPemeriksaanBengkalis = PemeriksaanDokterBengkalis::findOne(['no_rekam_medik' => $modelDataLayanan->no_rekam_medik]);
             if (!$anamnesis) {
                 $anamnesis = new Anamnesis();
             }
@@ -50,6 +55,14 @@ class UnitPemeriksaanController extends \yii\web\Controller
             if (!$modelBrief) {
                 $modelBrief = new McuBrief();
             }
+
+            if (!$modelAnamnesaBengkalis) {
+                $modelAnamnesaBengkalis =  new AnamnesaBengkalis();
+            }
+
+            if (!$modelPemeriksaanBengkalis) {
+                $modelPemeriksaanBengkalis = new PemeriksaanDokterBengkalis();
+            }
             // $anamnesis = new Anamnesis();
 
         } else {
@@ -59,9 +72,17 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $master_pemeriksaan_fisik = new MasterPemeriksaanFisik();
             $modelBahayaPotensial = new BahayaPotensial();
             $modelBrief = new McuBrief();
+            $modelAnamnesaBengkalis = new AnamnesaBengkalis();
+            $modelPemeriksaanBengkalis = new PemeriksaanDokterBengkalis();
         }
 
 
+        if ($modelPemeriksaanBengkalis->isNewRecord) {
+            $modelPemeriksaanBengkalis->kecerdasan = "Cukup";
+            $modelPemeriksaanBengkalis->sehat = "SEHAT";
+            $modelPemeriksaanBengkalis->keliatan_muda = "BIASA";
+            $modelPemeriksaanBengkalis->tegap = "BIASA";
+        }
         if ($master_pemeriksaan_fisik->isNewRecord) {
             $master_pemeriksaan_fisik->tingkat_kesadaran_kesadaran = "Compos Mentis";
             $master_pemeriksaan_fisik->tingkat_kesadaran_kualitas_kontak = "Baik";
@@ -72,6 +93,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $master_pemeriksaan_fisik->kelenjar_getah_bening_ketiak = "Normal";
             $master_pemeriksaan_fisik->kelenjar_getah_bening_inguinal = "Normal";
             $master_pemeriksaan_fisik->kepala_tulang = "Baik";
+            $master_pemeriksaan_fisik->kepala_kulit_kepala = "Baik";
             $master_pemeriksaan_fisik->kepala_rambut = "Baik";
             $master_pemeriksaan_fisik->kepala_bentuk_wajah = "Baik";
             $master_pemeriksaan_fisik->mata_persepsi_warna_kanan = "Normal";
@@ -169,6 +191,10 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_finskelstein_kanan = "Normal";
             $master_pemeriksaan_fisik->tulang_atas_vaskularisasi_kanan = "Normal";
             $master_pemeriksaan_fisik->tulang_atas_kelaianan_kukujari_kanan = "Tidak Ada";
+            $master_pemeriksaan_fisik->tulang_atas_sensibilitas_kanan = "Baik";
+
+            $master_pemeriksaan_fisik->tulang_atas_sensibilitas_kiri = "Baik";
+
             $master_pemeriksaan_fisik->tulang_atas_gerakan_abduksi_neer_kiri = "Normal";
             $master_pemeriksaan_fisik->tulang_atas_gerakan_abduksi_hawkin_kiri = "Normal";
             $master_pemeriksaan_fisik->tulang_atas_gerakan_drop_arm_kiri = "Normal";
@@ -182,7 +208,6 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_phallent_kiri = "Normal";
             $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_tinnel_kiri = "Normal";
             $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_finskelstein_kiri = "Normal";
-            $master_pemeriksaan_fisik->tulang_atas_vaskularisasi_kiri = "Normal";
             $master_pemeriksaan_fisik->tulang_atas_kelaianan_kukujari_kiri = "Tidak Ada";
 
             $master_pemeriksaan_fisik->tulang_bawah_laseque_kanan = "Normal";
@@ -193,7 +218,6 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $master_pemeriksaan_fisik->tulang_bawah_kekuatan_otot_kanan = "Normal";
             $master_pemeriksaan_fisik->tulang_bawah_sensibilitas_kanan = "Baik";
             $master_pemeriksaan_fisik->tulang_bawah_oedema_kanan = "Tidak Ada";
-            $master_pemeriksaan_fisik->tulang_bawah_vaskularisasi_kanan = "Baik";
             $master_pemeriksaan_fisik->tulang_bawah_kelainan_kuku_kanan = "Tidak Ada";
 
             $master_pemeriksaan_fisik->tulang_bawah_laseque_kiri = "Normal";
@@ -249,6 +273,12 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $master_pemeriksaan_fisik->kulit_kuku = "Normal";
             $master_pemeriksaan_fisik->kulit_tato = "Tidak Ada";
             $master_pemeriksaan_fisik->kategori_kesehatan = "FIT";
+            $master_pemeriksaan_fisik->abdomen_ballotement_kanan = "Tidak Ada";
+            $master_pemeriksaan_fisik->abdomen_ballotement_kiri = "Tidak Ada";
+            $master_pemeriksaan_fisik->abdomen_nyeri_costo_vertebrae_kanan = "Tidak Ada";
+            $master_pemeriksaan_fisik->abdomen_nyeri_costo_vertebrae_kiri = "Tidak Ada";
+            $master_pemeriksaan_fisik->tulang_atas_vaskularisasi_kanan = "Baik";
+            $master_pemeriksaan_fisik->tulang_atas_vaskularisasi_kiri = "Baik";
         }
 
 
@@ -259,7 +289,9 @@ class UnitPemeriksaanController extends \yii\web\Controller
             'jenis_pekerjaan' => $jenis_pekerjaan,
             'master_pemeriksaan_fisik' => $master_pemeriksaan_fisik,
             'modelBahayaPotensial' => $modelBahayaPotensial,
-            'modelBrief' => $modelBrief
+            'modelBrief' => $modelBrief,
+            'modelAnamnesaBengkalis' => $modelAnamnesaBengkalis,
+            'modelPemeriksaanBengkalis' => $modelPemeriksaanBengkalis
         ]);
     }
 
@@ -312,6 +344,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
 
         $model = new Anamnesis();
         if ($model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             if ($model->save()) {
                 return [
                     's' => true,
@@ -395,6 +428,8 @@ class UnitPemeriksaanController extends \yii\web\Controller
 
         $model = new McuBrief();
         if ($model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
             if ($model->save()) {
                 return [
                     's' => true,
@@ -450,7 +485,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
                 $model->id_dokter_pemeriksaan_fisik = (string)Yii::$app->user->identity->id;
             }
             if ($rm['kodejenis'] == 20) {
-                $fisik->id_dokter_fit_for_work = (string)Yii::$app->user->identity->id;
+                $model->id_dokter_fit_for_work = (string)Yii::$app->user->identity->id;
             }
             if ($model->save()) {
                 return [
@@ -461,6 +496,106 @@ class UnitPemeriksaanController extends \yii\web\Controller
                 return [
                     's' => false,
                     'e' => $model->errors
+                ];
+            }
+        }
+    }
+
+    //save-anamnesis-bengkalis
+    public function actionSaveAnamnesisBengkalis()
+    {
+        $p = Yii::$app->request->post();
+        $no_rekam_medik = $p['AnamnesaBengkalis']['no_rekam_medik'];
+        $modelDataLayanan = DataLayanan::findOne(['no_rekam_medik' => $no_rekam_medik]);
+
+        $anamnesisBengkalis = AnamnesaBengkalis::findOne(['no_rekam_medik' => $no_rekam_medik]);
+
+
+        if ($anamnesisBengkalis != null) {
+            if ($anamnesisBengkalis->load(Yii::$app->request->post())) {
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                $anamnesisBengkalis->tanggal_created = date('Y-m-d H:i:s');
+                $anamnesisBengkalis->created_by = (string)Yii::$app->user->identity->id;
+                $anamnesisBengkalis->no_registrasi = $modelDataLayanan->no_registrasi;
+                if ($anamnesisBengkalis->save()) {
+                    return [
+                        's' => true,
+                        'e' => null
+                    ];
+                } else {
+                    return [
+                        's' => false,
+                        'e' => $anamnesisBengkalis->errors
+                    ];
+                }
+            }
+        }
+
+        $anamnesisBengkalis = new AnamnesaBengkalis();
+        if ($anamnesisBengkalis->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            $anamnesisBengkalis->tanggal_created = date('Y-m-d H:i:s');
+            $anamnesisBengkalis->created_by = (string)Yii::$app->user->identity->id;
+            $anamnesisBengkalis->no_registrasi = $modelDataLayanan->no_registrasi;
+            if ($anamnesisBengkalis->save()) {
+                return [
+                    's' => true,
+                    'e' => null
+                ];
+            } else {
+                return [
+                    's' => false,
+                    'e' => $anamnesisBengkalis->errors
+                ];
+            }
+        }
+    }
+
+    //save-pemeriksaan-khusus-bengkalis
+    public function actionSavePemeriksaanKhususBengkalis()
+    {
+        $p = Yii::$app->request->post();
+        $no_rekam_medik = $p['PemeriksaanDokterBengkalis']['no_rekam_medik'];
+        $modelDataLayanan = DataLayanan::findOne(['no_rekam_medik' => $no_rekam_medik]);
+
+        $formkhusus = PemeriksaanDokterBengkalis::findOne(['no_rekam_medik' => $no_rekam_medik]);
+
+
+        if ($formkhusus != null) {
+            if ($formkhusus->load(Yii::$app->request->post())) {
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                $formkhusus->tanggal_created = date('Y-m-d H:i:s');
+                $formkhusus->created_by = (string)Yii::$app->user->identity->id;
+                if ($formkhusus->save()) {
+                    return [
+                        's' => true,
+                        'e' => null
+                    ];
+                } else {
+                    return [
+                        's' => false,
+                        'e' => $formkhusus->errors
+                    ];
+                }
+            }
+        }
+
+        $formkhusus = new PemeriksaanDokterBengkalis();
+        if ($formkhusus->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            $formkhusus->tanggal_created = date('Y-m-d H:i:s');
+            $formkhusus->created_by = (string)Yii::$app->user->identity->id;
+            if ($formkhusus->save()) {
+                return [
+                    's' => true,
+                    'e' => null
+                ];
+            } else {
+                return [
+                    's' => false,
+                    'e' => $formkhusus->errors
                 ];
             }
         }

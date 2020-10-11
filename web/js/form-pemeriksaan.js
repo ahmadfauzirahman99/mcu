@@ -300,7 +300,69 @@ $(document).ready(function () {
     });
 
 
-    // tidak melanjutkan pemeriksaaan
+    // anamnesis khusu bengkalis
+    $("#id-AnamnesaBengkalis").on('submit', function (e) {
+        var formData = new FormData(this);
+        var formURL = $("#id-AnamnesaBengkalis").attr("action");
+        e.preventDefault()
+        e.stopImmediatePropagation()
+
+        $.ajax({
+            url: formURL,
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (r) {
+
+                console.log(r)
+                if (r.s) {
+                    toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
+
+                } else {
+                    toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))
+
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("gagal");
+            }
+        })
+
+        return false;
+    });
+
+    $("#id-PemeriksaanDokterBengkalis").on('submit', function (e) {
+        var formData = new FormData(this);
+        var formURL = $("#id-PemeriksaanDokterBengkalis").attr("action");
+        e.preventDefault()
+        e.stopImmediatePropagation()
+
+        $.ajax({
+            url: formURL,
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (r) {
+
+                console.log(r)
+                if (r.s) {
+                    toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
+
+                } else {
+                    toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))
+
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("gagal");
+            }
+        })
+
+        return false;
+    });
+
 
 })
 

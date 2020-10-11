@@ -63,10 +63,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'header' => 'PKTK & Cetak Sertifikat ',
+                'header' => 'PKTK & Cetak Sertifikat & Form Khusus',
                 'headerOptions' => ['style' => 'color:#337ab7;text-align: center'],
                 'contentOptions' => ['style' => 'text-align: center'],
-                'template' => '{pktk}  {sertifikat}',
+                'template' => '{pktk}  {sertifikat} {bengkalis}',
                 'buttons' => [
                     'pktk' => function ($url, $model) {
                         return Html::a('P', $url, [
@@ -82,6 +82,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     'sertifikat' => function ($url, $model) {
                         return Html::a('C', $url, [
                             'class' => 'btn btn-warning btn-trans',
+                            'target'=>'_blank',
+                            'data' => [
+                                // 'confirm' => 'Are you sure you want to delete this item?',
+                                'method' => 'post',
+                            ],
+                        ]);
+                    },
+                 
+                    'bengkalis' => function ($url, $model) {
+                        return Html::a('K', $url, [
+                            'class' => 'btn btn-info btn-trans',
                             'target'=>'_blank',
                             'data' => [
                                 // 'confirm' => 'Are you sure you want to delete this item?',

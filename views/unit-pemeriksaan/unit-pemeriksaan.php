@@ -41,7 +41,7 @@ ItemFisikAsset::register($this);
 <?= $this->render('anamnesis.php', ['model' => $anamnesis, 'dataLayanan' => $dataLayanan,]) ?>
 
 <?php $identitas_dokter = Helper::getRumpun()  ?>
-<?php if ($identitas_dokter['kodejenis'] == 20 || $identitas_dokter['kodejenis'] == 1) { ?>
+<?php if ($identitas_dokter['kodejenis'] == 36 || $identitas_dokter['kodejenis'] == 37 || $identitas_dokter['kodejenis'] == 20) { ?>
     <?= $this->render(
         'anamnesis-okupasi.php',
         [
@@ -53,6 +53,14 @@ ItemFisikAsset::register($this);
             // 'dataBiodataUser' => $dataBiodataUser
         ]
     ) ?>
+<?php } ?>
+
+<?php if ($dataLayanan->kode_debitur == '0129') { ?>
+    <?= $this->render('anamnesa-bengkalis', [
+        'modelAnamnesaBengkalis' => $modelAnamnesaBengkalis, 
+        'dataLayanan' => $dataLayanan,
+        'modelPemeriksaanBengkalis' => $modelPemeriksaanBengkalis
+        ]) ?>
 <?php } ?>
 
 <?= $this->render('item-fisik.php', [
