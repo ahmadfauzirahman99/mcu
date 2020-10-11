@@ -491,10 +491,10 @@ use yii\helpers\Url;
                 <td class="col-2" style="text-align: center;border-right: 1px solid #000000;">
                     <br><br><br><br>
                     <b>
-                        <?= $modelBerbisik->updatedByTeks->pegawai->nama ?>
+                        <?= $modelBerbisik->createdByTeks->pegawai->nama ?>
                     </b>
                     <br>
-                    <?= $modelBerbisik->updatedByTeks->pegawai->no ?>
+                    <?= $modelBerbisik->createdByTeks->pegawai->no ?>
                 </td>
             </tr>
         </tbody>
