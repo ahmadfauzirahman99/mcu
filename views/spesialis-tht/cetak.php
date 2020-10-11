@@ -390,7 +390,7 @@ use yii\helpers\Url;
                     } else {
                         $penata = McuPenatalaksanaanMcu::find()
                             ->where(['jenis' => 'spesialis_tht_berbisik'])
-                            ->andWhere(['id_fk' => $model->id_spesialis_tht_berbisik])
+                            ->andWhere(['id_fk' => $modelBerbisik->id_spesialis_tht_berbisik])
                             ->all();
                         if ($penata) {
                             echo '
@@ -477,12 +477,14 @@ use yii\helpers\Url;
                 <td style="width: 60%;border-left: 1px solid #000000;"></td>
                 <td style="border-right: 1px solid #000000; padding-top: 15px;">
                     <!-- <br><br><br><br><br><br><br> -->
-                    PEKANBARU, <?= Yii::$app->formatter->asDate(date('Y-m-d'), 'php:d F Y') ?>
+                    <!-- PEKANBARU, <?= Yii::$app->formatter->asDate(date('Y-m-d'), 'php:d F Y') ?> -->
                 </td>
             </tr>
             <tr>
                 <td style="border-left: 1px solid #000000;"></td>
                 <td style="text-align: center;border-right: 1px solid #000000;">
+                    PEKANBARU, <?= Yii::$app->formatter->asDate(date('Y-m-d'), 'php:d F Y') ?>
+                    <br>
                     DOKTER PEMERIKSA
                 </td>
             </tr>
