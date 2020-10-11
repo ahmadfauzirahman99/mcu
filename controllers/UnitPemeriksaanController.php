@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\Helper;
 use app\models\Anamnesis;
 use app\models\BahayaPotensial;
 use app\models\BodyDiscomfort;
@@ -58,6 +59,196 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $master_pemeriksaan_fisik = new MasterPemeriksaanFisik();
             $modelBahayaPotensial = new BahayaPotensial();
             $modelBrief = new McuBrief();
+        }
+
+
+        if ($master_pemeriksaan_fisik->isNewRecord) {
+            $master_pemeriksaan_fisik->tingkat_kesadaran_kesadaran = "Compos Mentis";
+            $master_pemeriksaan_fisik->tingkat_kesadaran_kualitas_kontak = "Baik";
+            $master_pemeriksaan_fisik->tingkat_kesadaran_tampak_kesakitan = "Tidak Tampak Kesakitan";
+            $master_pemeriksaan_fisik->tingkat_kesadaran_gangguan_saat_berjalan = "Tidak";
+            $master_pemeriksaan_fisik->kelenjar_getah_bening_leher = "Normal";
+            $master_pemeriksaan_fisik->kelenjar_getah_bening_sub_mandibula = "Normal";
+            $master_pemeriksaan_fisik->kelenjar_getah_bening_ketiak = "Normal";
+            $master_pemeriksaan_fisik->kelenjar_getah_bening_inguinal = "Normal";
+            $master_pemeriksaan_fisik->kepala_tulang = "Baik";
+            $master_pemeriksaan_fisik->kepala_rambut = "Baik";
+            $master_pemeriksaan_fisik->kepala_bentuk_wajah = "Baik";
+            $master_pemeriksaan_fisik->mata_persepsi_warna_kanan = "Normal";
+            $master_pemeriksaan_fisik->mata_persepsi_warna_kiri = "Normal";
+            $master_pemeriksaan_fisik->mata_kelopak_mata_kanan = "Normal";
+            $master_pemeriksaan_fisik->mata_kelopak_mata_kiri = "Normal";
+            $master_pemeriksaan_fisik->mata_konjungtiva_kanan = "Normal";
+            $master_pemeriksaan_fisik->mata_konjungtiva_kiri = "Normal";
+            $master_pemeriksaan_fisik->mata_gerak_bola_mata_kanan = "Normal";
+            $master_pemeriksaan_fisik->mata_gerak_bola_mata_kiri = "Normal";
+            $master_pemeriksaan_fisik->mata_sklera_kanan = "Normal";
+            $master_pemeriksaan_fisik->mata_sklera_kiri = "Normal";
+            $master_pemeriksaan_fisik->mata_lensa_mata_kanan = "Normal";
+            $master_pemeriksaan_fisik->mata_lensa_mata_kiri = "Normal";
+            $master_pemeriksaan_fisik->mata_kornea_kanan = "Normal";
+            $master_pemeriksaan_fisik->mata_kornea_kiri = "Normal";
+            $master_pemeriksaan_fisik->mata_bulu_mata_kanan = "Normal";
+            $master_pemeriksaan_fisik->mata_bulu_mata_kiri = "Normal";
+            $master_pemeriksaan_fisik->mata_tekanan_bola_mata_kanan = "Normal";
+            $master_pemeriksaan_fisik->mata_tekanan_bola_mata_kiri = "Normal";
+            $master_pemeriksaan_fisik->mata_penglihatan_3dimensi_kanan = "Normal";
+            $master_pemeriksaan_fisik->mata_penglihatan_3dimensi_kanan = "Normal";
+            $master_pemeriksaan_fisik->mata_penglihatan_3dimensi_kiri = "Normal";
+            $master_pemeriksaan_fisik->telinga_daun_telinga_kanan = "Normal";
+            $master_pemeriksaan_fisik->telinga_daun_telinga_kiri = "Normal";
+            $master_pemeriksaan_fisik->telinga_liang_telinga_kanan = "Normal";
+            $master_pemeriksaan_fisik->telinga_liang_telinga_kiri = "Normal";
+            $master_pemeriksaan_fisik->telinga_serumen_kanan = "Tidak Ada";
+            $master_pemeriksaan_fisik->telinga_serumen_kiri = "Tidak Ada";
+            $master_pemeriksaan_fisik->telinga_timpani_kanan = "Intak";
+            $master_pemeriksaan_fisik->telinga_timpani_kiri = "Intak";
+            $master_pemeriksaan_fisik->hidung_meatus_nasi = "Normal";
+            $master_pemeriksaan_fisik->hidung_septum_nasi = "Normal";
+            $master_pemeriksaan_fisik->hidung_konka_nasal = "Normal";
+            $master_pemeriksaan_fisik->hidung_nyeri_ketok_sinus = "Normal";
+            $master_pemeriksaan_fisik->hidung_penciuman = "Normal";
+            $master_pemeriksaan_fisik->mulut_bibir = "Normal";
+            $master_pemeriksaan_fisik->mulut_lidah = "Normal";
+            $master_pemeriksaan_fisik->mulut_gusi = "Normal";
+            $master_pemeriksaan_fisik->mulut_lainnya = "Normal";
+            $master_pemeriksaan_fisik->tenggorokan = "Normal";
+            $master_pemeriksaan_fisik->tenggorokan_pharynx = "Normal";
+            $master_pemeriksaan_fisik->tenggorokan_tonsil_kanan = "TO";
+            $master_pemeriksaan_fisik->tenggorokan_tonsil_kiri = "TO";
+            $master_pemeriksaan_fisik->tenggorokan_tonsil_ukuran_kanan = "Normal";
+            $master_pemeriksaan_fisik->tenggorokan_tonsil_ukuran_kiri = "Normal";
+            $master_pemeriksaan_fisik->tenggorokan_palatum = "Normal";
+            $master_pemeriksaan_fisik->leher_gerakan_leher = "Normal";
+            $master_pemeriksaan_fisik->leher_otot_leher = "Normal";
+            $master_pemeriksaan_fisik->leher_kelenjar_thyroid = "Normal";
+            $master_pemeriksaan_fisik->leher_pulsasi_carotis = "Normal";
+            $master_pemeriksaan_fisik->leher_tekanan_vena_jugularis = "Normal";
+            $master_pemeriksaan_fisik->leher_trachea = "Normal";
+            $master_pemeriksaan_fisik->dada_bentuk = "Simetris";
+            $master_pemeriksaan_fisik->dada = "Normal";
+            $master_pemeriksaan_fisik->dada_mamae = "Normal";
+            $master_pemeriksaan_fisik->paru_jantung_palpasi = "Normal";
+            $master_pemeriksaan_fisik->paru_jantung_perkusi_iktus_kanan = "Normal";
+            $master_pemeriksaan_fisik->paru_jantung_perkusi_kiri = "Sonor";
+            $master_pemeriksaan_fisik->paru_jantung_perkusi_iktus_kanan = "Normal";
+            $master_pemeriksaan_fisik->paru_jantung_perkusi_batas_jantung_kanan = "Normal";
+            $master_pemeriksaan_fisik->paru_jantung_auskultasi_bunyi_nafas_kanan = "Vesikuler";
+            $master_pemeriksaan_fisik->paru_jantung_auskultasi_bunyi_nafas_kiri = "Vesikuler";
+            $master_pemeriksaan_fisik->paru_jantung_auskultasi_bunyi_nafas_tambah_kanan = "Tak Ada";
+            $master_pemeriksaan_fisik->paru_jantung_auskultasi_bunyi_nafas_tambah_kiri = "Tak Ada";
+            $master_pemeriksaan_fisik->paru_jantung_bunyi_jantung = "Normal";
+            $master_pemeriksaan_fisik->abdomen = "Supel";
+            $master_pemeriksaan_fisik->abdomen_perkusi = "Timpani";
+            $master_pemeriksaan_fisik->abdomen_auskultasi_bising_usus = "Normal";
+            $master_pemeriksaan_fisik->abdomen_hati = "Teraba";
+            $master_pemeriksaan_fisik->abdomen_limpa = "Teraba Schuffner";
+            $master_pemeriksaan_fisik->abdomen_ginjal_kanan = "Normal";
+            $master_pemeriksaan_fisik->abdomen_ginjal_kiri = "Normal";
+            $master_pemeriksaan_fisik->abdomen_ballotement_kanan = "Normal";
+            $master_pemeriksaan_fisik->abdomen_ballotement_kiri = "Normal";
+            $master_pemeriksaan_fisik->abdomen_nyeri_costo_vertebrae_kanan = "Normal";
+            $master_pemeriksaan_fisik->abdomen_nyeri_costo_vertebrae_kiri = "Normal";
+            $master_pemeriksaan_fisik->genitourinaria_kandung_kemih = "Normal";
+            $master_pemeriksaan_fisik->genitourinaria_anus = "Normal";
+            $master_pemeriksaan_fisik->genitourinaria_genitalia_eksternal = "Normal";
+            $master_pemeriksaan_fisik->genitourinaria_prostat = "Teraba";
+            $master_pemeriksaan_fisik->vertebra = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_gerakan_abduksi_neer_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_gerakan_abduksi_hawkin_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_gerakan_drop_arm_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_gerakan_yergason_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_gerakan_speed_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_tulang_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_sensibilitas_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_oedem_kanan = "Tidak Ada";
+            $master_pemeriksaan_fisik->tulang_atas_varises_kanan = "Tidak Ada";
+            $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_pin_prick_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_phallent_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_tinnel_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_finskelstein_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_vaskularisasi_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_kelaianan_kukujari_kanan = "Tidak Ada";
+            $master_pemeriksaan_fisik->tulang_atas_gerakan_abduksi_neer_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_gerakan_abduksi_hawkin_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_gerakan_drop_arm_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_gerakan_yergason_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_gerakan_speed_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_tulang_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_sensibilitas_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_oedem_kiri = "Tidak Ada";
+            $master_pemeriksaan_fisik->tulang_atas_varises_kiri = "Tidak Ada";
+            $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_pin_prick_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_phallent_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_tinnel_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_finskelstein_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_vaskularisasi_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_atas_kelaianan_kukujari_kiri = "Tidak Ada";
+
+            $master_pemeriksaan_fisik->tulang_bawah_laseque_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_bawah_kernique_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_bawah_patrick_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_bawah_contrapatrick_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_bawah_nyeri_tekanan_kanan = "Tidak Ada";
+            $master_pemeriksaan_fisik->tulang_bawah_kekuatan_otot_kanan = "Normal";
+            $master_pemeriksaan_fisik->tulang_bawah_sensibilitas_kanan = "Baik";
+            $master_pemeriksaan_fisik->tulang_bawah_oedema_kanan = "Tidak Ada";
+            $master_pemeriksaan_fisik->tulang_bawah_vaskularisasi_kanan = "Baik";
+            $master_pemeriksaan_fisik->tulang_bawah_kelainan_kuku_kanan = "Tidak Ada";
+
+            $master_pemeriksaan_fisik->tulang_bawah_laseque_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_bawah_kernique_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_bawah_patrick_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_bawah_contrapatrick_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_bawah_nyeri_tekanan_kiri = "Tidak Ada";
+            $master_pemeriksaan_fisik->tulang_bawah_kekuatan_otot_kiri = "Normal";
+            $master_pemeriksaan_fisik->tulang_bawah_sensibilitas_kiri = "Baik";
+            $master_pemeriksaan_fisik->tulang_bawah_oedema_kiri = "Tidak Ada";
+            $master_pemeriksaan_fisik->tulang_bawah_vaskularisasi_kiri = "Baik";
+            $master_pemeriksaan_fisik->tulang_bawah_kelainan_kuku_kiri = "Tidak Ada";
+
+            $master_pemeriksaan_fisik->otot_motorik_trofi_kanan = "Normal";
+            $master_pemeriksaan_fisik->otot_motorik_tonus_kanan = "Normal";
+            $master_pemeriksaan_fisik->otot_motorik_gerakan_abnormal_kanan = "Tidak Ada";
+            $master_pemeriksaan_fisik->otot_motorik_trofi_kiri = "Normal";
+            $master_pemeriksaan_fisik->otot_motorik_tonus_kiri = "Normal";
+            $master_pemeriksaan_fisik->otot_motorik_gerakan_abnormal_kiri = "Tidak Ada";
+
+            $master_pemeriksaan_fisik->fungsi_sensorik_kanan = "Normal";
+            $master_pemeriksaan_fisik->fungsi_autonom_kanan = "Normal";
+            $master_pemeriksaan_fisik->fungsi_sensorik_kiri = "Normal";
+            $master_pemeriksaan_fisik->fungsi_autonom_kiri = "Normal";
+
+            $master_pemeriksaan_fisik->saraf_daya_ingat_segera = "Baik";
+            $master_pemeriksaan_fisik->saraf_daya_ingat_jangka_menengah = "Baik";
+            $master_pemeriksaan_fisik->saraf_daya_ingat_jangka_pendek = "Baik";
+            $master_pemeriksaan_fisik->saraf_daya_ingat_jangka_panjang = "Baik";
+            $master_pemeriksaan_fisik->saraf_orientasi_waktu = "Baik";
+            $master_pemeriksaan_fisik->saraf_orientasi_orang = "Baik";
+            $master_pemeriksaan_fisik->saraf_orientasi_tempat = "Baik";
+            $master_pemeriksaan_fisik->saraf_kesan = "Baik";
+            $master_pemeriksaan_fisik->saraf_kesan_n_i = "Baik";
+            $master_pemeriksaan_fisik->saraf_kesan_n_ii = "Baik";
+            $master_pemeriksaan_fisik->saraf_kesan_n_iii = "Baik";
+            $master_pemeriksaan_fisik->saraf_kesan_n_iv = "Baik";
+            $master_pemeriksaan_fisik->saraf_kesan_n_v = "Baik";
+            $master_pemeriksaan_fisik->saraf_kesan_n_vi = "Baik";
+            $master_pemeriksaan_fisik->saraf_kesan_n_vii = "Baik";
+            $master_pemeriksaan_fisik->saraf_kesan_n_viii = "Baik";
+            $master_pemeriksaan_fisik->saraf_kesan_n_viii = "Baik";
+            $master_pemeriksaan_fisik->saraf_kesan_n_ix = "Baik";
+            $master_pemeriksaan_fisik->saraf_kesan_n_x = "Baik";
+            $master_pemeriksaan_fisik->saraf_kesan_n_xi = "Baik";
+            $master_pemeriksaan_fisik->saraf_kesan_n_xii = "Baik";
+            $master_pemeriksaan_fisik->reflek_fisiologis_patella_kanan = "Normal";
+            $master_pemeriksaan_fisik->reflek_patologis_kanan = "NormNegativeal";
+            $master_pemeriksaan_fisik->reflek_fisiologis_patella_kiri = "Normal";
+            $master_pemeriksaan_fisik->reflek_patologis_kiri = "NormNegativeal";
+            $master_pemeriksaan_fisik->kulit_kulit = "Normal";
+            $master_pemeriksaan_fisik->kulit_selaput_lendir = "Normal";
+            $master_pemeriksaan_fisik->kulit_kuku = "Normal";
+            $master_pemeriksaan_fisik->kulit_tato = "Tidak Ada";
+            $master_pemeriksaan_fisik->kategori_kesehatan = "FIT";
         }
 
 
@@ -221,6 +412,8 @@ class UnitPemeriksaanController extends \yii\web\Controller
     //save anamnesis brief survey
     public function actionSavePemeriksaanFisik()
     {
+
+        $rm = Helper::getRumpun();
         $p = Yii::$app->request->post();
         $no_rekam_medik = $p['MasterPemeriksaanFisik']['no_rekam_medik'];
         $fisik = MasterPemeriksaanFisik::findOne(['no_rekam_medik' => $no_rekam_medik]);
@@ -228,7 +421,12 @@ class UnitPemeriksaanController extends \yii\web\Controller
         if ($fisik != null) {
             if ($fisik->load(Yii::$app->request->post())) {
                 Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-                $fisik->id_dokter_pemeriksaan_fisik = (string)Yii::$app->user->identity->id;
+                if ($rm['kodejenis'] == 1) {
+                    $fisik->id_dokter_pemeriksaan_fisik = (string)Yii::$app->user->identity->id;
+                }
+                if ($rm['kodejenis'] == 20) {
+                    $fisik->id_dokter_fit_for_work = (string)Yii::$app->user->identity->id;
+                }
                 if ($fisik->save()) {
                     return [
                         's' => true,
@@ -244,12 +442,16 @@ class UnitPemeriksaanController extends \yii\web\Controller
         }
 
         $model = new MasterPemeriksaanFisik();
-    
+
         if ($model->load(Yii::$app->request->post())) {
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-
             $model->id_dokter_pemeriksaan_fisik = (string)Yii::$app->user->identity->id;
-
+            if ($rm['kodejenis'] == 1) {
+                $model->id_dokter_pemeriksaan_fisik = (string)Yii::$app->user->identity->id;
+            }
+            if ($rm['kodejenis'] == 20) {
+                $fisik->id_dokter_fit_for_work = (string)Yii::$app->user->identity->id;
+            }
             if ($model->save()) {
                 return [
                     's' => true,

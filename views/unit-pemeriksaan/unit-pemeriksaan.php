@@ -41,7 +41,7 @@ ItemFisikAsset::register($this);
 <?= $this->render('anamnesis.php', ['model' => $anamnesis, 'dataLayanan' => $dataLayanan,]) ?>
 
 <?php $identitas_dokter = Helper::getRumpun()  ?>
-<?php if ($identitas_dokter['kodejenis'] == 20) { ?>
+<?php if ($identitas_dokter['kodejenis'] == 20 || $identitas_dokter['kodejenis'] == 1) { ?>
     <?= $this->render(
         'anamnesis-okupasi.php',
         [

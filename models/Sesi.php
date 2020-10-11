@@ -255,6 +255,7 @@ class Sesi extends \yii\db\ActiveRecord
 
     public function setBatasSesiHabis()
     {
+        
         if ($this->isKeluar()) {
             $this->addError('o', 'Akun ini sudah keluar.');
         } else {

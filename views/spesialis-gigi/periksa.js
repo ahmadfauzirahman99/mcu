@@ -5,19 +5,78 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-05 20:45:35 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-08 15:50:56
+ * @Last Modified time: 2020-10-11 12:51:45
  */
 
 
 $(document).ready(function () {
 
-    $('#mcuspesialisgigi-kesimpulan').on('change', function (e) {
-        let kesimpulan = $('#McuSpesialisGigi_kesimpulan_0').prop('checked')
-        console.log(kesimpulan);
-        if (kesimpulan)
+    $('#McuSpesialisGigi_oklusi_3_teks').on('input change focus', function (e) {
+        let teks = $('#McuSpesialisGigi_oklusi_3_teks').val()
+        $('#McuSpesialisGigi_oklusi_3').val(teks)
+        $('#McuSpesialisGigi_oklusi_3').prop('checked', true)
+        // console.log(teks);
+    });
+    $('#McuSpesialisGigi_torus_palatinus_5_teks').on('input change focus', function (e) {
+        let teks = $('#McuSpesialisGigi_torus_palatinus_5_teks').val()
+        $('#McuSpesialisGigi_torus_palatinus_5').val(teks)
+        $('#McuSpesialisGigi_torus_palatinus_5').prop('checked', true)
+    });
+    $('#McuSpesialisGigi_torus_mandibularis_4_teks').on('input change focus', function (e) {
+        let teks = $('#McuSpesialisGigi_torus_mandibularis_4_teks').val()
+        $('#McuSpesialisGigi_torus_mandibularis_4').val(teks)
+        $('#McuSpesialisGigi_torus_mandibularis_4').prop('checked', true)
+    });
+    $('#McuSpesialisGigi_palatum_3_teks').on('input change focus', function (e) {
+        let teks = $('#McuSpesialisGigi_palatum_3_teks').val()
+        $('#McuSpesialisGigi_palatum_3').val(teks)
+        $('#McuSpesialisGigi_palatum_3').prop('checked', true)
+    });
+    $('#McuSpesialisGigi_supernumerary_teeth_2_teks').on('input change focus', function (e) {
+        let teks = $('#McuSpesialisGigi_supernumerary_teeth_2_teks').val()
+        $('#McuSpesialisGigi_supernumerary_teeth_2').val(teks)
+        $('#McuSpesialisGigi_supernumerary_teeth_2').prop('checked', true)
+    });
+    $('#McuSpesialisGigi_diastema_2_teks').on('input change focus', function (e) {
+        let teks = $('#McuSpesialisGigi_diastema_2_teks').val()
+        $('#McuSpesialisGigi_diastema_2').val(teks)
+        $('#McuSpesialisGigi_diastema_2').prop('checked', true)
+    });
+    $('#McuSpesialisGigi_spacing_2_teks').on('input change focus', function (e) {
+        let teks = $('#McuSpesialisGigi_spacing_2_teks').val()
+        $('#McuSpesialisGigi_spacing_2').val(teks)
+        $('#McuSpesialisGigi_spacing_2').prop('checked', true)
+    });
+    $('#McuSpesialisGigi_oral_hygiene_3_teks').on('input change focus', function (e) {
+        let teks = $('#McuSpesialisGigi_oral_hygiene_3_teks').val()
+        $('#McuSpesialisGigi_oral_hygiene_3').val(teks)
+        $('#McuSpesialisGigi_oral_hygiene_3').prop('checked', true)
+    });
+    $('#McuSpesialisGigi_gingiva_periodontal_3_teks').on('input change focus', function (e) {
+        let teks = $('#McuSpesialisGigi_gingiva_periodontal_3_teks').val()
+        $('#McuSpesialisGigi_gingiva_periodontal_3').val(teks)
+        $('#McuSpesialisGigi_gingiva_periodontal_3').prop('checked', true)
+    });
+    $('#McuSpesialisGigi_oral_mucosa_2_teks').on('input change focus', function (e) {
+        let teks = $('#McuSpesialisGigi_oral_mucosa_2_teks').val()
+        $('#McuSpesialisGigi_oral_mucosa_2').val(teks)
+        $('#McuSpesialisGigi_oral_mucosa_2').prop('checked', true)
+    });
+    $('#McuSpesialisGigi_tongue_2_teks').on('input change focus', function (e) {
+        let teks = $('#McuSpesialisGigi_tongue_2_teks').val()
+        $('#McuSpesialisGigi_tongue_2').val(teks)
+        $('#McuSpesialisGigi_tongue_2').prop('checked', true)
+    });
+
+    $('#mcuspesialisgigi-kesan').on('change', function (e) {
+        let kesan = $('#McuSpesialisGigi_kesan_0').prop('checked')
+        console.log(kesan);
+        if (kesan)
             $('.div-penata').hide('slow')
-        else
+        else {
             $('.div-penata').show('slow')
+            $("#form-spesialis-gigi").submit()
+        }
     });
 
     $("#form-spesialis-gigi").on('submit', function (e) {

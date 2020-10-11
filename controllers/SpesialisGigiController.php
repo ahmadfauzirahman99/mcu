@@ -164,6 +164,11 @@ class SpesialisGigiController extends Controller
         if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
+            // echo "<pre>";
+            // print_r($model);
+            // echo "</pre>";
+            // die;
+
             if ($model->save()) {
                 return [
                     's' => true,
@@ -221,6 +226,7 @@ class SpesialisGigiController extends Controller
             $model->gingiva_periodontal = 'Normal';
             $model->oral_mucosa = 'Normal';
             $model->tongue = 'Normal';
+            $model->kesan = 'Normal';
         }
 
         return $this->render('periksa', [
@@ -272,6 +278,9 @@ class SpesialisGigiController extends Controller
             'margin_footer' => 10
         ]);
         $mpdf->SetTitle('Spesialis Gigi ' . $model['no_rekam_medik']);
+        if ($model->kesan == 'Normal') {
+            $model->kesimpulan = 'Normal';
+        }
         // return $this->renderPartial('cetak', [
         //     'model' => $model,
         //     'no_rm' => $no_rm,

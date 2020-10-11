@@ -44,7 +44,11 @@ use yii\helpers\Url;
 </li>
 <li class=" text-muted menu-title">Laporan</li>
 
-<li>
+<li style="display: none;">
     <a href="<?= Url::to(['/laporan/index']) ?>" class="waves-effect"><i class="fas fa-file"></i> <span> Laporan </span> </a>
+</li>
+
+<li>
+    <a href="<?= Url::to(['/laporan/list-laporan']) ?>" class="waves-effect"><i class="fas fa-file"></i> <span>List Laporan </span> </a>
 </li>
 <div class="clearfix"></div>

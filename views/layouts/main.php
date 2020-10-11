@@ -83,6 +83,7 @@ AppAsset::register($this);
                         <div class="user-status offline"><i class="mdi mdi-adjust"></i></div>
                     </div>
                     <h5><a href="#"><?= Yii::$app->user->identity->nama ?></a> </h5>
+                    <h5><a class="text-capitalize" href="#"><b><i><?= Yii::$app->user->identity->roles ?></i></b></a> </h5>
                     <ul class="list-inline">
 
 

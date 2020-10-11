@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-08 15:52:07
+ * @Last Modified time: 2020-10-11 15:32:36
  */
 
 use app\components\Helper;
@@ -308,177 +308,375 @@ $dataG = [
         <tr>
             <td colspan=2 height="19" align="left" valign=middle>Oklusi</td>
             <td align="left" valign=top>:</td>
-            <td style="border-right: 1px solid #000000" colspan=3 valign=middle>
-                <?php
-                echo $form->field($model, 'oklusi')->radioList(
-                    ['Normal Bite' => 'Normal Bite', 'Cross Bite' => 'Cross Bite', 'Steep Bite' => 'Steep Bite',],
-                    [
-                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
-                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
-                        }
-                    ]
-                )->label(false);
-                ?>
+            <td style="border-right: 0px solid #000000;" colspan=3 valign=middle>
+                <table style="width: 100%; white-space: nowrap;">
+                    <tbody>
+                        <tr>
+                            <td style="border-top: 1px solid #ffffff; vertical-align: bottom;">
+                                <?php
+                                echo $form->field($model, 'oklusi')->radioList(
+                                    $oklusi_option = ['Normal Bite' => 'Normal Bite', 'Cross Bite' => 'Cross Bite', 'Steep Bite' => 'Steep Bite',],
+                                    [
+                                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                                        }
+                                    ]
+                                )->label(false);
+                                ?>
+                            </td>
+                            <td style="border-top: 1px solid #ffffff; width: 100%; padding-left: 3% !important;">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input <?= (!in_array($model->oklusi, $oklusi_option)) ? 'checked' : null ?> type="radio" id="McuSpesialisGigi_oklusi_3" name="McuSpesialisGigi[oklusi]">
+                                        </div>
+                                    </div>
+                                    <input value="<?= (!in_array($model->oklusi, $oklusi_option)) ? $model->oklusi : null ?>" type="text" id="McuSpesialisGigi_oklusi_3_teks" style="width: 50px;" class="form-control form-control-sm">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
         <tr>
             <td colspan=2 height="19" align="left" valign=middle>Torus Palatinus</td>
             <td align="left" valign=middle>:</td>
             <td style="border-right: 1px solid #000000" colspan=3 valign=middle>
-                <?php
-                echo $form->field($model, 'torus_palatinus')->radioList(
-                    ['Tidak Ada' => 'Tidak Ada', 'Kecil' => 'Kecil', 'Sedang' => 'Sedang', 'Besar' => 'Besar', 'Multiple' => 'Multiple',],
-                    [
-                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
-                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
-                        }
-                    ]
-                )->label(false);
-                ?>
+                <table style="width: 100%; white-space: nowrap;">
+                    <tbody>
+                        <tr>
+                            <td style="border-top: 1px solid #ffffff; vertical-align: bottom;">
+                                <?php
+                                echo $form->field($model, 'torus_palatinus')->radioList(
+                                    $torus_palatinus_option = ['Tidak Ada' => 'Tidak Ada', 'Kecil' => 'Kecil', 'Sedang' => 'Sedang', 'Besar' => 'Besar', 'Multiple' => 'Multiple',],
+                                    [
+                                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                                        }
+                                    ]
+                                )->label(false);
+                                ?>
+                            </td>
+                            <td style="border-top: 1px solid #ffffff; width: 100%; padding-left: 3% !important;">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input <?= (!in_array($model->torus_palatinus, $torus_palatinus_option)) ? 'checked' : null ?> type="radio" id="McuSpesialisGigi_torus_palatinus_5" name="McuSpesialisGigi[torus_palatinus]">
+                                        </div>
+                                    </div>
+                                    <input value="<?= (!in_array($model->torus_palatinus, $torus_palatinus_option)) ? $model->torus_palatinus : null ?>" type="text" id="McuSpesialisGigi_torus_palatinus_5_teks" style="width: 50px;" class="form-control form-control-sm">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
         <tr>
             <td colspan=2 height="19" align="left" valign=middle>Torus Mandibularis</td>
             <td align="left" valign=middle>:</td>
             <td style="border-right: 1px solid #000000" colspan=3 valign=middle>
-                <?php
-                echo $form->field($model, 'torus_mandibularis')->radioList(
-                    ['Tidak Ada' => 'Tidak Ada', 'Sisi Kiri' => 'Sisi Kiri', 'Sisi Kanan' => 'Sisi Kanan', 'Kedua Sisi' => 'Kedua Sisi',],
-                    [
-                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
-                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
-                        }
-                    ]
-                )->label(false);
-                ?>
+                <table style="width: 100%; white-space: nowrap;">
+                    <tbody>
+                        <tr>
+                            <td style="border-top: 1px solid #ffffff; vertical-align: bottom;">
+                                <?php
+                                echo $form->field($model, 'torus_mandibularis')->radioList(
+                                    $torus_mandibularis_option = ['Tidak Ada' => 'Tidak Ada', 'Sisi Kiri' => 'Sisi Kiri', 'Sisi Kanan' => 'Sisi Kanan', 'Kedua Sisi' => 'Kedua Sisi',],
+                                    [
+                                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                                        }
+                                    ]
+                                )->label(false);
+                                ?>
+                            </td>
+                            <td style="border-top: 1px solid #ffffff; width: 100%; padding-left: 3% !important;">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input <?= (!in_array($model->torus_mandibularis, $torus_mandibularis_option)) ? 'checked' : null ?> type="radio" id="McuSpesialisGigi_torus_mandibularis_4" name="McuSpesialisGigi[torus_mandibularis]">
+                                        </div>
+                                    </div>
+                                    <input value="<?= (!in_array($model->torus_mandibularis, $torus_mandibularis_option)) ? $model->torus_mandibularis : null ?>" type="text" id="McuSpesialisGigi_torus_mandibularis_4_teks" style="width: 50px;" class="form-control form-control-sm">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
         <tr>
             <td colspan=2 height="19" align="left" valign=middle>Palatum</td>
             <td align="left" valign=middle>:</td>
             <td style="border-right: 1px solid #000000" colspan=3 valign=middle>
-                <?php
-                echo $form->field($model, 'palatum')->radioList(
-                    ['Tinggi' => 'Tinggi', 'Sedang' => 'Sedang', 'Rendah' => 'Rendah',],
-                    [
-                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
-                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
-                        }
-                    ]
-                )->label(false);
-                ?>
+                <table style="width: 100%; white-space: nowrap;">
+                    <tbody>
+                        <tr>
+                            <td style="border-top: 1px solid #ffffff; vertical-align: bottom;">
+                                <?php
+                                echo $form->field($model, 'palatum')->radioList(
+                                    $palatum_option = ['Tinggi' => 'Tinggi', 'Sedang' => 'Sedang', 'Rendah' => 'Rendah',],
+                                    [
+                                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                                        }
+                                    ]
+                                )->label(false);
+                                ?>
+                            </td>
+                            <td style="border-top: 1px solid #ffffff; width: 100%; padding-left: 3% !important;">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input <?= (!in_array($model->palatum, $palatum_option)) ? 'checked' : null ?> type="radio" id="McuSpesialisGigi_palatum_3" name="McuSpesialisGigi[palatum]">
+                                        </div>
+                                    </div>
+                                    <input value="<?= (!in_array($model->palatum, $palatum_option)) ? $model->palatum : null ?>" type="text" id="McuSpesialisGigi_palatum_3_teks" style="width: 50px;" class="form-control form-control-sm">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
         <tr>
             <td colspan=2 height="19" align="left" valign=middle>Supernumerary Teeth</td>
             <td align="left" valign=middle>:</td>
             <td style="border-right: 1px solid #000000" colspan=3 valign=middle>
-                <?php
-                echo $form->field($model, 'supernumerary_teeth')->radioList(
-                    ['Tidak Ada' => 'Tidak Ada', 'Ada' => 'Ada',],
-                    [
-                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
-                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
-                        }
-                    ]
-                )->label(false);
-                ?>
+                <table style="width: 100%; white-space: nowrap;">
+                    <tbody>
+                        <tr>
+                            <td style="border-top: 1px solid #ffffff; vertical-align: bottom;">
+                                <?php
+                                echo $form->field($model, 'supernumerary_teeth')->radioList(
+                                    $supernumerary_teeth_option = ['Tidak Ada' => 'Tidak Ada', 'Ada' => 'Ada',],
+                                    [
+                                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                                        }
+                                    ]
+                                )->label(false);
+                                ?>
+                            </td>
+                            <td style="border-top: 1px solid #ffffff; width: 100%; padding-left: 3% !important;">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input <?= (!in_array($model->supernumerary_teeth, $supernumerary_teeth_option)) ? 'checked' : null ?> type="radio" id="McuSpesialisGigi_supernumerary_teeth_2" name="McuSpesialisGigi[supernumerary_teeth]">
+                                        </div>
+                                    </div>
+                                    <input value="<?= (!in_array($model->supernumerary_teeth, $supernumerary_teeth_option)) ? $model->supernumerary_teeth : null ?>" type="text" id="McuSpesialisGigi_supernumerary_teeth_2_teks" style="width: 50px;" class="form-control form-control-sm">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
         <tr>
             <td colspan=2 height="19" align="left" valign=middle>Diastema</td>
             <td align="left" valign=middle>:</td>
             <td style="border-right: 1px solid #000000" colspan=3 valign=middle>
-                <?php
-                echo $form->field($model, 'diastema')->radioList(
-                    ['Tidak Ada' => 'Tidak Ada', 'Ada' => 'Ada',],
-                    [
-                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
-                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
-                        }
-                    ]
-                )->label(false);
-                ?>
+                <table style="width: 100%; white-space: nowrap;">
+                    <tbody>
+                        <tr>
+                            <td style="border-top: 1px solid #ffffff; vertical-align: bottom;">
+                                <?php
+                                echo $form->field($model, 'diastema')->radioList(
+                                    $diastema_option = ['Tidak Ada' => 'Tidak Ada', 'Ada' => 'Ada',],
+                                    [
+                                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                                        }
+                                    ]
+                                )->label(false);
+                                ?>
+                            </td>
+                            <td style="border-top: 1px solid #ffffff; width: 100%; padding-left: 3% !important;">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input <?= (!in_array($model->diastema, $diastema_option)) ? 'checked' : null ?> type="radio" id="McuSpesialisGigi_diastema_2" name="McuSpesialisGigi[diastema]">
+                                        </div>
+                                    </div>
+                                    <input value="<?= (!in_array($model->diastema, $diastema_option)) ? $model->diastema : null ?>" type="text" id="McuSpesialisGigi_diastema_2_teks" style="width: 50px;" class="form-control form-control-sm">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
         <tr>
             <td colspan=2 height="19" align="left" valign=middle>Spacing</td>
             <td align="left" valign=middle>:</td>
             <td style="border-right: 1px solid #000000" colspan=3 valign=middle>
-                <?php
-                echo $form->field($model, 'spacing')->radioList(
-                    ['Tidak Ada' => 'Tidak Ada', 'Ada' => 'Ada',],
-                    [
-                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
-                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
-                        }
-                    ]
-                )->label(false);
-                ?>
+                <table style="width: 100%; white-space: nowrap;">
+                    <tbody>
+                        <tr>
+                            <td style="border-top: 1px solid #ffffff; vertical-align: bottom;">
+                                <?php
+                                echo $form->field($model, 'spacing')->radioList(
+                                    $spacing_option = ['Tidak Ada' => 'Tidak Ada', 'Ada' => 'Ada',],
+                                    [
+                                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                                        }
+                                    ]
+                                )->label(false);
+                                ?>
+                            </td>
+                            <td style="border-top: 1px solid #ffffff; width: 100%; padding-left: 3% !important;">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input <?= (!in_array($model->spacing, $spacing_option)) ? 'checked' : null ?> type="radio" id="McuSpesialisGigi_spacing_2" name="McuSpesialisGigi[spacing]">
+                                        </div>
+                                    </div>
+                                    <input value="<?= (!in_array($model->spacing, $spacing_option)) ? $model->spacing : null ?>" type="text" id="McuSpesialisGigi_spacing_2_teks" style="width: 50px;" class="form-control form-control-sm">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
         <tr>
             <td colspan=2 height="19" align="left" valign=middle>Oral Hygiene</td>
             <td align="left" valign=middle>:</td>
             <td style="border-right: 1px solid #000000" colspan=3 valign=middle>
-                <?php
-                echo $form->field($model, 'oral_hygiene')->radioList(
-                    ['Baik' => 'Baik', 'Sedang' => 'Sedang', 'Kurang' => 'Kurang',],
-                    [
-                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
-                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
-                        }
-                    ]
-                )->label(false);
-                ?>
+                <table style="width: 100%; white-space: nowrap;">
+                    <tbody>
+                        <tr>
+                            <td style="border-top: 1px solid #ffffff; vertical-align: bottom;">
+                                <?php
+                                echo $form->field($model, 'oral_hygiene')->radioList(
+                                    $oral_hygiene_option = ['Baik' => 'Baik', 'Sedang' => 'Sedang', 'Kurang' => 'Kurang',],
+                                    [
+                                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                                        }
+                                    ]
+                                )->label(false);
+                                ?>
+                            </td>
+                            <td style="border-top: 1px solid #ffffff; width: 100%; padding-left: 3% !important;">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input <?= (!in_array($model->oral_hygiene, $oral_hygiene_option)) ? 'checked' : null ?> type="radio" id="McuSpesialisGigi_oral_hygiene_3" name="McuSpesialisGigi[oral_hygiene]">
+                                        </div>
+                                    </div>
+                                    <input value="<?= (!in_array($model->oral_hygiene, $oral_hygiene_option)) ? $model->oral_hygiene : null ?>" type="text" id="McuSpesialisGigi_oral_hygiene_3_teks" style="width: 50px;" class="form-control form-control-sm">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
         <tr>
             <td colspan=2 height="19" align="left" valign=middle>Gingiva & Periodontal</td>
             <td align="left" valign=middle>:</td>
             <td style="border-right: 1px solid #000000" colspan=3 valign=middle>
-                <?php
-                echo $form->field($model, 'gingiva_periodontal')->radioList(
-                    ['Normal' => 'Normal', 'Gingivitis' => 'Gingivitis', 'Periodontitis' => 'Periodontitis',],
-                    [
-                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
-                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
-                        }
-                    ]
-                )->label(false);
-                ?>
+                <table style="width: 100%; white-space: nowrap;">
+                    <tbody>
+                        <tr>
+                            <td style="border-top: 1px solid #ffffff; vertical-align: bottom;">
+                                <?php
+                                echo $form->field($model, 'gingiva_periodontal')->radioList(
+                                    $gingiva_periodontal_option = ['Normal' => 'Normal', 'Gingivitis' => 'Gingivitis', 'Periodontitis' => 'Periodontitis',],
+                                    [
+                                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                                        }
+                                    ]
+                                )->label(false);
+                                ?>
+                            </td>
+                            <td style="border-top: 1px solid #ffffff; width: 100%; padding-left: 3% !important;">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input <?= (!in_array($model->gingiva_periodontal, $gingiva_periodontal_option)) ? 'checked' : null ?> type="radio" id="McuSpesialisGigi_gingiva_periodontal_3" name="McuSpesialisGigi[gingiva_periodontal]">
+                                        </div>
+                                    </div>
+                                    <input value="<?= (!in_array($model->gingiva_periodontal, $gingiva_periodontal_option)) ? $model->gingiva_periodontal : null ?>" type="text" id="McuSpesialisGigi_gingiva_periodontal_3_teks" style="width: 50px;" class="form-control form-control-sm">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
         <tr>
             <td colspan=2 height="19" align="left" valign=middle>Oral Mucosa</td>
             <td align="left" valign=middle>:</td>
             <td style="border-right: 1px solid #000000" colspan=3 valign=middle>
-                <?php
-                echo $form->field($model, 'oral_mucosa')->radioList(
-                    ['Normal' => 'Normal', 'Disease' => 'Disease',],
-                    [
-                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
-                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
-                        }
-                    ]
-                )->label(false);
-                ?>
+                <table style="width: 100%; white-space: nowrap;">
+                    <tbody>
+                        <tr>
+                            <td style="border-top: 1px solid #ffffff; vertical-align: bottom;">
+                                <?php
+                                echo $form->field($model, 'oral_mucosa')->radioList(
+                                    $oral_mucosa_option = ['Normal' => 'Normal', 'Disease' => 'Disease',],
+                                    [
+                                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                                        }
+                                    ]
+                                )->label(false);
+                                ?>
+                            </td>
+                            <td style="border-top: 1px solid #ffffff; width: 100%; padding-left: 3% !important;">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input <?= (!in_array($model->oral_mucosa, $oral_mucosa_option)) ? 'checked' : null ?> type="radio" id="McuSpesialisGigi_oral_mucosa_2" name="McuSpesialisGigi[oral_mucosa]">
+                                        </div>
+                                    </div>
+                                    <input value="<?= (!in_array($model->oral_mucosa, $oral_mucosa_option)) ? $model->oral_mucosa : null ?>" type="text" id="McuSpesialisGigi_oral_mucosa_2_teks" style="width: 50px;" class="form-control form-control-sm">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
         <tr>
             <td colspan=2 height="19" align="left" valign=middle>Tongue</td>
             <td align="left" valign=middle>:</td>
             <td style="border-right: 1px solid #000000" colspan=3 valign=middle>
-                <?php
-                echo $form->field($model, 'tongue')->radioList(
-                    ['Normal' => 'Normal', 'Disease' => 'Disease',],
-                    [
-                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
-                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
-                        }
-                    ]
-                )->label(false);
-                ?>
+                <table style="width: 100%; white-space: nowrap;">
+                    <tbody>
+                        <tr>
+                            <td style="border-top: 1px solid #ffffff; vertical-align: bottom;">
+                                <?php
+                                echo $form->field($model, 'tongue')->radioList(
+                                    $tongue_option = ['Normal' => 'Normal', 'Disease' => 'Disease',],
+                                    [
+                                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                                        }
+                                    ]
+                                )->label(false);
+                                ?>
+                            </td>
+                            <td style="border-top: 1px solid #ffffff; width: 100%; padding-left: 3% !important;">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input <?= (!in_array($model->tongue, $tongue_option)) ? 'checked' : null ?> type="radio" id="McuSpesialisGigi_tongue_2" name="McuSpesialisGigi[tongue]">
+                                        </div>
+                                    </div>
+                                    <input value="<?= (!in_array($model->tongue, $tongue_option)) ? $model->tongue : null ?>" type="text" id="McuSpesialisGigi_tongue_2_teks" style="width: 50px;" class="form-control form-control-sm">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
         <tr>
@@ -489,13 +687,13 @@ $dataG = [
             </td>
         </tr>
         <tr>
-            <td colspan=2 height="19" align="left" valign=middle>Kesan</td>
+            <td colspan=2 height="19" align="left" valign=middle><b>Kesan</b></td>
             <td align="left" valign=middle>:</td>
             <td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" colspan=3 rowspan=3 valign=middle>
                 <?php // $form->field($model, 'kesimpulan')->textArea(['rows' => 4])->label(false) 
                 ?>
                 <?php
-                echo $form->field($model, 'kesimpulan')->radioList(
+                echo $form->field($model, 'kesan')->radioList(
                     ['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal',],
                     [
                         'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
@@ -545,7 +743,7 @@ $dataG = [
 
     <?php
     $displayPenata = 'none';
-    if ($model->kesimpulan == 'Tidak Normal')
+    if ($model->kesan == 'Tidak Normal')
         $displayPenata = 'block';
     ?>
     <div class="div-penata" style="display: <?= $displayPenata ?>;">
@@ -632,7 +830,6 @@ $dataG = [
         ]); ?>
         <?php Pjax::end(); ?>
     </div>
-
 </div>
 
 <?php

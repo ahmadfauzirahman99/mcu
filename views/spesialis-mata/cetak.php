@@ -1,5 +1,7 @@
 <?php
 
+use app\models\spesialis\BaseAR;
+use app\models\spesialis\McuPenatalaksanaanMcu;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -39,6 +41,12 @@ use yii\helpers\Url;
     }
 
     .tbl-mata tr td {
+        vertical-align: top;
+    }
+
+    .tabel-penata tr th,
+    .tabel-penata tr td {
+        border: 1px solid #000000;
         vertical-align: top;
     }
 
@@ -109,7 +117,7 @@ use yii\helpers\Url;
                             <tr>
                                 <td style="padding: 1px;">Jenis Kelamin</td>
                                 <td style="padding: 1px;">: </td>
-                                <td style="padding: 1px;"><?= $pasien->jenis_kelamin ?></td>
+                                <td style="padding: 1px;"><?= BaseAR::getJk($pasien->jenis_kelamin) ?></td>
                             </tr>
                             <tr>
                                 <td style="padding: 1px;" colspan="3">
@@ -131,7 +139,7 @@ use yii\helpers\Url;
         <h3 style="font-weight: bold; margin-bottom: 0px;">UNIT MEDICAL CHECK UP</h3>
         <h3 style="font-weight: bold; margin-top: 0px;">PEMERIKSAAN KESEHATAN MATA TENAGA KERJA</h3>
     </div>
-    
+
     <table class="tbl-mata" style="width: 100%;">
         <thead>
             <tr>
@@ -267,19 +275,67 @@ use yii\helpers\Url;
                 <td>:</td>
                 <td colspan="3"><?= $model->virus_mata_dengan_koreksi_mata_kanan ?></td>
                 <td colspan="3"><?= $model->virus_mata_dengan_koreksi_mata_kiri ?></td>
-            </tr>    
+            </tr>
             <tr>
                 <td style="border-left: 1px solid #000000;">12</td>
                 <td>Lain-lain</td>
                 <td>:</td>
                 <td colspan="6" style="height: 90px; border-right: 1px solid #000000;"><?= $model->lain_lain ?></td>
-            </tr>        
+            </tr>
             <tr>
                 <td style="border-left: 1px solid #000000;">13</td>
+                <td><b>KESAN</b></td>
+                <td>:</td>
+                <td colspan="6" style="height: 30px; border-right: 1px solid #000000;"><?= $model->kesan ?></td>
+            </tr>
+            <tr>
+                <td style="border-left: 1px solid #000000;">14</td>
                 <td><b>KESIMPULAN</b></td>
                 <td>:</td>
-                <td colspan="6" style="height: 90px; border-right: 1px solid #000000;"><?= $model->kesimpulan ?></td>
-            </tr>        
+                <td colspan="6" style="height: 90px; border-right: 1px solid #000000;">
+                    <?php
+                    if ($model->kesan == 'Normal') {
+                        $model->kesimpulan == 'Normal';
+                        echo $model->kesimpulan;
+                    } else {
+                        $penata = McuPenatalaksanaanMcu::find()
+                            ->where(['jenis' => 'spesialis_mata'])
+                            ->andWhere(['id_fk' => $model->id_spesialis_mata])
+                            ->all();
+                        if ($penata) {
+                            echo '
+                                    <table class="tabel-penata" style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <td>Jenis Permasalahan</td>
+                                                <td>Rencana</td>
+                                                <td>Target Waktu</td>
+                                                <td>Hasil yang Diharapkan</td>
+                                                <td>Keterangan</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        ';
+                            foreach ($penata as $key => $value) {
+                                echo '
+                                            <tr>
+                                                <td>' . $value->jenis_permasalahan . '</td>
+                                                <td>' . $value->rencana . '</td>
+                                                <td>' . $value->target_waktu . '</td>
+                                                <td>' . $value->hasil_yang_diharapkan . '</td>
+                                                <td>' . $value->keterangan . '</td>
+                                            </tr>
+                                            ';
+                            }
+                            echo '
+                                        </tbody>
+                                    </table>
+                                ';
+                        }
+                    }
+                    ?>
+                </td>
+            </tr>
         </tbody>
     </table>
 
@@ -302,9 +358,11 @@ use yii\helpers\Url;
                 <td class="col-1" style="border-left: 1px solid #000000;"></td>
                 <td class="col-2" style="text-align: center;border-right: 1px solid #000000;">
                     <br><br><br><br>
-                    drg. Nama Dokter
+                    <b>
+                        <?= $model->updatedByTeks->pegawai->nama ?>
+                    </b>
                     <br>
-                    nip
+                    <?= $model->updatedByTeks->pegawai->no ?>
                 </td>
             </tr>
         </tbody>

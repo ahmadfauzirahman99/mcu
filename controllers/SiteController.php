@@ -11,6 +11,11 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\DataLayanan;
 use app\models\MasterPemeriksaanFisik;
+use app\models\spesialis\McuSpesialisAudiometri;
+use app\models\spesialis\McuSpesialisGigi;
+use app\models\spesialis\McuSpesialisMata;
+use app\models\spesialis\McuSpesialisThtBerbisik;
+use app\models\spesialis\McuSpesialisThtGarpuTala;
 
 class SiteController extends Controller
 {
@@ -28,7 +33,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'dokter', 'test'],
+                        'actions' => ['logout', 'index', 'dokter', 'test', 'item-mcu', 'ubah-semua-pemeriksaan'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -203,7 +208,7 @@ class SiteController extends Controller
                 ->andWhere(['not', ['no_rekam_medik' => null]])
                 ->andWhere(['not', ['no_registrasi' => null]])
                 ->one();
-            
+
             // var_dump($dataPelayanan['no_rekam_medik']);
             $id_regis = $dataPelayanan['no_registrasi'];
             $id_da = $dataPelayanan['no_rekam_medik'];
@@ -215,5 +220,79 @@ class SiteController extends Controller
 
         echo "berhasil";
         exit();
+    }
+
+    public function actionItemMcu($id = null)
+    {
+        if ($id != null) {
+            $model = DataLayanan::findOne(['id_data_pelayanan' => $id]);
+            if (!$model) {
+                return $this->redirect(['/site/ngga-nemu', 'id' => $id]);
+            }
+        } else {
+            $model = new DataLayanan();
+        }
+        return $this->render('item-mcu', ['model' => $model]);
+    }
+
+    public function actionUbahSemuaPemeriksaan()
+    {
+        $p = Yii::$app->request->post();
+        $type = $p['ty'];
+        $rm = $p['dt'];
+        $t = "Tidak Melanjutkan Pemeriksaan";
+        if ($type == 'fisik') {
+            $model = MasterPemeriksaanFisik::find()->where(['no_rekam_medik' => $rm])->one();
+            $model->status_pemeriksaan_fisik = $t;
+        }
+
+        if ($type == 'mata') {
+            $model = McuSpesialisMata::find()->where(['no_rekam_medik' => $rm])->one();
+            $model->status_pemeriksaan = $t;
+        }
+
+
+        if ($type == 'thtberbisik') {
+            $model = McuSpesialisThtBerbisik::find()->where(['no_rekam_medik' => $rm])->one();
+            $model->status_pemeriksaan = $t;
+        }
+
+        if($type == 'thtaudio'){
+            $model = McuSpesialisAudiometri::find()->where(['no_rekam_medik' => $rm])->one();
+            $model->status_pemeriksaan = $t;
+        }
+
+        if($type == 'thtgarputala'){
+            $model = McuSpesialisThtGarpuTala::find()->where(['no_rekam_medik' => $rm])->one();
+            $model->status_pemeriksaan = $t;
+        }
+
+        if($type == 'gigi'){
+            $model = McuSpesialisGigi::find()->where(['no_rekam_medik' => $rm])->one();
+            $model->status_pemeriksaan = $t;
+        }
+
+        
+
+
+
+        if ($model->save()) {
+            return $this->writeResponse(true, "Berhasil Merubah Data <i>{$model->no_rekam_medik}</i>");
+        } else {
+            return $this->writeResponse(false, "Tidak Berhasil Merubah Data");
+        }
+    }
+
+    function writeResponse($condition, $msg = null, $data = null)
+    {
+        $_res = new \stdClass();
+        $_res->con = $condition == true ? true : false;
+        $_res->msg = $msg;
+        $_res->results = $data;
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        // $response = new \Phalcon\Http\Response();
+        // return $response->setContent(json_encode($_res));
+        return $_res;
     }
 }
