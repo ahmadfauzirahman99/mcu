@@ -164,6 +164,11 @@ class SpesialisGigiController extends Controller
         if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
+            // echo "<pre>";
+            // print_r($model);
+            // echo "</pre>";
+            // die;
+
             if ($model->save()) {
                 return [
                     's' => true,

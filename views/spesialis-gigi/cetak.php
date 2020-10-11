@@ -1,5 +1,6 @@
 <?php
 
+use app\models\spesialis\BaseAR;
 use app\models\spesialis\McuPenatalaksanaanMcu;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -60,6 +61,7 @@ use yii\helpers\Url;
         border-bottom: 1px solid #000000;
         border-right: 1px solid #000000;
     }
+
     .tabel-penata tr th,
     .tabel-penata tr td {
         border: 1px solid #000000;
@@ -110,7 +112,7 @@ use yii\helpers\Url;
                             <tr>
                                 <td style="padding: 1px;">Jenis Kelamin</td>
                                 <td style="padding: 1px;">: </td>
-                                <td style="padding: 1px;"><?= $pasien->jenis_kelamin ?></td>
+                                <td style="padding: 1px;"><?= BaseAR::getJk($pasien->jenis_kelamin) ?></td>
                             </tr>
                             <tr>
                                 <td style="padding: 1px;" colspan="3">
@@ -246,11 +248,15 @@ use yii\helpers\Url;
                 <td class="col-2">: </td>
                 <td class="col-3">
                     <?php
-                    echo ($model->oklusi == 'Normal Bite') ? $model->oklusi : '<span style="text-decoration: line-through;">' . $model->oklusi . '</span>';
+                    echo ($model->oklusi == 'Normal Bite') ? $model->oklusi : '<span style="text-decoration: line-through;"> Normal Bite </span>';
                     echo ' / ';
-                    echo ($model->oklusi == 'Cross Bite') ? $model->oklusi : '<span style="text-decoration: line-through;">' . $model->oklusi . '</span>';
+                    echo ($model->oklusi == 'Cross Bite') ? $model->oklusi : '<span style="text-decoration: line-through;"> Cross Bite </span>';
                     echo ' / ';
-                    echo ($model->oklusi == 'Steep Bite') ? $model->oklusi : '<span style="text-decoration: line-through;">' . $model->oklusi . '</span>';
+                    echo ($model->oklusi == 'Steep Bite') ? $model->oklusi : '<span style="text-decoration: line-through;"> Steep Bite </span>';
+                    if ($model->oklusi != 'Normal Bite' && $model->oklusi != 'Cross Bite' && $model->oklusi != 'Steep Bite') {
+                        echo ' / ';
+                        echo $model->oklusi;
+                    }
                     ?>
                 </td>
             </tr>
@@ -259,15 +265,19 @@ use yii\helpers\Url;
                 <td class="col-2">: </td>
                 <td class="col-3">
                     <?php
-                    echo ($model->torus_palatinus == 'Tidak Ada') ? $model->torus_palatinus : '<span style="text-decoration: line-through;">' . $model->torus_palatinus . '</span>';
+                    echo ($model->torus_palatinus == 'Tidak Ada') ? $model->torus_palatinus : '<span style="text-decoration: line-through;"> Tidak Ada </span>';
                     echo ' / ';
-                    echo ($model->torus_palatinus == 'Kecil') ? $model->torus_palatinus : '<span style="text-decoration: line-through;">' . $model->torus_palatinus . '</span>';
+                    echo ($model->torus_palatinus == 'Kecil') ? $model->torus_palatinus : '<span style="text-decoration: line-through;"> Kecil </span>';
                     echo ' / ';
-                    echo ($model->torus_palatinus == 'Sedang') ? $model->torus_palatinus : '<span style="text-decoration: line-through;">' . $model->torus_palatinus . '</span>';
+                    echo ($model->torus_palatinus == 'Sedang') ? $model->torus_palatinus : '<span style="text-decoration: line-through;"> Sedang </span>';
                     echo ' / ';
-                    echo ($model->torus_palatinus == 'Besar') ? $model->torus_palatinus : '<span style="text-decoration: line-through;">' . $model->torus_palatinus . '</span>';
+                    echo ($model->torus_palatinus == 'Besar') ? $model->torus_palatinus : '<span style="text-decoration: line-through;"> Besar </span>';
                     echo ' / ';
-                    echo ($model->torus_palatinus == 'Multiple') ? $model->torus_palatinus : '<span style="text-decoration: line-through;">' . $model->torus_palatinus . '</span>';
+                    echo ($model->torus_palatinus == 'Multiple') ? $model->torus_palatinus : '<span style="text-decoration: line-through;"> Multiple </span>';
+                    if ($model->torus_palatinus != 'Tidak Ada' && $model->torus_palatinus != 'Kecil' && $model->torus_palatinus != 'Sedang' && $model->torus_palatinus != 'Besar' && $model->torus_palatinus != 'Multiple') {
+                        echo ' / ';
+                        echo $model->torus_palatinus;
+                    }
                     ?>
                 </td>
             </tr>
@@ -276,13 +286,17 @@ use yii\helpers\Url;
                 <td class="col-2">: </td>
                 <td class="col-3">
                     <?php
-                    echo ($model->torus_mandibularis == 'Tidak Ada') ? $model->torus_mandibularis : '<span style="text-decoration: line-through;">' . $model->torus_mandibularis . '</span>';
+                    echo ($model->torus_mandibularis == 'Tidak Ada') ? $model->torus_mandibularis : '<span style="text-decoration: line-through;"> Tidak Ada </span>';
                     echo ' / ';
-                    echo ($model->torus_mandibularis == 'Sisi Kiri') ? $model->torus_mandibularis : '<span style="text-decoration: line-through;">' . $model->torus_mandibularis . '</span>';
+                    echo ($model->torus_mandibularis == 'Sisi Kiri') ? $model->torus_mandibularis : '<span style="text-decoration: line-through;"> Sisi Kiri </span>';
                     echo ' / ';
-                    echo ($model->torus_mandibularis == 'Sisi Kanan') ? $model->torus_mandibularis : '<span style="text-decoration: line-through;">' . $model->torus_mandibularis . '</span>';
+                    echo ($model->torus_mandibularis == 'Sisi Kanan') ? $model->torus_mandibularis : '<span style="text-decoration: line-through;"> Sisi Kanan </span>';
                     echo ' / ';
-                    echo ($model->torus_mandibularis == 'Kedua Sisi') ? $model->torus_mandibularis : '<span style="text-decoration: line-through;">' . $model->torus_mandibularis . '</span>';
+                    echo ($model->torus_mandibularis == 'Kedua Sisi') ? $model->torus_mandibularis : '<span style="text-decoration: line-through;"> Kedua Sisi </span>';
+                    if ($model->torus_mandibularis != 'Tidak Ada' && $model->torus_mandibularis != 'Sisi Kiri' && $model->torus_mandibularis != 'Sisi Kanan' && $model->torus_mandibularis != 'Kedua Sisi') {
+                        echo ' / ';
+                        echo $model->torus_mandibularis;
+                    }
                     ?>
                 </td>
             </tr>
@@ -291,11 +305,15 @@ use yii\helpers\Url;
                 <td class="col-2">: </td>
                 <td class="col-3">
                     <?php
-                    echo ($model->palatum == 'Tinggi') ? $model->palatum : '<span style="text-decoration: line-through;">' . $model->palatum . '</span>';
+                    echo ($model->palatum == 'Tinggi') ? $model->palatum : '<span style="text-decoration: line-through;"> Tinggi </span>';
                     echo ' / ';
-                    echo ($model->palatum == 'Sedang') ? $model->palatum : '<span style="text-decoration: line-through;">' . $model->palatum . '</span>';
+                    echo ($model->palatum == 'Sedang') ? $model->palatum : '<span style="text-decoration: line-through;"> Sedang </span>';
                     echo ' / ';
-                    echo ($model->palatum == 'Rendah') ? $model->palatum : '<span style="text-decoration: line-through;">' . $model->palatum . '</span>';
+                    echo ($model->palatum == 'Rendah') ? $model->palatum : '<span style="text-decoration: line-through;"> Rendah </span>';
+                    if ($model->palatum != 'Tinggi' & $model->palatum != 'Sedang' & $model->palatum != 'Rendah') {
+                        echo ' / ';
+                        echo $model->palatum;
+                    }
                     ?>
                 </td>
             </tr>
@@ -304,9 +322,13 @@ use yii\helpers\Url;
                 <td class="col-2">: </td>
                 <td class="col-3">
                     <?php
-                    echo ($model->supernumerary_teeth == 'Tidak Ada') ? $model->supernumerary_teeth : '<span style="text-decoration: line-through;">' . $model->supernumerary_teeth . '</span>';
+                    echo ($model->supernumerary_teeth == 'Tidak Ada') ? $model->supernumerary_teeth : '<span style="text-decoration: line-through;"> Tidak Ada </span>';
                     echo ' / ';
-                    echo ($model->supernumerary_teeth == 'Ada') ? $model->supernumerary_teeth : '<span style="text-decoration: line-through;">' . $model->supernumerary_teeth . '</span>';
+                    echo ($model->supernumerary_teeth == 'Ada') ? $model->supernumerary_teeth : '<span style="text-decoration: line-through;"> Ada </span>';
+                    if ($model->supernumerary_teeth != 'Tidak Ada' && $model->supernumerary_teeth != 'Ada') {
+                        echo ' / ';
+                        echo $model->supernumerary_teeth;
+                    }
                     ?>
                 </td>
             </tr>
@@ -315,9 +337,13 @@ use yii\helpers\Url;
                 <td class="col-2">: </td>
                 <td class="col-3">
                     <?php
-                    echo ($model->diastema == 'Tidak Ada') ? $model->diastema : '<span style="text-decoration: line-through;">' . $model->diastema . '</span>';
+                    echo ($model->diastema == 'Tidak Ada') ? $model->diastema : '<span style="text-decoration: line-through;"> Tidak Ada </span>';
                     echo ' / ';
-                    echo ($model->diastema == 'Ada') ? $model->diastema : '<span style="text-decoration: line-through;">' . $model->diastema . '</span>';
+                    echo ($model->diastema == 'Ada') ? $model->diastema : '<span style="text-decoration: line-through;"> Ada </span>';
+                    if ($model->diastema != 'Tidak Ada' && $model->diastema != 'Ada') {
+                        echo ' / ';
+                        echo $model->diastema;
+                    }
                     ?>
                 </td>
             </tr>
@@ -326,9 +352,13 @@ use yii\helpers\Url;
                 <td class="col-2">: </td>
                 <td class="col-3">
                     <?php
-                    echo ($model->spacing == 'Tidak Ada') ? $model->spacing : '<span style="text-decoration: line-through;">' . $model->spacing . '</span>';
+                    echo ($model->spacing == 'Tidak Ada') ? $model->spacing : '<span style="text-decoration: line-through;"> Tidak Ada </span>';
                     echo ' / ';
-                    echo ($model->spacing == 'Ada') ? $model->spacing : '<span style="text-decoration: line-through;">' . $model->spacing . '</span>';
+                    echo ($model->spacing == 'Ada') ? $model->spacing : '<span style="text-decoration: line-through;"> Ada </span>';
+                    if ($model->spacing != 'Tidak Ada' && $model->spacing != 'Ada') {
+                        echo ' / ';
+                        echo $model->spacing;
+                    }
                     ?>
                 </td>
             </tr>
@@ -337,11 +367,15 @@ use yii\helpers\Url;
                 <td class="col-2">: </td>
                 <td class="col-3">
                     <?php
-                    echo ($model->oral_hygiene == 'Baik') ? $model->oral_hygiene : '<span style="text-decoration: line-through;">' . $model->oral_hygiene . '</span>';
+                    echo ($model->oral_hygiene == 'Baik') ? $model->oral_hygiene : '<span style="text-decoration: line-through;"> Baik </span>';
                     echo ' / ';
-                    echo ($model->oral_hygiene == 'Sedang') ? $model->oral_hygiene : '<span style="text-decoration: line-through;">' . $model->oral_hygiene . '</span>';
+                    echo ($model->oral_hygiene == 'Sedang') ? $model->oral_hygiene : '<span style="text-decoration: line-through;"> Sedang </span>';
                     echo ' / ';
-                    echo ($model->oral_hygiene == 'Kurang') ? $model->oral_hygiene : '<span style="text-decoration: line-through;">' . $model->oral_hygiene . '</span>';
+                    echo ($model->oral_hygiene == 'Kurang') ? $model->oral_hygiene : '<span style="text-decoration: line-through;"> Kurang </span>';
+                    if ($model->oral_hygiene != 'Baik' && $model->oral_hygiene != 'Sedang' && $model->oral_hygiene != 'Kurang') {
+                        echo ' / ';
+                        echo $model->oral_hygiene;
+                    }
                     ?>
                 </td>
             </tr>
@@ -350,11 +384,15 @@ use yii\helpers\Url;
                 <td class="col-2">: </td>
                 <td class="col-3">
                     <?php
-                    echo ($model->gingiva_periodontal == 'Normal') ? $model->gingiva_periodontal : '<span style="text-decoration: line-through;">' . $model->gingiva_periodontal . '</span>';
+                    echo ($model->gingiva_periodontal == 'Normal') ? $model->gingiva_periodontal : '<span style="text-decoration: line-through;"> Normal </span>';
                     echo ' / ';
-                    echo ($model->gingiva_periodontal == 'Gingivitis') ? $model->gingiva_periodontal : '<span style="text-decoration: line-through;">' . $model->gingiva_periodontal . '</span>';
+                    echo ($model->gingiva_periodontal == 'Gingivitis') ? $model->gingiva_periodontal : '<span style="text-decoration: line-through;"> Gingivitis </span>';
                     echo ' / ';
-                    echo ($model->gingiva_periodontal == 'Periodontitis') ? $model->gingiva_periodontal : '<span style="text-decoration: line-through;">' . $model->gingiva_periodontal . '</span>';
+                    echo ($model->gingiva_periodontal == 'Periodontitis') ? $model->gingiva_periodontal : '<span style="text-decoration: line-through;"> Periodontitis </span>';
+                    if ($model->gingiva_periodontal != 'Normal' && $model->gingiva_periodontal != 'Gingivitis' && $model->gingiva_periodontal != 'Periodontitis') {
+                        echo ' / ';
+                        echo $model->gingiva_periodontal;
+                    }
                     ?>
                 </td>
             </tr>
@@ -363,9 +401,13 @@ use yii\helpers\Url;
                 <td class="col-2">: </td>
                 <td class="col-3">
                     <?php
-                    echo ($model->oral_mucosa == 'Normal') ? $model->oral_mucosa : '<span style="text-decoration: line-through;">' . $model->oral_mucosa . '</span>';
+                    echo ($model->oral_mucosa == 'Normal') ? $model->oral_mucosa : '<span style="text-decoration: line-through;"> Normal </span>';
                     echo ' / ';
-                    echo ($model->oral_mucosa == 'Disease') ? $model->oral_mucosa : '<span style="text-decoration: line-through;">' . $model->oral_mucosa . '</span>';
+                    echo ($model->oral_mucosa == 'Disease') ? $model->oral_mucosa : '<span style="text-decoration: line-through;"> Disease </span>';
+                    if ($model->oral_mucosa != 'Normal' && $model->oral_mucosa != 'Disease') {
+                        echo ' / ';
+                        echo $model->oral_mucosa;
+                    }
                     ?>
                 </td>
             </tr>
@@ -374,9 +416,13 @@ use yii\helpers\Url;
                 <td class="col-2">: </td>
                 <td class="col-3">
                     <?php
-                    echo ($model->tongue == 'Normal') ? $model->tongue : '<span style="text-decoration: line-through;">' . $model->tongue . '</span>';
+                    echo ($model->tongue == 'Normal') ? $model->tongue : '<span style="text-decoration: line-through;"> Normal </span>';
                     echo ' / ';
-                    echo ($model->tongue == 'Disease') ? $model->tongue : '<span style="text-decoration: line-through;">' . $model->tongue . '</span>';
+                    echo ($model->tongue == 'Disease') ? $model->tongue : '<span style="text-decoration: line-through;"> Disease </span>';
+                    if ($model->tongue != 'Normal' && $model->tongue != 'Disease') {
+                        echo ' / ';
+                        echo $model->tongue;
+                    }
                     ?>
                 </td>
             </tr>
@@ -402,7 +448,7 @@ use yii\helpers\Url;
                 <td class="col-1" style="font-weight: bold;vertical-align:top">KESIMPULAN</td>
                 <td class="col-2" style="vertical-align:top">: </td>
                 <td class="col-3" style="height: 80px;vertical-align:top">
-                <?php
+                    <?php
                     if ($model->kesan == 'Normal') {
                         $model->kesimpulan == 'Normal';
                         echo $model->kesimpulan;
@@ -467,9 +513,11 @@ use yii\helpers\Url;
                 <td class="col-1" style="border-left: 1px solid #000000;"></td>
                 <td class="col-2" style="text-align: center;border-right: 1px solid #000000;">
                     <br><br><br><br>
-                    drg. Nama Dokter
+                    <b>
+                        <?= $model->updatedByTeks->pegawai->nama ?>
+                    </b>
                     <br>
-                    nip
+                    <?= $model->updatedByTeks->pegawai->no ?>
                 </td>
             </tr>
         </tbody>
