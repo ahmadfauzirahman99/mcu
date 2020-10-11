@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\Helper;
 use app\models\Anamnesis;
 use app\models\BahayaPotensial;
 use app\models\BodyDiscomfort;
@@ -183,7 +184,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_finskelstein_kiri = "Normal";
             $master_pemeriksaan_fisik->tulang_atas_vaskularisasi_kiri = "Normal";
             $master_pemeriksaan_fisik->tulang_atas_kelaianan_kukujari_kiri = "Tidak Ada";
-            
+
             $master_pemeriksaan_fisik->tulang_bawah_laseque_kanan = "Normal";
             $master_pemeriksaan_fisik->tulang_bawah_kernique_kanan = "Normal";
             $master_pemeriksaan_fisik->tulang_bawah_patrick_kanan = "Normal";
@@ -212,7 +213,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $master_pemeriksaan_fisik->otot_motorik_trofi_kiri = "Normal";
             $master_pemeriksaan_fisik->otot_motorik_tonus_kiri = "Normal";
             $master_pemeriksaan_fisik->otot_motorik_gerakan_abnormal_kiri = "Tidak Ada";
-            
+
             $master_pemeriksaan_fisik->fungsi_sensorik_kanan = "Normal";
             $master_pemeriksaan_fisik->fungsi_autonom_kanan = "Normal";
             $master_pemeriksaan_fisik->fungsi_sensorik_kiri = "Normal";
@@ -248,7 +249,6 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $master_pemeriksaan_fisik->kulit_kuku = "Normal";
             $master_pemeriksaan_fisik->kulit_tato = "Tidak Ada";
             $master_pemeriksaan_fisik->kategori_kesehatan = "FIT";
-
         }
 
 
@@ -412,6 +412,8 @@ class UnitPemeriksaanController extends \yii\web\Controller
     //save anamnesis brief survey
     public function actionSavePemeriksaanFisik()
     {
+
+        $rm = Helper::getRumpun();
         $p = Yii::$app->request->post();
         $no_rekam_medik = $p['MasterPemeriksaanFisik']['no_rekam_medik'];
         $fisik = MasterPemeriksaanFisik::findOne(['no_rekam_medik' => $no_rekam_medik]);
@@ -419,9 +421,12 @@ class UnitPemeriksaanController extends \yii\web\Controller
         if ($fisik != null) {
             if ($fisik->load(Yii::$app->request->post())) {
                 Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-                $fisik->id_dokter_pemeriksaan_fisik = (string)Yii::$app->user->identity->id;
-
-                
+                if ($rm['kodejenis'] == 1) {
+                    $fisik->id_dokter_pemeriksaan_fisik = (string)Yii::$app->user->identity->id;
+                }
+                if ($rm['kodejenis'] == 20) {
+                    $fisik->id_dokter_fit_for_work = (string)Yii::$app->user->identity->id;
+                }
                 if ($fisik->save()) {
                     return [
                         's' => true,
@@ -440,9 +445,13 @@ class UnitPemeriksaanController extends \yii\web\Controller
 
         if ($model->load(Yii::$app->request->post())) {
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-
             $model->id_dokter_pemeriksaan_fisik = (string)Yii::$app->user->identity->id;
-
+            if ($rm['kodejenis'] == 1) {
+                $model->id_dokter_pemeriksaan_fisik = (string)Yii::$app->user->identity->id;
+            }
+            if ($rm['kodejenis'] == 20) {
+                $fisik->id_dokter_fit_for_work = (string)Yii::$app->user->identity->id;
+            }
             if ($model->save()) {
                 return [
                     's' => true,
