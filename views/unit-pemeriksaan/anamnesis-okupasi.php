@@ -96,7 +96,6 @@ $dataBiodataUser = Yii::$app->dbRegisterMcu->createCommand("SELECT count(1), u.u
         sejak mulai bekerja, misalnya pada pagi hari hingga selesai bekera di sore hari,
         termasuk bahan-bahan yang digunakan. Buatlah bagan alur dari tiap kegiatan yang dilakukan pekerja)
         Buat bagan alur untuk tiap kegiatan tersebut.</p>
-    <?php if (Yii::$app->request->isPost) : ?>
         <h4 class="m-t-0 header-title">Data Pekerjaan</h4>
         <p class="text-muted font-14 m-b-20">Job/Perusahaan</p>
         <table class="table">
@@ -227,7 +226,6 @@ $dataBiodataUser = Yii::$app->dbRegisterMcu->createCommand("SELECT count(1), u.u
 
             </tbody>
         </table>
-    <?php endif ?>
     <hr>
 </div>
 
@@ -470,7 +468,7 @@ $dataBiodataUser = Yii::$app->dbRegisterMcu->createCommand("SELECT count(1), u.u
     <iframe src="http://mcu.rsud-arifin.localhost/body-discomfort/form?id=<?= $dataLayanan->no_rekam_medik ?>" style="display: block;width: 1200px;height: 720px;border: none;"></iframe>
 </div>
 <hr>
-<div class="form-group">
+<div class="form-group" style="display: none;">
     <p><b>6. BRIEF SURVEY </b></p>
     <?php $form = ActiveForm::begin(['action' => 'save-brief', 'id' => 'id_form_brief']); ?>
     <?= $form->field($modelBrief, 'no_rekam_medik')->hiddenInput(['maxlength' => true, 'value' => $dataLayanan->no_rekam_medik, 'readonly' => true])->label(false) ?>
