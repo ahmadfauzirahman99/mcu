@@ -5,15 +5,16 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 13:46:29 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-13 18:15:14
+ * @Last Modified time: 2020-10-10 13:32:47
  */
 
 toastr.options = {
   "closeButton": false,
   "debug": false,
   "newestOnTop": false,
-  "progressBar": false,
-  "positionClass": "toast-top-right",
+  "progressBar": true,
+  // "positionClass": "toast-top-right",
+  "positionClass": "toast-bottom-full-width",
   "preventDuplicates": false,
   "onclick": null,
   "showDuration": "300",

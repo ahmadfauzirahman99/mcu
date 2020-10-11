@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-08 15:52:07
+ * @Last Modified time: 2020-10-10 12:22:49
  */
 
 use app\components\Helper;
@@ -489,13 +489,13 @@ $dataG = [
             </td>
         </tr>
         <tr>
-            <td colspan=2 height="19" align="left" valign=middle>Kesan</td>
+            <td colspan=2 height="19" align="left" valign=middle><b>Kesan</b></td>
             <td align="left" valign=middle>:</td>
             <td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" colspan=3 rowspan=3 valign=middle>
                 <?php // $form->field($model, 'kesimpulan')->textArea(['rows' => 4])->label(false) 
                 ?>
                 <?php
-                echo $form->field($model, 'kesimpulan')->radioList(
+                echo $form->field($model, 'kesan')->radioList(
                     ['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal',],
                     [
                         'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
@@ -545,7 +545,7 @@ $dataG = [
 
     <?php
     $displayPenata = 'none';
-    if ($model->kesimpulan == 'Tidak Normal')
+    if ($model->kesan == 'Tidak Normal')
         $displayPenata = 'block';
     ?>
     <div class="div-penata" style="display: <?= $displayPenata ?>;">

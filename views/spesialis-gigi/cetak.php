@@ -1,5 +1,6 @@
 <?php
 
+use app\models\spesialis\McuPenatalaksanaanMcu;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -58,6 +59,11 @@ use yii\helpers\Url;
         text-align: left !important;
         border-bottom: 1px solid #000000;
         border-right: 1px solid #000000;
+    }
+    .tabel-penata tr th,
+    .tabel-penata tr td {
+        border: 1px solid #000000;
+        vertical-align: top;
     }
 
     .tbl-ttd tr td.col-1 {
@@ -384,11 +390,58 @@ use yii\helpers\Url;
                 </td>
             </tr>
             <tr>
+                <td class="col-1" style="font-weight: bold;">Kesan</td>
+                <td class="col-2">: </td>
+                <td class="col-3">
+                    <?php
+                    echo $model->kesan;
+                    ?>
+                </td>
+            </tr>
+            <tr>
                 <td class="col-1" style="font-weight: bold;vertical-align:top">KESIMPULAN</td>
                 <td class="col-2" style="vertical-align:top">: </td>
                 <td class="col-3" style="height: 80px;vertical-align:top">
-                    <?php
-                    echo $model->kesimpulan;
+                <?php
+                    if ($model->kesan == 'Normal') {
+                        $model->kesimpulan == 'Normal';
+                        echo $model->kesimpulan;
+                    } else {
+                        $penata = McuPenatalaksanaanMcu::find()
+                            ->where(['jenis' => 'spesialis_gigi'])
+                            ->andWhere(['id_fk' => $model->id_spesialis_gigi])
+                            ->all();
+                        if ($penata) {
+                            echo '
+                                    <table class="tabel-penata" style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <td>Jenis Permasalahan</td>
+                                                <td>Rencana</td>
+                                                <td>Target Waktu</td>
+                                                <td>Hasil yang Diharapkan</td>
+                                                <td>Keterangan</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        ';
+                            foreach ($penata as $key => $value) {
+                                echo '
+                                            <tr>
+                                                <td>' . $value->jenis_permasalahan . '</td>
+                                                <td>' . $value->rencana . '</td>
+                                                <td>' . $value->target_waktu . '</td>
+                                                <td>' . $value->hasil_yang_diharapkan . '</td>
+                                                <td>' . $value->keterangan . '</td>
+                                            </tr>
+                                            ';
+                            }
+                            echo '
+                                        </tbody>
+                                    </table>
+                                ';
+                        }
+                    }
                     ?>
                 </td>
             </tr>

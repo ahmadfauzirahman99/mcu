@@ -197,249 +197,249 @@ use yii\helpers\Url;
             <td class="" style="border-right: 1px solid #000000;"></td>
         </tr>
         <tr class="tr-tengah">
-        <td class="" style="border-left: 1px solid #000000;"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class=""></td>
-        <td class="" colspan="3" style="border-left: 1px solid #000000; border-right: 1px solid #000000;">
-            R / MED /L
-        </td>
-        <td class=""></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="" style="border-right: 1px solid #000000;"></td>
-    </tr>
-    <tr class="tr-tengah">
-        <td class="" style="border-left: 1px solid #000000;"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class=""></td>
-        <td class="" colspan="3" style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000;"></td>
-        <td class=""></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="" style="border-right: 1px solid #000000;"></td>
-    </tr>
-    <tr class="tr-tengah">
-        <td class="" style="border-left: 1px solid #000000;"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class=""></td>
-        <td class="" colspan="3" style="border-left: 1px solid #000000; border-right: 1px solid #000000;"></td>
-        <td class=""></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="" style="border-right: 1px solid #000000;"></td>
-    </tr>
-    <tr class="tr-tengah">
-        <td class="" style="border-left: 1px solid #000000;"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class=""></td>
-        <td class="kotakin" colspan="3">SISI</td>
-        <td class=""></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="" style="border-right: 1px solid #000000;"></td>
-    </tr>
-    <tr class="tr-tengah">
-        <td class="" style="border-left: 1px solid #000000;"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class=""></td>
-        <td class="kotakin">FREK</td>
-        <td class="kotakin">R</td>
-        <td class="kotakin">L</td>
-        <td class=""></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="" style="border-right: 1px solid #000000;"></td>
-    </tr>
-    <tr class="tr-tengah">
-        <td class="" style="border-left: 1px solid #000000;"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class=""></td>
-        <td class="kotakin">dB</td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class=""></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="" style="border-right: 1px solid #000000;"></td>
-    </tr>
-    <tr class="tr-tengah">
-        <td class="" style="border-left: 1px solid #000000;"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class=""></td>
-        <td class="kotakin">%</td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class=""></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="" style="border-right: 1px solid #000000;"></td>
-    </tr>
-    <tr class="tr-tengah">
-        <td class="" style="border-left: 1px solid #000000;"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class=""></td>
-        <td class="kotakin" colspan="3"></td>
-        <td class=""></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="" style="border-right: 1px solid #000000;"></td>
-    </tr>
-    <tr class="tr-tengah">
-        <td class="" style="border-left: 1px solid #000000;"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class=""></td>
-        <td class="" colspan="3" style="border-left: 1px solid #000000; border-right: 1px solid #000000; font-size: 0.6em;">AUDIOGRAM KEY</td>
-        <td class=""></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="" style="border-right: 1px solid #000000;"></td>
-    </tr>
-    <tr class="tr-tengah">
-        <td class="" style="border-left: 1px solid #000000;"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class=""></td>
-        <td colspan="3" style="border-left: 1px solid #000000; border-right: 1px solid #000000; font-size: 0.6em;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Right Left
-        </td>
-        <td class=""></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="kotakin"></td>
-        <td class="" style="border-right: 1px solid #000000;"></td>
-    </tr>
-    <tr class="tr-tengah">
-        <td class="" style="border-right: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000;" colspan="12"></td>
-        <!-- <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; font-size: 0.6em;" colspan="0">
+            <td class="" style="border-left: 1px solid #000000;"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class=""></td>
+            <td class="" colspan="3" style="border-left: 1px solid #000000; border-right: 1px solid #000000;">
+                R / MED /L
+            </td>
+            <td class=""></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="" style="border-right: 1px solid #000000;"></td>
+        </tr>
+        <tr class="tr-tengah">
+            <td class="" style="border-left: 1px solid #000000;"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class=""></td>
+            <td class="" colspan="3" style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000;"></td>
+            <td class=""></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="" style="border-right: 1px solid #000000;"></td>
+        </tr>
+        <tr class="tr-tengah">
+            <td class="" style="border-left: 1px solid #000000;"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class=""></td>
+            <td class="" colspan="3" style="border-left: 1px solid #000000; border-right: 1px solid #000000;"></td>
+            <td class=""></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="" style="border-right: 1px solid #000000;"></td>
+        </tr>
+        <tr class="tr-tengah">
+            <td class="" style="border-left: 1px solid #000000;"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class=""></td>
+            <td class="kotakin" colspan="3">SISI</td>
+            <td class=""></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="" style="border-right: 1px solid #000000;"></td>
+        </tr>
+        <tr class="tr-tengah">
+            <td class="" style="border-left: 1px solid #000000;"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class=""></td>
+            <td class="kotakin">FREK</td>
+            <td class="kotakin">R</td>
+            <td class="kotakin">L</td>
+            <td class=""></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="" style="border-right: 1px solid #000000;"></td>
+        </tr>
+        <tr class="tr-tengah">
+            <td class="" style="border-left: 1px solid #000000;"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class=""></td>
+            <td class="kotakin">dB</td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class=""></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="" style="border-right: 1px solid #000000;"></td>
+        </tr>
+        <tr class="tr-tengah">
+            <td class="" style="border-left: 1px solid #000000;"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class=""></td>
+            <td class="kotakin">%</td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class=""></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="" style="border-right: 1px solid #000000;"></td>
+        </tr>
+        <tr class="tr-tengah">
+            <td class="" style="border-left: 1px solid #000000;"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class=""></td>
+            <td class="kotakin" colspan="3"></td>
+            <td class=""></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="" style="border-right: 1px solid #000000;"></td>
+        </tr>
+        <tr class="tr-tengah">
+            <td class="" style="border-left: 1px solid #000000;"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class=""></td>
+            <td class="" colspan="3" style="border-left: 1px solid #000000; border-right: 1px solid #000000; font-size: 0.6em;">AUDIOGRAM KEY</td>
+            <td class=""></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="" style="border-right: 1px solid #000000;"></td>
+        </tr>
+        <tr class="tr-tengah">
+            <td class="" style="border-left: 1px solid #000000;"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class=""></td>
+            <td colspan="3" style="border-left: 1px solid #000000; border-right: 1px solid #000000; font-size: 0.6em;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Right Left
+            </td>
+            <td class=""></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="kotakin"></td>
+            <td class="" style="border-right: 1px solid #000000;"></td>
+        </tr>
+        <tr class="tr-tengah">
+            <td class="" style="border-right: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000;" colspan="12"></td>
+            <!-- <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; font-size: 0.6em;" colspan="0">
             AC<br>Unmasked
             <br>
             AC<br>Masked
@@ -447,44 +447,20 @@ use yii\helpers\Url;
             BC<br>Mastoid<br>Unmasked
             <br>
             BC<br>Mastoid<br>Mastoid
-
         </td> -->
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000;" class="" colspan="3">
-            <img src="<?= Url::to('@web/img/diagram_key.png') ?>" alt="" height="130">
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000;" class="" colspan="3">
+                <img src="<?= Url::to('@web/img/diagram_key.png') ?>" alt="" height="130">
 
-        </td>
-        <td class="" style="border-right: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000;" colspan="8"></td>
-    </tr> 
-        <!-- 
-    -->
-        <!-- 
-        <tr class="tr-tengah">
-            
-        </tr>
-        <tr class="tr-tengah">
-            
-        </tr>
-        <tr class="tr-tengah">
-            
-        </tr>
-        <tr class="tr-tengah">
-            
-        </tr>
-        <tr class="tr-tengah">
-            
-        </tr>
-        <tr class="tr-tengah">
-            
-        </tr>
-        <tr class="tr-tengah">
-            
-        </tr>
-        <tr class="tr-tengah">
-            
+            </td>
+            <td class="" style="border-right: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000;" colspan="8"></td>
         </tr>
         <tr>
-            
-        </tr> -->
+            <td class="kotakin" style="background-color: #ccced0; text-align: left;" colspan="23"><b>Hasil</b></td>
+        </tr>
+        <tr>
+            <td class="kotakin" style="background-color: #e8ecef; text-align: left;" colspan="13"><b>Right/Kanan</b></td>
+            <td class="kotakin" style="background-color: #e8ecef; text-align: left;" colspan="10"><b>Left/Kiri</b></td>
+        </tr>
     </table>
 
     <table class="tbl-ttd" style="width: 100%;">

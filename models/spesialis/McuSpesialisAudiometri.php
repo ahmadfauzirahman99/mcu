@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 12:12:24 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-08 16:58:26
+ * @Last Modified time: 2020-10-10 17:07:48
  */
 
 
@@ -105,8 +105,8 @@ class McuSpesialisAudiometri extends BaseAR
             [['kesimpulan_kanan', 'kesimpulan_kiri',], 'string', 'max' => 30],
             [['rata_kanan_ac', 'rata_kanan_bc', 'rata_kiri_ac', 'rata_kiri_bc'], 'number'],
             ['riwayat', 'safe'],
-            ['kesan', 'safe'],
-
+            
+            ['kesan', 'required'],
             ['no_daftar', 'unique'],
         ];
     }

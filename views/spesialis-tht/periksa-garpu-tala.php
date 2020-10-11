@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-08 21:27:33
+ * @Last Modified time: 2020-10-10 15:03:31
  */
 
 use app\components\Helper;
@@ -276,7 +276,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 rowspan=3 valign=bottom>
                 <?php // $form->field($model, 'kesimpulan')->textArea(['rows' => 4])->label(false) ?>
                 <?php
-                echo $form->field($model, 'kesimpulan')->radioList(
+                echo $form->field($model, 'kesan')->radioList(
                     ['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal',],
                     [
                         'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
@@ -318,7 +318,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php
     $displayPenata = 'none';
-    if ($model->kesimpulan == 'Tidak Normal')
+    if ($model->kesan == 'Tidak Normal')
         $displayPenata = 'block';
     ?>
     <div class="div-penata" style="display: <?= $displayPenata ?>;">
@@ -379,12 +379,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'headerOptions' => ['style' => 'width: 30%; background-color: #e7ebee;',],
                     'attribute' => 'jenis_permasalahan',
-                    'label' => 'Jenis Permasalahan Medis & No Medis (Okupasi Dll)',
                 ],
                 [
                     'headerOptions' => ['style' => 'width: 30%; background-color: #e7ebee;',],
                     'attribute' => 'rencana',
-                    'label' => 'Rencana Tindakan (materi & metode) Tatalaksana Medikamentoasa non media mentosa (nutrisi,olahraga,dll)',
                 ],
                 [
                     'headerOptions' => ['style' => 'width: 10%; background-color: #e7ebee;',],
