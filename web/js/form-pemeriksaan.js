@@ -298,4 +298,9 @@ $(document).ready(function () {
 
         return false;
     });
+
+
+    // tidak melanjutkan pemeriksaaan
+
 })
+

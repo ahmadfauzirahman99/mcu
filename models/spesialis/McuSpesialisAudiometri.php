@@ -77,6 +77,7 @@ use Yii;
  * @property string|null $rata_kiri_bc
  * @property string|null $gambar
  * @property string|null $kesan
+ * @property string|null $status_pemeriksaan
  */
 class McuSpesialisAudiometri extends BaseAR
 {

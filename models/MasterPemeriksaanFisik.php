@@ -275,6 +275,7 @@ use Yii;
  * @property string|null $mata_visus_tanpa_koreksi_kiri
  * @property string|null $mata_visus_dengan_koreksi_kiri,
  * @property string|null $id_dokter_fit_for_work
+ * @property string|null $status_pemeriksaan_fisik
  */
 class MasterPemeriksaanFisik extends \yii\db\ActiveRecord
 {
