@@ -115,51 +115,51 @@ use yii\helpers\Url;
                 <td>1</td>
                 <td>Daun Telinga</td>
                 <td>:</td>
-                <td><?= $model->updated_by == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->updated_by == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
-                <td><?= $model->updated_by == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->updated_by == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
+                <td><?= $model->telinga_daun_telinga_kanan == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
+                <td><?= $model->telinga_daun_telinga_kanan == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
+                <td><?= $model->telinga_daun_telinga_kiri == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
+                <td><?= $model->telinga_daun_telinga_kiri == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>Liang Telinga</td>
                 <td>:</td>
-                <td><?= $model->updated_by == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->updated_by == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
-                <td><?= $model->updated_by == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->updated_by == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
+                <td><?= $model->telinga_liang_telinga_kanan == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
+                <td><?= $model->telinga_liang_telinga_kanan == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
+                <td><?= $model->telinga_liang_telinga_kiri == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
+                <td><?= $model->telinga_liang_telinga_kiri == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
             </tr>
             <tr>
                 <td rowspan="2">3</td>
                 <td rowspan="2">Serumen</td>
                 <td>:</td>
-                <td><?= $model->updated_by == 'Tidak Ada' ? '&#9632;' : '&#9633;' ?> Tidak Ada</td>
-                <td><?= $model->updated_by == 'Ada Serumen' ? '&#9632;' : '&#9633;' ?> Ada Serumen</td>
-                <td><?= $model->updated_by == 'Tidak Ada' ? '&#9632;' : '&#9633;' ?> Tidak Ada</td>
-                <td><?= $model->updated_by == 'Ada Serumen' ? '&#9632;' : '&#9633;' ?> Ada Serumen</td>
+                <td><?= $model->telinga_serumen_kanan == 'Tidak Ada' ? '&#9632;' : '&#9633;' ?> Tidak Ada</td>
+                <td><?= $model->telinga_serumen_kanan == 'Ada Serumen' ? '&#9632;' : '&#9633;' ?> Ada Serumen</td>
+                <td><?= $model->telinga_serumen_kiri == 'Tidak Ada' ? '&#9632;' : '&#9633;' ?> Tidak Ada</td>
+                <td><?= $model->telinga_serumen_kiri == 'Ada Serumen' ? '&#9632;' : '&#9633;' ?> Ada Serumen</td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
-                <td><?= $model->updated_by == 'Menyumbat (Prop)' ? '&#9632;' : '&#9633;' ?> Menyumbat (Prop)</td>
+                <td><?= $model->telinga_serumen_kanan == 'Menyumbat (Prop)' ? '&#9632;' : '&#9633;' ?> Menyumbat (Prop)</td>
                 <td></td>
-                <td><?= $model->updated_by == 'Menyumbat (Prop)' ? '&#9632;' : '&#9633;' ?> Menyumbat (Prop)</td>
+                <td><?= $model->telinga_serumen_kiri == 'Menyumbat (Prop)' ? '&#9632;' : '&#9633;' ?> Menyumbat (Prop)</td>
             </tr>
             <tr>
                 <td rowspan="2">4</td>
                 <td rowspan="2">Membrana Timpani</td>
                 <td>:</td>
-                <td><?= $model->updated_by == 'Intak' ? '&#9632;' : '&#9633;' ?> Intak</td>
-                <td><?= $model->updated_by == 'Tidak Intak' ? '&#9632;' : '&#9633;' ?> Tidak Intak</td>
-                <td><?= $model->updated_by == 'Intak' ? '&#9632;' : '&#9633;' ?> Intak</td>
-                <td><?= $model->updated_by == 'Tidak Intak' ? '&#9632;' : '&#9633;' ?> Tidak Intak</td>
+                <td><?= $model->telinga_timpani_kanan == 'Intak' ? '&#9632;' : '&#9633;' ?> Intak</td>
+                <td><?= $model->telinga_timpani_kanan == 'Tidak Intak' ? '&#9632;' : '&#9633;' ?> Tidak Intak</td>
+                <td><?= $model->telinga_timpani_kiri == 'Intak' ? '&#9632;' : '&#9633;' ?> Intak</td>
+                <td><?= $model->telinga_timpani_kiri == 'Tidak Intak' ? '&#9632;' : '&#9633;' ?> Tidak Intak</td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
-                <td><?= $model->updated_by == 'Lainnya' ? '&#9632;' : '&#9633;' ?> Lainnya</td>
+                <td><?= $model->telinga_timpani_kanan == 'Lainnya' ? '&#9632;' : '&#9633;' ?> Lainnya</td>
                 <td></td>
-                <td><?= $model->updated_by == 'Lainnya' ? '&#9632;' : '&#9633;' ?> Lainnya</td>
+                <td><?= $model->telinga_timpani_kiri == 'Lainnya' ? '&#9632;' : '&#9633;' ?> Lainnya</td>
             </tr>
             <tr>
                 <td rowspan="3">5</td>
@@ -236,8 +236,8 @@ use yii\helpers\Url;
                 <td>1</td>
                 <td>Meatus Nasi</td>
                 <td>:</td>
-                <td><?= $model->updated_by == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->updated_by == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
+                <td><?= $model->hidung_meatus_nasi == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
+                <td><?= $model->hidung_meatus_nasi == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -245,8 +245,8 @@ use yii\helpers\Url;
                 <td>2</td>
                 <td>Septum Nasi</td>
                 <td>:</td>
-                <td><?= $model->updated_by == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->updated_by == 'Deviasi Ke' ? '&#9632;' : '&#9633;' ?> Deviasi Ke</td>
+                <td><?= $model->hidung_septum_nasi == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
+                <td><?= $model->hidung_septum_nasi == 'Deviasi Ke' ? '&#9632;' : '&#9633;' ?> Deviasi Ke</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -254,8 +254,8 @@ use yii\helpers\Url;
                 <td>3</td>
                 <td>Konka Nasal</td>
                 <td>:</td>
-                <td><?= $model->updated_by == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->updated_by == 'Oedema Lubang Hidung...' ? '&#9632;' : '&#9633;' ?> Oedema Lubang Hidung...</td>
+                <td><?= $model->hidung_konka_nasal == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
+                <td><?= $model->hidung_konka_nasal == 'Oedema Lubang Hidung...' ? '&#9632;' : '&#9633;' ?> Oedema Lubang Hidung...</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -263,8 +263,8 @@ use yii\helpers\Url;
                 <td>4</td>
                 <td>Nyeri Ketok Sinus Maksilar</td>
                 <td>:</td>
-                <td><?= $model->updated_by == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->updated_by == 'Nyeri Tekan Positif di...' ? '&#9632;' : '&#9633;' ?> Nyeri Tekan Positif di...</td>
+                <td><?= $model->hidung_nyeri_ketok_sinus == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
+                <td><?= $model->hidung_nyeri_ketok_sinus == 'Nyeri Tekan Positif di...' ? '&#9632;' : '&#9633;' ?> Nyeri Tekan Positif di...</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -272,8 +272,8 @@ use yii\helpers\Url;
                 <td>5</td>
                 <td>Penciuman</td>
                 <td>:</td>
-                <td><?= $model->updated_by == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->updated_by == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
+                <td><?= $model->hidung_penciuman == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
+                <td><?= $model->hidung_penciuman == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -281,7 +281,7 @@ use yii\helpers\Url;
                 <td>6</td>
                 <td>Lain-lain</td>
                 <td>:</td>
-                <td colspan="4" rowspan="2"><?= $model->updated_by ?></td>
+                <td colspan="4" rowspan="2"><?= $model->hidung ?></td>
             </tr>
             <tr>
                 <td colspan="3" style="height: 20;"></td>
@@ -293,32 +293,42 @@ use yii\helpers\Url;
                 <td>1</td>
                 <td>Pharynx</td>
                 <td>:</td>
-                <td><?= $model->updated_by == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->updated_by == 'Hiperemis' ? '&#9632;' : '&#9633;' ?> Hiperemis</td>
-                <td><?= $model->updated_by == 'Granulasi' ? '&#9632;' : '&#9633;' ?> Granulasi</td>
+                <td><?= $model->tenggorokan_pharynx == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
+                <td><?= $model->tenggorokan_pharynx == 'Hiperemis' ? '&#9632;' : '&#9633;' ?> Hiperemis</td>
+                <td><?= $model->tenggorokan_pharynx == 'Granulasi' ? '&#9632;' : '&#9633;' ?> Granulasi</td>
                 <td></td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>Tonsil</td>
                 <td>:</td>
-                <td colspan="2" style="text-align: center;"><b>Kanan</b> : T0 T1 T2 T3</td>
-                <td colspan="2" style="text-align: center;"><b>Kiri</b> : T0 T1 T2 T3</td>
+                <td colspan="2" style="text-align: center;"><b>Kanan</b> :
+                    <?= $model->tenggorokan_tonsil_kanan == 'T0' ? '&#9673;' : '&#9675;' ?> T0
+                    <?= $model->tenggorokan_tonsil_kanan == 'T1' ? '&#9673;' : '&#9675;' ?> T1
+                    <?= $model->tenggorokan_tonsil_kanan == 'T2' ? '&#9673;' : '&#9675;' ?> T2
+                    <?= $model->tenggorokan_tonsil_kanan == 'T3' ? '&#9673;' : '&#9675;' ?> T3
+                </td>
+                <td colspan="2" style="text-align: center;"><b>Kiri</b> :
+                    <?= $model->tenggorokan_tonsil_kiri == 'T0' ? '&#9673;' : '&#9675;' ?> T0
+                    <?= $model->tenggorokan_tonsil_kiri == 'T1' ? '&#9673;' : '&#9675;' ?> T1
+                    <?= $model->tenggorokan_tonsil_kiri == 'T2' ? '&#9673;' : '&#9675;' ?> T2
+                    <?= $model->tenggorokan_tonsil_kiri == 'T3' ? '&#9673;' : '&#9675;' ?> T3
+                </td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>Ukuran</td>
                 <td>:</td>
-                <td><?= $model->updated_by == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->updated_by == 'Hiperemis' ? '&#9632;' : '&#9633;' ?> Hiperemis</td>
-                <td><?= $model->updated_by == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->updated_by == 'Hiperemis' ? '&#9632;' : '&#9633;' ?> Hiperemis</td>
+                <td><?= $model->tenggorokan_tonsil_ukuran_kanan == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
+                <td><?= $model->tenggorokan_tonsil_ukuran_kanan == 'Hiperemis' ? '&#9632;' : '&#9633;' ?> Hiperemis</td>
+                <td><?= $model->tenggorokan_tonsil_ukuran_kiri == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
+                <td><?= $model->tenggorokan_tonsil_ukuran_kiri == 'Hiperemis' ? '&#9632;' : '&#9633;' ?> Hiperemis</td>
             </tr>
             <tr>
                 <td>6</td>
                 <td>Lain-lain</td>
                 <td>:</td>
-                <td colspan="4" rowspan="2"><?= $model->updated_by ?></td>
+                <td colspan="4" rowspan="2"><?= $model->tenggorokan ?></td>
             </tr>
             <tr>
                 <td colspan="3" style="height: 20;"></td>
@@ -337,7 +347,7 @@ use yii\helpers\Url;
                             ->all();
                         if ($penata) {
                             echo '
-                                    <b>'.$modelAudiometri->kesan.'</b>
+                                    <b>' . $modelAudiometri->kesan . '</b>
                                     <table class="tabel-penata" style="width: 100%; font-size: 11px;">
                                         <thead>
                                             <tr>
@@ -375,7 +385,7 @@ use yii\helpers\Url;
                 <td colspan="4">
                     <?php
                     if ($modelBerbisik->kesan == 'Normal') {
-                        echo '<b>Berbisik</b>: '. $modelBerbisik->kesan;
+                        echo '<b>Berbisik</b>: ' . $modelBerbisik->kesan;
                         echo '<br>';
                     } else {
                         $penata = McuPenatalaksanaanMcu::find()
@@ -416,7 +426,7 @@ use yii\helpers\Url;
                     }
                     // echo '<span></span>';
                     if ($modelGarpuTala->kesan == 'Normal') {
-                        echo '<b>Garpu Tala</b>: '. $modelGarpuTala->kesan;
+                        echo '<b>Garpu Tala</b>: ' . $modelGarpuTala->kesan;
                         echo '<br>';
                     } else {
                         $penata = McuPenatalaksanaanMcu::find()
@@ -481,10 +491,10 @@ use yii\helpers\Url;
                 <td class="col-2" style="text-align: center;border-right: 1px solid #000000;">
                     <br><br><br><br>
                     <b>
-                        <?= $model->updatedByTeks->pegawai->nama ?>
+                        <?= $modelBerbisik->updatedByTeks->pegawai->nama ?>
                     </b>
                     <br>
-                    <?= $model->updatedByTeks->pegawai->no ?>
+                    <?= $modelBerbisik->updatedByTeks->pegawai->no ?>
                 </td>
             </tr>
         </tbody>

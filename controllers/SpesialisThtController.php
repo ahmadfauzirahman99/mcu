@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\DataLayanan;
+use app\models\MasterPemeriksaanFisik;
 use app\models\spesialis\McuPenatalaksanaanMcu;
 use app\models\spesialis\McuSpesialisAudiometri;
 use Yii;
@@ -229,7 +230,7 @@ class SpesialisThtController extends Controller
 
     public function actionCetak($no_rm, $no_daftar)
     {
-        $model = McuSpesialisThtBerbisik::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
+        $model = MasterPemeriksaanFisik::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
         $modelAudiometri = McuSpesialisAudiometri::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
         $modelBerbisik = McuSpesialisThtBerbisik::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
         $modelGarpuTala = McuSpesialisThtGarpuTala::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
