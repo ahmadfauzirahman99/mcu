@@ -493,10 +493,10 @@ use yii\helpers\Url;
                 <td class="col-2" style="text-align: center;border-right: 1px solid #000000;">
                     <br><br><br><br>
                     <b>
-                        <?= $modelBerbisik->createdByTeks->pegawai->nama ?>
+                        <?= $modelBerbisik->createdByTeks->pegawai->nama ?? $modelGarpuTala->createdByTeks->pegawai->nama ?>
                     </b>
                     <br>
-                    <?= $modelBerbisik->createdByTeks->pegawai->no ?>
+                    <?= $modelBerbisik->createdByTeks->pegawai->no ?? $modelGarpuTala->createdByTeks->pegawai->no ?>
                 </td>
             </tr>
         </tbody>

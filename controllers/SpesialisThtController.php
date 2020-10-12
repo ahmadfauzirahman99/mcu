@@ -230,10 +230,24 @@ class SpesialisThtController extends Controller
 
     public function actionCetak($no_rm, $no_daftar)
     {
+        $pasien = DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->andWhere(['no_registrasi' => $no_daftar])->one();
+
         $model = MasterPemeriksaanFisik::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
+        if (!$model) {
+            $model = new MasterPemeriksaanFisik();
+        }
         $modelAudiometri = McuSpesialisAudiometri::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
+        if (!$modelAudiometri) {
+            $modelAudiometri = new McuSpesialisAudiometri();
+        }
         $modelBerbisik = McuSpesialisThtBerbisik::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
+        if (!$modelBerbisik) {
+            $modelBerbisik = new McuSpesialisThtBerbisik();
+        }
         $modelGarpuTala = McuSpesialisThtGarpuTala::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
+        if (!$modelGarpuTala) {
+            $modelGarpuTala = new McuSpesialisThtGarpuTala();
+        }
 
         $mpdf = new \Mpdf\Mpdf([
             'mode' => 'utf-8',
@@ -247,7 +261,7 @@ class SpesialisThtController extends Controller
         ]);
         $mpdf->shrink_tables_to_fit = 1;
         $mpdf->use_kwt = true;
-        $mpdf->SetTitle('Spesialis THT ' . $model['no_rekam_medik']);
+        $mpdf->SetTitle('Spesialis THT ' . $pasien['no_rekam_medik']);
         // return $this->renderPartial('cetak', [
         //     'model' => $model,
         //     'modelAudiometri' => $modelAudiometri,
@@ -262,9 +276,9 @@ class SpesialisThtController extends Controller
             'modelBerbisik' => $modelBerbisik,
             'modelGarpuTala' => $modelGarpuTala,
             'no_rm' => $no_rm,
-            'pasien' => DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one(),
+            'pasien' => $pasien,
         ]));
-        $mpdf->Output('Spesialis THT ' . $model['no_rekam_medik'] . '.pdf', 'I');
+        $mpdf->Output('Spesialis THT ' . $pasien['no_rekam_medik'] . '.pdf', 'I');
         exit;
     }
 
