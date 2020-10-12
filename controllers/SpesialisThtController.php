@@ -611,6 +611,41 @@ class SpesialisThtController extends Controller
         ]);
     }
 
+    public function actionCetakGarpuTala($no_rm, $no_daftar)
+    {
+        $pasien = DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->andWhere(['no_registrasi' => $no_daftar])->one();
+        $modelGarpuTala = McuSpesialisThtGarpuTala::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
+
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'legal',
+            'margin_left' => 10,
+            'margin_right' => 10,
+            'margin_top' => 10,
+            'margin_bottom' => 5,
+            'margin_header' => 10,
+            'margin_footer' => 5
+        ]);
+        $mpdf->shrink_tables_to_fit = 1;
+        $mpdf->use_kwt = true;
+        $mpdf->SetTitle('Tes GarpuTala ' . $pasien['no_rekam_medik']);
+        // return $this->renderPartial('cetak', [
+        //     'model' => $model,
+        //     'modelAudiometri' => $modelAudiometri,
+        //     'modelGarpuTala' => $modelGarpuTala,
+        //     'modelGarpuTala' => $modelGarpuTala,
+        //     'no_rm' => $no_rm,
+        //     'pasien' => DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one(),
+        // ]);
+        $mpdf->WriteHTML($this->renderPartial('cetak-garpu-tala', [
+            'modelGarpuTala' => $modelGarpuTala,
+            'no_rm' => $no_rm,
+            'pasien' => $pasien,
+        ]));
+        $mpdf->Output('Tes Berbisik ' . $pasien['no_rekam_medik'] . '.pdf', 'I');
+        exit;
+    }
+
     public function actionSimpanPenataGarpuTala($id = null)
     {
         $model = new McuPenatalaksanaanMcu();

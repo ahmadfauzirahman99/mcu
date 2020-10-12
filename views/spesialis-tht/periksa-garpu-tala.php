@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-10 15:03:31
+ * @Last Modified time: 2020-10-12 15:43:24
  */
 
 use app\components\Helper;
@@ -305,7 +305,7 @@ $this->params['breadcrumbs'][] = $this->title;
         if (array_key_exists('id', $_GET))
             echo Html::submitButton('Simpan', ['class' => 'btn btn-success']);
         if (!$model->isNewRecord)
-            echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-tht/cetak', 'no_rm' => $no_rm, 'no_daftar' => $no_daftar], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
+            echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-tht/cetak-garpu-tala', 'no_rm' => $no_rm, 'no_daftar' => $no_daftar], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
         ?>
     </div>
     <?php
