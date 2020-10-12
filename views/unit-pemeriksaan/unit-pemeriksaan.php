@@ -10,6 +10,8 @@ use app\assets\ItemFisikAsset;
 ItemFisikAsset::register($this);
 
 ?>
+
+
 <?php $form = ActiveForm::begin(); ?>
 
 <div class="row">
@@ -33,6 +35,7 @@ ItemFisikAsset::register($this);
         <?php ActiveForm::end(); ?>
     </div>
 </div>
+<?php $identitas_dokter = Helper::getRumpun()  ?>
 
 <h2 class="text-center">UNIT MEDICAL CHEK UP RSUD ARIFIN ACHMAD PROVINSI RIAU
     PEMERIKSAAN KESEHATAN TENAGA KERJA
@@ -40,8 +43,7 @@ ItemFisikAsset::register($this);
 <?= $this->render('data-layanan', ['model' => $dataLayanan,]) ?>
 <?= $this->render('anamnesis.php', ['model' => $anamnesis, 'dataLayanan' => $dataLayanan,]) ?>
 
-<?php $identitas_dokter = Helper::getRumpun()  ?>
-<?php if ($identitas_dokter['kodejenis'] == 36 || $identitas_dokter['kodejenis'] == 37 || $identitas_dokter['kodejenis'] == 20) { ?>
+<?php if ($identitas_dokter['kodejenis'] == 36 || $identitas_dokter['kodejenis'] == 37 || $identitas_dokter['kodejenis'] == 20 || $identitas_dokter['kodejenis'] == 1) { ?>
     <?= $this->render(
         'anamnesis-okupasi.php',
         [
@@ -57,10 +59,10 @@ ItemFisikAsset::register($this);
 
 <?php if ($dataLayanan->kode_debitur == '0129') { ?>
     <?= $this->render('anamnesa-bengkalis', [
-        'modelAnamnesaBengkalis' => $modelAnamnesaBengkalis, 
+        'modelAnamnesaBengkalis' => $modelAnamnesaBengkalis,
         'dataLayanan' => $dataLayanan,
         'modelPemeriksaanBengkalis' => $modelPemeriksaanBengkalis
-        ]) ?>
+    ]) ?>
 <?php } ?>
 
 <?= $this->render('item-fisik.php', [
@@ -68,3 +70,29 @@ ItemFisikAsset::register($this);
     'dataLayanan' => $dataLayanan,
 
 ]) ?>
+<hr>
+<?php
+if ($identitas_dokter['kodejenis'] == 12) :
+?>
+<?php
+elseif ($identitas_dokter['kodejenis'] == 1) :
+?>
+    <a  href='<?= Url::to(['/laporan/cetak-dokter-umum/', 'id' => $dataLayanan->no_rekam_medik]) ?>' target='_blank' class='btn btn-primary'>Print Pemeriksaan Fisik</a>
+<?php
+elseif ($identitas_dokter['kodejenis'] == 20) :
+?>
+<?php
+elseif ($identitas_dokter['kodejenis'] == 16) :
+?>
+<?php
+elseif ($identitas_dokter['kodejenis'] == 36) :
+?>
+<?php
+elseif ($identitas_dokter['kodejenis'] == 37) :
+?>
+<?php
+elseif ($identitas_dokter['kodejenis'] == 2) :
+?>
+
+<?php else : ?>
+<?php endif ?>

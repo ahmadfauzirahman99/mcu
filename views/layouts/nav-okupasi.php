@@ -42,13 +42,10 @@ use yii\helpers\Url;
 <li>
     <a href="<?= Url::to(['/spesialis-narkoba/periksa']) ?>" class="waves-effect"><i class="fas fa-eyedropper"></i> <span> Narkoba </span> </a>
 </li>
-<li class=" text-muted menu-title">Laporan</li>
 
-<li style="display: none;">
-    <a href="<?= Url::to(['/laporan/index']) ?>" class="waves-effect"><i class="fas fa-file"></i> <span> Laporan </span> </a>
-</li>
 
+<li class=" text-muted menu-title">Darurat</li>
 <li>
-    <a href="<?= Url::to(['/laporan/list-laporan']) ?>" class="waves-effect"><i class="fas fa-file"></i> <span>List Laporan </span> </a>
+    <a href="<?= Url::to(['/site/item-mcu']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Item MCU </span> </a>
 </li>
 <div class="clearfix"></div>

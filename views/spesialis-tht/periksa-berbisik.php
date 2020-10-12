@@ -174,10 +174,10 @@ $optionBerbisik = [
                         "select2:select" => "function(e) { 
                             let dipilih = e.params.data.id
                             let optionBerbisik = {
-                                'Jarak &ge; 1 Meter' : 'Dalam Batas Normal',
+                                'Jarak &ge; 1 Meter' : 'Tuli Berat',
                                 'Jarak 3-2 Meter' : 'Tuli Ringan',
                                 'Jarak 4 Meter' : 'Tuli Sedang',
-                                'Jarak 6-5 Meter' : 'Tuli Berat',
+                                'Jarak 6-5 Meter' : 'Dalam Batas Normal',
                             }
                             $('#mcuspesialisthtberbisik-tl_test_berbisik_telinga_kanan').val(optionBerbisik[dipilih]).trigger('change')
                         }",
@@ -199,10 +199,10 @@ $optionBerbisik = [
                         "select2:select" => "function(e) { 
                             let dipilih = e.params.data.id
                             let optionBerbisik = {
-                                'Jarak &ge; 1 Meter' : 'Dalam Batas Normal',
+                                'Jarak &ge; 1 Meter' : 'Tuli Berat',
                                 'Jarak 3-2 Meter' : 'Tuli Ringan',
                                 'Jarak 4 Meter' : 'Tuli Sedang',
-                                'Jarak 6-5 Meter' : 'Tuli Berat',
+                                'Jarak 6-5 Meter' : 'Dalam Batas Normal',
                             }
                             $('#mcuspesialisthtberbisik-tl_test_berbisik_telinga_kiri').val(optionBerbisik[dipilih]).trigger('change')
                         }",
