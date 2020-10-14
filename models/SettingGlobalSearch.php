@@ -40,7 +40,8 @@ class SettingGlobalSearch extends SettingGlobal
      */
     public function search($params)
     {
-        $query = SettingGlobal::find()->andWhere(['<>','status', '0']);
+        $query = SettingGlobal::find()
+         ->with(['item'])->andWhere(['<>','status', '0']);
 
         // add conditions that should always apply here
 

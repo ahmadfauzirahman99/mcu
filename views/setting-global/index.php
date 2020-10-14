@@ -27,6 +27,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id_global',
             'id_item_setting',
+            [
+                'class' => \yii\grid\DataColumn::className(), // this line is optional
+                'attribute' => 'id_item_setting',
+                'label' => 'Item',
+                'contentOptions' => ['class' => 'text-center'],
+                'headerOptions' => ['class' => 'text-center'],
+                'value' => function ($model) {
+                    return isset( $model['item']['nama_item_setting']) ? $model['item']['nama_item_setting'] : '';
+                },
+            ],
             'tampil',
             'status',
 

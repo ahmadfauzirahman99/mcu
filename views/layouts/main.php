@@ -106,13 +106,13 @@ AppAsset::register($this);
                             <a href="<?= Url::to(['/radiologi/index']) ?>" class="waves-effect"><i class=" mdi mdi-clipboard-pulse"></i> <span> Unit Radiologi </span> </a>
                         </li>
 
-                        <li class="has_sub">
+                        <!-- <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> Setting Labs. </span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled">
                                 <li><a href="<?= Url::to(['/mcu-item-lab/index']) ?>"">Item Pemeriksaan</a></li>
                                 <li><a href="#">Setting Global</a></li>
                             </ul>
-                        </li>
+                        </li> -->
 
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> Setting </span> <span class="menu-arrow"></span></a>
@@ -121,6 +121,7 @@ AppAsset::register($this);
                                 <li><a href="<?= Url::to(['/item-setting/index']) ?>"">Item Setting</a></li>
                                 <li><a href="<?= Url::to(['/setting-manual/index']) ?>"">Setting Manual</a></li>
                                 <li><a href="<?= Url::to(['/setting-global/index']) ?>"">Setting Global</a></li>
+                                <li><a href="<?= Url::to(['/gradding-mcu/index']) ?>"">Gradding MCU</a></li>
                             </ul>
                         </li>
 
