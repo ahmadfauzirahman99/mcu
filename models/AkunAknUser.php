@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\components\StatusAkun;
+use app\models\pegawai\Pegawai;
 use Yii;
 
 /**
@@ -240,6 +241,11 @@ class AkunAknUser extends \yii\db\ActiveRecord
     public function isSedangDiblokir()
     {
         return $this->sta == StatusAkun::BLOKIR;
+    }
+
+    public function getPegawai()
+    {
+        return $this->hasOne(Pegawai::className(), ['pegawai_id' => 'id_pegawai']);
     }
 
 }

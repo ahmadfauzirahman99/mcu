@@ -197,6 +197,7 @@ class SpesialisMataController extends Controller
 
         $id_cari = $id;
 
+        $modelPenata = new McuPenatalaksanaanMcu();
         if ($id_cari != null) {
             $pasien = DataLayanan::find()->where(['id_data_pelayanan' => $id_cari])->one();
             if (!$pasien) {
@@ -210,6 +211,7 @@ class SpesialisMataController extends Controller
             if (!$model)
                 $model = new McuSpesialisMata();
 
+            $modelPenata->no_rekam_medik = $pasien->no_rekam_medik;
             $model->cari_pasien = $id_cari;
             $no_rm = $pasien->no_rekam_medik;
             $no_daftar = $pasien->no_registrasi;
@@ -222,7 +224,6 @@ class SpesialisMataController extends Controller
         $modelPenataList = McuPenatalaksanaanMcu::find()
             ->where(['jenis' => 'spesialis_mata'])
             ->andWhere(['id_fk' => $model->id_spesialis_mata]);
-        $modelPenata = new McuPenatalaksanaanMcu();
 
         if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -263,7 +264,9 @@ class SpesialisMataController extends Controller
             $model->penglihatan_3_dimensi_mata_kiri = 'Normal';
             $model->virus_mata_tanpa_koreksi_mata_kanan = 'VOD: 20/20';
             $model->virus_mata_tanpa_koreksi_mata_kiri = 'VOS: 20/20';
-            $model->kesimpulan = 'Normal';
+            $model->virus_mata_dengan_koreksi_mata_kanan = '-';
+            $model->virus_mata_dengan_koreksi_mata_kiri = '-';
+            $model->kesan = 'Normal';
         }
 
         return $this->render('periksa', [
@@ -315,6 +318,9 @@ class SpesialisMataController extends Controller
             'margin_footer' => 10
         ]);
         $mpdf->SetTitle('Spesialis Mata ' . $model['no_rekam_medik']);
+        if ($model->kesan == 'Normal') {
+            $model->kesimpulan = 'Normal';
+        }
         // return $this->renderPartial('cetak', [
         //     'model' => $model,
         //     'no_rm' => $no_rm,

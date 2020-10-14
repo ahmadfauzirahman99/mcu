@@ -22,8 +22,10 @@ use Yii;
  * @property string|null $tl_swabach_telinga_kiri
  * @property string|null $tl_bing_telinga_kanan
  * @property string|null $tl_bing_telinga_kiri
+ * @property string|null $kesan
  * @property string|null $kesimpulan
  * @property string|null $riwayat
+ * @property string|null $status_pemeriksaan
  */
 class McuSpesialisThtGarpuTala extends BaseAR
 {
@@ -49,6 +51,7 @@ class McuSpesialisThtGarpuTala extends BaseAR
             [['no_rekam_medik'], 'string', 'max' => 120],
             [['tl_test_garpu_tala_rinne_telinga_kanan', 'tl_test_garpu_tala_rinne_telinga_kiri', 'tl_weber_telinga_kanan', 'tl_weber_telinga_kiri', 'tl_swabach_telinga_kanan', 'tl_swabach_telinga_kiri', 'tl_bing_telinga_kanan', 'tl_bing_telinga_kiri'], 'string', 'max' => 70],
             
+            ['kesan', 'required'],
             ['no_daftar', 'unique'],
         ];
     }

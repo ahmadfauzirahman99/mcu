@@ -7,7 +7,7 @@
 CREATE TABLE mcu.spesialis_audiometri (
 	id_spesialis_audiometri serial NOT NULL,
 	no_rekam_medik varchar(120) NOT NULL,
-    no_daftar varchar NULL,
+	no_daftar varchar NULL,
 	created_at timestamp NULL,
 	updated_at timestamp NULL,
 	created_by int4 NULL,
@@ -66,6 +66,7 @@ CREATE TABLE mcu.spesialis_audiometri (
 	gambar text NULL,
 	riwayat text NULL,
 	kesan text NULL,
+	status_pemeriksaan text NULL,
 	CONSTRAINT spesialis_audiometri_pkey PRIMARY KEY (id_spesialis_audiometri)
 );
 
@@ -79,7 +80,7 @@ CREATE TABLE mcu.spesialis_audiometri (
 CREATE TABLE mcu.spesialis_gigi (
 	id_spesialis_gigi serial NOT NULL,
 	no_rekam_medik varchar(120) NOT NULL,
-    no_daftar varchar NULL,
+	no_daftar varchar NULL,
 	created_at timestamp NULL,
 	updated_at timestamp NULL,
 	created_by int4 NULL,
@@ -131,6 +132,8 @@ CREATE TABLE mcu.spesialis_gigi (
 	kesimpulan text NULL,
 	saran text NULL,
 	riwayat text NULL,
+	kesan text NULL,
+	status_pemeriksaan text NULL,
 	CONSTRAINT spesialis_gigi_pkey PRIMARY KEY (id_spesialis_gigi)
 );
 
@@ -144,7 +147,7 @@ CREATE TABLE mcu.spesialis_gigi (
 CREATE TABLE mcu.spesialis_mata (
 	id_spesialis_mata serial NOT NULL,
 	no_rekam_medik varchar(120) NOT NULL,
-    no_daftar varchar NULL,
+	no_daftar varchar NULL,
 	created_at timestamp NULL,
 	updated_at timestamp NULL,
 	created_by int4 NULL,
@@ -176,6 +179,8 @@ CREATE TABLE mcu.spesialis_mata (
 	lain_lain text NULL,
 	kesimpulan text NULL,
 	riwayat text NULL,
+	kesan text NULL,
+	status_pemeriksaan text NULL,
 	CONSTRAINT spesialis_mata_pkey PRIMARY KEY (id_spesialis_mata)
 );
 
@@ -252,7 +257,7 @@ CREATE TABLE mcu.spesialis_tht (
 CREATE TABLE mcu.spesialis_tht_berbisik (
 	id_spesialis_tht_berbisik serial NOT NULL,
 	no_rekam_medik varchar(120) NOT NULL,
-    no_daftar varchar NULL,
+	no_daftar varchar NULL,
 	created_at timestamp NULL,
 	updated_at timestamp NULL,
 	created_by int4 NULL,
@@ -269,6 +274,10 @@ CREATE TABLE mcu.spesialis_tht_berbisik (
 	tl_test_berbisik_telinga_kiri_1 varchar(70) NULL,
 	kesimpulan text NULL,
 	riwayat text NULL,
+	kesan text NULL,
+	tl_test_berbisik_telinga_kanan_option varchar(70) NULL,
+	tl_test_berbisik_telinga_kiri_option varchar(70) NULL,
+	status_pemeriksaan text NULL,
 	CONSTRAINT spesialis_tht_berbisik_pkey PRIMARY KEY (id_spesialis_tht_berbisik)
 );
 
@@ -282,7 +291,7 @@ CREATE TABLE mcu.spesialis_tht_berbisik (
 CREATE TABLE mcu.spesialis_tht_garpu_tala (
 	id_spesialis_tht_garpu_tala serial NOT NULL,
 	no_rekam_medik varchar(120) NOT NULL,
-    no_daftar varchar NULL,
+	no_daftar varchar NULL,
 	created_at timestamp NULL,
 	updated_at timestamp NULL,
 	created_by int4 NULL,
@@ -297,5 +306,7 @@ CREATE TABLE mcu.spesialis_tht_garpu_tala (
 	tl_bing_telinga_kiri varchar(70) NULL,
 	kesimpulan text NULL,
 	riwayat text NULL,
+	kesan text NULL,
+	status_pemeriksaan text NULL,
 	CONSTRAINT spesialis_tht_garpu_tala_pkey PRIMARY KEY (id_spesialis_tht_garpu_tala)
 );

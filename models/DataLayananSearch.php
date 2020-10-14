@@ -42,6 +42,7 @@ class DataLayananSearch extends DataLayanan
     {
         $query = DataLayanan::find();
 
+        $query->where(['kode_debitur'=>'0129'])->orderBy('tanggal_pemeriksaan ASC');
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

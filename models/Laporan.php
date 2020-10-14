@@ -47,4 +47,13 @@ class Laporan extends Model
         return $data;
     }
     
+    public function getDataLaporanPaket($KodeDebitur)
+    {
+        $data = GraddingMcu::find()
+        ->andWhere(['kode_debitur'=>$KodeDebitur])
+        ->asArray()
+        ->all();
+
+        return $data;
+    }
 }

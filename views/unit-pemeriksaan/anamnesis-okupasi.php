@@ -39,7 +39,7 @@ $jenisPekerjaan->masa_kerja = null;
         </div>
     </div>
     <?php $form->field($jenisPekerjaan, 'tanggal_created')->textInput() ?>
-    <?php if ($identitas_dokter['kodejenis'] == 20) { ?>
+    <?php if ($identitas_dokter['kodejenis'] == 20 || $identitas_dokter['kodejenis'] == 1) { ?>
 
         <div class="form-group">
             <?= Html::submitButton('Save Jenis Pekerjaan', ['class' => 'btn btn-success btn-block', 'id' => 'btn-save-jenis-pekerjaan']) ?>
@@ -96,7 +96,6 @@ $dataBiodataUser = Yii::$app->dbRegisterMcu->createCommand("SELECT count(1), u.u
         sejak mulai bekerja, misalnya pada pagi hari hingga selesai bekera di sore hari,
         termasuk bahan-bahan yang digunakan. Buatlah bagan alur dari tiap kegiatan yang dilakukan pekerja)
         Buat bagan alur untuk tiap kegiatan tersebut.</p>
-    <?php if (Yii::$app->request->isPost) : ?>
         <h4 class="m-t-0 header-title">Data Pekerjaan</h4>
         <p class="text-muted font-14 m-b-20">Job/Perusahaan</p>
         <table class="table">
@@ -227,7 +226,6 @@ $dataBiodataUser = Yii::$app->dbRegisterMcu->createCommand("SELECT count(1), u.u
 
             </tbody>
         </table>
-    <?php endif ?>
     <hr>
 </div>
 
@@ -409,7 +407,7 @@ $dataBiodataUser = Yii::$app->dbRegisterMcu->createCommand("SELECT count(1), u.u
             <?= $form->field($modelBahayaPotensial, 'psiko')->textInput(['maxlength' => true,]) ?>
         </div>
     </div>
-    <?php if ($identitas_dokter['kodejenis'] == 20) { ?>
+    <?php if ($identitas_dokter['kodejenis'] == 20 || $identitas_dokter['kodejenis'] == 1) { ?>
 
         <div class="form-group">
             <?= Html::submitButton('Save Bahaya Potensial', ['class' => 'btn btn-success btn-block', 'id' => 'btn-save-jenis-pekerjaan']) ?>
@@ -454,7 +452,7 @@ $dataBiodataUser = Yii::$app->dbRegisterMcu->createCommand("SELECT count(1), u.u
         (gejala / keluhan yang ada) (misalnya keluhan berkurang saat libur
         atau keluhan bertambah setelah bekerja beberapa saat) </p>
     <?= $form->field($anamnesis, 'jawaban8')->textarea(['rows' => 6]) ?>
-    <?php if ($identitas_dokter['kodejenis'] == 20) { ?>
+    <?php if ($identitas_dokter['kodejenis'] == 20 || $identitas_dokter['kodejenis'] == 1) { ?>
         <div class="form-group">
             <?= Html::submitButton('Save Hubungan Pekerjaan', ['class' => 'btn btn-success btn-block']) ?>
         </div>
@@ -467,10 +465,10 @@ $dataBiodataUser = Yii::$app->dbRegisterMcu->createCommand("SELECT count(1), u.u
 
 <div class="form-group">
     <p> <b>5. Body Discomfort Map</p>
-    <iframe src="http://mcu.rsud-arifin.localhost/body-discomfort/form?id=<?= $dataLayanan->no_rekam_medik ?>" style="display: block;width: 1200px;height: 720px;border: none;"></iframe>
+    <iframe src="http://mcu.simrs.aa/body-discomfort/form?id=<?= $dataLayanan->no_rekam_medik ?>" style="display: block;width: 1200px;height: 720px;border: none;"></iframe>
 </div>
 <hr>
-<div class="form-group">
+<div class="form-group" style="display: none;">
     <p><b>6. BRIEF SURVEY </b></p>
     <?php $form = ActiveForm::begin(['action' => 'save-brief', 'id' => 'id_form_brief']); ?>
     <?= $form->field($modelBrief, 'no_rekam_medik')->hiddenInput(['maxlength' => true, 'value' => $dataLayanan->no_rekam_medik, 'readonly' => true])->label(false) ?>

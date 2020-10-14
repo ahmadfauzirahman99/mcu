@@ -5,19 +5,21 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-05 20:45:35 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-08 21:40:42
+ * @Last Modified time: 2020-10-10 12:44:17
  */
 
 
 $(document).ready(function () {
 
-    $('#mcuspesialisthtberbisik-kesimpulan').on('change', function (e) {
-        let kesimpulan = $('#McuSpesialisThtBerbisik_kesimpulan_0').prop('checked')
-        console.log(kesimpulan);
-        if (kesimpulan)
+    $('#mcuspesialisthtberbisik-kesan').on('change', function (e) {
+        let kesan = $('#McuSpesialisThtBerbisik_kesan_0').prop('checked')
+        console.log(kesan);
+        if (kesan)
             $('.div-penata').hide('slow')
-        else
+        else {
             $('.div-penata').show('slow')
+            $("#form-spesialis-tht-berbisik").submit()
+        }
     });
 
     $("#form-spesialis-tht-berbisik").on('submit', function (e) {
@@ -27,8 +29,14 @@ $(document).ready(function () {
         $.post(baseUrl + 'spesialis-tht/periksa-berbisik?id=' + $('#mcuspesialisthtberbisik-cari_pasien').val(), kepalaform, function (r) {
             console.log(r)
             if (r.s) {
-                $.pjax.reload({container: '#btn-cetak', async: false})
-                $.pjax.reload({container: '#btn-cetak-penata', async: false})
+                $.pjax.reload({
+                    container: '#btn-cetak',
+                    async: false
+                })
+                $.pjax.reload({
+                    container: '#btn-cetak-penata',
+                    async: false
+                })
                 toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
             } else {
                 toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))
@@ -44,8 +52,14 @@ $(document).ready(function () {
         $.post(baseUrl + 'spesialis-tht/simpan-penata-berbisik?id=' + $('#mcuspesialisthtberbisik-id_spesialis_tht_berbisik').val(), kepalaform, function (r) {
             console.log(r)
             if (r.s) {
-                $.pjax.reload({container: '#btn-cetak-penata', async: false})
-                $.pjax.reload({container: '#tbl-penata', async: false})
+                $.pjax.reload({
+                    container: '#btn-cetak-penata',
+                    async: false
+                })
+                $.pjax.reload({
+                    container: '#tbl-penata',
+                    async: false
+                })
                 toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
             } else {
                 toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))

@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-08 21:27:33
+ * @Last Modified time: 2020-10-13 12:55:07
  */
 
 use app\components\Helper;
@@ -276,7 +276,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 rowspan=3 valign=bottom>
                 <?php // $form->field($model, 'kesimpulan')->textArea(['rows' => 4])->label(false) ?>
                 <?php
-                echo $form->field($model, 'kesimpulan')->radioList(
+                echo $form->field($model, 'kesan')->radioList(
                     ['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal',],
                     [
                         'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
@@ -305,7 +305,7 @@ $this->params['breadcrumbs'][] = $this->title;
         if (array_key_exists('id', $_GET))
             echo Html::submitButton('Simpan', ['class' => 'btn btn-success']);
         if (!$model->isNewRecord)
-            echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-tht/cetak', 'no_rm' => $no_rm, 'no_daftar' => $no_daftar], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
+            echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-tht/cetak-garpu-tala', 'no_rm' => $no_rm, 'no_daftar' => $no_daftar], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
         ?>
     </div>
     <?php
@@ -318,7 +318,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php
     $displayPenata = 'none';
-    if ($model->kesimpulan == 'Tidak Normal')
+    if ($model->kesan == 'Tidak Normal')
         $displayPenata = 'block';
     ?>
     <div class="div-penata" style="display: <?= $displayPenata ?>;">
@@ -333,6 +333,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]); ?>
 
         <div class="row">
+            <?php echo $form->field($modelPenata, 'no_rekam_medik')->hiddenInput()->label(false); ?>    
             <div class="col-sm-3">
                 <?php echo $form->field($modelPenata, 'jenis_permasalahan')->textArea(['rows' => 2]); ?>
             </div>
@@ -379,12 +380,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'headerOptions' => ['style' => 'width: 30%; background-color: #e7ebee;',],
                     'attribute' => 'jenis_permasalahan',
-                    'label' => 'Jenis Permasalahan Medis & No Medis (Okupasi Dll)',
                 ],
                 [
                     'headerOptions' => ['style' => 'width: 30%; background-color: #e7ebee;',],
                     'attribute' => 'rencana',
-                    'label' => 'Rencana Tindakan (materi & metode) Tatalaksana Medikamentoasa non media mentosa (nutrisi,olahraga,dll)',
                 ],
                 [
                     'headerOptions' => ['style' => 'width: 10%; background-color: #e7ebee;',],

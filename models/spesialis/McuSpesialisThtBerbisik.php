@@ -26,8 +26,6 @@ use Yii;
  * @property string|null $tl_test_berbisik_telinga_kiri_3
  * @property string|null $tl_test_berbisik_telinga_kanan_1
  * @property string|null $tl_test_berbisik_telinga_kiri_1
- * @property string|null $kesimpulan
- * @property string|null $riwayat
  * @property string|null $kesan
  * @property string|null $kesimpulan
  * @property string|null $riwayat

@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-08 22:02:29
+ * @Last Modified time: 2020-10-13 12:49:01
  */
 
 use app\components\Helper;
@@ -29,15 +29,21 @@ $this->title = 'Pemeriksaan Kesehatan THT Tenaga Kerja (Tes Berbisik)';
 $this->params['breadcrumbs'][] = ['label' => 'Unit Medical Check Up', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
+// $optionBerbisik = [
+//     // 'Dalam Batas Normal' => 'Dalam Batas Normal',
+//     // 'Tuli Ringan' => 'Tuli Ringan',
+//     // 'Tuli Sedang' => 'Tuli Sedang',
+//     // 'Tuli Berat' => 'Tuli Berat',
+//     'Dalam Batas Normal' => 'Jarak &ge; 1 Meter',
+//     'Tuli Ringan' => 'Jarak 3-2 Meter',
+//     'Tuli Sedang' => 'Jarak 4 Meter',
+//     'Tuli Berat' => 'Jarak 6-5 Meter',
+// ];
 $optionBerbisik = [
-    // 'Dalam Batas Normal' => 'Dalam Batas Normal',
-    // 'Tuli Ringan' => 'Tuli Ringan',
-    // 'Tuli Sedang' => 'Tuli Sedang',
-    // 'Tuli Berat' => 'Tuli Berat',
-    'Dalam Batas Normal' => 'Jarak &ge; 1 Meter',
-    'Tuli Ringan' => 'Jarak 3-2 Meter',
-    'Tuli Sedang' => 'Jarak 4 Meter',
-    'Tuli Berat' => 'Jarak 6-5 Meter',
+    'Jarak &ge; 1 Meter' => 'Jarak &ge; 1 Meter',
+    'Jarak 3-2 Meter' => 'Jarak 3-2 Meter',
+    'Jarak 4 Meter' => 'Jarak 4 Meter',
+    'Jarak 6-5 Meter' => 'Jarak 6-5 Meter',
 ];
 
 ?>
@@ -157,7 +163,7 @@ $optionBerbisik = [
             </td>
             <td colspan="2" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
                 <?php
-                echo $form->field($model, 'tl_test_berbisik_telinga_kanan')->widget(Select2::classname(), [
+                echo $form->field($model, 'tl_test_berbisik_telinga_kanan_option')->widget(Select2::classname(), [
                     'data' => $optionBerbisik,
                     'theme' => 'bootstrap',
                     'pluginOptions' => [
@@ -166,14 +172,23 @@ $optionBerbisik = [
                     ],
                     'pluginEvents' => [
                         "select2:select" => "function(e) { 
+                            let dipilih = e.params.data.id
+                            let optionBerbisik = {
+                                'Jarak &ge; 1 Meter' : 'Tuli Berat',
+                                'Jarak 3-2 Meter' : 'Tuli Ringan',
+                                'Jarak 4 Meter' : 'Tuli Sedang',
+                                'Jarak 6-5 Meter' : 'Dalam Batas Normal',
+                            }
+                            $('#mcuspesialisthtberbisik-tl_test_berbisik_telinga_kanan').val(optionBerbisik[dipilih]).trigger('change')
                         }",
                     ],
                 ])->label(false);
+                echo $form->field($model, 'tl_test_berbisik_telinga_kanan')->textInput(['maxlength' => true, 'readonly' => true, 'style' => 'margin-top: 5px;'])->label(false)
                 ?>
             </td>
             <td colspan="2" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
                 <?php
-                echo $form->field($model, 'tl_test_berbisik_telinga_kiri')->widget(Select2::classname(), [
+                echo $form->field($model, 'tl_test_berbisik_telinga_kiri_option')->widget(Select2::classname(), [
                     'data' => $optionBerbisik,
                     'theme' => 'bootstrap',
                     'pluginOptions' => [
@@ -182,9 +197,18 @@ $optionBerbisik = [
                     ],
                     'pluginEvents' => [
                         "select2:select" => "function(e) { 
+                            let dipilih = e.params.data.id
+                            let optionBerbisik = {
+                                'Jarak &ge; 1 Meter' : 'Tuli Berat',
+                                'Jarak 3-2 Meter' : 'Tuli Ringan',
+                                'Jarak 4 Meter' : 'Tuli Sedang',
+                                'Jarak 6-5 Meter' : 'Dalam Batas Normal',
+                            }
+                            $('#mcuspesialisthtberbisik-tl_test_berbisik_telinga_kiri').val(optionBerbisik[dipilih]).trigger('change')
                         }",
                     ],
                 ])->label(false);
+                echo $form->field($model, 'tl_test_berbisik_telinga_kiri')->textInput(['maxlength' => true, 'readonly' => true, 'style' => 'margin-top: 5px;'])->label(false)
                 ?>
             </td>
         </tr>
@@ -199,7 +223,7 @@ $optionBerbisik = [
                 <?php // $form->field($model, 'kesimpulan')->textArea(['rows' => 4])->label(false) 
                 ?>
                 <?php
-                echo $form->field($model, 'kesimpulan')->radioList(
+                echo $form->field($model, 'kesan')->radioList(
                     ['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal',],
                     [
                         'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
@@ -228,7 +252,7 @@ $optionBerbisik = [
         if (array_key_exists('id', $_GET))
             echo Html::submitButton('Simpan', ['class' => 'btn btn-success']);
         if (!$model->isNewRecord)
-            echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-tht/cetak', 'no_rm' => $no_rm, 'no_daftar' => $no_daftar], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
+            echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-tht/cetak-berbisik', 'no_rm' => $no_rm, 'no_daftar' => $no_daftar], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
         ?>
     </div>
     <?php
@@ -241,7 +265,7 @@ $optionBerbisik = [
 
     <?php
     $displayPenata = 'none';
-    if ($model->kesimpulan == 'Tidak Normal')
+    if ($model->kesan == 'Tidak Normal')
         $displayPenata = 'block';
     ?>
     <div class="div-penata" style="display: <?= $displayPenata ?>;">
@@ -257,6 +281,7 @@ $optionBerbisik = [
         ]); ?>
 
         <div class="row">
+                <?php echo $form->field($modelPenata, 'no_rekam_medik')->hiddenInput()->label(false); ?>
             <div class="col-sm-3">
                 <?php echo $form->field($modelPenata, 'jenis_permasalahan')->textArea(['rows' => 2]); ?>
             </div>
@@ -303,12 +328,10 @@ $optionBerbisik = [
                 [
                     'headerOptions' => ['style' => 'width: 30%; background-color: #e7ebee;',],
                     'attribute' => 'jenis_permasalahan',
-                    'label' => 'Jenis Permasalahan Medis & No Medis (Okupasi Dll)',
                 ],
                 [
                     'headerOptions' => ['style' => 'width: 30%; background-color: #e7ebee;',],
                     'attribute' => 'rencana',
-                    'label' => 'Rencana Tindakan (materi & metode) Tatalaksana Medikamentoasa non media mentosa (nutrisi,olahraga,dll)',
                 ],
                 [
                     'headerOptions' => ['style' => 'width: 10%; background-color: #e7ebee;',],

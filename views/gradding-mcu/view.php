@@ -1,5 +1,8 @@
 <?php
 
+use app\models\spesialis\McuSpesialisGigi;
+use app\models\spesialis\McuSpesialisMata;
+use app\models\spesialis\McuSpesialisThtBerbisik;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -14,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="gradding-mcu-view">
 
     <p>
-       <?= Html::a('<i class="fa fa-backward"></i> Kembali', ['index'], ['class' => 'btn btn-warning']) ?>   
+        <?= Html::a('<i class="fa fa-backward"></i> Kembali', ['index'], ['class' => 'btn btn-warning']) ?>
         <?= Html::a('<i class="mdi mdi-pencil"></i> Perbaharui', ['update', 'id' => $model->id_gradding], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('<i class="fa fa-trash"></i> Hapus', ['delete', 'id' => $model->id_gradding], [
             'class' => 'btn btn-danger',
@@ -34,7 +37,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'no_registrasi',
             'no_mcu',
             'kode_debitur',
-            'hasil:ntext',
             'status',
             'is_reset',
             'poin',
@@ -42,3 +44,83 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+<?php
+$hasil_mcu_mata = json_decode($model->hasil);
+$hasil_mcu_gigi = json_decode($model->hasil);
+$hasil_mcu_tht_berbisik = json_decode($model->hasil);
+// echo '<pre>';
+// var_dump($hasil_mcu->mata);
+// $ms = $model->attributeLabels('persepsi_warna_mata_kanan');
+// print_r($ms);
+$modelMata = new McuSpesialisMata();
+$modelGigi = new McuSpesialisGigi();
+$modelThtBerbisik = new McuSpesialisThtBerbisik();
+?>
+<h4 class="text-center">Mata Tidak Normal</h4>
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <?php foreach ($hasil_mcu_mata->mata as $items) { ?>
+
+        <?php if ($items->result == 1) { ?>
+            <tbody>
+                <tr>
+                    <td width='50%'><?= $modelMata->getAttributeLabel($items->item) ?></td>
+                    <td><?= $items->value ?></td>
+                </tr>
+            </tbody>
+        <?php } ?>
+
+    <?php } ?>
+</table>
+
+<h4 class="text-center">Gigi Tidak Normal</h4>
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <?php foreach ($hasil_mcu_gigi->gigi as $items) { ?>
+
+        <?php if ($items->result == 1) { ?>
+            <tbody>
+                <tr>
+                    <td width='50%'><?= $modelGigi->getAttributeLabel($items->item) ?></td>
+                    <td><?= $items->value ?></td>
+                </tr>
+            </tbody>
+        <?php } ?>
+
+    <?php } ?>
+</table>
+
+<h4 class="text-center">THT Berbisik Tidak Normal</h4>
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <?php foreach ($hasil_mcu_tht_berbisik->tht_berbisik as $items) { ?>
+
+        <?php if ($items->result == 1) { ?>
+            <tbody>
+                <tr>
+                    <td width='50%'><?= $modelThtBerbisik->getAttributeLabel($items->item) ?></td>
+                    <td><?= $items->value ?></td>
+                </tr>
+            </tbody>
+        <?php } ?>
+
+    <?php } ?>
+</table>
