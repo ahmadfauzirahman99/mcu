@@ -44,7 +44,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'status',
             'is_reset',
             'poin',
-
             [
                 'class' => 'app\components\ActionColumn',
             ],

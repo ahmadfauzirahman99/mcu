@@ -54,6 +54,9 @@ use yii\helpers\Url;
 <li>
     <a href="<?= Url::to(['/radiologi/index']) ?>" class="waves-effect"><i class="fa fa-list"></i> <span> Hasil Radiologi </span> </a>
 </li>
+<li>
+    <a href="<?= Url::to(['/gradding-mcu/index']) ?>" class="waves-effect"><i class="fa fa-list"></i> <span> Gradding Mcu </span> </a>
+</li>
 <li class="text-muted menu-title">Form Majelis</li>
 <li>
     <a href="<?= Url::to(['/pembedaan-cpns/index']) ?>" class="waves-effect"><i class="fa fa-list"></i> <span> Form Mejelis </span> </a>
