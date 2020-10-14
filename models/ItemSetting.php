@@ -83,4 +83,17 @@ class ItemSetting extends \yii\db\ActiveRecord
             ->all();
     }
 
+    public static function getFilteredListItem()
+    {
+        $subQuery = SettingGlobal::find()->select('id_item_setting');
+
+        return self::find()
+            ->select(['id_item_setting','nama_item_setting'])
+            ->andwhere(['status'=>2])
+            ->andwhere(['not in', 'id_item_setting', $subQuery])
+            ->orderBy('id_item_setting')
+            ->asArray()
+            ->all();
+    }
+
 }

@@ -23,13 +23,9 @@ class UnitLabPkController extends \yii\web\Controller
                 $NoPasien = $dataLayanan['no_rekam_medik'];
                 $NoRegistrasi = $dataLayanan['no_registrasi'];
                 $dataLab = PenunjangValidasiLab::findOne(['pid'=>$NoPasien, 'apid'=> $NoRegistrasi, 'status'=>'2']);
-                  //  var_dump($dataLab);
-                  // exit();
-                  if($dataLab != null){
-                     $dataApi = $dataLab->data_api;
-                  }
-
-
+                if($dataLab != Null) {
+                    $dataApi = $dataLab->data_api;
+                }
             }
 
 
