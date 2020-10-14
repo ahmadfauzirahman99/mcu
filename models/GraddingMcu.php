@@ -188,6 +188,7 @@ class GraddingMcu extends \yii\db\ActiveRecord
              'bulu_mata_kanan' => 'Normal', 'bulu_mata_kiri' => 'Normal', 'tekanan_bola_mata_kanan' => 'Normal',
              'tekanan_bola_mata_kiri' => 'Normal', 'penglihatan_3_dimensi_mata_kanan' => 'Normal', 'penglihatan_3_dimensi_mata_kiri' => 'Normal',
              'virus_mata_dengan_koreksi_mata_kanan' => '-', 'virus_mata_dengan_koreksi_mata_kiri' => '-',
+             'virus_mata_dengan_koreksi_mata_kanan' => '', 'virus_mata_dengan_koreksi_mata_kiri' => '',
              'lain_lain' => '', 'kesan' => 'Normal',
 
              // Keadaan Normal THT berbisik 
@@ -205,6 +206,9 @@ class GraddingMcu extends \yii\db\ActiveRecord
             $result = 0;
         } else { 
             $result = 1;
+            if($value == '-') {
+                $result = 0;
+            }
         } 
 
         return $result;
