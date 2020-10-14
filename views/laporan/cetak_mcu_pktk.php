@@ -2629,7 +2629,7 @@ function tgl_indo($tanggal)
     </div>
 </div>
 <!-- ttd -->
-<div class="row" style="">
+<div class="row">
     <div class="col-md-12" style="margin:30px 30px 0px 30px">
 
         <table width="100%" border="0" style="font-size: 12px">

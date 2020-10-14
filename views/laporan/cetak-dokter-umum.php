@@ -1340,7 +1340,7 @@ function tgl_indo($tanggal)
 </div>
 
 <!-- ttd -->
-<div class="row" style="">
+<div class="row">
     <div class="col-md-12" style="margin:30px 30px 0px 30px">
         <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-collapse:collapse;text-align:left;font-size:12px">
             <tr>
