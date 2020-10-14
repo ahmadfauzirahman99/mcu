@@ -187,7 +187,6 @@ class GraddingMcu extends \yii\db\ActiveRecord
              'lensa_mata_kiri' => 'Tidak Keruh', 'kornea_mata_kanan' => 'Normal', 'kornea_mata_kiri' => 'Normal',
              'bulu_mata_kanan' => 'Normal', 'bulu_mata_kiri' => 'Normal', 'tekanan_bola_mata_kanan' => 'Normal',
              'tekanan_bola_mata_kiri' => 'Normal', 'penglihatan_3_dimensi_mata_kanan' => 'Normal', 'penglihatan_3_dimensi_mata_kiri' => 'Normal',
-             'virus_mata_tanpa_koreksi_mata_kanan' => 'VOD: 20/20', 'virus_mata_tanpa_koreksi_mata_kiri' => 'VOD: 20/20',
              'virus_mata_dengan_koreksi_mata_kanan' => '-', 'virus_mata_dengan_koreksi_mata_kiri' => '-',
              'lain_lain' => '', 'kesan' => 'Normal',
 
