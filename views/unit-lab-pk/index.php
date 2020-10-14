@@ -91,7 +91,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <ul class="nav nav-tabs nav-justified">
             <li class="nav-item"><a href="#account-2" data-toggle="tab" class="nav-link">DATA PASIEN</a></li>
             <li class="nav-item"><a href="#profile-tab-2" data-toggle="tab" class="nav-link">I. HASIL LAB</a></li>
-            <li class="nav-item"><a href="#finish-2" data-toggle="tab" class="nav-link">II. SETTING HASIL</a></li>
+            <li style="display: none;" class="nav-item"><a href="#finish-2" data-toggle="tab" class="nav-link">II. SETTING HASIL</a></li>
         </ul>
 
         <div class="tab-content b-0 mb-0">

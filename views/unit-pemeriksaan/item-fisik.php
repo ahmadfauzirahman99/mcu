@@ -4,6 +4,8 @@ use app\assets\ItemFisikAsset;
 use app\components\Helper;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use kartik\select2\Select2;
+use yii\web\JsExpression;
 
 /* @var $this yii\web\View */
 /* @var $master_pemeriksaan_fisik app\models\MasterPemeriksaanFisik */
@@ -207,18 +209,7 @@ $helper = [
                                     <?= $form->field($master_pemeriksaan_fisik, 'kepala_bentuk_wajah')->radioList(['Baik' => 'Baik', 'Tidak baik' => 'Tidak Baik'])->label(false) ?>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <input type="radio" aria-label="Radio button for following text input">
-                                            </div>
-                                        </div>
-                                        <input type="text" class="form-control" style="width: 50px;" aria-label="Text input with radio button">
-                                    </div>
-                                </td>
-                            </tr>
+                            
                         </table>
                     </div>
                 </div>
@@ -242,7 +233,10 @@ $helper = [
                                     <?= $form->field($master_pemeriksaan_fisik, 'mata_bulu_mata_kanan')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal']) ?>
 
                                     <?= $form->field($master_pemeriksaan_fisik, 'mata_tekanan_bola_mata_kanan')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal']) ?>
-                                    <?= $form->field($master_pemeriksaan_fisik, 'mata_penglihatan_3dimensi_kanan')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal']) ?>
+                                    <div style="display: none;">
+                                          <?= $form->field($master_pemeriksaan_fisik, 'mata_penglihatan_3dimensi_kanan')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal']) ?>
+                                    </div>
+                                  
                                 </td>
 
                                 <td>
@@ -255,7 +249,10 @@ $helper = [
                                     <?= $form->field($master_pemeriksaan_fisik, 'mata_kornea_kiri')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal']) ?>
                                     <?= $form->field($master_pemeriksaan_fisik, 'mata_bulu_mata_kiri')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal']) ?>
                                     <?= $form->field($master_pemeriksaan_fisik, 'mata_tekanan_bola_mata_kiri')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal']) ?>
-                                    <?= $form->field($master_pemeriksaan_fisik, 'mata_penglihatan_3dimensi_kiri')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal']) ?>
+                                    <div style="display: none;">
+                                        <?= $form->field($master_pemeriksaan_fisik, 'mata_penglihatan_3dimensi_kiri')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal']) ?>
+                                    </div>
+                                    
                                 </td>
 
                             </tr>
@@ -553,48 +550,29 @@ $helper = [
 
                         <table class="table table-bordered">
                             <tr>
-                                <th>Palpasi</th>
+                                <th>A. Palpasi</th>
                                 <td>
                                     <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_palpasi')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal'])->label(false) ?>
                                 </td>
                             </tr>
-                            <tr class="tr-label">
-                                <td colspan="2" class='text-center'><b>Perkusi</b></td>
-                            </tr>
-                            <tr class="tr-label">
-                                <td>Kiri</td>
-                                <td>Kanan</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_perkusi_iktus_kiri')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal........']) ?>
-
-                                    <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_perkusi_kiri')->radioList(['Sonor' => 'Sonor', 'Redup' => 'Redup', 'Hipersonor' => 'Hipersonor',]) ?>
-                                </td>
-                                <td colspan="2">
-                                    <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_perkusi_iktus_kanan')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal........']) ?>
-                                    <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_perkusi_batas_jantung_kanan')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal........']) ?>
-                                </td>
-                            </tr>
-
-                        </table>
-
-                        <table class="table table-bordered">
-                            <tr class="tr-label">
-                                <td colspan="2" class='text-center'><b>Auskultasi</b></td>
-                            </tr>
-                            <tr class="tr-label">
+                              <tr class="tr-label">
                                 <td>Kanan</td>
                                 <td>Kiri</td>
                             </tr>
                             <tr>
-                                <td>
-                                    <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_auskultasi_bunyi_nafas_kanan')->radioList(['Vesikuler' => 'Vesikuler', 'Brc. Vesikuler' => 'Brc. Vesikuler',]) ?>
+                                 <td>
+                                 <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_perkusi_kanan')->radioList(['Sonor' => 'Sonor', 'Redup' => 'Redup', 'Hipersonor' => 'Hipersonor',]) ?>
+                                
                                 </td>
-                                <td>
-                                    <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_auskultasi_bunyi_nafas_kiri')->radioList(['Vesikuler' => 'Vesikuler', 'Brc. Vesikuler' => 'Brc. Vesikuler',]) ?>
+                                    <td>
+                                 <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_perkusi_kiri')->radioList(['Sonor' => 'Sonor', 'Redup' => 'Redup', 'Hipersonor' => 'Hipersonor',]) ?>
+                                
                                 </td>
                             </tr>
+                            <tr class="tr-label">
+                                <td colspan="2"><b>C. Auskultasi</b></td>
+                            </tr>
+
                             <tr>
                                 <td>
                                     <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_auskultasi_bunyi_nafas_tambah_kanan')->radioList(['Tak Ada' => 'Tak Ada', 'Ronkhi' => 'Ronkhi', 'Wheezing' => 'Wheezing',]) ?>
@@ -604,7 +582,30 @@ $helper = [
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan='2'> <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_bunyi_jantung')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal.........']) ?>
+                                <td>
+                                    <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_auskultasi_bunyi_nafas_kanan')->radioList(['Vesikuler' => 'Vesikuler', 'Brc. Vesikuler' => 'Brc. Vesikuler',]) ?>
+                                </td>
+                                <td>
+                                    <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_auskultasi_bunyi_nafas_kiri')->radioList(['Vesikuler' => 'Vesikuler', 'Brc. Vesikuler' => 'Brc. Vesikuler',]) ?>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table class="table table-bordered">
+                            <tr class="tr-label">
+                                <td colspan="2"><b>D. Jantung</b></td>
+                            </tr>
+                        
+                            <tr>
+                                <td colspan='2'> 
+                                    <label>Iktus Kordis</label>
+                                    <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_perkusi_iktus_kiri')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal.........'])->label(false) ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan='2'> 
+                                    <label>Batas Jantung</label>
+                                    <?= $form->field($master_pemeriksaan_fisik, 'paru_jantung_bunyi_jantung')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal.........'])->label(false) ?>
                                 </td>
                             </tr>
                         </table>
@@ -691,36 +692,64 @@ $helper = [
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="card-box">
-                    <div class="form-group">
+                <div class="card text-white bg-warning">
+                    <div class="card-body">
+                        <div class="form-group">
                         <h4 class="header-title m-t-0 m-b-30">15. Genitourinaria</h4>
-                        <table class='table table-bordered table-striped'>
-                            <tr>
-                                <th>kandung Kemih</th>
-                                <td><?= $form->field($master_pemeriksaan_fisik, 'genitourinaria_kandung_kemih')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal'])->label(false) ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Anus/Rektum/Perianal</th>
-                                <td>
-                                    <?= $form->field($master_pemeriksaan_fisik, 'genitourinaria_anus')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal'])->label(false) ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Genitalia Eksternal</th>
-                                <td>
-                                    <?= $form->field($master_pemeriksaan_fisik, 'genitourinaria_genitalia_eksternal')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal'])->label(false) ?>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>Prostat (Khusus Pria)</th>
-                                <td>
-                                    <?= $form->field($master_pemeriksaan_fisik, 'genitourinaria_prostat')->radioList(['Tidak Teraba' => 'Tidak Teraba', 'Teraba' => 'Teraba'])->label(false) ?>
-                                </td>
-                            </tr>
-                        </table>
-
+                            <div id="accordion">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h6 class="m-0">
+                                            <a href="#collapseOne" class="text-dark" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
+                                                Tidak Dilakukan Pemeriksaan #1
+                                            </a>
+                                        </h6>
+                                    </div>
+                        
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <table class='table table-bordered'>
+                                            <tr>
+                                                <th>kandung Kemih</th>
+                                                <td><?= $form->field($master_pemeriksaan_fisik, 'genitourinaria_kandung_kemih')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal'])->label(false) ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Anus/Rektum/Perianal</th>
+                                                <td>
+                                                    <?= $form->field($master_pemeriksaan_fisik, 'genitourinaria_anus')->dropDownList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal'])->label(false) ?>
+                                                </td>
+                                                <td>
+                                                     <?= $form->field($master_pemeriksaan_fisik, 'hemoroid')->radioList(['Hemoroid' => 'Hemoroid'])->label(false) ?>
+                                                     <?= $form->field($master_pemeriksaan_fisik, 'hemoroid_lainnya')->textInput(['placeholder'=>'Lainnya'])->label(false) ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Genitalia Eksternal</th>
+                                                <td>
+                                                    <?= $form->field($master_pemeriksaan_fisik, 'genitourinaria_genitalia_eksternal')->dropDownList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal'])->label(false) ?>
+                                                </td>
+                                                <td>
+                                                     <?= $form->field($master_pemeriksaan_fisik, 'hydrocele')->textInput(['value' => 'Tidak Normal'])->label(true) ?>
+                                                    <?= $form->field($master_pemeriksaan_fisik, 'varicocele')->textInput(['value' => 'Tidak Normal'])->label(true) ?>
+                                                    <?= $form->field($master_pemeriksaan_fisik, 'ulceral')->textInput(['value' => 'Tidak Normal'])->label(true) ?>
+                                                    <?= $form->field($master_pemeriksaan_fisik, 'gonorchoea')->textInput(['value' => 'Tidak Normal'])->label(true) ?>
+                                                    <?= $form->field($master_pemeriksaan_fisik, 'genitalia_lainnya')->textInput(['value' => 'Tidak Normal'])->label(true) ?>
+                                                </td>
+                                               
+                                            </tr>
+                                            <?php if($dataLayanan->jenis_kelamin == 'L'){ ?>
+                                            <tr>
+                                                <th>Prostat (Khusus Pria)</th>
+                                                <td>
+                                                    <?= $form->field($master_pemeriksaan_fisik, 'genitourinaria_prostat')->radioList(['Tidak Teraba' => 'Tidak Teraba', 'Teraba' => 'Teraba'])->label(false) ?>
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -745,6 +774,10 @@ $helper = [
                 <div class="card-box">
                     <div class="form-group">
                         <h4 class="header-title m-t-0 m-b-30">17. Tulang / Sendi (Ekstremitas Atas)</h4>
+                       <div class="form-group">
+                            <label>Tulang Bawah Simetris</label>
+                            <h4><?= $form->field($master_pemeriksaan_fisik, 'tulang_atas_simetris')->radioList(['Ya' => "Ya", "Tidak Ada" => "Tidak Ada"])->label(false) ?></h4>
+                        </div>
                         <table class="table table-bordered">
                             <tr>
                                 <td>
@@ -772,7 +805,7 @@ $helper = [
                                     <?= $form->field($master_pemeriksaan_fisik, 'tulang_atas_gerakan_yergason_kiri')->radioList(["Tidak Normal" => "Tidak Normal", "Normal" => "Normal"]) ?>
                                     <?= $form->field($master_pemeriksaan_fisik, 'tulang_atas_gerakan_speed_kiri')->radioList(["Tidak Normal" => "Tidak Normal", "Normal" => "Normal"]) ?>
                                     <?= $form->field($master_pemeriksaan_fisik, 'tulang_atas_tulang_kiri')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal']) ?>
-                                    <?= $form->field($master_pemeriksaan_fisik, 'tulang_atas_sensibilitas_kiri')->radioList(['Baik' => 'Baik', 'Tidak Baik']) ?>
+                                    <?= $form->field($master_pemeriksaan_fisik, 'tulang_atas_sensibilitas_kiri')->radioList(['Baik' => 'Baik', 'Tidak Baik'=>'Tidak Baik']) ?>
                                     <?= $form->field($master_pemeriksaan_fisik, 'tulang_atas_oedem_kiri')->radioList(['Tidak Ada' => 'Tidak Ada', 'Ada' => 'Ada']) ?>
                                     <?= $form->field($master_pemeriksaan_fisik, 'tulang_atas_varises_kiri')->radioList(['Tidak Ada' => 'Tidak Ada', 'Ada' => 'Ada']) ?>
                                     <?= $form->field($master_pemeriksaan_fisik, 'tulang_atas_kekuatan_otot_pin_prick_kiri')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal']) ?>
@@ -793,9 +826,14 @@ $helper = [
                 <div class="card-box">
                     <div class="form-group">
                         <h4 class="header-title m-t-0 m-b-30">18. Tulang / Sendi (Ektremitas Bawah</h4>
+                        <div class="form-group">
+                            <label>Tulang Bawah Simetris</label>
+                            <h4><?= $form->field($master_pemeriksaan_fisik, 'tulang_bawah_simetris')->radioList(['Ya' => "Ya", "Tidak Ada" => "Tidak Ada"])->label(false) ?></h4>
+                        </div>
                         <table class="table table-bordered">
                             <tr>
                                 <td>
+                                    
                                     <?= $form->field($master_pemeriksaan_fisik, 'tulang_bawah_laseque_kanan')->radioList(['Normal' => "Normal", "Tidak Normal" => "Tidak Normal"]) ?>
                                     <?= $form->field($master_pemeriksaan_fisik, 'tulang_bawah_kernique_kanan')->radioList(['Normal' => "Normal", "Tidak Normal" => "Tidak Normal"]) ?>
                                     <?= $form->field($master_pemeriksaan_fisik, 'tulang_bawah_patrick_kanan')->radioList(['Normal' => "Normal", "Tidak Normal" => "Tidak Normal"]) ?>
@@ -933,12 +971,14 @@ $helper = [
                         <h4 class="header-title m-t-0 m-b-30">23. Refleks</h4>
                         <table class="table table-bordered table-striped">
                             <tr>
+                                <th>Kanan</th>
+                                <th>Kiri</th>
+                            </tr>
+                            <tr>
                                 <td>
                                     <?= $form->field($master_pemeriksaan_fisik, 'reflek_fisiologis_patella_kanan')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal']) ?>
                                     <?= $form->field($master_pemeriksaan_fisik, 'reflek_patologis_kanan')->radioList(['Negative' => 'Negative', 'Positif' => 'Positif']) ?>
                                 </td>
-                            </tr>
-                            <tr>
                                 <td>
                                     <?= $form->field($master_pemeriksaan_fisik, 'reflek_fisiologis_patella_kiri')->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal']) ?>
 
@@ -971,7 +1011,7 @@ $helper = [
                             </div>
                             <hr>
                             <div class="col-lg-12">
-                                <iframe src="http://mcu.rsud-arifin.localhost/body-tato/form?id=<?= $dataLayanan->no_rekam_medik ?>" style="display: block;width: 1200px;height: 720px;border: none;"></iframe>
+                                <iframe src="http://mcu.simrs.aa/body-tato/form?id=<?= $dataLayanan->no_rekam_medik ?>" style="display: block;width: 1200px;height: 720px;border: none;"></iframe>
                             </div>
                             <hr>
                         </div>
@@ -981,19 +1021,266 @@ $helper = [
                     if ($identitas_dokter['kodejenis'] == 20) {
                     ?>
 
+                    <?php
+                    $resume_kelainan = '';
+
+                $master_pemeriksaan_fisik->status_gizi_bentuk_badan != "Normal" ? $resume_kelainan.=  "Bentuk Badan =". $master_pemeriksaan_fisik->status_gizi_bentuk_badan . PHP_EOL : null;
+
+                // $master_pemeriksaan_fisik->tingkat_kesadaran_kesadaran == "Compos Mentis" ? $resume_kelainan.=  "Kesadaran = Kesadaran Menurun" . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tingkat_kesadaran_kualitas_kontak == "Tidak" ? $resume_kelainan .=  'Kualitas Kontak = Tidak'. PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tingkat_kesadaran_tampak_kesakitan == "Ya, Tampak Kesakitan" ? $resume_kelainan.= 'Tampak Kesakitan = Ya, Tampak Kesakitan'. PHP_EOL : null;
+
+                // $master_pemeriksaan_fisik->tingkat_kesadaran_gangguan_saat_berjalan == "Tidak" ? $resume_kelainan.= 'Gangguan Saat Berjalan = Tidak'. PHP_EOL : null;
+                // $master_pemeriksaan_fisik->kelenjar_getah_bening_leher ==  "Tidak Normal" ? $resume_kelainan.= 'Getah Bening = Tidak Normal'. PHP_EOL : null;
+                // $master_pemeriksaan_fisik->kelenjar_getah_bening_sub_mandibula == "Tidak Normal" ? $resume_kelainan.= 'Sub Mandibula = Tidak Normal'. PHP_EOL : null;
+                // $master_pemeriksaan_fisik->kelenjar_getah_bening_ketiak == "Tidak Normal" ? $resume_kelainan.= 'Ketiak = Tidak Normal'. PHP_EOL : null;
+                // $master_pemeriksaan_fisik->kelenjar_getah_bening_inguinal == "Tidak Normal" ? $resume_kelainan .= 'Inguinal =Tidak Normal'. PHP_EOL : null;
+                // $master_pemeriksaan_fisik->kepala_tulang == "Tidak Baik" ? $resume_kelainan .= 'Tulang = Tidak Baik'. PHP_EOL : null;
+                // $master_pemeriksaan_fisik->kepala_kulit_kepala == "Tidak Baik" ? $resume_kelainan .='Kulit Kepala = Tidak Baik'. PHP_EOL : null;
+                // $master_pemeriksaan_fisik->kepala_rambut == "Tidak Baik" ? $resume_kelainan .= 'Rambut = Tidak Baik'. PHP_EOL : null;
+                // $master_pemeriksaan_fisik->kepala_bentuk_wajah == "Tidak Baik" ? $resume_kelainan .= 'Bentuk Wajah = Tidak Baik'. PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_persepsi_warna_kanan != "Normal" ? $resume_kelainan .= "Persepsi Warna Kanan = ". $master_pemeriksaan_fisik->mata_persepsi_warna_kanan. PHP_EOL: null;
+                // $master_pemeriksaan_fisik->mata_persepsi_warna_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_persepsi_warna_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_kelopak_mata_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_kelopak_mata_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_kelopak_mata_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_kelopak_mata_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_konjungtiva_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_konjungtiva_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_konjungtiva_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_konjungtiva_kiri . PHP_EOL : null ;
+                // $master_pemeriksaan_fisik->mata_gerak_bola_mata_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_gerak_bola_mata_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_gerak_bola_mata_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_gerak_bola_mata_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_sklera_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_sklera_kanan . PHP_EOL : null ;
+                // $master_pemeriksaan_fisik->mata_sklera_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_sklera_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_lensa_mata_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_lensa_mata_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_lensa_mata_kiri != "Tidak Keruh" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_lensa_mata_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_kornea_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_kornea_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_kornea_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_kornea_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_bulu_mata_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_bulu_mata_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_bulu_mata_kiri != "Normal"? $resume_kelainan .= $master_pemeriksaan_fisik->mata_bulu_mata_kiri . PHP_EOL : null ;
+                // $master_pemeriksaan_fisik->mata_tekanan_bola_mata_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_tekanan_bola_mata_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_tekanan_bola_mata_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_tekanan_bola_mata_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_penglihatan_3dimensi_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_penglihatan_3dimensi_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_penglihatan_3dimensi_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_penglihatan_3dimensi_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->telinga_daun_telinga_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->telinga_daun_telinga_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->telinga_daun_telinga_kiri != "Normal" ?  $resume_kelainan .= $master_pemeriksaan_fisik->telinga_daun_telinga_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->telinga_liang_telinga_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->telinga_liang_telinga_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->telinga_liang_telinga_kiri != "Normal" ?  $resume_kelainan .= $master_pemeriksaan_fisik->telinga_liang_telinga_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->telinga_serumen_kanan != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->telinga_serumen_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->telinga_serumen_kiri != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->telinga_serumen_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->telinga_timpani_kanan != "Intak" ? $resume_kelainan .= $master_pemeriksaan_fisik->telinga_timpani_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->telinga_timpani_kiri != "Intak" ? $resume_kelainan .= $master_pemeriksaan_fisik->telinga_timpani_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->hidung_meatus_nasi != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->hidung_meatus_nasi . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->hidung_septum_nasi != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->hidung_septum_nasi . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->hidung_konka_nasal != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->hidung_konka_nasal . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->hidung_nyeri_ketok_sinus != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->hidung_nyeri_ketok_sinus . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->hidung_penciuman != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->hidung_penciuman . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mulut_bibir != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mulut_bibir . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mulut_lidah != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mulut_lidah . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mulut_gusi != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mulut_gusi . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mulut_lainnya != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mulut_lainnya . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tenggorokan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tenggorokan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tenggorokan_pharynx != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tenggorokan_pharynx . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tenggorokan_tonsil_kanan != "TO" ? $resume_kelainan .= $master_pemeriksaan_fisik->tenggorokan_tonsil_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tenggorokan_tonsil_kiri != "TO" ? $resume_kelainan .= $master_pemeriksaan_fisik->tenggorokan_tonsil_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tenggorokan_tonsil_ukuran_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tenggorokan_tonsil_ukuran_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tenggorokan_tonsil_ukuran_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tenggorokan_tonsil_ukuran_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tenggorokan_palatum != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tenggorokan_palatum . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->leher_gerakan_leher != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->leher_gerakan_leher . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->leher_otot_leher != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->leher_otot_leher . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->leher_kelenjar_thyroid != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->leher_kelenjar_thyroid . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->leher_pulsasi_carotis != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->leher_pulsasi_carotis . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->leher_tekanan_vena_jugularis != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->leher_tekanan_vena_jugularis . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->leher_trachea != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->leher_trachea . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->dada_bentuk != "Simetris" ? $resume_kelainan .= $master_pemeriksaan_fisik->dada_bentuk . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->dada != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->dada . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->dada_mamae != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->dada_mamae . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->paru_jantung_palpasi != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->paru_jantung_palpasi . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->paru_jantung_perkusi_iktus_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->paru_jantung_perkusi_iktus_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->paru_jantung_perkusi_kiri != "Sonor" ? $resume_kelainan .= $master_pemeriksaan_fisik->paru_jantung_perkusi_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->paru_jantung_perkusi_iktus_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->paru_jantung_perkusi_iktus_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->paru_jantung_perkusi_batas_jantung_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->paru_jantung_perkusi_batas_jantung_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->paru_jantung_auskultasi_bunyi_nafas_kanan != "Vesikuler" ? $resume_kelainan .= $master_pemeriksaan_fisik->paru_jantung_auskultasi_bunyi_nafas_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->paru_jantung_auskultasi_bunyi_nafas_kiri != "Vesikuler" ? $resume_kelainan .= $master_pemeriksaan_fisik->paru_jantung_auskultasi_bunyi_nafas_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->paru_jantung_auskultasi_bunyi_nafas_tambah_kanan != "Tak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->paru_jantung_auskultasi_bunyi_nafas_tambah_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->paru_jantung_auskultasi_bunyi_nafas_tambah_kiri != "Tak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->paru_jantung_auskultasi_bunyi_nafas_tambah_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->paru_jantung_bunyi_jantung != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->paru_jantung_bunyi_jantung . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->abdomen != "Supel" ? $resume_kelainan .= $master_pemeriksaan_fisik->abdomen . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->abdomen_perkusi != "Timpani" ? $resume_kelainan .= $master_pemeriksaan_fisik->abdomen_perkusi . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->abdomen_auskultasi_bising_usus != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->abdomen_auskultasi_bising_usus . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->abdomen_hati != "Tidak Teraba" ? $resume_kelainan .= $master_pemeriksaan_fisik->abdomen_hati . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->abdomen_limpa != "Tidak Teraba Schuffner" ? $resume_kelainan .= $master_pemeriksaan_fisik->abdomen_limpa . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->abdomen_ginjal_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->abdomen_ginjal_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->abdomen_ginjal_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->abdomen_ginjal_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->abdomen_ballotement_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->abdomen_ballotement_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->abdomen_ballotement_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->abdomen_ballotement_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->abdomen_nyeri_costo_vertebrae_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->abdomen_nyeri_costo_vertebrae_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->abdomen_nyeri_costo_vertebrae_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->abdomen_nyeri_costo_vertebrae_kiri . PHP_EOL : null;
+                // // $master_pemeriksaan_fisik->genitourinaria_kandung_kemih != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mulut_bibir . PHP_EOL : null;
+                // // $master_pemeriksaan_fisik->genitourinaria_anus != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mulut_bibir . PHP_EOL : null;
+                // // $master_pemeriksaan_fisik->genitourinaria_genitalia_eksternal != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mulut_bibir . PHP_EOL : null;
+                // // $master_pemeriksaan_fisik->genitourinaria_prostat != "Teraba" ? $resume_kelainan .= $master_pemeriksaan_fisik->mulut_bibir . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->vertebra != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->vertebra . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_gerakan_abduksi_neer_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_gerakan_abduksi_neer_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_gerakan_abduksi_hawkin_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_gerakan_abduksi_hawkin_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_gerakan_drop_arm_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_gerakan_drop_arm_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_gerakan_yergason_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_gerakan_yergason_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_gerakan_speed_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_gerakan_speed_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_tulang_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_tulang_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_sensibilitas_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_sensibilitas_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_oedem_kanan != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_oedem_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_varises_kanan != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_varises_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_pin_prick_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_pin_prick_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_phallent_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_phallent_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_tinnel_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_tinnel_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_finskelstein_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_finskelstein_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_kelaianan_kukujari_kanan != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_kelaianan_kukujari_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_sensibilitas_kanan != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_sensibilitas_kanan . PHP_EOL : null;
+
+                // $master_pemeriksaan_fisik->tulang_atas_sensibilitas_kiri != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_sensibilitas_kiri . PHP_EOL : null;
+
+                // $master_pemeriksaan_fisik->tulang_atas_gerakan_abduksi_neer_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_gerakan_abduksi_neer_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_gerakan_abduksi_hawkin_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_gerakan_abduksi_hawkin_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_gerakan_drop_arm_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_gerakan_drop_arm_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_gerakan_yergason_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_gerakan_yergason_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_gerakan_speed_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_gerakan_speed_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_tulang_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_tulang_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_oedem_kiri != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_oedem_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_varises_kiri != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_varises_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_pin_prick_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_pin_prick_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_phallent_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_phallent_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_tinnel_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_tinnel_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_finskelstein_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_kekuatan_otot_finskelstein_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_kelaianan_kukujari_kiri != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_kelaianan_kukujari_kiri . PHP_EOL : null;
+
+                // $master_pemeriksaan_fisik->tulang_bawah_laseque_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_laseque_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_kernique_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_kernique_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_patrick_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_patrick_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_contrapatrick_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_contrapatrick_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_nyeri_tekanan_kanan != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_nyeri_tekanan_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_kekuatan_otot_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_kekuatan_otot_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_sensibilitas_kanan != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_sensibilitas_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_oedema_kanan != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_oedema_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_kelainan_kuku_kanan != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_kelainan_kuku_kanan . PHP_EOL : null;
+
+                // $master_pemeriksaan_fisik->tulang_bawah_laseque_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_laseque_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_kernique_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_kernique_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_patrick_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->mulut_bibir . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_contrapatrick_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_patrick_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_nyeri_tekanan_kiri != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_nyeri_tekanan_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_kekuatan_otot_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_kekuatan_otot_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_sensibilitas_kiri != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_sensibilitas_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_oedema_kiri != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_oedema_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_vaskularisasi_kiri != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_vaskularisasi_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_kelainan_kuku_kiri != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_kelainan_kuku_kiri . PHP_EOL : null;
+
+                // $master_pemeriksaan_fisik->otot_motorik_trofi_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->otot_motorik_trofi_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->otot_motorik_tonus_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->otot_motorik_tonus_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->otot_motorik_gerakan_abnormal_kanan != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->otot_motorik_gerakan_abnormal_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->otot_motorik_trofi_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->otot_motorik_trofi_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->otot_motorik_tonus_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->otot_motorik_tonus_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->otot_motorik_gerakan_abnormal_kiri != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->otot_motorik_gerakan_abnormal_kiri . PHP_EOL : null;
+
+                // $master_pemeriksaan_fisik->fungsi_sensorik_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->fungsi_sensorik_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->fungsi_autonom_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->fungsi_autonom_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->fungsi_sensorik_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->fungsi_sensorik_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->fungsi_autonom_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->fungsi_autonom_kiri . PHP_EOL : null;
+
+                // $master_pemeriksaan_fisik->saraf_daya_ingat_segera != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_daya_ingat_segera . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_daya_ingat_jangka_menengah != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_daya_ingat_jangka_menengah . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_daya_ingat_jangka_pendek != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_daya_ingat_jangka_pendek . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_daya_ingat_jangka_panjang != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_daya_ingat_jangka_panjang . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_orientasi_waktu != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_orientasi_waktu . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_orientasi_orang != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_orientasi_orang . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_orientasi_tempat != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_orientasi_tempat . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_kesan != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_kesan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_kesan_n_i != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_kesan_n_i . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_kesan_n_ii != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_kesan_n_ii . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_kesan_n_iii != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_kesan_n_iii . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_kesan_n_iv != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_kesan_n_iv . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_kesan_n_v != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_kesan_n_v . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_kesan_n_vi != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_kesan_n_vi . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_kesan_n_vii != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_kesan_n_vii . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_kesan_n_viii != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_kesan_n_viii . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_kesan_n_viii != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_kesan_n_viii . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_kesan_n_ix != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_kesan_n_ix . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_kesan_n_x != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_kesan_n_x . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_kesan_n_xi != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_kesan_n_xi . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->saraf_kesan_n_xii != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->saraf_kesan_n_xii . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->reflek_fisiologis_patella_kanan != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->reflek_fisiologis_patella_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->reflek_patologis_kanan != "Negative" ? $resume_kelainan .= $master_pemeriksaan_fisik->reflek_patologis_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->reflek_fisiologis_patella_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->reflek_fisiologis_patella_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->reflek_patologis_kiri != "Negative" ? $resume_kelainan .= $master_pemeriksaan_fisik->reflek_patologis_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->kulit_kulit != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->kulit_kulit . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->kulit_selaput_lendir != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->kulit_selaput_lendir . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->kulit_kuku != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->kulit_kuku . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->kulit_tato != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->kulit_tato . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->kategori_kesehatan != "FIT" ? $resume_kelainan .= $master_pemeriksaan_fisik->kategori_kesehatan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->abdomen_ballotement_kanan != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->abdomen_ballotement_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->abdomen_ballotement_kiri != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->abdomen_ballotement_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->abdomen_nyeri_costo_vertebrae_kanan != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->abdomen_nyeri_costo_vertebrae_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->abdomen_nyeri_costo_vertebrae_kiri != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->abdomen_nyeri_costo_vertebrae_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_vaskularisasi_kanan != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_vaskularisasi_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_atas_vaskularisasi_kiri != "Baik" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_vaskularisasi_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_lensa_mata_kanan != "Tidak Keruh" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_lensa_mata_kanan . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->mata_lensa_mata_kiri != "Tidak Keruh" ? $resume_kelainan .= $master_pemeriksaan_fisik->mata_lensa_mata_kiri . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->paru_jantung_perkusi_iktus_kiri != "Normal" ? $resume_kelainan .= $master_pemeriksaan_fisik->paru_jantung_perkusi_iktus_kiri . PHP_EOL : null;
+                
+                // $master_pemeriksaan_fisik->tulang_atas_simetris != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_atas_simetris . PHP_EOL : null;
+                // $master_pemeriksaan_fisik->tulang_bawah_simetris != "Tidak Ada" ? $resume_kelainan .= $master_pemeriksaan_fisik->tulang_bawah_simetris . PHP_EOL : null; 
+                if ($master_pemeriksaan_fisik->resume_kelainan == null || $master_pemeriksaan_fisik->resume_kelainan == ''){
+                        $master_pemeriksaan_fisik->resume_kelainan = $resume_kelainan;
+                }
+                    ?>
+
                         <hr>
                         <h1><b>I. RESUME KELAINAN YANG DIDAPAT:</b></h1>
                         <hr>
-                        <?= $form->field($master_pemeriksaan_fisik, 'resume_kelainan')->textarea(['maxlength' => true, 'rows' => 9, 'placeholder' => 'Resemu Kelainan']) ?>
+                        <?php 
+// var_dump($resume_kelainan);
+                        ?>
+                        <?= $form->field($master_pemeriksaan_fisik, 'resume_kelainan')->textarea(['maxlength' => true, 'rows' => 9, 'placeholder' => 'Resemue Kelainan']) ?>
                         <?= $form->field($master_pemeriksaan_fisik, 'hasil_body_map')->textarea(['maxlength' => true, 'rows' => 9, 'placeholder' => 'Hasil Body Map']) ?>
                         <?= $form->field($master_pemeriksaan_fisik, 'hasil_brief_survey')->textarea(['maxlength' => true, 'placeholder' => 'Hasil Brief Survey']) ?>
                         <hr>
                         <?= $form->field($master_pemeriksaan_fisik, 'no_rekam_medik')->hiddenInput(['maxlength' => true, 'value' => $dataLayanan->no_rekam_medik, 'readonly' => true])->label(false) ?>
 
 
+                        <?php 
+                            $url = \yii\helpers\Url::to(['list-penyakit']);
+                        // $model->icdt10 = "";
+                            echo $form->field($master_pemeriksaan_fisik, 'icdt10')->widget(Select2::classname(), [
+                                'options' => ['multiple' => true, 'placeholder' => 'Mencari Diagnosis ...'],
+                                'pluginOptions' => [
+                                    'allowClear' => true,
+                                    'minimumInputLength' => 3,
+                                    'language' => [
+                                        'errorLoading' => new JsExpression("function () { return 'Menunggu hasil cari bro...'; }"),
+                                    ],
+                                    'ajax' => [
+                                        'url' => $url,
+                                        'dataType' => 'json',
+                                        'data' => new JsExpression('function(params) { return {q:params.term}; }')
+                                    ],
+                                    'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
+                                    'templateResult' => new JsExpression('function(data) { return data.text; }'),
+                                    'templateSelection' => new JsExpression('function (data) { return data.text; }'),
+                                ],
+                                'pluginEvents' => [
+                                    "select2:select" => "function(e) { 
+                                        let data = e.params.data
+                                        let diagnosis_kerja = $('#masterpemeriksaanfisik-diagnosis_kerja').val()
+                                        if(diagnosis_kerja==null || diagnosis_kerja=='')
+                                            diagnosis_kerja += data.id
+                                        else
+                                            diagnosis_kerja += ','+data.id
+                                        $('#masterpemeriksaanfisik-diagnosis_kerja').val(diagnosis_kerja)
+                                    }",
+                                ]
+                            ]);
+
+                        
+                        ?>
                         <fieldset>
                             <legend><b>VI. DIAGNOSIS DIFERENSIAL:</b></legend>
-                            <?= $form->field($master_pemeriksaan_fisik, 'diagnosis_diferensial')->textarea(['rows' => 6]) ?>
+                            <?= $form->field($master_pemeriksaan_fisik, 'diagnosis_kerja')->textarea(['rows' => 6]) ?>
 
                         </fieldset>
                         <fieldset>

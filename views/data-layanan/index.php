@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?php Html::a('Create Data Layanan', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    
 
     <?php Pjax::begin(['enablePushState' => false]); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); 
@@ -43,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'pekerjaan',
             //'alamat:ntext',
             //'wni',
-            //'tanggal_pemeriksaan',
+            'tanggal_pemeriksaan:date',
             //'pas_foto_offline:ntext',
             //'pas_foto_online_valid',
             [
@@ -63,10 +64,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'header' => 'PKTK & Cetak Sertifikat & Form Khusus',
+                'header' => 'PKTK/Sertifikat/CPNS ',
                 'headerOptions' => ['style' => 'color:#337ab7;text-align: center'],
                 'contentOptions' => ['style' => 'text-align: center'],
-                'template' => '{pktk}  {sertifikat} {bengkalis}',
+                'template' => '{pktk}  {sertifikat} {cpns}',
                 'buttons' => [
                     'pktk' => function ($url, $model) {
                         return Html::a('P', $url, [
@@ -89,10 +90,11 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                         ]);
                     },
-                 
-                    'bengkalis' => function ($url, $model) {
-                        return Html::a('K', $url, [
-                            'class' => 'btn btn-info btn-trans',
+                    'cpns' => function ($url, $model) {
+                        return
+                            
+                         Html::a('N', ['laporan-bengkalis/cetak','no_rm'=>$model->no_rekam_medik,'no_daftar'=>$model->no_registrasi], [
+                            'class' => 'btn btn-success btn-trans',
                             'target'=>'_blank',
                             'data' => [
                                 // 'confirm' => 'Are you sure you want to delete this item?',
@@ -109,6 +111,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     if ($action === 'sertifikat') {
                         $url = \yii\helpers\Url::to(['/laporan/cetak-sertifikat', 'id' => $model->no_rekam_medik]);
+                        return $url;
+                    }
+
+
+                    if ($action === 'cpns') {
+                        $url = \yii\helpers\Url::to(['/laporan-bengkalis/cetak', 
+                            'no_rm' => $model->no_rekam_medik,'no_daftar'=>$model->no_registrasi]);
                         return $url;
                     }
                 }

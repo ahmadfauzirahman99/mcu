@@ -465,7 +465,7 @@ $dataBiodataUser = Yii::$app->dbRegisterMcu->createCommand("SELECT count(1), u.u
 
 <div class="form-group">
     <p> <b>5. Body Discomfort Map</p>
-    <iframe src="http://mcu.rsud-arifin.localhost/body-discomfort/form?id=<?= $dataLayanan->no_rekam_medik ?>" style="display: block;width: 1200px;height: 720px;border: none;"></iframe>
+    <iframe src="http://mcu.simrs.aa/body-discomfort/form?id=<?= $dataLayanan->no_rekam_medik ?>" style="display: block;width: 1200px;height: 720px;border: none;"></iframe>
 </div>
 <hr>
 <div class="form-group" style="display: none;">

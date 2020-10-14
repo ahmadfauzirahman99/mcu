@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-12 15:27:30
+ * @Last Modified time: 2020-10-13 12:49:01
  */
 
 use app\components\Helper;
@@ -281,6 +281,7 @@ $optionBerbisik = [
         ]); ?>
 
         <div class="row">
+                <?php echo $form->field($modelPenata, 'no_rekam_medik')->hiddenInput()->label(false); ?>
             <div class="col-sm-3">
                 <?php echo $form->field($modelPenata, 'jenis_permasalahan')->textArea(['rows' => 2]); ?>
             </div>

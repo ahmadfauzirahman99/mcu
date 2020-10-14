@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-11 15:32:36
+ * @Last Modified time: 2020-10-13 12:56:20
  */
 
 use app\components\Helper;
@@ -741,6 +741,8 @@ $dataG = [
 
     <hr>
 
+    <hr>
+
     <?php
     $displayPenata = 'none';
     if ($model->kesan == 'Tidak Normal')
@@ -758,6 +760,7 @@ $dataG = [
         ]); ?>
 
         <div class="row">
+            <?php echo $form->field($modelPenata, 'no_rekam_medik')->hiddenInput()->label(false); ?>
             <div class="col-sm-3">
                 <?php echo $form->field($modelPenata, 'jenis_permasalahan')->textArea(['rows' => 2]); ?>
             </div>

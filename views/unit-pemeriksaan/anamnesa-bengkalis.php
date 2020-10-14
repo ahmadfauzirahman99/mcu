@@ -14,7 +14,7 @@ ItemFisikAsset::register($this);
 
 ?>
 
-<h2 class="text-center">ANAMNESIS KHUSUS BENGKALIS </h2>
+<h2 class="text-center">ANAMNESIS CPNS/PNS </h2>
 <?php \yii\widgets\Pjax::begin(['id' => 'id-pjax-' . $modelAnamnesaBengkalis->formName()]); ?>
 
 <?php $form = ActiveForm::begin(['id' => 'id-' . $modelAnamnesaBengkalis->formName(), 'action' => 'save-anamnesis-bengkalis']); ?>
@@ -65,7 +65,7 @@ ItemFisikAsset::register($this);
     <?= $form->field($modelAnamnesaBengkalis, 'jawaban11')->textarea(['rows' => 2]) ?>
 </div>
 <div class="form-group">
-    <?= Html::submitButton('Save Anamnesis Bengkalis', ['class' => 'btn btn-success btn-block', 'id' => 'btn-save-jenis-pekerjaan']) ?>
+    <?= Html::submitButton('Save Anamnesis CPNS/PNS', ['class' => 'btn btn-success btn-block', 'id' => 'btn-save-jenis-pekerjaan']) ?>
 </div>
 <?php ActiveForm::end(); ?>
 
@@ -73,7 +73,7 @@ ItemFisikAsset::register($this);
 
 
 <hr>
-<h2 class="text-center">PEMERIKSAAN DOKTER KHUSUS BENGKALIS</h2>
+<h2 class="text-center">PEMERIKSAAN DOKTER KHUSUS CPNS/PNS</h2>
 <?php $form = ActiveForm::begin(['id' => 'id-' . $modelPemeriksaanBengkalis->formName(), 'action' => 'save-pemeriksaan-khusus-bengkalis']); ?>
 <?= $form->field($modelPemeriksaanBengkalis, 'no_rekam_medik')->hiddenInput(['maxlength' => true, 'value' => $dataLayanan->no_rekam_medik, 'readonly' => true])->label(false) ?>
 
@@ -90,10 +90,6 @@ ItemFisikAsset::register($this);
         <div class="form-group">
             <label for="">Muda, Biasa, Tua kah dia keliatannya untuk umurnya?</label>
             <?= $form->field($modelPemeriksaanBengkalis, 'keliatan_muda')->radioList(['MUDA' => 'MUDA', 'BIASA' => 'BIASA', 'TUA' => 'TUA'])->label(false) ?>
-        </div>
-        <div class="form-group">
-            <label for="">Bagaimana Bentuk Badannya?</label>
-            <?= $form->field($modelPemeriksaanBengkalis, 'tegap')->radioList(['TEGAP' => 'TEGAP', 'BIASA' => 'BIASA', 'KURUS' => 'KURUS'])->label(false) ?>
         </div>
         <div class="form-group">
     <?= Html::submitButton('Save Form Khusus Dokter', ['class' => 'btn btn-success btn-block', 'id' => 'btn-save-jenis-pekerjaan']) ?>

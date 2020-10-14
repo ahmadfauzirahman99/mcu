@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Url;
-
+error_reporting(0);
 $logo = Url::to('@web/img/logo-rsud-basic.png');
 $logo2 = Url::to('@web/img/logo-kars1.png');
 $logo3 = Url::to('@web/img/riau.png');
@@ -255,12 +255,20 @@ function tgl_indo($tanggal)
                     <b> Pekerjaan </b> <br><small><i>Occupation</i></small>
                 </td>
                 <td width="50%" style="text-align:left">:
-
-                    <?php if ($dataUser != null) { ?>
                         <?= $dataUser[0]['u_jabatan'] == null ? "-" : $dataUser[0]['u_jabatan'] ?></td>
-            <?php } else { ?>
 
-            <?php } ?>
+            </tr>
+            <tr>
+                <td style="height:10px"></td>
+            </tr><!-- seperated -->
+                <?php if($data_pelayanan->kode_debitur == '0129') {?>
+
+            <tr>
+                <td width="50%" style="text-align:left">
+                    <b> Pada Instansi/Perusahaan </b> <br><small><i>In institution/Company Name</i></small>
+                </td>
+                <td width="50%" style="text-align:left">: <?= $dataUser[0]['u_tempat_tugas'] ?></td>
+            
             </tr>
             <tr>
                 <td style="height:10px"></td>
@@ -268,9 +276,18 @@ function tgl_indo($tanggal)
 
             <tr>
                 <td width="50%" style="text-align:left">
+                    <b> Untuk Penempatan Di </b> <br><small><i>For Placement At</i></small>
+                </td>
+                <td width="50%" style="text-align:left">: KABUPATEN BENGKALIS</td>
+            </tr>
+            <?php } else { ?>
+            <tr>
+                <td width="50%" style="text-align:left">
                     <b> Pada Instansi/Perusahaan </b> <br><small><i>In institution/Company Name</i></small>
                 </td>
-                <td width="50%" style="text-align:left">: Kejaksaan Republik Indonesia</td>
+                <td width="50%" style="text-align:left">: Kejakasaan Republik Indonesia</td>
+                <td width="50%" style="text-align:left">: Seluruh Wilayah Indonesia</td>
+            
             </tr>
             <tr>
                 <td style="height:10px"></td>
@@ -282,6 +299,8 @@ function tgl_indo($tanggal)
                 </td>
                 <td width="50%" style="text-align:left">: Seluruh Wilayah Indonesia</td>
             </tr>
+            <?php } ?>
+            
         </table>
         <p style="font-size:12px">Sertifikat Ini tidak dapat digunakan untuk kepentingan hukum lainya <br><small><i>The
                     certificate cannot be used for other legal purposes.</i></small></p>

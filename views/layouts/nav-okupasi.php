@@ -7,6 +7,9 @@ use yii\helpers\Url;
     <a href="<?= Url::to(['/site/dokter']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Data Dokter </span> </a>
 </li>
 <li>
+    <a href="<?= Url::to(['/site/perawat']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Data Perawat </span> </a>
+</li>
+<li>
     <a href="<?= Url::to(['/data-layanan/index']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Data Pelayanan </span> </a>
 </li>
 <li class="text-muted menu-title">Pemeriksaan Khusus</li>
@@ -43,7 +46,18 @@ use yii\helpers\Url;
     <a href="<?= Url::to(['/spesialis-narkoba/periksa']) ?>" class="waves-effect"><i class="fas fa-eyedropper"></i> <span> Narkoba </span> </a>
 </li>
 
+<li class="text-muted menu-title">Hasil Lab & Radiologi</li>
 
+<li>
+    <a href="<?= Url::to(['/unit-lab-pk/index']) ?>" class="waves-effect"><i class="fa fa-list"></i> <span> Hasil Lab </span> </a>
+</li>
+<li>
+    <a href="<?= Url::to(['/radiologi/index']) ?>" class="waves-effect"><i class="fa fa-list"></i> <span> Hasil Radiologi </span> </a>
+</li>
+<li class="text-muted menu-title">Form Majelis</li>
+<li>
+    <a href="<?= Url::to(['/pembedaan-cpns/index']) ?>" class="waves-effect"><i class="fa fa-list"></i> <span> Form Mejelis </span> </a>
+</li>
 <li class=" text-muted menu-title">Darurat</li>
 <li>
     <a href="<?= Url::to(['/site/item-mcu']) ?>" class="waves-effect"><i class="mdi mdi-account-heart"></i> <span> Item MCU </span> </a>

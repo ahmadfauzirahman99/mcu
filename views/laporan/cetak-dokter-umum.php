@@ -155,7 +155,7 @@ function tgl_indo($tanggal)
     <br>
     <table width="100%" border="0" style="font-size: 14px">
         <tr>
-            <td style="text-align:center;font-weight: bold;"><span>UNIT MEDICAL CHECK UP<br>PEMERIKSAAN KESESHATAN TENAGA KERJA</td>
+            <td style="text-align:center;font-weight: bold;"><span>UNIT MEDICAL CHECK UP<br>PEMERIKSAAN KESEHATAN TENAGA KERJA</td>
         </tr>
     </table>
     <div class="col-md-12" style="margin:30px 30px 0px 30px">
@@ -443,12 +443,7 @@ function tgl_indo($tanggal)
                             <td style="width:37%"><?= $pemeriksaan_fisik['mata_tekanan_bola_mata_kanan'] ?? '-' ?></td>
                             <td style="width:37%"><?= $pemeriksaan_fisik['mata_tekanan_bola_mata_kiri'] ?? '-' ?></td>
                         </tr>
-                        <tr>
-                            <td style="width:25%">j. Penglihatan 3 Dimensi</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_penglihatan_3dimensi_kanan'] ?? '-' ?></td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_penglihatan_3dimensi_kiri'] ?? '-' ?></td>
-                        </tr>
+                        
                         <tr>
                             <td style="width:25%">k. Visus Mata</td>
                             <td style="width:1%">:</td>
@@ -502,7 +497,7 @@ function tgl_indo($tanggal)
                         <tr>
                             <td style="width:34%">Tanggal Pemeriksaan</td>
                             <td style="width:1%">:</td>
-                            <td style="width:65%"><?= $data_pelayanan['tanggal_pemeriksaan'] ?? '-' ?></td>
+                            <td style="width:65%"><?= tgl_indo(date('Y-m-d', strtotime($data_pelayanan['tanggal_pemeriksaan']))) ?? '-' ?></td>
                         </tr>
                     </table>
                 </td>
@@ -517,7 +512,7 @@ function tgl_indo($tanggal)
             <tr>
                 <td>
                     <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-top-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
-                        <tr>
+                         <tr>
                             <td colspan="2" style="font-weight:bold">7. Telinga</td>
                             <td style="font-weight:bold"> Kanan</td>
                             <td style="font-weight:bold">Kiri</td>
@@ -534,54 +529,13 @@ function tgl_indo($tanggal)
                             <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_liang_telinga_kanan'] ?? '-' ?></td>
                             <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_liang_telinga_kiri'] ?? '-' ?></td>
                         </tr>
-                        <tr>
+                        <tr >
                             <td style="width:30%"> - Serumen</td>
                             <td style="width:1%">:</td>
                             <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_serumen_kanan'] ?? '-' ?></td>
                             <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_serumen_kiri'] ?? '-' ?></td>
                         </tr>
-                        <tr>
-                            <td style="width:30%">c. Audiometri</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_audiometri_kanan'] ?? '-' ?></td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_audiometri_kiri'] ?? '-' ?></td>
-                        </tr>
-                        <tr>
-                            <td style="width:30%">d. Tes Berbisik</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_test_berbisik_kanan'] ?? '-' ?></td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_test_berbisik_kiri'] ?? '-' ?></td>
-                        </tr>
-                        <tr>
-                            <td style="width:30%">e. Tes Garpu Tala Rinne</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_tes_garpu_tala_kanan'] ?? '-' ?></td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_tes_garpu_tala_kiri'] ?? '-' ?></td>
-                        </tr>
-                        <tr>
-                            <td style="width:30%">f. Weber</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_weber_kanan'] ?? '-' ?></td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_weber_kiri'] ?? '-' ?></td>
-                        </tr>
-                        <tr>
-                            <td style="width:30%">g. Swabach</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_swabach_kanan'] ?? '-' ?></td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_swabach_kiri'] ?? '-' ?></td>
-                        </tr>
-                        <tr>
-                            <td style="width:30%">h. Bing</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_bing_kanan'] ?? '-' ?></td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_bing_kiri'] ?? '-' ?></td>
-                        </tr>
-                        <tr>
-                            <td style="width:30%">i. Lain-lain</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_lainnya'] ?? '-' ?></td>
-                            <td style="width:34.5%"></td>
-                        </tr>
+                      
                     </table>
                 </td>
             </tr>
@@ -825,7 +779,7 @@ function tgl_indo($tanggal)
             <tr>
                 <td style="width:27%">Tanggal Pemeriksaan</td>
                 <td style="width:1%">:</td>
-                <td style="width:72%"><?= $data_pelayanan['tanggal_pemeriksaan'] ?? '-' ?></td>
+                <td style="width:72%"><?= tgl_indo(date('Y-m-d', strtotime($data_pelayanan['tanggal_pemeriksaan']))) ?? '-' ?></td>
             </tr>
         </table>
     </div>
@@ -965,29 +919,32 @@ function tgl_indo($tanggal)
             <tr>
                 <td>
                     <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-bottom-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
-                        <tr>
+                         <tr>
                             <td colspan="3" style="font-weight:bold">16. Genitourinaria</td>
                         </tr>
                         <tr>
                             <td style="width:23.5%">a. Kandung Kemih</td>
                             <td style="width:1%">:</td>
-                            <td style="width:75.5%"><?= $pemeriksaan_fisik['genitourinaria_kandung_kemih'] ?? '-' ?></td>
+                            <td style="width:75.5%"><?= $pemeriksaan_fisik['genitourinaria_kandung_kemih'] ?? 'Tidak Dilakukan Pemeriksaan' ?></td>
                         </tr>
                         <tr>
                             <td style="width:23.5%">b. Anus.Rektum/Perianal</td>
                             <td style="width:1%">:</td>
-                            <td style="width:75.5%"><?= $pemeriksaan_fisik['genitourinaria_anus'] ?? '-' ?></td>
+                            <td style="width:75.5%"><?= $pemeriksaan_fisik['genitourinaria_anus'] ?? 'Tidak Dilakukan Pemeriksaan' ?></td>
                         </tr>
                         <tr>
                             <td style="width:23.5%">c. Genetalia Eksternal</td>
                             <td style="width:1%">:</td>
-                            <td style="width:75.5%"><?= $pemeriksaan_fisik['genitourinaria_genitalia_eksternal'] ?? '-' ?></td>
+                            <td style="width:75.5%"><?= $pemeriksaan_fisik['genitourinaria_genitalia_eksternal'] ?? 'Tidak Dilakukan Pemeriksaan' ?></td>
                         </tr>
+                  <?php if($data_pelayanan->jenis_kelamin == 'L'){ ?>
                         <tr>
                             <td style="width:23.5%">d. Prostat (Khusus pria)</td>
                             <td style="width:1%">:</td>
-                            <td style="width:75.5%"><?= $pemeriksaan_fisik['genitourinaria_prostat'] ?? '-' ?></td>
+                            <td style="width:75.5%"><?= $pemeriksaan_fisik['genitourinaria_prostat'] ?? 'Tidak Dilakukan Pemeriksaan' ?></td>
                         </tr>
+                    <?php }?>
+                    
                     </table>
                 </td>
             </tr>
@@ -1404,11 +1361,14 @@ function tgl_indo($tanggal)
             <tr>
                 <td style="width:27%">Tanggal Pemeriksaan</td>
                 <td style="width:1%">:</td>
-                <td style="width:72%"><?= $data_pelayanan['tanggal_pemeriksaan'] ?? '-' ?></td>
+                <td style="width:72%"><?= tgl_indo(date('Y-m-d', strtotime($data_pelayanan['tanggal_pemeriksaan']))) ?? '-' ?></td>
             </tr>
         </table>
 
-        <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-top-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
+    <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-bottom-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
+            <tr>
+                <td>
+                    <table width="100%" border="" cellpadding="1" cellspacing="0" style="border-top-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
             <tr>
                 <td style="width:27%;font-weight:bold">24. Refleks</td>
                 <td style="width:1%">:</td>
@@ -1475,10 +1435,14 @@ function tgl_indo($tanggal)
             </tr>
 
         </table>
+                </td>
+            </tr>
+        </table>
 
         
-    </div>
-
+    </div><br>
+    <br>
+    <br>
     <table width="100%" border="0" style="font-size: 12px">
 
         <tr>

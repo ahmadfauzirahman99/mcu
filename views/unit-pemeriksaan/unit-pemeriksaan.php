@@ -40,6 +40,7 @@ ItemFisikAsset::register($this);
 <h2 class="text-center">UNIT MEDICAL CHEK UP RSUD ARIFIN ACHMAD PROVINSI RIAU
     PEMERIKSAAN KESEHATAN TENAGA KERJA
 </h2>
+
 <?= $this->render('data-layanan', ['model' => $dataLayanan,]) ?>
 <?= $this->render('anamnesis.php', ['model' => $anamnesis, 'dataLayanan' => $dataLayanan,]) ?>
 
@@ -70,6 +71,13 @@ ItemFisikAsset::register($this);
     'dataLayanan' => $dataLayanan,
 
 ]) ?>
+
+<?= $this->render('penata.php', [
+    // 'master_pemeriksaan_fisik' => $master_pemeriksaan_fisik,
+    'dataLayanan' => $dataLayanan,
+    'penata' => $penata
+
+]) ?>
 <hr>
 <?php
 if ($identitas_dokter['kodejenis'] == 12) :
@@ -77,7 +85,8 @@ if ($identitas_dokter['kodejenis'] == 12) :
 <?php
 elseif ($identitas_dokter['kodejenis'] == 1) :
 ?>
-    <a  href='<?= Url::to(['/laporan/cetak-dokter-umum/', 'id' => $dataLayanan->no_rekam_medik]) ?>' target='_blank' class='btn btn-primary'>Print Pemeriksaan Fisik</a>
+    <a href='<?= Url::to(['/laporan/cetak-perawat/', 'id' => $dataLayanan->no_rekam_medik]) ?>' target='_blank' class='btn btn-danger btn-block'>Print Data Pelayanan, Anamensis, Anamensis Okupasi</a>
+    <a  href='<?= Url::to(['/laporan/cetak-dokter-umum/', 'id' => $dataLayanan->no_rekam_medik]) ?>' target='_blank' class='btn btn-primary btn-block'>Print Pemeriksaan Fisik</a>
 <?php
 elseif ($identitas_dokter['kodejenis'] == 20) :
 ?>
@@ -87,9 +96,11 @@ elseif ($identitas_dokter['kodejenis'] == 16) :
 <?php
 elseif ($identitas_dokter['kodejenis'] == 36) :
 ?>
+    <a href='<?= Url::to(['/laporan/cetak-perawat/', 'id' => $dataLayanan->no_rekam_medik]) ?>' target='_blank' class='btn btn-primary'>Print Data Pelayanan, Anamensis, Anamensis Okupasi</a>
 <?php
 elseif ($identitas_dokter['kodejenis'] == 37) :
 ?>
+    <a href='<?= Url::to(['/laporan/cetak-perawat/', 'id' => $dataLayanan->no_rekam_medik]) ?>' target='_blank' class='btn btn-primary'>Print Data Pelayanan, Anamensis, Anamensis Okupasi</a>
 <?php
 elseif ($identitas_dokter['kodejenis'] == 2) :
 ?>

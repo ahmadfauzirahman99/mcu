@@ -154,7 +154,7 @@ function tgl_indo($tanggal)
         <br>
         <table width="100%" border="0" style="font-size: 14px">
             <tr>
-                <td style="text-align:center;font-weight: bold;"><span>UNIT MEDICAL CHECK UP<br>PEMERIKSAAN KESESHATAN TENAGA KERJA</td>
+                <td style="text-align:center;font-weight: bold;"><span>UNIT MEDICAL CHECK UP<br>PEMERIKSAAN KESEHATAN TENAGA KERJA</td>
             </tr>
         </table>
         <br>
@@ -251,7 +251,7 @@ function tgl_indo($tanggal)
                         <tr>
                             <td style="width:39%">Pekerjaan</td>
                             <td style="width:1%">:</td>
-                            <td style="width:60%"><?= $data_pelayanan['pekerjaan'] ?? '-' ?></td>
+                            <td style="width:60%"><?= $dataBiodataUser[0]['u_jabatan'] ?? '-' ?></td>
                         </tr>
                         <tr>
                             <td style="height:10px"></td>
@@ -450,11 +450,11 @@ function tgl_indo($tanggal)
                         </tr>
                         <tr>
                             <td>
-                                <table class="table" border="1" cellpadding="1" cellspacing="0" style="border-collapse:collapse;text-align:left;font-size:12px">
+                                <table class="table" border="1" width="100%" cellpadding="1" cellspacing="0" style="border-collapse:collapse;text-align:left;font-size:12px">
                                     <thead class="thead-light">
                                         <tr>
                                             <th>Pekerjaan/Perusahaan Sebelum</th>
-                                            <th>Pekejeraan/Perusahaa Sekarang</th>
+                                            <th>Pekejeraan/Perusahaan Sekarang</th>
                                             <th>Pekerjaan/Perusahan Dituju</th>
                                         </tr>
                                     </thead>
@@ -1266,7 +1266,7 @@ function tgl_indo($tanggal)
             </tr>
 
         </table>
-        <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-top-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
+         <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-top-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
             <tr>
                 <td>
                     <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-top-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
@@ -1279,79 +1279,73 @@ function tgl_indo($tanggal)
                         <tr>
                             <td style="width:25%">a. Persepsi Warna</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_persepsi_warna_kanan'] ?? '-' ?></td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_persepsi_warna_kiri'] ?? '-' ?></td>
+                            <td style="width:37%">-</td>
+                            <td style="width:37%">-</td>
                         </tr>
                         <tr>
                             <td style="width:25%">b. Kelopak Mata</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_kelopak_mata_kanan'] ?? '-' ?></td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_kelopak_mata_kiri'] ?? '-' ?></td>
+                            <td style="width:37%">-</td>
+                            <td style="width:37%">-</td>
                         </tr>
                         <tr>
                             <td style="width:25%">c. Konjungtiva</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_konjungtiva_kanan'] ?? '-' ?></td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_konjungtiva_kiri'] ?? '-' ?></td>
+                            <td style="width:37%">-</td>
+                            <td style="width:37%">-</td>
                         </tr>
                         <tr>
                             <td style="width:25%">d. Kesegarisan</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_gerak_bola_mata_kanan'] ?? '-' ?></td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_gerak_bola_mata_kiri'] ?? '-' ?></td>
+                            <td style="width:37%">-</td>
+                            <td style="width:37%">-</td>
                         </tr>
                         <tr>
                             <td style="width:25%">e. Sklera</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_sklera_kanan'] ?? '-' ?></td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_sklera_kiri'] ?? '-' ?></td>
+                            <td style="width:37%">-</td>
+                            <td style="width:37%">-</td>
                         </tr>
                         <tr>
                             <td style="width:25%">f. Lensa Mata</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_lensa_mata_kanan'] ?? '-' ?></td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_lensa_mata_kiri'] ?? '-' ?></td>
+                            <td style="width:37%">-</td>
+                            <td style="width:37%">-</td>
                         </tr>
                         <tr>
                             <td style="width:25%">g. Kornea</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_kornea_kanan'] ?? '-' ?></td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_kornea_kiri'] ?? '-' ?></td>
+                            <td style="width:37%">-</td>
+                            <td style="width:37%">-</td>
                         </tr>
                         <tr>
                             <td style="width:25%">h. Bulu Mata</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_bulu_mata_kanan'] ?? '-' ?></td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_bulu_mata_kiri'] ?? '-' ?></td>
+                            <td style="width:37%">-</td>
+                            <td style="width:37%">-</td>
                         </tr>
                         <tr>
                             <td style="width:25%">i. Tekanan Bola Mata</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_tekanan_bola_mata_kanan'] ?? '-' ?></td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_tekanan_bola_mata_kiri'] ?? '-' ?></td>
-                        </tr>
-                        <tr>
-                            <td style="width:25%">j. Penglihatan 3 Dimensi</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_penglihatan_3dimensi_kanan'] ?? '-' ?></td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_penglihatan_3dimensi_kiri'] ?? '-' ?></td>
+                            <td style="width:37%">-</td>
+                            <td style="width:37%">-</td>
                         </tr>
                         <tr>
                             <td style="width:25%">k. Visus Mata</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%"></td>
-                            <td style="width:37%"></td>
+                            <td style="width:37%">-</td>
+                            <td style="width:37%">-</td>
                         </tr>
                         <tr>
                             <td style="width:25%"> - Tanpa Koreksi</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_visus_tanpa_koreksi'] ?? '-' ?></td>
-                            <td style="width:37%"></td>
+                            <td style="width:37%">-</td>
+                            <td style="width:37%">-</td>
                         </tr>
                         <tr>
                             <td style="width:25%"> - Dengan Koreksi</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%"><?= $pemeriksaan_fisik['mata_visus_dengan_koreksi'] ?? '-' ?></td>
+                            <td style="width:37%">-</td>
                             <td style="width:37%"></td>
                         </tr>
                     </table>
@@ -1427,48 +1421,7 @@ function tgl_indo($tanggal)
                             <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_serumen_kanan'] ?? '-' ?></td>
                             <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_serumen_kiri'] ?? '-' ?></td>
                         </tr>
-                        <tr>
-                            <td style="width:30%">c. Audiometri</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_audiometri_kanan'] ?? '-' ?></td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_audiometri_kiri'] ?? '-' ?></td>
-                        </tr>
-                        <tr>
-                            <td style="width:30%">d. Tes Berbisik</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_test_berbisik_kanan'] ?? '-' ?></td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_test_berbisik_kiri'] ?? '-' ?></td>
-                        </tr>
-                        <tr>
-                            <td style="width:30%">e. Tes Garpu Tala Rinne</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_tes_garpu_tala_kanan'] ?? '-' ?></td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_tes_garpu_tala_kiri'] ?? '-' ?></td>
-                        </tr>
-                        <tr>
-                            <td style="width:30%">f. Weber</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_weber_kanan'] ?? '-' ?></td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_weber_kiri'] ?? '-' ?></td>
-                        </tr>
-                        <tr>
-                            <td style="width:30%">g. Swabach</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_swabach_kanan'] ?? '-' ?></td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_swabach_kiri'] ?? '-' ?></td>
-                        </tr>
-                        <tr>
-                            <td style="width:30%">h. Bing</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_bing_kanan'] ?? '-' ?></td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_bing_kiri'] ?? '-' ?></td>
-                        </tr>
-                        <tr>
-                            <td style="width:30%">i. Lain-lain</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_lainnya'] ?? '-' ?></td>
-                            <td style="width:34.5%"></td>
-                        </tr>
+                      
                     </table>
                 </td>
             </tr>
@@ -1726,7 +1679,7 @@ function tgl_indo($tanggal)
                 <td colspan="4" style="font-weight:bold">14. Paru-paru dan Jantung</td>
             </tr>
             <tr>
-                <td style="width:26%">a. Palpasi</td>
+                <td style="width:26%">a. Palpasi Paru</td>
                 <td style="width:1%">:</td>
                 <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_palpasi'] ?? '-' ?></td>
                 <td style="width:36.5%"></td>
@@ -1737,51 +1690,52 @@ function tgl_indo($tanggal)
                 <td style="width:36.5%;font-weight:bold">kanan</td>
                 <td style="width:36.5%;font-weight:bold">kiri</td>
             </tr>
-            <tr>
-                <td style="width:26%">b. Perkusi</td>
+             <tr>
+                <td style="width:26%">b. Perkusi Paru</td>
                 <td style="width:1%">:</td>
-                <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_perkusi_kanan'] ?? '-' ?></td>
+                <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_perkusi_kiri'] ?? '-' ?></td>
                 <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_perkusi_kiri'] ?? '-' ?></td>
             </tr>
-            <tr>
-                <td style="width:26%">- Iktus Kordis</td>
-                <td style="width:1%">:</td>
-                <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_perkusi_iktus_kanan'] ?? '-' ?></td>
-                <td style="width:36.5%"><?= ($pemeriksaan_fisik['paru_jantung_perkusi_iktus_kiri']) ?? '-' ?></td>
-            </tr>
-            <tr>
-                <td style="width:26%">- Batas Jantung</td>
-                <td style="width:1%">:</td>
-                <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_perkusi_batas_jantung_kanan'] ?? '-' ?></td>
-                <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_perkusi_batas_jantung_kiri'] ?? '-' ?></td>
-
-            </tr>
-            <tr>
-                <td style="width:26%">c. Auskultasi</td>
-                <td style="width:1%">:</td>
+            
+           	<tr>
+                <td style="width:26%">c . Auskultasi</td>
+                <td style="width:1%"></td>
                 <td style="width:36.5%"></td>
                 <td style="width:36.5%"></td>
-            </tr>
-            <tr>
-                <td style="width:26%">- Bunyi Nafas</td>
-                <td style="width:1%">:</td>
-                <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_auskultasi_bunyi_nafas_kanan'] ?? '-' ?></td>
-                <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_auskultasi_bunyi_nafas_kiri'] ?? '-' ?></td>
             </tr>
             <tr>
                 <td style="width:26%">- Bunyi nafas tambahan</td>
                 <td style="width:1%">:</td>
                 <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_auskultasi_bunyi_nafas_tambah_kanan'] ?? '-' ?></td>
                 <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_auskultasi_bunyi_nafas_tambah_kiri'] ?? '-' ?></td>
+
+            </tr>
+       
+            <tr>
+                <td style="width:26%">- Bunyi Nafas</td>
+                <td style="width:1%">:</td>
+                <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_auskultasi_bunyi_nafas_kanan'] ?? '-' ?></td>
+                <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_auskultasi_bunyi_nafas_kiri'] ?? '-' ?></td>
+            </tr>
+       
+          
+         
+            <tr>
+                <td style="width:26%">d. Jantung</td>
+                <td style="width:1%">:</td>
+                <td style="width:36.5%"></td>
+                <td style="width:36.5%"></td>
             </tr>
             <tr>
-                <td style="width:26%">- Bunyi Jantung</td>
+                <td style="width:26%">- Iktus Kordis</td>
                 <td style="width:1%">:</td>
-                <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_bunyi_jantung'] ?? '-' ?></td>
-                <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_bunyi_jantung_kiri'] ?? '-' ?></td>
+                <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_perkusi_iktus_kanan'] ?? '-' ?></td>
             </tr>
-        </table>
-        </tr>
+            <tr>
+                <td style="width:26%">- Batas Jantung</td>
+                <td style="width:1%">:</td>
+                <td style="width:36.5%"><?= $pemeriksaan_fisik['paru_jantung_perkusi_batas_jantung_kanan'] ?? '-' ?></td>
+            </tr>
         </table>
         <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-bottom-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
             <tr>
@@ -1858,23 +1812,25 @@ function tgl_indo($tanggal)
                         <tr>
                             <td style="width:23.5%">a. Kandung Kemih</td>
                             <td style="width:1%">:</td>
-                            <td style="width:75.5%"><?= $pemeriksaan_fisik['genitourinaria_kandung_kemih'] ?? '-' ?></td>
+                            <td style="width:75.5%">Tidak Dilakukan Pemeriksaan</td>
                         </tr>
                         <tr>
-                            <td style="width:23.5%">b. Anus.Rektum/Perianal</td>
+                            <td style="width:23.5%">b. Anus/Rektum/Perianal</td>
                             <td style="width:1%">:</td>
-                            <td style="width:75.5%"><?= $pemeriksaan_fisik['genitourinaria_anus'] ?? '-' ?></td>
+                            <td style="width:75.5%">Tidak Dilakukan Pemeriksaan </td>
                         </tr>
                         <tr>
                             <td style="width:23.5%">c. Genetalia Eksternal</td>
                             <td style="width:1%">:</td>
-                            <td style="width:75.5%"><?= $pemeriksaan_fisik['genitourinaria_genitalia_eksternal'] ?? '-' ?></td>
+                            <td style="width:75.5%">Tidak Dilakukan Pemeriksaan</td>
                         </tr>
+                        <?php if($data_pelayanan->jenis_kelamin == 'L'){ ?>
                         <tr>
                             <td style="width:23.5%">d. Prostat (Khusus pria)</td>
                             <td style="width:1%">:</td>
-                            <td style="width:75.5%"><?= $pemeriksaan_fisik['genitourinaria_prostat'] ?? '-' ?></td>
+                            <td style="width:75.5%">Tidak Dilakukan Pemeriksaan</td>
                         </tr>
+                    <?php }?>
                     </table>
                 </td>
             </tr>
@@ -1906,20 +1862,19 @@ function tgl_indo($tanggal)
                         <tr>
                             <td style="width:32%;height:10px;font-weight:bold">18. Tulang / sendi Ekstremitas Atas</td>
                             <td style="width:1%"></td>
-                            <td style="width:33.5%;font-weight:bold">Kanan</td>
-                            <td style="width:33.5%;font-weight:bold">Kiri</td>
+                           
                         </tr>
                         <tr>
                             <td style="width:32%;height:10px;">a. Simetris</td>
                             <td style="width:1%">:</td>
                             <td style="width:33.5%"><?= $pemeriksaan_fisik['tulang_atas_simetris'] ?? '-' ?></td>
-                            <td style="width:33.5%"><?= $pemeriksaan_fisik['tulang_atas'] ?? '-' ?></td>
+                            <td style="width:33.5%"></td>
                         </tr>
                         <tr>
                             <td style="width:32%;height:10px;">b. Gerakan</td>
                             <td style="width:1%"></td>
-                            <td style="width:33.5%"></td>
-                            <td style="width:33.5%"></td>
+                            <td style="width:33.5%;font-weight:bold">Kanan</td>
+                            <td style="width:33.5%;font-weight:bold">Kiri</td>
                         </tr>
                         <tr>
                             <td style="width:32%;height:10px;">1. Range of Motion</td>
@@ -2029,20 +1984,18 @@ function tgl_indo($tanggal)
                     <tr>
                         <td style="width:32%;font-weight:bold">19. Tulang/Sendi Ekstremitas bawah</td>
                         <td style="width:1%"></td>
-                        <td style="width:33.5%;font-weight:bold">Kanan</td>
-                        <td style="width:33.5%;font-weight:bold ">Kiri</td>
+                        
                     </tr>
                     <tr>
                         <td style="width:32%">a. Simetri</td>
                         <td style="width:1%">:</td>
                         <td style="width:33.5%"><?= $pemeriksaan_fisik['tulang_bawah_simetris'] ?? '-' ?></td>
-                        <td style="width:33.5%"></td>
                     </tr>
                     <tr>
                         <td style="width:32%">b. Gerakan</td>
                         <td style="width:1%"></td>
-                        <td style="width:33.5%"></td>
-                        <td style="width:33.5%"></td>
+                     <td style="width:33.5%;font-weight:bold">Kanan</td>
+                        <td style="width:33.5%;font-weight:bold ">Kiri</td>
                     </tr>
                     <tr>
                         <td style="width:32%">- Test Laseque</td>
@@ -2095,8 +2048,8 @@ function tgl_indo($tanggal)
                     <tr>
                         <td style="width:32%">f. Varises</td>
                         <td style="width:1%">:</td>
-                        <td style="width:33.5%"><?= $pemeriksaan_fisik['tulang_bawah_varises_kanan']   ?></td>
-                        <td style="width:33.5%"><?= $pemeriksaan_fisik['tulang_bawah_varises_kiri']   ?></td>
+                        <td style="width:33.5%"><?= $pemeriksaan_fisik['tulang_atas_varises_kanan']   ?></td>
+                        <td style="width:33.5%"><?= $pemeriksaan_fisik['tulang_atas_varises_kiri']   ?></td>
                     </tr>
                     <tr>
                         <td style="width:32%">g. Vaskularisasi</td>
@@ -2334,38 +2287,7 @@ function tgl_indo($tanggal)
 
     </table>
 
-    <table width="100%" style="border-bottom-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
-        <tr>
-            <td style="width:28.5%;font-weight:bold">26. Pemeriksaan Fisik Khusus</td>
-            <td style="width:1%">:</td>
-            <td style="width:70.5%;"><?= $pemeriksaan_fisik['hasil_pemeriksaan_fisik_khusus'] ?></td>
-        </tr>
-        <tr>
-            <td style="width:28.5%;">wawancara Psikiatri</td>
-            <td style="width:1%">:</td>
-            <td style="width:70.5%;"><?= $pemeriksaan_fisik['hasil_pemeriksaan_fisik_khusus_wawancara_psikiatri'] ?></td>
-        </tr>
-        <tr>
-            <td style="width:28.5%;">Pemeriksaan Narkoba</td>
-            <td style="width:1%">:</td>
-            <td style="width:70.5%;"></td>
-        </tr>
-        <tr>
-            <td style="width:28.5%;">- Opiat</td>
-            <td style="width:1%">:</td>
-            <td style="width:70.5%;"><?= $pemeriksaan_fisik['hasil_pemeriksaan_fisik_khusus_narkoba_opiat'] ?></td>
-        </tr>
-        <tr>
-            <td style="width:28.5%;">- Stimulan</td>
-            <td style="width:1%">:</td>
-            <td style="width:70.5%;"><?= $pemeriksaan_fisik['hasil_pemeriksaan_fisik_khusus_narkoba_stimulan'] ?></td>
-        </tr>
-        <tr>
-            <td style="width:28.5%;">- Barbiturat</td>
-            <td style="width:1%">:</td>
-            <td style="width:70.5%;"><?= $pemeriksaan_fisik['hasil_pemeriksaan_fisik_khusus_narkoba_barbiburat'] ?></td>
-        </tr>
-    </table>
+   
 </div>
 <!-- page 7-->
 <div class="row" style="height:800px">
@@ -2414,6 +2336,210 @@ function tgl_indo($tanggal)
             </tr>
         </table>
     </div>
+     <?php
+            
+    $resume_kelainan = '';
+    $pemeriksaan_fis["tingkat_kesadaran_kesadaran"] == "Compos Mentis" ? $resume_kelainan.=  "Kesadaran = Kesadaran Menurun" . PHP_EOL : null;
+    $pemeriksaan_fisik["tingkat_kesadaran_kualitas_kontak"] == "Tidak" ? $resume_kelainan .=  'Kualitas Kontak = Tidak'. PHP_EOL : null;
+    $pemeriksaan_fisik["tingkat_kesadaran_tampak_kesakitan"] == "Ya, Tampak Kesakitan" ? $resume_kelainan.= 'Tampak Kesakitan = Ya, Tampak Kesakitan'. PHP_EOL : null;
+
+    $pemeriksaan_fisik["tingkat_kesadaran_gangguan_saat_berjalan"] != "Tidak" ? $resume_kelainan.= 'Gangguan Saat Berjalan = Tidak'. PHP_EOL : null;
+    $pemeriksaan_fisik["kelenjar_getah_bening_leher"] ==  "Tidak Normal" ? $resume_kelainan.= 'Getah Bening = Tidak Normal'. PHP_EOL : null;
+    $pemeriksaan_fisik["kelenjar_getah_bening_sub_mandibula"] == "Tidak Normal" ? $resume_kelainan.= 'Sub Mandibula = Tidak Normal'. PHP_EOL : null;
+    $pemeriksaan_fisik["kelenjar_getah_bening_ketiak"] == "Tidak Normal" ? $resume_kelainan.= 'Ketiak = Tidak Normal'. PHP_EOL : null;
+    $pemeriksaan_fisik["kelenjar_getah_bening_inguinal"] == "Tidak Normal" ? $resume_kelainan .= 'Inguinal =Tidak Normal'. PHP_EOL : null;
+    $pemeriksaan_fisik["kepala_tulang"] == "Tidak Baik" ? $resume_kelainan .= 'Tulang = Tidak Baik'. PHP_EOL : null;
+    $pemeriksaan_fisik["kepala_kulit_kepala"] == "Tidak Baik" ? $resume_kelainan .='Kulit Kepala = Tidak Baik'. PHP_EOL : null;
+    $pemeriksaan_fisik["kepala_rambut"] == "Tidak Baik" ? $resume_kelainan .= 'Rambut = Tidak Baik'. PHP_EOL : null;
+    $pemeriksaan_fisik["kepala_bentuk_wajah"] == "Tidak Baik" ? $resume_kelainan .= 'Bentuk Wajah = Tidak Baik'. PHP_EOL : null;
+    $pemeriksaan_fisik["mata_persepsi_warna_kanan"] != "Normal" ? $resume_kelainan .= "Persepsi Warna Kanan = ". $pemeriksaan_fisik["mata_persepsi_warna_kanan"]. PHP_EOL: null;
+    $pemeriksaan_fisik["mata_persepsi_warna_kiri"] != "Normal" ? $resume_kelainan .= "Persepsi Warna Kiri = ". $pemeriksaan_fisik["mata_persepsi_warna_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mata_kelopak_mata_kanan"] != "Normal" ? $resume_kelainan .= "Kelopak Mata Kanan = ". $pemeriksaan_fisik["mata_kelopak_mata_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mata_kelopak_mata_kiri"] != "Normal" ? $resume_kelainan .= "Kelopak Mata Kiri = ". $pemeriksaan_fisik["mata_kelopak_mata_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mata_konjungtiva_kanan"] != "Normal" ? $resume_kelainan .= "Konjungtiva Kanan = ".$pemeriksaan_fisik["mata_konjungtiva_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mata_konjungtiva_kiri"] != "Normal" ? $resume_kelainan .= " Konjungtiva Kiri = ". $pemeriksaan_fisik["mata_konjungtiva_kiri"] . PHP_EOL : null ;
+    $pemeriksaan_fisik["mata_gerak_bola_mata_kanan"] != "Normal" ? $resume_kelainan .= "Gerak Bola Mata Kanan =".$pemeriksaan_fisik["mata_gerak_bola_mata_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mata_gerak_bola_mata_kiri"] != "Normal" ? $resume_kelainan .=" Gerak Bola Mata Kiri = ". $pemeriksaan_fisik["mata_gerak_bola_mata_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mata_sklera_kanan"] != "Normal" ? $resume_kelainan .="Sklera Kanan = ". $pemeriksaan_fisik["mata_sklera_kanan"] . PHP_EOL : null ;
+    $pemeriksaan_fisik["mata_sklera_kiri"] != "Normal" ? $resume_kelainan .= " Sklera Kiri = " .$pemeriksaan_fisik["mata_sklera_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mata_kornea_kanan"] != "Normal" ? $resume_kelainan .=" Kornea Kanan = ". $pemeriksaan_fisik["mata_kornea_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mata_kornea_kiri"] != "Normal" ? $resume_kelainan .= " Kornea Kiri  = " .$pemeriksaan_fisik["mata_kornea_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mata_bulu_mata_kanan"] != "Normal" ? $resume_kelainan .= " Bulu Mata Kanan = " .$pemeriksaan_fisik["mata_bulu_mata_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mata_bulu_mata_kiri"] != "Normal"? $resume_kelainan .= " Bulu Mata Kiri  = ".$pemeriksaan_fisik["mata_bulu_mata_kiri"] . PHP_EOL : null ;
+    $pemeriksaan_fisik["mata_tekanan_bola_mata_kanan"] != "Normal" ? $resume_kelainan .=" Tekanan Bola Mata Kanan  = ". $pemeriksaan_fisik["mata_tekanan_bola_mata_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mata_tekanan_bola_mata_kiri"] != "Normal" ? $resume_kelainan .= " Tekanan Bola Mata Kiri = ". $pemeriksaan_fisik["mata_tekanan_bola_mata_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mata_penglihatan_3dimensi_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["mata_penglihatan_3dimensi_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mata_penglihatan_3dimensi_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["mata_penglihatan_3dimensi_kiri"] . PHP_EOL : null;
+
+    $pemeriksaan_fisik["telinga_daun_telinga_kanan"] != "Normal" ? $resume_kelainan .= "Daun Telinga Kanan = ". $pemeriksaan_fisik["telinga_daun_telinga_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["telinga_daun_telinga_kiri"] != "Normal" ?  $resume_kelainan .= "Daun Telinga Kiri = " .$pemeriksaan_fisik["telinga_daun_telinga_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["telinga_liang_telinga_kanan"] != "Normal" ? $resume_kelainan .= " Liang Telinga Kanan = ". $pemeriksaan_fisik["telinga_liang_telinga_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["telinga_liang_telinga_kiri"] != "Normal" ?  $resume_kelainan .= " Liang Telinga Kiri = " . $pemeriksaan_fisik["telinga_liang_telinga_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["telinga_serumen_kanan"] != "Tidak Ada" ? $resume_kelainan .= " Serumen Kanan = " .$pemeriksaan_fisik["telinga_serumen_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["telinga_serumen_kiri"] != "Tidak Ada" ? $resume_kelainan .= " Serumen Kiri =" .$pemeriksaan_fisik["telinga_serumen_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["telinga_timpani_kanan"] != "Intak" ? $resume_kelainan .= " Telinga Timpani Kanan = " .$pemeriksaan_fisik["telinga_timpani_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["telinga_timpani_kiri"] != "Intak" ? $resume_kelainan .= " Telinga Timpani Kiri = " .$pemeriksaan_fisik["telinga_timpani_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["hidung_meatus_nasi"] != "Normal" ? $resume_kelainan .= "Meatus Nasi = " .$pemeriksaan_fisik["hidung_meatus_nasi"] . PHP_EOL : null;
+    $pemeriksaan_fisik["hidung_septum_nasi"] != "Normal" ? $resume_kelainan .= "Septum Nasi = " .$pemeriksaan_fisik["hidung_septum_nasi"] . PHP_EOL : null;
+    $pemeriksaan_fisik["hidung_konka_nasal"] != "Normal" ? $resume_kelainan .= "Konka Nasal = " . $pemeriksaan_fisik["hidung_konka_nasal"] . PHP_EOL : null;
+    $pemeriksaan_fisik["hidung_nyeri_ketok_sinus"] != "Normal" ? $resume_kelainan .= "Ketok Sinus = ". $pemeriksaan_fisik["hidung_nyeri_ketok_sinus"] . PHP_EOL : null;
+    $pemeriksaan_fisik["hidung_penciuman"] != "Normal" ? $resume_kelainan .= "Penciuman = ". $pemeriksaan_fisik["hidung_penciuman"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mulut_bibir"] != "Normal" ? $resume_kelainan .= "Bibir =" .$pemeriksaan_fisik["mulut_bibir"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mulut_lidah"] != "Normal" ? $resume_kelainan .= "Lidah = " . $pemeriksaan_fisik["mulut_lidah"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mulut_gusi"] != "Normal" ? $resume_kelainan .= "Gusi = " .$pemeriksaan_fisik["mulut_gusi"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mulut_lainnya"] != "Normal" ? $resume_kelainan .= "Lainnya = ". $pemeriksaan_fisik["mulut_lainnya"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tenggorokan"] != "Normal" ? $resume_kelainan .= "Tenggorokan = ". $pemeriksaan_fisik["tenggorokan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tenggorokan_pharynx"] != "Normal" ? $resume_kelainan .= "Pharynx = " .$pemeriksaan_fisik["tenggorokan_pharynx"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tenggorokan_tonsil_kanan"] != "TO" ? $resume_kelainan .= " Tonsil Kanan  = " .$pemeriksaan_fisik["tenggorokan_tonsil_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tenggorokan_tonsil_kiri"] != "TO" ? $resume_kelainan .= " Tonsil Kiri  = " .$pemeriksaan_fisik["tenggorokan_tonsil_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tenggorokan_tonsil_ukuran_kanan"] != "Normal" ? $resume_kelainan .= " Tonsil Ukuran Kanan  = " .$pemeriksaan_fisik["tenggorokan_tonsil_ukuran_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tenggorokan_tonsil_ukuran_kiri"] != "Normal" ? $resume_kelainan .= " Tonsil Ukuran Kiri  = " .$pemeriksaan_fisik["tenggorokan_tonsil_ukuran_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tenggorokan_palatum"] != "Normal" ? $resume_kelainan .= "Palatum = " . $pemeriksaan_fisik["tenggorokan_palatum"] . PHP_EOL : null;
+    $pemeriksaan_fisik["leher_gerakan_leher"] != "Normal" ? $resume_kelainan .= "Gerakan Leher = " . $pemeriksaan_fisik["leher_gerakan_leher"] . PHP_EOL : null;
+    $pemeriksaan_fisik["leher_otot_leher"] != "Normal" ? $resume_kelainan .= "Otot Leher = " .$pemeriksaan_fisik["leher_otot_leher"] . PHP_EOL : null;
+    $pemeriksaan_fisik["leher_kelenjar_thyroid"] != "Normal" ? $resume_kelainan .= "Kelenjer Thyroid = " .$pemeriksaan_fisik["leher_kelenjar_thyroid"] . PHP_EOL : null;
+    $pemeriksaan_fisik["leher_pulsasi_carotis"] != "Normal" ? $resume_kelainan .= "Pulsasi Carotis = ". $pemeriksaan_fisik["leher_pulsasi_carotis"] . PHP_EOL : null;
+    $pemeriksaan_fisik["leher_tekanan_vena_jugularis"] != "Normal" ? $resume_kelainan .= "Vena Jugularis = " .$pemeriksaan_fisik["leher_tekanan_vena_jugularis"] . PHP_EOL : null;
+    $pemeriksaan_fisik["leher_trachea"] != "Normal" ? $resume_kelainan .= "Trachea = ". $pemeriksaan_fisik["leher_trachea"] . PHP_EOL : null;
+    $pemeriksaan_fisik["dada_bentuk"] != "Simetris" ? $resume_kelainan .= "Bentuk  = " .$pemeriksaan_fisik["dada_bentuk"] . PHP_EOL : null;
+    $pemeriksaan_fisik["dada"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["dada"] . PHP_EOL : null;
+    $pemeriksaan_fisik["dada_mamae"] != "Normal" ? $resume_kelainan .= "Mamae = " .$pemeriksaan_fisik["dada_mamae"] . PHP_EOL : null;
+    $pemeriksaan_fisik["paru_jantung_palpasi"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["paru_jantung_palpasi"] . PHP_EOL : null;
+    $pemeriksaan_fisik["paru_jantung_perkusi_iktus_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["paru_jantung_perkusi_iktus_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["paru_jantung_perkusi_kiri"] != "Sonor" ? $resume_kelainan .= $pemeriksaan_fisik["paru_jantung_perkusi_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["paru_jantung_perkusi_iktus_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["paru_jantung_perkusi_iktus_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["paru_jantung_perkusi_batas_jantung_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["paru_jantung_perkusi_batas_jantung_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["paru_jantung_auskultasi_bunyi_nafas_kanan"] != "Vesikuler" ? $resume_kelainan .= $pemeriksaan_fisik["paru_jantung_auskultasi_bunyi_nafas_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["paru_jantung_auskultasi_bunyi_nafas_kiri"] != "Vesikuler" ? $resume_kelainan .= $pemeriksaan_fisik["paru_jantung_auskultasi_bunyi_nafas_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["paru_jantung_auskultasi_bunyi_nafas_tambah_kanan"] != "Tak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["paru_jantung_auskultasi_bunyi_nafas_tambah_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["paru_jantung_auskultasi_bunyi_nafas_tambah_kiri"] != "Tak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["paru_jantung_auskultasi_bunyi_nafas_tambah_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["paru_jantung_bunyi_jantung"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["paru_jantung_bunyi_jantung"] . PHP_EOL : null;
+    $pemeriksaan_fisik["abdomen"] != "Supel" ? $resume_kelainan .= "Palpasi =" .$pemeriksaan_fisik["abdomen"] . PHP_EOL : null;
+    $pemeriksaan_fisik["abdomen_perkusi"] != "Timpani" ? $resume_kelainan .= $pemeriksaan_fisik["abdomen_perkusi"] . PHP_EOL : null;
+    $pemeriksaan_fisik["abdomen_auskultasi_bising_usus"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["abdomen_auskultasi_bising_usus"] . PHP_EOL : null;
+    $pemeriksaan_fisik["abdomen_hati"] != "Tidak Teraba" ? $resume_kelainan .= $pemeriksaan_fisik["abdomen_hati"] . PHP_EOL : null;
+    $pemeriksaan_fisik["abdomen_limpa"] != "Tidak Teraba Schuffner" ? $resume_kelainan .= $pemeriksaan_fisik["abdomen_limpa"] . PHP_EOL : null;
+    $pemeriksaan_fisik["abdomen_ginjal_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["abdomen_ginjal_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["abdomen_ginjal_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["abdomen_ginjal_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["abdomen_ballotement_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["abdomen_ballotement_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["abdomen_ballotement_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["abdomen_ballotement_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["abdomen_nyeri_costo_vertebrae_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["abdomen_nyeri_costo_vertebrae_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["abdomen_nyeri_costo_vertebrae_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["abdomen_nyeri_costo_vertebrae_kiri"] . PHP_EOL : null;
+    // $pemeriksaan_fisik["genitourinaria_kandung_kemih"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["mulut_bibir"] . PHP_EOL : null;
+    // $pemeriksaan_fisik["genitourinaria_anus"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["mulut_bibir"] . PHP_EOL : null;
+    // $pemeriksaan_fisik["genitourinaria_genitalia_eksternal"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["mulut_bibir"] . PHP_EOL : null;
+    // $pemeriksaan_fisik["genitourinaria_prostat"] != "Teraba" ? $resume_kelainan .= $pemeriksaan_fisik["mulut_bibir"] . PHP_EOL : null;
+    $pemeriksaan_fisik["vertebra"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["vertebra"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_gerakan_abduksi_neer_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_gerakan_abduksi_neer_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_gerakan_abduksi_hawkin_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_gerakan_abduksi_hawkin_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_gerakan_drop_arm_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_gerakan_drop_arm_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_gerakan_yergason_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_gerakan_yergason_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_gerakan_speed_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_gerakan_speed_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_tulang_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_tulang_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_sensibilitas_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_sensibilitas_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_oedem_kanan"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_oedem_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_varises_kanan"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_varises_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_kekuatan_otot_pin_prick_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_kekuatan_otot_pin_prick_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_kekuatan_otot_phallent_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_kekuatan_otot_phallent_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_kekuatan_otot_tinnel_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_kekuatan_otot_tinnel_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_kekuatan_otot_finskelstein_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_kekuatan_otot_finskelstein_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_kelaianan_kukujari_kanan"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_kelaianan_kukujari_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_sensibilitas_kanan"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_sensibilitas_kanan"] . PHP_EOL : null;
+
+    $pemeriksaan_fisik["tulang_atas_sensibilitas_kiri"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_sensibilitas_kiri"] . PHP_EOL : null;
+
+    $pemeriksaan_fisik["tulang_atas_gerakan_abduksi_neer_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_gerakan_abduksi_neer_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_gerakan_abduksi_hawkin_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_gerakan_abduksi_hawkin_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_gerakan_drop_arm_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_gerakan_drop_arm_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_gerakan_yergason_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_gerakan_yergason_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_gerakan_speed_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_gerakan_speed_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_tulang_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_tulang_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_oedem_kiri"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_oedem_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_varises_kiri"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_varises_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_kekuatan_otot_pin_prick_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_kekuatan_otot_pin_prick_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_kekuatan_otot_phallent_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_kekuatan_otot_phallent_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_kekuatan_otot_tinnel_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_kekuatan_otot_tinnel_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_kekuatan_otot_finskelstein_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_kekuatan_otot_finskelstein_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_kelaianan_kukujari_kiri"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_kelaianan_kukujari_kiri"] . PHP_EOL : null;
+
+    $pemeriksaan_fisik["tulang_bawah_laseque_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_laseque_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_kernique_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_kernique_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_patrick_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_patrick_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_contrapatrick_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_contrapatrick_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_nyeri_tekanan_kanan"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_nyeri_tekanan_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_kekuatan_otot_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_kekuatan_otot_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_sensibilitas_kanan"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_sensibilitas_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_oedema_kanan"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_oedema_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_kelainan_kuku_kanan"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_kelainan_kuku_kanan"] . PHP_EOL : null;
+
+    $pemeriksaan_fisik["tulang_bawah_laseque_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_laseque_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_kernique_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_kernique_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_patrick_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["mulut_bibir"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_contrapatrick_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_patrick_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_nyeri_tekanan_kiri"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_nyeri_tekanan_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_kekuatan_otot_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_kekuatan_otot_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_sensibilitas_kiri"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_sensibilitas_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_oedema_kiri"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_oedema_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_vaskularisasi_kiri"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_vaskularisasi_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_kelainan_kuku_kiri"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_kelainan_kuku_kiri"] . PHP_EOL : null;
+
+    $pemeriksaan_fisik["otot_motorik_trofi_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["otot_motorik_trofi_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["otot_motorik_tonus_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["otot_motorik_tonus_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["otot_motorik_gerakan_abnormal_kanan"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["otot_motorik_gerakan_abnormal_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["otot_motorik_trofi_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["otot_motorik_trofi_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["otot_motorik_tonus_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["otot_motorik_tonus_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["otot_motorik_gerakan_abnormal_kiri"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["otot_motorik_gerakan_abnormal_kiri"] . PHP_EOL : null;
+
+    $pemeriksaan_fisik["fungsi_sensorik_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["fungsi_sensorik_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["fungsi_autonom_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["fungsi_autonom_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["fungsi_sensorik_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["fungsi_sensorik_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["fungsi_autonom_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["fungsi_autonom_kiri"] . PHP_EOL : null;
+
+    $pemeriksaan_fisik["saraf_daya_ingat_segera"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_daya_ingat_segera"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_daya_ingat_jangka_menengah"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_daya_ingat_jangka_menengah"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_daya_ingat_jangka_pendek"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_daya_ingat_jangka_pendek"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_daya_ingat_jangka_panjang"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_daya_ingat_jangka_panjang"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_orientasi_waktu"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_orientasi_waktu"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_orientasi_orang"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_orientasi_orang"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_orientasi_tempat"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_orientasi_tempat"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_kesan"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_kesan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_kesan_n_i"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_kesan_n_i"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_kesan_n_ii"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_kesan_n_ii"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_kesan_n_iii"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_kesan_n_iii"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_kesan_n_iv"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_kesan_n_iv"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_kesan_n_v"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_kesan_n_v"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_kesan_n_vi"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_kesan_n_vi"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_kesan_n_vii"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_kesan_n_vii"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_kesan_n_viii"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_kesan_n_viii"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_kesan_n_viii"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_kesan_n_viii"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_kesan_n_ix"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_kesan_n_ix"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_kesan_n_x"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_kesan_n_x"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_kesan_n_xi"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_kesan_n_xi"] . PHP_EOL : null;
+    $pemeriksaan_fisik["saraf_kesan_n_xii"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["saraf_kesan_n_xii"] . PHP_EOL : null;
+    $pemeriksaan_fisik["reflek_fisiologis_patella_kanan"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["reflek_fisiologis_patella_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["reflek_patologis_kanan"] != "Negative" ? $resume_kelainan .= $pemeriksaan_fisik["reflek_patologis_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["reflek_fisiologis_patella_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["reflek_fisiologis_patella_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["reflek_patologis_kiri"] != "Negative" ? $resume_kelainan .= $pemeriksaan_fisik["reflek_patologis_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["kulit_kulit"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["kulit_kulit"] . PHP_EOL : null;
+    $pemeriksaan_fisik["kulit_selaput_lendir"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["kulit_selaput_lendir"] . PHP_EOL : null;
+    $pemeriksaan_fisik["kulit_kuku"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["kulit_kuku"] . PHP_EOL : null;
+    $pemeriksaan_fisik["kulit_tato"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["kulit_tato"] . PHP_EOL : null;
+    $pemeriksaan_fisik["kategori_kesehatan"] != "FIT" ? $resume_kelainan .= $pemeriksaan_fisik["kategori_kesehatan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["abdomen_ballotement_kanan"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["abdomen_ballotement_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["abdomen_ballotement_kiri"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["abdomen_ballotement_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["abdomen_nyeri_costo_vertebrae_kanan"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["abdomen_nyeri_costo_vertebrae_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["abdomen_nyeri_costo_vertebrae_kiri"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["abdomen_nyeri_costo_vertebrae_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_vaskularisasi_kanan"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_vaskularisasi_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_atas_vaskularisasi_kiri"] != "Baik" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_vaskularisasi_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mata_lensa_mata_kanan"] != "Tidak Keruh" ? $resume_kelainan .= $pemeriksaan_fisik["mata_lensa_mata_kanan"] . PHP_EOL : null;
+    $pemeriksaan_fisik["mata_lensa_mata_kiri"] != "Tidak Keruh" ? $resume_kelainan .= $pemeriksaan_fisik["mata_lensa_mata_kiri"] . PHP_EOL : null;
+    $pemeriksaan_fisik["paru_jantung_perkusi_iktus_kiri"] != "Normal" ? $resume_kelainan .= $pemeriksaan_fisik["paru_jantung_perkusi_iktus_kiri"] . PHP_EOL : null;
+    
+    $pemeriksaan_fisik["tulang_atas_simetris"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_simetris"] . PHP_EOL : null;
+    $pemeriksaan_fisik["tulang_bawah_simetris"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_simetris"] . PHP_EOL : null; 
+                if ($pemeriksaan_fisik["resume_kelainan"] == null || $pemeriksaan_fisik["resume_kelainan"] == ''){
+                        $pemeriksaan_fisik["resume_kelainan"] = $resume_kelainan;
+                }?>
     <div class="col-md-12" style="margin:0px 30px 0px 30px">
         <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-collapse:collapse;text-align:left;font-size:12px">
             <tr>
@@ -2474,6 +2600,7 @@ function tgl_indo($tanggal)
             </tr>
         </table>
     </div>
+   
     <div class="col-md-12" style="margin:0px 30px 0px 30px">
         <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-collapse:collapse;text-align:left;font-size:12px">
             <tr>
@@ -2487,7 +2614,17 @@ function tgl_indo($tanggal)
                 <td style="text-align:center;width:15%">Keterangan</td>
 
             </tr>
-
+            <?php
+            foreach ($penata_pelaksana as $penata) :
+            ?>
+                <tr>
+                    <td style="height:100px;vertical-align:top"><?= $penata['jenis_permasalahan'] ?? '' ?></td>
+                    <td style="height:100px;vertical-align:top"><?= $penata['rencana'] ?? '' ?></td>
+                    <td style="height:100px;vertical-align:top"><?= $penata['target_waktu'] ?? '' ?></td>
+                    <td style="height:100px;vertical-align:top"><?= $penata['hasil_yang_diharapkan'] ?? '' ?></td>
+                    <td style="height:100px;vertical-align:top"><?= $penata['keterangan'] ?? '' ?></td>
+                </tr>
+            <?php endforeach; ?>
         </table>
     </div>
 </div>
