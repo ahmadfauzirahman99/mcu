@@ -206,7 +206,7 @@ class GraddingMcu extends \yii\db\ActiveRecord
             $result = 0;
         } else { 
             $result = 1;
-            if($value == '-') {
+            if($value === '-') {
                 $result = 0;
             }
         } 

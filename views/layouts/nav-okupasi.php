@@ -57,6 +57,9 @@ use yii\helpers\Url;
 <li>
     <a href="<?= Url::to(['/gradding-mcu/index']) ?>" class="waves-effect"><i class="fa fa-list"></i> <span> Gradding Mcu </span> </a>
 </li>
+<li>
+    <a href="<?= Url::to(['/setting-global/index']) ?>" class="waves-effect"><i class="fa fa-setting"></i> <span> Setting Global </span> </a>
+</li>
 <li class="text-muted menu-title">Form Majelis</li>
 <li>
     <a href="<?= Url::to(['/pembedaan-cpns/index']) ?>" class="waves-effect"><i class="fa fa-list"></i> <span> Form Mejelis </span> </a>
