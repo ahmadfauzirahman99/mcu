@@ -39,8 +39,10 @@ use Yii;
  * @property string|null $virus_mata_dengan_koreksi_mata_kanan
  * @property string|null $virus_mata_dengan_koreksi_mata_kiri
  * @property string|null $lain_lain
+ * @property string|null $kesan
  * @property string|null $kesimpulan
  * @property string|null $riwayat
+ * @property string|null $status_pemeriksaan
  */
 class McuSpesialisMata extends BaseAR
 {
@@ -66,6 +68,7 @@ class McuSpesialisMata extends BaseAR
             [['no_rekam_medik'], 'string', 'max' => 120],
             [['persepsi_warna_mata_kanan', 'persepsi_warna_mata_kiri', 'kelopak_mata_kanan', 'kelopak_mata_kiri', 'konjungtiva_mata_kanan', 'konjungtiva_mata_kiri', 'kesegarisan_gerak_bola_mata_kanan', 'kesegarisan_gerak_bola_mata_kiri', 'skiera_mata_kanan', 'skiera_mata_kiri', 'lensa_mata_kanan', 'lensa_mata_kiri', 'kornea_mata_kanan', 'kornea_mata_kiri', 'bulu_mata_kanan', 'bulu_mata_kiri', 'tekanan_bola_mata_kanan', 'tekanan_bola_mata_kiri', 'penglihatan_3_dimensi_mata_kanan', 'penglihatan_3_dimensi_mata_kiri', 'virus_mata_tanpa_koreksi_mata_kanan', 'virus_mata_tanpa_koreksi_mata_kiri', 'virus_mata_dengan_koreksi_mata_kanan', 'virus_mata_dengan_koreksi_mata_kiri'], 'string', 'max' => 70],
         
+            ['kesan', 'required'],
             ['no_daftar', 'unique'],
         ];
     }

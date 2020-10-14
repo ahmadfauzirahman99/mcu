@@ -14,6 +14,8 @@ use Yii;
  * @property string|null $updated_at
  * @property int|null $created_by
  * @property int|null $updated_by
+ * @property string|null $tl_test_berbisik_telinga_kanan_option
+ * @property string|null $tl_test_berbisik_telinga_kiri_option
  * @property string|null $tl_test_berbisik_telinga_kanan
  * @property string|null $tl_test_berbisik_telinga_kiri
  * @property string|null $tl_test_berbisik_telinga_kanan_6
@@ -26,6 +28,10 @@ use Yii;
  * @property string|null $tl_test_berbisik_telinga_kiri_1
  * @property string|null $kesimpulan
  * @property string|null $riwayat
+ * @property string|null $kesan
+ * @property string|null $kesimpulan
+ * @property string|null $riwayat
+ * @property string|null $status_pemeriksaan
  */
 class McuSpesialisThtBerbisik extends BaseAR
 {
@@ -58,6 +64,15 @@ class McuSpesialisThtBerbisik extends BaseAR
                 ], 'safe'
             ],
             ['no_daftar', 'unique'],
+            [
+                [
+                    'tl_test_berbisik_telinga_kanan_option',
+                    'tl_test_berbisik_telinga_kiri_option',
+                ], 'safe'
+            ],
+            ['kesan', 'required'],
+            ['no_daftar', 'unique'],
+            ['status_pemeriksaan', 'safe'],
         ];
     }
 

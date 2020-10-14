@@ -47,4 +47,39 @@ class SettingGlobal extends \yii\db\ActiveRecord
             'status' => 'Status',
         ];
     }
+
+    public function getDataSettingGlobal()
+    {
+        $dataSetting = SettingGlobal::find()
+        ->select(['setting_global.*', 'nama_kategori', 'nama_item_setting', 'kode_tes', 'nilai_normal'])
+        ->joinWith(['item' => function ($q) {
+            $q->joinWith(['kategori']);
+        }])
+        ->andWhere(['setting_global.status' => 2])
+        ->orderBy(['setting_global.id_global' => SORT_ASC])
+        ->asArray()
+        ->all();
+
+        return $dataSetting;
+    }
+
+    public function getSettingGlobalByKategori($IdKategori)
+    {
+        $dataSetting = SettingGlobal::find()
+        ->select(['setting_global.*', 'nama_kategori', 'nama_item_setting', 'kode_tes', 'nilai_normal'])
+        ->joinWith(['item' => function ($q) {
+            $q->joinWith(['kategori']);
+        }])
+        ->andWhere(['setting_global.status' => 2, 'kategori.id_kategori_setting'=>$IdKategori])
+        ->orderBy(['setting_global.id_global' => SORT_ASC])
+        ->asArray()
+        ->all();
+
+        return $dataSetting;
+    }
+
+    public function getItem()
+    {
+        return $this->hasOne(ItemSetting::className(),['id_item_setting'=>'id_item_setting'])->alias('item');
+    }
 }

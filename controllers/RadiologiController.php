@@ -3,16 +3,14 @@
 namespace app\controllers;
 
 use app\models\DataLayanan;
-use app\models\JenisPekerjaan;
-use app\models\PenunjangValidasiLab;
+use app\models\PenunjangRadiologi;
 use Yii;
 
-class UnitLabPkController extends \yii\web\Controller
+class RadiologiController extends \yii\web\Controller
 {
     public function actionIndex($NoPasien = Null)
     {
-        $dataLab = Null;
-        $dataApi = array();
+        $dataRad = Null;
         if (Yii::$app->request->isPost) {
             $p = Yii::$app->request->post();
 
@@ -22,24 +20,19 @@ class UnitLabPkController extends \yii\web\Controller
             if($dataLayanan != Null) {
                 $NoPasien = $dataLayanan['no_rekam_medik'];
                 $NoRegistrasi = $dataLayanan['no_registrasi'];
-                $dataLab = PenunjangValidasiLab::findOne(['pid'=>$NoPasien, 'apid'=> $NoRegistrasi, 'status'=>'2']);
-                if($dataLab != Null) {
-                    $dataApi = $dataLab->data_api;
-                }
+                $dataRad = PenunjangRadiologi::findOne(['No_Pasien'=>$NoPasien, 'No_Daftar'=> $NoRegistrasi, 'Kd_InstTuju'=>'3101', 'Kd_SubInstTuju' =>'3101']);
             }
 
             return $this->render('index', [
                 'dataLayanan' => $dataLayanan,
-                'dataLab' => $dataLab,
-                'dataApi' =>  $dataApi
+                'dataRad' => $dataRad
             ]);
         }
 
         $dataLayanan = new DataLayanan();
         return $this->render('index', [
             'dataLayanan' => $dataLayanan,
-            'dataLab' => $dataLab,
-            'dataApi' =>  $dataApi
+            'dataRad' => $dataRad
         ]);
     }
 

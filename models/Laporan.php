@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Salman
@@ -8,6 +9,7 @@
 
 namespace app\models;
 
+use app\models\GraddingMcu;
 use yii\base\Model;
 use yii\db\ActiveRecord;
 
