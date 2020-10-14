@@ -351,7 +351,7 @@ use yii\helpers\Url;
             <tr>
                 <td style="border-left: 1px solid #000000;"></td>
                 <td style="text-align: center;border-right: 1px solid #000000;">
-                    PEKANBARU, <?= Yii::$app->formatter->asDate(date('Y-m-d'), 'php:d F Y') ?>
+                    PEKANBARU, <?= Yii::$app->formatter->asDate($model->created_at, 'php:d F Y') ?>
                     <br>
                     DOKTER PEMERIKSA
                 </td>
