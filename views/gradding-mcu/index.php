@@ -34,15 +34,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id_gradding',
-            'id_data_pelayanan',
+            // 'id_gradding',
+            // 'id_data_pelayanan',
             'no_rekam_medik',
-            'no_registrasi',
-            'no_mcu',
+            // 'no_registrasi',
+            // 'no_mcu',
             //'kode_debitur',
             //'hasil:ntext',
             'status',
-            'is_reset',
+            // 'is_reset',
             'poin',
             [
                 'class' => 'app\components\ActionColumn',
