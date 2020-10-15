@@ -229,6 +229,8 @@ class GraddingMcu extends \yii\db\ActiveRecord
            $Kategori_Kesehatan = $global->getSettingGlobalByKategori(33);
            $resultKategoriKesehatan = $this->resultArray($Kategori_Kesehatan, $dataPemeriksaanFisik);
 
+           $resultLab = $this->resultLab($NoPasien, $NoDaftar);
+
          
         $result = [
             'gigi' => $resultGigi,
@@ -260,7 +262,8 @@ class GraddingMcu extends \yii\db\ActiveRecord
             'leher' => $resultLeher,
             'diagnosis_kerja' => $resultDiagnosisKerja,
             'diagnosis_diferensial' => $resultDiagnosisDiferensial,
-            'kategori_kesehatan' => $resultKategoriKesehatan
+            'kategori_kesehatan' => $resultKategoriKesehatan,
+            'lab' => $resultLab,
         ];
 
         return $result;
@@ -294,13 +297,76 @@ class GraddingMcu extends \yii\db\ActiveRecord
     public function resultLab($NoPasien, $NoDaftar)
     {
         $result = [];
+        $global = new SettingGlobal(); // Id Kategori Setting untuk Lab. PK = 1
+        $LabPK = $global->getSettingGlobalByKategori(1);
+
+        $data = PenunjangValidasiLab::find()->where(['pid' => $NoPasien, 'apid' =>$NoDaftar, 'status' => '2'])->one();
+
+        if($data != Null) {
+            $dataApi = Null;
+            if($data->data_api != Null) {
+                $dataApi=json_decode($data->data_api, true);
+            }
+
+            foreach ($LabPK as $dt) {
+
+                $value = $this->getDataLab($dt['kode_tes'], $dataApi);
+                $hasil = $this->labCompare($dt['kode_tes'], $dataApi);
+
+                $d = [
+                    'tampil' => $dt['tampil'],
+                    'item' => $dt['nama_item_setting'],
+                    'value' => $value,
+                    'result' => $hasil
+                ];
+                array_push($result, $d);
+            }
+
+        }
 
         return $result;
+    }
+
+    public function getDataLab($uji, $dataApi){
+		if($dataApi != Null) {
+                foreach ($dataApi['detail'] as $key => $lab){
+                    if($lab['test_cd']==$uji){
+                        // return $lab['test_nm']." : ".$lab['result_value']." ".$lab['unit'];
+                        return $lab['result_value']." ".$lab['unit'];
+                    }
+            }
+        }	
+        return Null;
+    }
+    
+    public static function labCompare($uji, $dataApi)
+    {
+        if($dataApi != Null) {
+            foreach ($dataApi['detail'] as $key => $lab) {
+                if ($lab['test_cd'] == $uji) {
+                    // return $lab['result_value']." ".$lab['unit']." Range :".$lab['ref_range']; 
+                    //$range=explode(" ", $lab['ref_range']);
+                    $range = str_replace(" ", "", $lab['ref_range']);
+                    $result = str_replace(" ", "", $lab['result_value']);
+                    // if($lab['result_value']==$lab['ref_range']){
+                    if (strtoupper($result) == strtoupper($range)) {
+                        return 0;
+                    } else {
+                        return  1;
+                            // ." ====> Range :".$lab['ref_range'].";;"
+                        ;
+                    }
+                    // return "$uji : ".$lab['result_value']." ".$lab['unit']; 
+                }
+            }
+        }
+        return Null;
     }
 
     public function hasilValue($item, $value)
     {
         $data = [
+            'kesan' => 'Normal',
             // Keadaan Normal Gigi
             'g18' => 'Normal', 'g17' => 'Normal', 'g16' => 'Normal', 'g15' => 'Normal', 'g14' => 'Normal',
             'g13' => 'Normal', 'g12' => 'Normal', 'g11' => 'Normal', 'g21' => 'Normal', 'g22' => 'Normal',
@@ -311,7 +377,7 @@ class GraddingMcu extends \yii\db\ActiveRecord
             'g47' => 'Normal', 'g48' => 'Normal', 'oklusi' => 'Normal Bite', 'torus_palatinus' => 'Tidak Ada',
             'torus_mandibularis' => 'Tidak Ada', 'palatum' => 'Tinggi', 'supernumerary_teeth' => 'Tidak Ada',
             'diastema' => 'Tidak Ada', 'spacing' => 'Tidak Ada', 'oral_hygiene' => 'Baik', 'gingiva_periodontal' => 'Normal',
-            'oral_mucosa' => 'Normal', 'tongue' => 'Normal', 'lain_lain' => '', 'kesan' => 'Normal',
+            'oral_mucosa' => 'Normal', 'tongue' => 'Normal', 'lain_lain' => '', 
 
             // Keadaan Normal Mata
             'persepsi_warna_mata_kanan' => 'Normal', 'persepsi_warna_mata_kiri' => 'Normal',
@@ -324,12 +390,12 @@ class GraddingMcu extends \yii\db\ActiveRecord
             'tekanan_bola_mata_kiri' => 'Normal', 'penglihatan_3_dimensi_mata_kanan' => 'Normal', 'penglihatan_3_dimensi_mata_kiri' => 'Normal',
             'virus_mata_dengan_koreksi_mata_kanan' => '-', 'virus_mata_dengan_koreksi_mata_kiri' => '-',
             'virus_mata_dengan_koreksi_mata_kanan' => '', 'virus_mata_dengan_koreksi_mata_kiri' => '',
-            'lain_lain' => '', 'kesan' => 'Normal',
+            'lain_lain' => '', 
 
             // Keadaan Normal THT berbisik 
             'tl_test_berbisik_telinga_kanan_option' => 'Jarak 6-5 Meter', 'tl_test_berbisik_telinga_kiri_option' => 'Jarak 6-5 Meter',
             'tl_test_berbisik_telinga_kanan' => 'Dalam Batas Normal', 'tl_test_berbisik_telinga_kiri' => 'Dalam Batas Normal',
-            'kesan' => 'Normal',
+            
 
             // Keadaaan Normal Pemeriksaan Fisik
             'tingkat_kesadaran_kesadaran' => 'Compos Mentis', 'tingkat_kesadaran_kualitas_kontak' => 'Baik',
@@ -544,10 +610,9 @@ class GraddingMcu extends \yii\db\ActiveRecord
         return $result;
     }
 
-    public function getPoinPasien($NoPasien, $NoDaftar)
+    public function getPoinPasien($hasil)
     {
         $poin = 0;
-
         return $poin;
     }
 
@@ -575,7 +640,7 @@ class GraddingMcu extends \yii\db\ActiveRecord
         if ($data != Null) {
             foreach ($data as $dt) {
                 $hasil = $this->getHasilPasien($dt['no_rekam_medik'], $dt['no_registrasi']);
-                $poin = $this->getPoinPasien($dt['no_rekam_medik'], $dt['no_registrasi']);
+                $poin = $this->getPoinPasien($hasil);
                 $d = [
                     'id_pelayanan' => $dt['id_data_pelayanan'],
                     'no_pasien' => $dt['no_rekam_medik'],
