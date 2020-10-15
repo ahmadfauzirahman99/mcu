@@ -82,4 +82,5 @@ class SettingGlobal extends \yii\db\ActiveRecord
     {
         return $this->hasOne(ItemSetting::className(),['id_item_setting'=>'id_item_setting'])->alias('item');
     }
+
 }

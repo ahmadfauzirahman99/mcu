@@ -109,6 +109,7 @@ use yii\helpers\ArrayHelper;
                 if (output.code == "200") {
 
                     toastr.success(output.msg);
+                    $('#'+id).val(output.value);
 
                 } else {
                     toastr.warning(output.msg);
