@@ -93,8 +93,6 @@ class PembedaanCpnsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-            $dataLayanan = DataLayanan::findOne(['id_data_pelayanan'=>$_POST['PembedaanCpns']['no_rekam_medik']]);
-            $model->no_rekam_medik = $dataLayanan->no_rekam_medik;
             $model->created_by = Yii::$app->user->identity->id;
             $model->tanggal=  date('Y-m-d');
             $model->save(false);

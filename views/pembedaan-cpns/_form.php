@@ -14,7 +14,8 @@ use kartik\select2\Select2;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <label for="">Nama Pasien</label>
+    <?php if ($model->isNewRecord) { ?>
+        <label for="">Nama Pasien</label>
         <?php
         echo $form->field($model, 'no_rekam_medik')->widget(Select2::classname(), [
             'data' => BaseModel::getListPasien(),
@@ -23,13 +24,11 @@ use kartik\select2\Select2;
             'pluginOptions' => [
                 'allowClear' => false
             ],
-            // 'pluginEvents' => [
-            //     "select2:select" => "function(e) { 
-            //     window.location = baseUrl + 'unit-pemeriksaan/unit-pemeriksaan?id=' + e.params.data.id
-            // }",
-            // ],
         ])->label(false);
         ?>
+    <?php } else { ?>
+        <?= $form->field($model, 'no_rekam_medik')->textInput(['readonly'=> true]) ?>
+    <?php } ?>
     <?= $form->field($model, 'pilhan_terima_jabatan')->dropDownList([
         'A' => 'Baik untuk semua jabatan',
         'B' => 'Hanya baik untuk jabatantata usaha',
@@ -43,9 +42,9 @@ use kartik\select2\Select2;
         // 'tidak dengan kelonggaran' => 'tidak dengan kelonggaran'
     ]) ?>
 
-    <?= $form->field($model, 'noted')->textarea(['maxlength' => true,'rows'=>'6']) ?>
+    <?= $form->field($model, 'noted')->textarea(['maxlength' => true, 'rows' => '6']) ?>
 
-  
+
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

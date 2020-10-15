@@ -46,119 +46,117 @@ class GraddingMcuController extends Controller
         ]);
     }
 
-     /* Form Gradding */
+    /* Form Gradding */
 
-     function actionFormGradding()
-     {
-         $req = Yii::$app->request;
-         if ($req->isAjax) {
- 
-             $model = new GraddingMcu();
- 
-             $model->kode_debitur = '0129';
- 
-             return $this->renderAjax('form-gradding', [
-                 'model'=>$model
-             ]);
- 
-         } else {
-             throw new Exception("Illegal access");
-         }
-     }
- 
-     function actionProcessGradding()
-     {
-         $req=Yii::$app->request;
-         if($req->isAjax){
- 
-             $Data = $_POST['GraddingMcu'];
- 
-             $model = new GraddingMcu();
-             $DataGradding = $model->getDataGradding($Data['kode_debitur']);
+    function actionFormGradding()
+    {
+        $req = Yii::$app->request;
+        if ($req->isAjax) {
 
-             $success = false;
-             if($DataGradding != Null) {
-                 foreach($DataGradding as $d) {
-                     $cek = $model->cekGradding($d['id_pelayanan'], $d['no_pasien'], $d['no_daftar']);
+            $model = new GraddingMcu();
 
-                     if($cek == 1) {
-                         // Jika true lakukan update
-                        if($this->updateGradding($d)) {
+            $model->kode_debitur = '0129';
+
+            return $this->renderAjax('form-gradding', [
+                'model' => $model
+            ]);
+        } else {
+            throw new Exception("Illegal access");
+        }
+    }
+
+    function actionProcessGradding()
+    {
+        $req = Yii::$app->request;
+        if ($req->isAjax) {
+
+            $Data = $_POST['GraddingMcu'];
+
+            $model = new GraddingMcu();
+            $DataGradding = $model->getDataGradding($Data['kode_debitur']);
+
+            $success = false;
+            if ($DataGradding != Null) {
+                foreach ($DataGradding as $d) {
+                    $cek = $model->cekGradding($d['id_pelayanan'], $d['no_pasien'], $d['no_daftar']);
+
+                    if ($cek == 1) {
+                        // Jika true lakukan update
+                        if ($this->updateGradding($d)) {
                             $success = true;
                         } else {
-                            $result=['status'=>'false','msg'=>'Update Data Gradding Id Pelayanan : '.$d['id_pelayanan']];
+                            $result = ['status' => 'false', 'msg' => 'Update Data Gradding Id Pelayanan : ' . $d['id_pelayanan']];
                         }
-                     } else if($cek == 0) {
-                         // Jika false lakukan insert
+                    } else if ($cek == 0) {
+                        // Jika false lakukan insert
 
-                         if($this->insertGradding($d)) {
+                        if ($this->insertGradding($d)) {
                             $success = true;
-                         } else {
-                            $result=['status'=>'false','msg'=>'Insert Data Gradding GAGAL Id Pelayanan : '.$d['id_pelayanan']];
-                         }
-                     }
-                 }
-             }
+                        } else {
+                            $result = ['status' => 'false', 'msg' => 'Insert Data Gradding GAGAL Id Pelayanan : ' . $d['id_pelayanan']];
+                        }
+                    }
+                }
+            }
 
-             if($success){
-                $result=['status'=>'true','msg'=>'Proses Gradding BERHASIL'];
+            if ($success) {
+                $result = ['status' => 'true', 'msg' => 'Proses Gradding BERHASIL'];
             }
 
             Yii::$app->response->format = Response::FORMAT_JSON;
             return $result;
-         }
-     }
+        }
+    }
 
-     public function insertGradding($d)
-     {
-        
-         $model = new GraddingMcu();
+    public function insertGradding($d)
+    {
 
-         $model->id_gradding = $model->getIdGradding();
-         $model->id_data_pelayanan = $d['id_pelayanan'];
-         $model->no_rekam_medik = $d['no_pasien'];
-         $model->no_registrasi = $d['no_daftar'];
-         $model->no_mcu = $d['no_mcu'];
-         $model->kode_debitur = $d['kode_debitur'];
-         $model->hasil = json_encode($d['hasil']);
-         $model->status = '2'; // Status 2 : Aktif, Status 1 : Tidak Aktif, Status 0 : Dihapus
-         $model->is_reset = '1'; // 1 : Dapat Diubah, 0 : Tidak Dapat Diubah
-         $model->poin = $d['poin'];
+        $model = new GraddingMcu();
 
-         if($model->save()) {
-             return true;
-         } else {
-            print_r($model->errors); 
-         }
-         return false;
-     }
+        $model->id_gradding = $model->getIdGradding();
+        $model->id_data_pelayanan = $d['id_pelayanan'];
+        $model->no_rekam_medik = $d['no_pasien'];
+        $model->no_registrasi = $d['no_daftar'];
+        $model->no_mcu = $d['no_mcu'];
+        $model->kode_debitur = $d['kode_debitur'];
+        $model->hasil = json_encode($d['hasil']);
+        $model->status = '2'; // Status 2 : Aktif, Status 1 : Tidak Aktif, Status 0 : Dihapus
+        $model->is_reset = '1'; // 1 : Dapat Diubah, 0 : Tidak Dapat Diubah
+        $model->poin = $d['poin'];
 
-     public function updateGradding($d)
-     {
-         $model = GraddingMcu::find()
-         ->andWhere(['id_data_pelayanan'=>$d['id_pelayanan'], 'no_rekam_medik'=> $d['no_pasien'], 'no_registrasi'=>$d['no_daftar']])
-         ->one();
+        if ($model->save()) {
+            return true;
+        } else {
+            print_r($model->errors);
+        }
+        return false;
+    }
 
-         $model->id_data_pelayanan = $d['id_pelayanan'];
-         $model->no_rekam_medik = $d['no_pasien'];
-         $model->no_registrasi = $d['no_daftar'];
-         $model->no_mcu = $d['no_mcu'];
-         $model->kode_debitur = $d['kode_debitur'];
-         $model->hasil = json_encode($d['hasil']);
-         $model->status = '2'; // Status 2 : Aktif, Status 1 : Tidak Aktif, Status 0 : Dihapus
-         $model->is_reset = '1'; // 1 : Dapat Diubah, 0 : Tidak Dapat Diubah
-         $model->poin = $d['poin'];
+    public function updateGradding($d)
+    {
+        $model = GraddingMcu::find()
+            ->andWhere(['id_data_pelayanan' => $d['id_pelayanan'], 'no_rekam_medik' => $d['no_pasien'], 'no_registrasi' => $d['no_daftar']])
+            ->one();
 
-         if($model->save()) {
-             return true;
-         } else {
-            print_r($model->errors); 
-         }
-         return false;
+        $model->id_data_pelayanan = $d['id_pelayanan'];
+        $model->no_rekam_medik = $d['no_pasien'];
+        $model->no_registrasi = $d['no_daftar'];
+        $model->no_mcu = $d['no_mcu'];
+        $model->kode_debitur = $d['kode_debitur'];
+        $model->hasil = json_encode($d['hasil']);
+        $model->status = '2'; // Status 2 : Aktif, Status 1 : Tidak Aktif, Status 0 : Dihapus
+        $model->is_reset = '1'; // 1 : Dapat Diubah, 0 : Tidak Dapat Diubah
+        $model->poin = $d['poin'];
 
-     }
- 
-     /* End  Form Gradding */
+        if ($model->save()) {
+            return true;
+        } else {
+            print_r($model->errors);
+        }
+        return false;
+    }
+
+    /* End  Form Gradding */
 
     /**
      * Displays a single GraddingMcu model.
@@ -246,5 +244,11 @@ class GraddingMcuController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionLiatHasilResume($id)
+    {
+        $model = GraddingMcu::findOne(['no_rekam_medik' => $id]);
+        return $this->render('view', ['model' => $model]);
     }
 }

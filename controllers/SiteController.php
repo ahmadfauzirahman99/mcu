@@ -33,7 +33,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'dokter', 'test', 'item-mcu', 'ubah-semua-pemeriksaan','perawat'],
+                        'actions' => ['logout', 'index', 'dokter', 'test', 'item-mcu', 'ubah-semua-pemeriksaan', 'perawat','dump-ke'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -98,7 +98,7 @@ class SiteController extends Controller
     public function actionDokter()
     {
         $query =
-         "select
+            "select
         tp.id_nip_nrp,
         tp.nama_lengkap,
         sr.kode as koderumpun,
@@ -127,8 +127,8 @@ class SiteController extends Controller
 
     public function actionPerawat()
     {
- $query =
-         "select
+        $query =
+            "select
         tp.id_nip_nrp,
         tp.nama_lengkap,
         sr.kode as koderumpun,
@@ -288,22 +288,22 @@ class SiteController extends Controller
             $model->status_pemeriksaan = $t;
         }
 
-        if($type == 'thtaudio'){
+        if ($type == 'thtaudio') {
             $model = McuSpesialisAudiometri::find()->where(['no_rekam_medik' => $rm])->one();
             $model->status_pemeriksaan = $t;
         }
 
-        if($type == 'thtgarputala'){
+        if ($type == 'thtgarputala') {
             $model = McuSpesialisThtGarpuTala::find()->where(['no_rekam_medik' => $rm])->one();
             $model->status_pemeriksaan = $t;
         }
 
-        if($type == 'gigi'){
+        if ($type == 'gigi') {
             $model = McuSpesialisGigi::find()->where(['no_rekam_medik' => $rm])->one();
             $model->status_pemeriksaan = $t;
         }
 
-        
+
 
 
 
@@ -325,5 +325,12 @@ class SiteController extends Controller
         // $response = new \Phalcon\Http\Response();
         // return $response->setContent(json_encode($_res));
         return $_res;
+    }
+
+    public function actionDumpKe()
+    {
+        $data = DataLayanan::find()->where(['kode_debitur' => '0129'])->andWhere(['not in', 'no_rekam_medik', ['01051168', '01051149', '01051132', '01051164']])->all();
+        var_dump($data);
+        exit();
     }
 }

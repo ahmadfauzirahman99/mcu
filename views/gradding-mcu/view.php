@@ -1,5 +1,6 @@
 <?php
 
+use app\models\MasterPemeriksaanFisik;
 use app\models\spesialis\McuSpesialisGigi;
 use app\models\spesialis\McuSpesialisMata;
 use app\models\spesialis\McuSpesialisThtBerbisik;
@@ -48,13 +49,15 @@ $this->params['breadcrumbs'][] = $this->title;
 $hasil_mcu_mata = json_decode($model->hasil);
 $hasil_mcu_gigi = json_decode($model->hasil);
 $hasil_mcu_tht_berbisik = json_decode($model->hasil);
-// echo '<pre>';
-// var_dump($hasil_mcu->mata);
+$tingkat_kesadaran = json_decode($model->hasil);
+$getahBening = json_decode($model->hasil);
+
 // $ms = $model->attributeLabels('persepsi_warna_mata_kanan');
 // print_r($ms);
 $modelMata = new McuSpesialisMata();
 $modelGigi = new McuSpesialisGigi();
 $modelThtBerbisik = new McuSpesialisThtBerbisik();
+$modelPemeriksaan = new MasterPemeriksaanFisik();
 ?>
 <h4 class="text-center">Mata Tidak Normal</h4>
 <hr>
@@ -117,6 +120,29 @@ $modelThtBerbisik = new McuSpesialisThtBerbisik();
             <tbody>
                 <tr>
                     <td width='50%'><?= $modelThtBerbisik->getAttributeLabel($items->item) ?></td>
+                    <td><?= $items->value ?></td>
+                </tr>
+            </tbody>
+        <?php } ?>
+
+    <?php } ?>
+</table>
+
+<h4 class="text-center">Pemeriksaan Fisik Tingkat Kesadaran</h4>
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <?php foreach ($tingkat_kesadaran->tingkat_kesadaran as $items) { ?>
+
+        <?php if ($items->result == 1) { ?>
+            <tbody>
+                <tr>
+                    <td width='50%'><?= $modelPemeriksaan->getAttributeLabel($items->item) ?></td>
                     <td><?= $items->value ?></td>
                 </tr>
             </tbody>
