@@ -73,6 +73,9 @@ class GraddingMcuController extends Controller
      {
          $req=Yii::$app->request;
          if($req->isAjax){
+
+            ini_set("memory_limit", "8056M");
+            ini_set('max_execution_time', 0);
  
              $Data = $_POST['GraddingMcu'];
  
