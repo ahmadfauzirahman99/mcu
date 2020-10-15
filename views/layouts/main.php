@@ -82,8 +82,8 @@ AppAsset::register($this);
                         <img src="<?= Yii::$app->request->baseUrl ?>/img/user.png" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail img-responsive">
                         <div class="user-status offline"><i class="mdi mdi-adjust"></i></div>
                     </div>
-                    <h5><a href="#"><?= Yii::$app->user->identity->nama ?></a> </h5>
-                    <h5><a class="text-capitalize" href="#"><b><i><?= Yii::$app->user->identity->roles ?></i></b></a> </h5>
+                    <h5><a href="#">Afdhal</a> </h5>
+                    <h5><a class="text-capitalize" href="#"><b><i>ksdjbgksdjg</i></b></a> </h5>
                     <ul class="list-inline">
 
 
@@ -95,7 +95,7 @@ AppAsset::register($this);
                     </ul>
                 </div>
                 <!-- End User -->
-                <?php $identitas_dokter = Helper::getRumpun()  ?>
+                <?php //$identitas_dokter = Helper::getRumpun()  ?>
 
                 <!--- Sidemenu -->
                 <div id="sidebar-menu">
@@ -134,7 +134,6 @@ AppAsset::register($this);
                                 <li><a href=" <?= Url::to(['/item-setting/index']) ?>"">Item Setting</a></li>
                                 <li><a href="<?= Url::to(['/setting-manual/index']) ?>"">Setting Manual</a></li>
                                 <li><a href=" <?= Url::to(['/setting-global/index']) ?>"">Setting Global</a></li>
-                                <li><a href="<?= Url::to(['/setting-global/index']) ?>"">Setting Global</a></li>
                                 <li><a href="<?= Url::to(['/gradding-mcu/index']) ?>"">Gradding MCU</a></li>
                             </ul>
                         </li>
@@ -187,39 +186,7 @@ AppAsset::register($this);
                     </ul>
                     <div class="clearfix"></div>
 
-                        <?php
-                        if ($identitas_dokter['kodejenis'] == 12) :
-                        ?>
-                            <?= $this->render('nav-tht') ?>
-                        <?php
-                        elseif ($identitas_dokter['kodejenis'] == 1) :
-                        ?>
-                            <?= $this->render('nav-umum') ?>
 
-                        <?php
-                        elseif ($identitas_dokter['kodejenis'] == 20) :
-                        ?>
-                            <?= $this->render('nav-okupasi') ?>
-                        <?php
-                        elseif ($identitas_dokter['kodejenis'] == 16) :
-                        ?>
-                            <?= $this->render('nav-mata') ?>
-                        <?php
-                        elseif ($identitas_dokter['kodejenis'] == 36) :
-                        ?>
-                            <?= $this->render('nav-perawat') ?>
-                        <?php
-                        elseif ($identitas_dokter['kodejenis'] == 37) :
-                        ?>
-                            <?= $this->render('nav-perawat') ?>
-                        <?php
-                        elseif ($identitas_dokter['kodejenis'] == 2) :
-                        ?>
-                            <?= $this->render('nav-gigi') ?>
-
-                        <?php else : ?>
-                            <?= $this->render('nav-root') ?>
-                        <?php endif ?>
                 </div>
             </div>
             <!-- Sidebar -->

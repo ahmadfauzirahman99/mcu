@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\Helper;
 use app\models\Anamnesis;
 use app\models\BahayaPotensial;
 use app\models\DataLayanan;
@@ -21,7 +22,11 @@ use PhpOffice\PhpSpreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use yii\helpers\Url;
 use app\models\AkunAknUser;
+use app\models\PemeriksaanFisik;
 use app\models\spesialis\McuPenatalaksanaanMcu;
+use app\models\spesialis\McuSpesialisGigi;
+use app\models\spesialis\McuSpesialisMata;
+use app\models\spesialis\McuSpesialisThtBerbisik;
 
 /**
  * SpesialisKejiwaanController implements the CRUD actions for SpesialisKejiwaan model.
@@ -106,9 +111,9 @@ class LaporanController extends Controller
     {
         $laporan = \Yii::$app->request->post();
 
-        echo '<pre>';
-        print_r($laporan);
-        die();
+        // echo '<pre>';
+        // print_r($laporan);
+        // die();
 
         if (!$laporan) {
             throw new NotFoundHttpException();
@@ -238,7 +243,123 @@ class LaporanController extends Controller
         $mode = Yii::$app->request->post('submit');
 
         if ($mode == 'excel') {
-            #masih Kosong
+                $filename = 'Data-'.Date('YmdGis').'-MCU.xls';
+                header("Content-type: application/vnd-ms-excel");
+                header("Content-Disposition: attachment; filename=".$filename);
+                echo '<table width="100%" border="1">
+                        <thead></thead>
+                        <tr>
+                            <th colspan="12"><h2 align="center">REKAPITULASI HASIL PEMERIKSAAN CPNS BENGKALIS</h2></th>
+                        </tr>
+                        <tr>
+                            <th colspan="12"><h3 align="center">TAHUN '.date('Y').' </h3></th>
+                        </tr>
+                        <tr>
+                            <th rowspan="2" align="center">NO</th>
+                            <th align="center">Nama</th>
+                            <th rowspan="2" align="center">Umur</th>
+                            <th rowspan="2" align="center">Jenis <br /> Kelamin</th>
+                            <th rowspan="2" align="center">Jabatan Pekerjaan</th>
+                            <th rowspan="2" align="center">Tanda Vital</th>
+                            <th rowspan="2" align="center">Status Gizi</th>
+                            <th rowspan="2" width="15%" align="center">Gigi</th>
+                            <th rowspan="2" align="center">Mata</th>
+                            <th rowspan="2" align="center">THT Berbisik</th>
+                            <th rowspan="2" align="center">Hasil Lab</th>
+                            <th rowspan="2" align="center">POIN</th>
+                        </tr>
+                        <tr>
+                            <th align="center">No Test</th>
+                        </tr>
+                        </thead>
+                        <tbody>';
+    
+                        $modelMata = new McuSpesialisMata();
+                        $modelGigi = new McuSpesialisGigi();
+                        $modelThtBerbisik = new McuSpesialisThtBerbisik();
+                        $modelPemeriksaanFisik = new PemeriksaanFisik();
+            
+                        $no = 1;
+                        foreach ($datamcu as $data) {
+                            $dtLayanan = Helper::getDataLayanan($data['id_data_pelayanan']);
+                            //$dtPemeriksaanFisik = Helper::getDataPemeriksaanFisik($data['no_rekam_medik']);
+                            $dtRegister = Helper::getDataRegistrasi($data['no_rekam_medik']);
+                            //return $dtPemeriksaanFisik['status_gizi_tinggi_badan'] ?? '';
+                            // var_dump($dtPemeriksaanFisik['status_gizi_tinggi_badan']);
+                            // var_dump($dtPemeriksaanFisik['status_gizi_berat_badan']);
+                            // exit;
+            
+                            $hasil =  json_decode($data['hasil']);
+            
+                            $gigi = '';
+                            foreach ($hasil->gigi as $g) {
+                                if ($g->tampil == 1 && $g->result == 1) {
+                                    $gigi .= $modelGigi->getAttributeLabel($g->item) . ' = ' . $g->value . '<br/> ';
+                                }
+                            }
+            
+                            $mata = '';
+                            foreach ($hasil->mata as $h) {
+                                if ($h->tampil == 1 && $h->result == 1) {
+                                    $mata .= $modelMata->getAttributeLabel($h->item) . ' = ' . $h->value . '<br/>';
+                                }
+                            }
+                            
+                            $tht_berbisik = '';
+                            foreach ($hasil->tht_berbisik as $i) {
+                                if ($i->tampil == 1 && $i->result == 1) {
+                                    $tht_berbisik .= $modelThtBerbisik->getAttributeLabel($i->item) . ' = ' . $i->value . '<br/>';
+                                }
+                            }
+                            
+                            $tanda_vital = '';
+                            foreach ($hasil->tanda_vital as $j) {
+                                if ($j->tampil == 1 && $j->result == 1) {
+                                    $tanda_vital .= $modelPemeriksaanFisik->getAttributeLabel($j->item) . ' = ' . $j->value . '<br/>';
+                                }
+                            }
+                            
+                            $status_gizi = '';
+                            foreach ($hasil->status_gizi as $k) {
+                                if ($k->tampil == 1 && $k->result == 1) {
+                                    $status_gizi .= $modelPemeriksaanFisik->getAttributeLabel($k->item) . ' = ' . $k->value . '<br/>';
+                                }
+                            }
+                            
+                            $tingkat_kesadaran = '';
+                            foreach ($hasil->tingkat_kesadaran as $l) {
+                                if ($l->tampil == 1 && $l->result == 1) {
+                                    $tingkat_kesadaran .= $modelPemeriksaanFisik->getAttributeLabel($l->item) . ' = ' . $l->value . '<br/>';
+                                }
+                            }
+                            
+                            $lab = '';
+                            foreach ($hasil->lab as $m) {
+                                if ($m->tampil == 1 && $m->result == 1) {
+                                    $lab .= $m->item . ' = ' . $m->value . '<br/>';
+                                }
+                            }
+                        echo '
+                            <tr>
+                            <td>'.$no.'</td>
+                            <td align="left">'.$dtLayanan['nama'] . "<br/>'" . $dtLayanan['no_ujian'].'</td>
+                            <td>'.Helper::hitung_umur($dtLayanan['tgl_lahir']).'</td>
+                            <td>'.$dtLayanan['jenis_kelamin'].'</td>
+                            <td>'.$dtRegister['u_jabatan'].'</td>
+                            <td>'.$tanda_vital.'</td>
+                            <td>'.$status_gizi.'</td>
+                            <td>'.$gigi.'</td>
+                            <td>'.$mata.'</td>
+                            <td>'.$tht_berbisik.'</td>
+                            <td>'.$lab.'</td>
+                            <td>'.$data['poin'].'</td>
+                        </tr>
+                        ';
+                        $no++;
+                    }
+                echo '</tbody>
+                </table>';
+                exit;
         }else{
             $size_orientation='LEGAL';
             $fontsize=6;

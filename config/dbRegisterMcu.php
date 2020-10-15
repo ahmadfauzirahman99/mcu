@@ -1,9 +1,15 @@
 <?php
 return [
+    // 'class' => 'yii\db\Connection',
+    // 'dsn' => 'mysql:host=localhost;dbname=registrasi_mcu',
+    // 'username' => 'root', //'admin_rekrut',
+    // 'password' => '', //'1satu2dua#',
+    // 'charset' => 'utf8',
+
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=registrasi_mcu',
+    'dsn' => 'mysql:host=192.168.254.71;dbname=registrasi_mcu',
     'username' => 'root', //'admin_rekrut',
-    'password' => '', //'1satu2dua#',
+    'password' => 'Rsud44_Rec', //'1satu2dua#',
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)

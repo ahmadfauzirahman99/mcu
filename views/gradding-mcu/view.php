@@ -37,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'no_registrasi',
             'no_mcu',
             'kode_debitur',
+            'hasil',
             'status',
             'is_reset',
             'poin',
