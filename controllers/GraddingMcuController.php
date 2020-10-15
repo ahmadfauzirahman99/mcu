@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\GraddingMcu;
+use app\models\SettingGlobal;
 use app\models\GraddingMcuSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -52,13 +53,15 @@ class GraddingMcuController extends Controller
      {
          $req = Yii::$app->request;
          if ($req->isAjax) {
- 
+             $data = new SettingGlobal();
              $model = new GraddingMcu();
  
              $model->kode_debitur = '0129';
+             $dataSetting = $data->getDataSettingGlobal();
  
              return $this->renderAjax('form-gradding', [
-                 'model'=>$model
+                 'model'=>$model,
+                 'setting' => $dataSetting
              ]);
  
          } else {
