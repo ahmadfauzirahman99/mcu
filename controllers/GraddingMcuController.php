@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\GraddingMcu;
+use app\models\SettingGlobal;
 use app\models\GraddingMcuSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -46,43 +47,46 @@ class GraddingMcuController extends Controller
         ]);
     }
 
-    /* Form Gradding */
+     /* Form Gradding */
 
-    function actionFormGradding()
-    {
-        $req = Yii::$app->request;
-        if ($req->isAjax) {
+     function actionFormGradding()
+     {
+         $req = Yii::$app->request;
+         if ($req->isAjax) {
+             $data = new SettingGlobal();
+             $model = new GraddingMcu();
+ 
+             $model->kode_debitur = '0129';
+             $dataSetting = $data->getDataSettingGlobal();
+ 
+             return $this->renderAjax('form-gradding', [
+                 'model'=>$model,
+                 'setting' => $dataSetting
+             ]);
+ 
+         } else {
+             throw new Exception("Illegal access");
+         }
+     }
+ 
+     function actionProcessGradding()
+     {
+         $req=Yii::$app->request;
+         if($req->isAjax){
+ 
+             $Data = $_POST['GraddingMcu'];
+ 
+             $model = new GraddingMcu();
+             $DataGradding = $model->getDataGradding($Data['kode_debitur']);
 
-            $model = new GraddingMcu();
+             $success = false;
+             if($DataGradding != Null) {
+                 foreach($DataGradding as $d) {
+                     $cek = $model->cekGradding($d['id_pelayanan'], $d['no_pasien'], $d['no_daftar']);
 
-            $model->kode_debitur = '0129';
-
-            return $this->renderAjax('form-gradding', [
-                'model' => $model
-            ]);
-        } else {
-            throw new Exception("Illegal access");
-        }
-    }
-
-    function actionProcessGradding()
-    {
-        $req = Yii::$app->request;
-        if ($req->isAjax) {
-
-            $Data = $_POST['GraddingMcu'];
-
-            $model = new GraddingMcu();
-            $DataGradding = $model->getDataGradding($Data['kode_debitur']);
-
-            $success = false;
-            if ($DataGradding != Null) {
-                foreach ($DataGradding as $d) {
-                    $cek = $model->cekGradding($d['id_pelayanan'], $d['no_pasien'], $d['no_daftar']);
-
-                    if ($cek == 1) {
-                        // Jika true lakukan update
-                        if ($this->updateGradding($d)) {
+                     if($cek == 1) {
+                         // Jika true lakukan update
+                        if($this->updateGradding($d)) {
                             $success = true;
                         } else {
                             $result = ['status' => 'false', 'msg' => 'Update Data Gradding Id Pelayanan : ' . $d['id_pelayanan']];

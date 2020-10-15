@@ -51,7 +51,7 @@ class SettingGlobal extends \yii\db\ActiveRecord
     public function getDataSettingGlobal()
     {
         $dataSetting = SettingGlobal::find()
-        ->select(['setting_global.*', 'nama_kategori', 'nama_item_setting', 'kode_tes', 'nilai_normal'])
+        ->select(['setting_global.*', 'item.id_kategori_setting', 'nama_kategori', 'nama_item_setting', 'kode_tes', 'nilai_normal'])
         ->joinWith(['item' => function ($q) {
             $q->joinWith(['kategori']);
         }])

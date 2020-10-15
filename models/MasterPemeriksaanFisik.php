@@ -289,10 +289,6 @@ use Yii;
 class MasterPemeriksaanFisik extends \yii\db\ActiveRecord
 {
 
-
-
-
-
     /**
      * {@inheritdoc}
      */

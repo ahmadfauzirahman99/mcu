@@ -65,6 +65,8 @@ class SettingGlobalController extends Controller
     public function actionCreate()
     {
         $model = new SettingGlobal();
+        $model->tampil = '1';
+        $model->status = '2';
 
         if ($model->load(Yii::$app->request->post())) {
 
