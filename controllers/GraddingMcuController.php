@@ -162,6 +162,44 @@ class GraddingMcuController extends Controller
 
     /* End  Form Gradding */
 
+       /* Update Checked */
+    public function actionUpdateCheck()
+    {
+        if (\Yii::$app->request->isAjax) {
+            $Value = $_POST['checkedValue'];
+            $Id = $_POST['id'];
+
+            $model = $this->findModelGlobal($Id);
+
+            if ($Value == 1) {
+                $model->tampil = '0';
+            } else if ($Value == 0) {
+                $model->tampil = '1';
+            }
+
+            if ($model->save()) {
+
+                $hasil = [
+                    "code" => "200",
+                    "value" => $model->tampil,
+                    "msg" => "Data berhasil",
+                ];
+                echo json_encode($hasil);
+                die();
+            } else {
+
+                $hasil = [
+                    "code" => "400",
+                    "msg" => "Data Gagal Disimpan",
+                ];
+                echo json_encode($hasil);
+                die();
+            }
+        } else {
+            throw new Exception("Illegal access");
+        }
+    }
+
     /**
      * Displays a single GraddingMcu model.
      * @param string $id
@@ -250,6 +288,14 @@ class GraddingMcuController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
+    public function findModelGlobal($id)
+    {
+        if (($model = SettingGlobal::findOne(['id_global' => $id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
     public function actionLiatHasilResume($id)
     {
         $model = GraddingMcu::findOne(['no_rekam_medik' => $id]);
