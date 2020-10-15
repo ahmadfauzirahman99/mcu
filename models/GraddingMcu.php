@@ -612,7 +612,22 @@ class GraddingMcu extends \yii\db\ActiveRecord
 
     public function getPoinPasien($hasil)
     {
-        $poin = 0;
+        $poin = Null;
+        if($hasil != Null) {
+            $poin = 0;
+            foreach($hasil as $d) { 
+                foreach ($d as $k=>$data) {         
+                    if($data['tampil'] == 1) {
+                        if($data['result'] == 1) {
+                            $poin = $poin + 1;
+                        }
+                    }
+                }            
+            } 
+           
+            
+        }
+
         return $poin;
     }
 
