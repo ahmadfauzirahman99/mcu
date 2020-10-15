@@ -26,26 +26,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
-                    <div style="overflow: scroll; width: 100%; height: 500px">
+                    <div style="overflow: scroll; width: 100%;">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>
-                                        <center>Nama Pemeriksaan</center>
-                                    </th>
-                                    <th>
-                                        <center>Tampil</center>
-                                    </th>
+                                    <th><center>Nama Pemeriksaan</center></th>
+                                    <th><center>Tampil</center></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
+                            <?php
                                 if (!empty($dataSetting)) {
                                     $hasil_akhir = array();
                                     $index = array();
 
-                                    foreach ($dataSetting as $i => $d) {
+                                    foreach ($dataSetting AS $i => $d) {
                                         $hasil_akhir[$d['nama_kategori']][] = $d;
                                         $index[] = $d['nama_kategori'];
                                     }
@@ -53,44 +49,44 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                     foreach ($index as $idx) {
                                         $no = 0;
-                                ?>
-                                        <tr class="bg-success text-white">
-                                            <td colspan="3"><b> Kategori : <?= $idx ?> </b></td>
-                                        </tr>
-                                        <?php
+                                    ?>
+                                    <tr class="bg-success text-white">
+                                        <td colspan="3"><b> Kategori : <?= $idx ?> </b></td>
+                                    </tr>
+                                    <?php
                                         foreach ($hasil_akhir[$idx] as $data) {
 
                                             $cek = Null;
-                                            if ($data['tampil'] == 1) {
+                                            if($data['tampil'] == 1) {
                                                 $cek = 'checked';
                                             }
-                                        ?>
-                                            <tr>
-                                                <th scope="row"><?= ++$no ?></th>
-                                                <td align="center"><?= $data['nama_item_setting'] ?></td>
-                                                <td align="center">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input id="<?= $data['id_global'] ?>" onclick="UpdateCheck(this.id)" value="<?= $data['tampil'] ?>" type="checkbox" <?= $cek ?>>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                    ?>
+                                    <tr>
+                                        <th scope="row"><?= ++$no ?></th>
+                                        <td align="center"><?= $data['nama_item_setting'] ?></td>
+                                        <td align="center">
+                                            <div class="custom-control custom-checkbox">
+                                            <input id="<?= $data['id_global'] ?>" onclick="UpdateCheck(this.id)" type="checkbox" <?= $cek ?>>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     <?php
                                         }
                                     }
                                 } else {
-                                    ?>
-                                    <tr class="bg-warning text-white">
-                                        <th scope="row" colspan="3">Tidak Ada Data Setting Global</th>
-                                    </tr>
+                                ?>
+                                <tr class="bg-warning text-white">
+                                    <th scope="row" colspan="3">Tidak Ada Data Setting Global</th>
+                                </tr>
                                 <?php
                                 }
-                                ?>
+                            ?>
                             </tbody>
                         </table>
                     </div>
 
-                    <?= Html::a('<i class="fa fa-file-excel-o"></i> Cetak Excell', ['laporan/cetak-excell'], ['data' => ['method' => 'post', 'params' => ['type' => 'LaporanPaket', 'KodeDebitur'=> '0129'],], 'class' => 'btn btn-success', 'target' => '_blank']) ?>
-                    <?= Html::a('<i class="fa fa-file-pdf-o"></i> Cetak Pdf', ['laporan/cetak-pdf'], ['data' => ['method' => 'post', 'params' => ['type' => 'lapRekapPaketPdf', 'KodeDebitur'=> '0129'],], 'class' => 'btn btn-warning', 'target' => '_blank']) ?>
+                    <?= Html::a('<i class="fa fa-file-excel-o"></i> Cetak Excell', ['laporan/cetak-excell'], ['data' => ['method' => 'post', 'params' => ['type' => 'Laporan1'],], 'class' => 'btn btn-success', 'target' => '_blank']) ?>
+                    <?= Html::a('<i class="fa fa-file-pdf-o"></i> Cetak Pdf', ['laporan/cetak-pdf'], ['data' => ['method' => 'post', 'params' => ['type' => 'Laporan1'],], 'class' => 'btn btn-warning', 'target' => '_blank']) ?>
 
                 </div>
             </div>
@@ -1307,29 +1303,7 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 <script>
     function UpdateCheck(id) {
-        var checkedValue = $('#' + id).val();
-        var id = id;
-
-        $.ajax({
-            url: '<?= Yii::$app->urlManager->createUrl('laporan/update-check') ?>',
-            data: {
-                checkedValue: checkedValue,
-                id: id
-            },
-            dataType: 'json',
-            type: 'POST',
-            success: function(output) {
-
-                if (output.code == "200") {
-
-                    toastr.success(output.msg);
-
-                } else {
-                    toastr.warning(output.msg);
-                }
-
-            }
-        });
+    alert(id);
     }
 </script>
 

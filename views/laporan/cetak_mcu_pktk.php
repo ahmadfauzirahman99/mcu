@@ -2538,7 +2538,7 @@ function tgl_indo($tanggal)
     $pemeriksaan_fisik["tulang_atas_simetris"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_atas_simetris"] . PHP_EOL : null;
     $pemeriksaan_fisik["tulang_bawah_simetris"] != "Tidak Ada" ? $resume_kelainan .= $pemeriksaan_fisik["tulang_bawah_simetris"] . PHP_EOL : null; 
                 if ($pemeriksaan_fisik["resume_kelainan"] == null || $pemeriksaan_fisik["resume_kelainan"] == ''){
-                        $pemeriksaan_fisik["resume_kelainan"] = $resume_kelainan;
+                        // $pemeriksaan_fisik["resume_kelainan"] = $resume_kelainan;
                 }?>
     <div class="col-md-12" style="margin:0px 30px 0px 30px">
         <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-collapse:collapse;text-align:left;font-size:12px">
@@ -2629,7 +2629,7 @@ function tgl_indo($tanggal)
     </div>
 </div>
 <!-- ttd -->
-<div class="row">
+<div class="row" style="">
     <div class="col-md-12" style="margin:30px 30px 0px 30px">
 
         <table width="100%" border="0" style="font-size: 12px">

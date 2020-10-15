@@ -146,7 +146,7 @@ function tgl_indo($tanggal)
         <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-collapse:collapse;text-align:left;font-size:12px">
             <tr>
                 <td style="width:100%;text-align:right;padding-right:80px;padding-top:10px">
-                    NO: <?= $data_pelayanan['no_mcu'] ?>/Peg/MCU/RSUDAA/IX/<?= $tahun ?></td>
+                    NO: <?= $data_pelayanan['no_mcu'] ?>/Peg/MCU/RSUDAA/X/<?= $tahun ?></td>
             </tr>
             <tr>
                 <td style="height:50px"></td>
@@ -251,10 +251,10 @@ function tgl_indo($tanggal)
             </tr><!-- seperated -->
 
             <tr>
-                <td width="50%" style="text-align:left">
+                <td width="30%" style="text-align:left">
                     <b> Pekerjaan </b> <br><small><i>Occupation</i></small>
                 </td>
-                <td width="50%" style="text-align:left">:
+                <td width="70%" style="text-align:left">:
                         <?= $dataUser[0]['u_jabatan'] == null ? "-" : $dataUser[0]['u_jabatan'] ?></td>
 
             </tr>
@@ -264,10 +264,10 @@ function tgl_indo($tanggal)
                 <?php if($data_pelayanan->kode_debitur == '0129') {?>
 
             <tr>
-                <td width="50%" style="text-align:left">
+                <td width="30%" style="text-align:left">
                     <b> Pada Instansi/Perusahaan </b> <br><small><i>In institution/Company Name</i></small>
                 </td>
-                <td width="50%" style="text-align:left">: <?= $dataUser[0]['u_tempat_tugas'] ?></td>
+                <td width="70%" style="text-align:left">: <?= $dataUser[0]['u_tempat_tugas'] ?></td>
             
             </tr>
             <tr>
@@ -275,18 +275,18 @@ function tgl_indo($tanggal)
             </tr><!-- seperated -->
 
             <tr>
-                <td width="50%" style="text-align:left">
+                <td width="30%" style="text-align:left">
                     <b> Untuk Penempatan Di </b> <br><small><i>For Placement At</i></small>
                 </td>
-                <td width="50%" style="text-align:left">: KABUPATEN BENGKALIS</td>
+                <td width="70%" style="text-align:left">: KABUPATEN BENGKALIS</td>
             </tr>
             <?php } else { ?>
             <tr>
-                <td width="50%" style="text-align:left">
+                <td width="30%" style="text-align:left">
                     <b> Pada Instansi/Perusahaan </b> <br><small><i>In institution/Company Name</i></small>
                 </td>
-                <td width="50%" style="text-align:left">: Kejakasaan Republik Indonesia</td>
-                <td width="50%" style="text-align:left">: Seluruh Wilayah Indonesia</td>
+                <td width="70%" style="text-align:left">: Kejakasaan Republik Indonesia</td>
+                <td width="70%" style="text-align:left">: Seluruh Wilayah Indonesia</td>
             
             </tr>
             <tr>
@@ -294,15 +294,15 @@ function tgl_indo($tanggal)
             </tr><!-- seperated -->
 
             <tr>
-                <td width="50%" style="text-align:left">
+                <td width="30%" style="text-align:left">
                     <b> Untuk Penempatan Di </b> <br><small><i>For Placement At</i></small>
                 </td>
-                <td width="50%" style="text-align:left">: Seluruh Wilayah Indonesia</td>
+                <td width="70%" style="text-align:left">: Seluruh Wilayah Indonesia</td>
             </tr>
             <?php } ?>
             
         </table>
-        <p style="font-size:12px">Sertifikat Ini tidak dapat digunakan untuk kepentingan hukum lainya <br><small><i>The
+        <p style="font-size:12px">Sertifikat ini tidak dapat digunakan untuk kepentingan hukum lainnya <br><small><i>The
                     certificate cannot be used for other legal purposes.</i></small></p>
         <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-collapse:collapse;text-align:left;font-size:12px">
             <tr>

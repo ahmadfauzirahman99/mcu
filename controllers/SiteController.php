@@ -16,6 +16,7 @@ use app\models\spesialis\McuSpesialisGigi;
 use app\models\spesialis\McuSpesialisMata;
 use app\models\spesialis\McuSpesialisThtBerbisik;
 use app\models\spesialis\McuSpesialisThtGarpuTala;
+use app\models\PembedaanCpns;
 
 class SiteController extends Controller
 {
@@ -33,7 +34,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'dokter', 'test', 'item-mcu', 'ubah-semua-pemeriksaan', 'perawat','dump-ke'],
+                        'actions' => ['logout', 'index', 'dokter', 'test', 'item-mcu', 'ubah-semua-pemeriksaan','perawat','test-dump'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -98,7 +99,7 @@ class SiteController extends Controller
     public function actionDokter()
     {
         $query =
-            "select
+         "select
         tp.id_nip_nrp,
         tp.nama_lengkap,
         sr.kode as koderumpun,
@@ -127,8 +128,8 @@ class SiteController extends Controller
 
     public function actionPerawat()
     {
-        $query =
-            "select
+ $query =
+         "select
         tp.id_nip_nrp,
         tp.nama_lengkap,
         sr.kode as koderumpun,
@@ -288,22 +289,22 @@ class SiteController extends Controller
             $model->status_pemeriksaan = $t;
         }
 
-        if ($type == 'thtaudio') {
+        if($type == 'thtaudio'){
             $model = McuSpesialisAudiometri::find()->where(['no_rekam_medik' => $rm])->one();
             $model->status_pemeriksaan = $t;
         }
 
-        if ($type == 'thtgarputala') {
+        if($type == 'thtgarputala'){
             $model = McuSpesialisThtGarpuTala::find()->where(['no_rekam_medik' => $rm])->one();
             $model->status_pemeriksaan = $t;
         }
 
-        if ($type == 'gigi') {
+        if($type == 'gigi'){
             $model = McuSpesialisGigi::find()->where(['no_rekam_medik' => $rm])->one();
             $model->status_pemeriksaan = $t;
         }
 
-
+        
 
 
 
@@ -327,10 +328,17 @@ class SiteController extends Controller
         return $_res;
     }
 
-    public function actionDumpKe()
+    public function actionTestDump()
     {
-        $data = DataLayanan::find()->where(['kode_debitur' => '0129'])->andWhere(['not in', 'no_rekam_medik', ['01051168', '01051149', '01051132', '01051164']])->all();
-        var_dump($data);
-        exit();
+        $data = DataLayanan::find()->where(['kode_debitur' =>'0129'])->andWhere(['not in','no_rekam_medik',['01051168','01051149','01051132','01051132']])->all();
+        foreach($data as $item){
+                    $model = new PembedaanCpns();
+
+            $model->no_rekam_medik = $item->no_rekam_medik;
+            $model->pilhan_terima_jabatan = "A";
+            $model->status = "tidak dengan kelonggaran";
+            $model->save();
+        }
+        // exit();
     }
 }

@@ -16,7 +16,7 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'id_item_setting')->label(false)->widget(\kartik\select2\Select2::classname(), [
                         'options'=>['id'=>'DataItemSetting'],
-                        'data' => ArrayHelper::map(\app\models\ItemSetting::getFilteredListItem(),'id_item_setting','nama_item_setting'),
+                        'data' => ArrayHelper::map(\app\models\ItemSetting::getListItem(),'id_item_setting','nama_item_setting'),
                         'pluginOptions'=>[
                             'placeholder'=>'Pilih Item Setting ....',
                             'allowClear' => true
@@ -25,7 +25,6 @@ use yii\helpers\ArrayHelper;
                     ?>
 
     <?= $form->field($model, 'tampil')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'status')->textInput(['maxlength' => true]) ?>
 
 
     <div class="form-group">

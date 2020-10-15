@@ -502,7 +502,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
                 } else {
                     return [
                         's' => false,
-                        'e' => $master_pemeriksaan_fisik->errors
+                        'e' => $fisik->errors
                     ];
                 }
             }

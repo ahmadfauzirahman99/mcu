@@ -7,7 +7,7 @@ use app\models\spesialis\McuSpesialisGigi;
 use app\models\spesialis\McuSpesialisMata;
 use app\models\SettingGlobal;
 use app\models\spesialis\McuSpesialisThtBerbisik;
-
+use app\models\DataLayanan;
 /**
  * This is the model class for table "mcu.gradding_mcu".
  *
@@ -262,5 +262,10 @@ class GraddingMcu extends \yii\db\ActiveRecord
         }
         // $data2 = $this->getHasilPasien('01051206', '2010004196');
         return $result;
+    }
+
+    public function getData()
+    {
+        return $this->hasOne(DataLayanan::className(),['no_rekam_medik'=> 'no_rekam_medik']);
     }
 }

@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use app\models\UserRegister;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\GraddingMcuSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -37,13 +38,27 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'id_gradding',
             // 'id_data_pelayanan',
             'no_rekam_medik',
+             [
+                'label'=>'Nama',
+                'value' => function($model){
+                   return $model->data->nama;
+                }
+            ],
+             [
+                'label'=>'Pekerjaan',
+                'value' => function($model)
+                {
+                    $user = UserRegister::findOne(['u_rm'=>$model->no_rekam_medik]);
+                    return $user->u_jabatan;
+                }
+            ],
             // 'no_registrasi',
             // 'no_mcu',
             //'kode_debitur',
             //'hasil:ntext',
-            'status',
+            // 'status',
             // 'is_reset',
-            'poin',
+            // 'poin',
             [
                 'class' => 'app\components\ActionColumn',
             ],

@@ -224,7 +224,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </label>
                 <label style="margin-left: 20px;">
                     <input <?= ($model->konjungtiva_mata_kanan == 'Sekret (-)') ? 'checked' : null ?> type="radio" id="mcuspesialismata_konjungtiva_mata_kanan_2" name="McuSpesialisMata[konjungtiva_mata_kanan]" value="Sekret (-)">
-                    Sekret (-)
+                    Sekret 
                 </label>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
@@ -237,7 +237,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </label>
                 <label style="margin-left: 20px;">
                     <input <?= ($model->konjungtiva_mata_kiri == 'Sekret (-)') ? 'checked' : null ?> type="radio" id="mcuspesialismata_konjungtiva_mata_kiri_2" name="McuSpesialisMata[konjungtiva_mata_kiri]" value="Sekret (-)">
-                    Sekret (-)
+                    Sekret
                 </label>
             </td>
         </tr>

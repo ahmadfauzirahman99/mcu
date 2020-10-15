@@ -55,7 +55,7 @@ use yii\helpers\Url;
     <a href="<?= Url::to(['/radiologi/index']) ?>" class="waves-effect"><i class="fa fa-list"></i> <span> Hasil Radiologi </span> </a>
 </li>
 <li>
-    <a href="<?= Url::to(['/gradding-mcu/index']) ?>" class="waves-effect"><i class="fa fa-list"></i> <span> Gradding Mcu </span> </a>
+    <a href="<?= Url::to(['/gradding-mcu/index']) ?>" class="waves-effect"><i class="fa fa-list"></i> <span>Hasil Gradding Mcu </span> </a>
 </li>
 <li>
     <a href="<?= Url::to(['/setting-global/index']) ?>" class="waves-effect"><i class="fa fa-setting"></i> <span> Setting Global </span> </a>

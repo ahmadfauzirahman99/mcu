@@ -24,6 +24,11 @@ use kartik\select2\Select2;
             'pluginOptions' => [
                 'allowClear' => false
             ],
+            // 'pluginEvents' => [
+            //     "select2:select" => "function(e) { 
+            //     window.location = baseUrl + 'unit-pemeriksaan/unit-pemeriksaan?id=' + e.params.data.id
+            // }",
+            // ],
         ])->label(false);
         ?>
     <?php } else { ?>
@@ -43,6 +48,8 @@ use kartik\select2\Select2;
     ]) ?>
 
     <?= $form->field($model, 'noted')->textarea(['maxlength' => true, 'rows' => '6']) ?>
+
+    <?= $form->field($model, 'noted_sp')->textarea(['maxlength' => true, 'rows' => '6']) ?>
 
 
 

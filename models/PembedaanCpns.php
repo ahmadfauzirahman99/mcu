@@ -14,6 +14,7 @@ use Yii;
  * @property string|null $created_by
  * @property string|null $tanggal
  * @property string|null $noted
+ * @property string|null $noted_sp
  */
 class PembedaanCpns extends \yii\db\ActiveRecord
 {
@@ -32,7 +33,7 @@ class PembedaanCpns extends \yii\db\ActiveRecord
     {
         return [
             [['created_by'], 'string'],
-            [['tanggal','noted'], 'safe'],
+            [['tanggal','noted','noted_sp'], 'safe'],
             [['pilhan_terima_jabatan'], 'string', 'max' => 200],
             [['status', 'no_rekam_medik'], 'string', 'max' => 100],
         ];
@@ -51,6 +52,7 @@ class PembedaanCpns extends \yii\db\ActiveRecord
             'noted' => 'Catatan Khusus',
             'created_by' => 'Created By',
             'tanggal' => 'Tanggal',
+            'noted_sp' => 'Catatan Istimewa'
         ];
     }
 }
