@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
     $url = \yii\helpers\Url::to(['/radiologi/get-data-pelayanan']);
     // $model->icdt10 = "";
     echo $form->field($dataLayanan, 'nama')->widget(Select2::classname(), [
-        'options' => ['placeholder' => 'Mencari Data Pelayanan ...'],
+        'options' => ['id'=>'CariDataLayanan', 'placeholder' => 'Mencari Data Pelayanan ...'],
         'pluginOptions' => [
             'allowClear' => true,
             'minimumInputLength' => 3,
@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
         // ]
     ])->label(false);
     ?>
-    <?= Html::submitButton('Cari <span class="mdi mdi-file-search"></span>', ['class' => 'btn btn-success']) ?>
+    <?= Html::submitButton('Cari <span class="mdi mdi-file-search"></span>', ['class' => 'btn btn-success', 'id' => 'SearchButton', 'hidden' =>true]) ?>
 
     <?php ActiveForm::end(); ?>
 
@@ -103,7 +103,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $this->render('data-layanan', ['model' => $dataLayanan]) ?>
             </div>
             <div class="tab-pane p-t-10 fade" id="profile-tab-2">
-                <?= $this->render('hasil-rad.php', ['dataRad'=>$dataRad]) ?>
+                <?= $this->render('hasil-rad.php', []) ?>
             </div>
             <ul class="list-inline mb-0 wizard">
                 <li class="previous list-inline-item first" style="display:none;"><a href="#">First</a>
@@ -115,3 +115,17 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
+
+
+<?php
+$script = <<< JS
+    $(function()
+    {
+        $("#CariDataLayanan").on('change',function(){
+            document.getElementById("SearchButton").click();
+        });
+        
+    });
+JS;
+$this->registerJs($script);
+?>

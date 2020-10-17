@@ -122,6 +122,7 @@ AppAsset::register($this);
                                 <li><a href="<?= Url::to(['/setting-manual/index']) ?>"">Setting Manual</a></li>
                                 <li><a href="<?= Url::to(['/setting-global/index']) ?>"">Setting Global</a></li>
                                 <li><a href="<?= Url::to(['/gradding-mcu/index']) ?>"">Gradding MCU</a></li>
+                                <li><a href="<?= Url::to(['/mcu-hasil-radiologi/index']) ?>"">Hasil Radiologi</a></li>
                             </ul>
                         </li>
 

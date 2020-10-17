@@ -230,6 +230,7 @@ class GraddingMcu extends \yii\db\ActiveRecord
            $resultKategoriKesehatan = $this->resultArray($Kategori_Kesehatan, $dataPemeriksaanFisik);
 
            $resultLab = $this->resultLab($NoPasien, $NoDaftar);
+           $resultRadiologi = $this->resultRadiologi($NoPasien, $NoDaftar);
 
          
         $result = [
@@ -264,6 +265,7 @@ class GraddingMcu extends \yii\db\ActiveRecord
             'diagnosis_diferensial' => $resultDiagnosisDiferensial,
             'kategori_kesehatan' => $resultKategoriKesehatan,
             'lab' => $resultLab,
+            'radiologi'=> $resultRadiologi
         ];
 
         return $result;
@@ -289,6 +291,33 @@ class GraddingMcu extends \yii\db\ActiveRecord
                     array_push($result, $d);
                 }
             }
+        }
+
+        return $result;
+    }
+
+    public function resultRadiologi($NoPasien, $NoDaftar)
+    {
+        $result = [];
+
+        $global = new SettingGlobal(); // Id Kategori Setting untuk Radiologi = 36
+        $Radiologi = $global->getSettingGlobalByKategori(36);
+
+        $data = McuHasilRadiologi::find()->where(['no_rekam_medik' => $NoPasien, 'no_registrasi' =>$NoDaftar, 'status' => '2'])->one();
+
+        if($data != Null) {
+
+            foreach ($Radiologi as $dt) {
+
+                $d = [
+                    'tampil' => $dt['tampil'],
+                    'item' => $dt['nama_item_setting'],
+                    'value' => $data->hasil,
+                    'result' => $data->result_pemeriksaan
+                ];
+                array_push($result, $d);
+            }
+
         }
 
         return $result;

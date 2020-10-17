@@ -164,21 +164,12 @@ class AkunAknUser extends \yii\db\ActiveRecord
         $this->status = $status;
     }
 
-
-    /**
-     * @return \yii\db\Connection the database connection used by this AR class.
-     */
-    public static function getDb()
-    {
-        return Yii::$app->get('dbSso');
-    }
-
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'akun.akn_user';
+        return 'sso.akn_user';
     }
 
     /**

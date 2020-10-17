@@ -24,6 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+    
+    <button type="button" class="btn ink-reaction btn-info"
+        data-toggle="tooltip" onclick="FormInputAllRadiologi()" data-placement="bottom" data-original-title="InputAllRadiologi" style="cursor: pointer">
+        <i class="fa fa-plus-square"></i> Form Input Radiologi
+    </button>
 
     <?php Pjax::begin(['enablePushState' => false]); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -61,6 +66,21 @@ $this->params['breadcrumbs'][] = $this->title;
 function FormGradding() {
     $.ajax({
             url: '<?= Yii::$app->urlManager->createUrl('gradding-mcu/form-gradding') ?>',
+            // data: {NoPasien: NoPasien, NoRegistrasi: NoRegistrasi, NamaPasien: NamaPasien},
+            // dataType: 'json',
+            type: 'POST',
+            success: function (output) {
+
+                $('#mymodal').html(output);
+                $('#mymodal').modal({backdrop: 'static', keyboard: false});
+
+            }
+        });
+}
+
+function FormInputAllRadiologi() {
+    $.ajax({
+            url: '<?= Yii::$app->urlManager->createUrl('radiologi/form-input-all') ?>',
             // data: {NoPasien: NoPasien, NoRegistrasi: NoRegistrasi, NamaPasien: NamaPasien},
             // dataType: 'json',
             type: 'POST',

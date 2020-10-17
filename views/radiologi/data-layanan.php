@@ -13,11 +13,14 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <?= $form->field($model, 'no_rekam_medik')->textInput(['id'=> 'DataNoPasien', 'maxlength' => true, 'readonly'=>true]) ?>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <?= $form->field($model, 'no_registrasi')->textInput(['id'=> 'DataNoRegistrasi', 'maxlength' => true, 'readonly'=>true]) ?>
+        </div>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'id_data_pelayanan')->textInput(['id'=> 'DataIdLayanan', 'maxlength' => true, 'readonly'=>true]) ?>
         </div>
         <div class="col-lg-4">
             <?= $form->field($model, 'nama')->textInput(['id'=>'DataNamaPasien', 'maxlength' => true]) ?>
