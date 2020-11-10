@@ -68,6 +68,11 @@ class ItemSetting extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getKategori()
+    {
+        return $this->hasOne(KategoriSetting::className(),['id_kategori_setting'=>'id_kategori_setting'])->alias('kategori');
+    }
+
     public static function getListItem()
     {
         return self::find()

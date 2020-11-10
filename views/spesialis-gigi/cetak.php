@@ -499,15 +499,13 @@ use yii\helpers\Url;
             <tr>
                 <td style="width: 60%;border-left: 1px solid #000000;"></td>
                 <td style="border-right: 1px solid #000000;">
-                    <br><br><br><br><br><br><br>
-                    <!-- PEKANBARU, <?= Yii::$app->formatter->asDate(date('Y-m-d'), 'php:d F Y') ?> -->
+                    <br><br><br>
+                    PEKANBARU, <?= Yii::$app->formatter->asDate($model->created_at, 'php:d F Y') ?>
                 </td>
             </tr>
             <tr>
                 <td style="border-left: 1px solid #000000;"></td>
                 <td style="text-align: center;border-right: 1px solid #000000;">
-                    PEKANBARU, <?= Yii::$app->formatter->asDate($model->created_at, 'php:d F Y') ?>
-                    <br>
                     DOKTER PEMERIKSA
                 </td>
             </tr>
@@ -516,10 +514,10 @@ use yii\helpers\Url;
                 <td class="col-2" style="text-align: center;border-right: 1px solid #000000;">
                     <br><br><br><br>
                     <b>
-                        <?= $model->createdByTeks->pegawai->nama ?>
+                        <?= $model->updatedByTeks->pegawai->nama ?>
                     </b>
                     <br>
-                    <?= $model->createdByTeks->pegawai->no ?>
+                    <?= $model->updatedByTeks->pegawai->no ?>
                 </td>
             </tr>
         </tbody>

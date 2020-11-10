@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use app\assets\FormWizard;
+use app\models\spesialis\BaseModel;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\web\JsExpression;
@@ -25,27 +26,21 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php $form = ActiveForm::begin(); ?>
     <label for="">No.Rekam Medik / Nama</label>
     <?php
-    $url = \yii\helpers\Url::to(['/unit-pemeriksaan/get-data-pelayanan']);
-    // $model->icdt10 = "";
-    echo $form->field($dataLayanan, 'nama')->widget(Select2::classname(), [
-        'options' => ['placeholder' => 'Mencari Data Pelayanan ...'],
-        'pluginOptions' => [
-            'allowClear' => true,
-            'minimumInputLength' => 3,
-            'language' => [
-                'errorLoading' => new JsExpression("function () { return 'Menunggu hasil cari bro...'; }"),
-            ],
-            'ajax' => [
-                'url' => $url,
-                'dataType' => 'json',
-                'data' => new JsExpression('function(params) { return {q:params.term}; }')
-            ],
-            'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
-            'templateResult' => new JsExpression('function(data) { return data.text; }'),
-            'templateSelection' => new JsExpression('function (data) { return data.text; }'),
-        ],
 
-    ])->label(false);
+
+    echo $form->field($dataLayanan, 'nama')->widget(Select2::classname(), [
+        'data' => BaseModel::getListPasien(),
+        'theme' => 'bootstrap',
+        'options' => ['placeholder' => 'Cari Pasien ...'],
+        'pluginOptions' => [
+            'allowClear' => false
+        ],
+        'pluginEvents' => [
+            "select2:select" => "function(e) { 
+                window.location = baseUrl + 'unit-pemeriksaan/pemeriksaan-fisik?id=' + e.params.data.id
+            }",
+        ],
+    ]);
     ?>
     <?= Html::submitButton('Cari <span class="mdi mdi-file-search"></span>', ['class' => 'btn btn-success']) ?>
 
@@ -91,9 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
             <div class="tab-pane p-t-10 fade" id="account-2">
-                <?= $this->render('data-layanan', ['model' => $dataLayanan,
-
-                    ]) ?>
+                <?= $this->render('data-layanan', ['model' => $dataLayanan,]) ?>
             </div>
             <div class="tab-pane p-t-10 fade" id="profile-tab-2">
                 <?= $this->render('anamnesis.php', ['model' => $anamnesis, 'dataLayanan' => $dataLayanan]) ?>
@@ -137,8 +130,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <li class="previous list-inline-item"><a href="#" class="btn btn-primary waves-effect waves-light">Previous</a>
                 </li>
                 <li class="next last list-inline-item" style="display:none;"><a href="#">Last</a></li>
-                <li class="next list-inline-item float-right"><a href="#"
-                                                                 class="btn btn-primary waves-effect waves-light">Next</a>
+                <li class="next list-inline-item float-right"><a href="#" class="btn btn-primary waves-effect waves-light">Next</a>
                 </li>
             </ul>
         </div>

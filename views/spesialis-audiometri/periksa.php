@@ -547,9 +547,6 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
 
     <?php ActiveForm::end(); ?>
-
-    <hr>
-
     <?php
     $displayPenata = 'none';
     if ($model->kesan == 'Tidak Normal')

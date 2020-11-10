@@ -75,6 +75,8 @@ class SpesialisKejiwaan extends \yii\db\ActiveRecord
             [['interpretasi_subtantif'], 'string', 'max' => 500],
             [['kesimpulan'], 'string', 'max' => 200],
             [['cari_pasien'], 'safe'],
+
+            ['no_daftar', 'unique'],
         ];
     }
 

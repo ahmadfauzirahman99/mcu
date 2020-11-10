@@ -1,16 +1,24 @@
 <?php
 
+use app\components\Helper;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Anamnesis */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $form yii\bootstrap4\ActiveForm */
+
+$this->title = "MCU RSAA"
 ?>
+<?php $identitas_dokter = Helper::getRumpun()  ?>
+<?php \yii\widgets\Pjax::begin(['id' => 'id-' . $model->formName()]); ?>
 
 <div class="anamnesis-form">
+    <h3 class="text-center">Anamnesis</h3>
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id' => $model->formName(), 'action' => 'save-anamnesis']); ?>
+    <?= $form->field($model, 'nomor_rekam_medik')->hiddenInput(['maxlength' => true, 'value' => $dataLayanan->no_rekam_medik, 'readonly' => true])->label(false) ?>
 
     <div class="form-group">
         <p>Dilakukan Secara Allananmnesi / Autoananmnesis Dengan</p>
@@ -60,11 +68,13 @@ use yii\widgets\ActiveForm;
             </div>
         </div>
     <?php endif ?>
+    <?php if ($identitas_dokter['kodejenis'] == 20 ||$identitas_dokter['kodejenis'] == 1 || $identitas_dokter['kodejenis'] == 36 || $identitas_dokter['kodejenis'] == 37) { ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
-
+        <div class="form-group">
+            <?= Html::submitButton('Save Anamnesis', ['class' => 'btn btn-success btn-block']) ?>
+        </div>
+    <?php } ?>
     <?php ActiveForm::end(); ?>
     <hr>
 </div>
+<?php Pjax::end(); ?>

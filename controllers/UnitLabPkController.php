@@ -12,7 +12,7 @@ class UnitLabPkController extends \yii\web\Controller
     public function actionIndex($NoPasien = Null)
     {
         $dataLab = Null;
-        $dataApi = Null;
+        $dataApi = array();
         if (Yii::$app->request->isPost) {
             $p = Yii::$app->request->post();
 
@@ -23,8 +23,15 @@ class UnitLabPkController extends \yii\web\Controller
                 $NoPasien = $dataLayanan['no_rekam_medik'];
                 $NoRegistrasi = $dataLayanan['no_registrasi'];
                 $dataLab = PenunjangValidasiLab::findOne(['pid'=>$NoPasien, 'apid'=> $NoRegistrasi, 'status'=>'2']);
-                $dataApi = $dataLab->data_api;
+                  //  var_dump($dataLab);
+                  // exit();
+                  if($dataLab != null){
+                     $dataApi = $dataLab->data_api;
+                  }
+
+
             }
+
 
             return $this->render('index', [
                 'dataLayanan' => $dataLayanan,

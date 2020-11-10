@@ -736,6 +736,10 @@ $dataG = [
     ?>
 
     <?php ActiveForm::end(); ?>
+    <br>
+    
+
+    <hr>
 
     <hr>
 
