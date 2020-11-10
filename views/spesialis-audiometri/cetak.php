@@ -56,6 +56,10 @@ use yii\helpers\Url;
         border: 1px solid #000000;
     }
 
+    .tbl-hasil td.kotakin {
+        border: 1px solid #000000;
+    }
+
     tr.tr-tengah td {
         height: 18;
     }
@@ -455,13 +459,160 @@ use yii\helpers\Url;
             </td>
             <td class="" style="border-right: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000;" colspan="8"></td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td class="kotakin" style="background-color: #ccced0; text-align: left;" colspan="23"><b>Hasil</b></td>
         </tr>
         <tr>
             <td class="kotakin" style="background-color: #e8ecef; text-align: left;" colspan="13"><b>Right/Kanan</b></td>
             <td class="kotakin" style="background-color: #e8ecef; text-align: left;" colspan="10"><b>Left/Kiri</b></td>
+        </tr> -->
+        <!-- <tr>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">125</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">250</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">500</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;" >1000</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">2000</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">3000</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">4000</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">6000</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;" >8000</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">125</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">250</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">500</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">1000</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">2000</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">3000</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">4000</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">6000</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;" colspan="2">8000</td>
         </tr>
+        <tr>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">AC</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;" ></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;" colspan="2"></td>
+        </tr>
+        <tr>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">BC</td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;" ></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;" colspan="2"></td>
+        </tr> -->
+
+    </table>
+    <table class="tbl-hasil" style="width: 100%;">
+        <tbody>
+            <tr>
+                <td class="kotakin" style="background-color: #ccced0; text-align: left;" colspan="19"><b>Hasil</b></td>
+            </tr>
+            <tr>
+                <td class="kotakin" style="background-color: #e8ecef; text-align: left;" colspan="10"><b>Right/Kanan</b></td>
+                <td class="kotakin" style="background-color: #e8ecef; text-align: left;" colspan="9"><b>Left/Kiri</b></td>
+            </tr>
+            <tr>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">125</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">250</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">500</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">1000</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">2000</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">3000</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">4000</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">6000</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">8000</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">125</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">250</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">500</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">1000</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">2000</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">3000</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">4000</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">6000</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">8000</td>
+            </tr>
+            <tr>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">AC</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            </tr>
+            <tr>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">BC</td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+            </tr>
+        </tbody>
     </table>
 
     <table class="tbl-ttd" style="width: 100%;">
