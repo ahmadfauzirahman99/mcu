@@ -13,7 +13,7 @@ use yii\helpers\Url;
 
     table {
         border-collapse: collapse;
-        font-size: 12px;
+        /* font-size: 12px; */
     }
 
     table td {
@@ -134,7 +134,7 @@ use yii\helpers\Url;
         </tbody>
     </table>
 
-    <div style="margin-top: 1rem; margin-bottom: 2rem; font-size: x-small;">
+    <div style="margin-top: 1rem; margin-bottom: 2rem; font-size: small;">
         <b>PERMINTAAN</b> : <?= $model->permintaan ?>
     </div>
 
@@ -194,12 +194,44 @@ use yii\helpers\Url;
         <tr>
             <td class="td-tebal">Tingkat Kesegaran Jasmani</td>
             <td>:</td>
-            <td><?= $model->tingkat_kesegaran_jasmani ?></td>
+            <td style="font-style: italic;">
+                <?php
+                echo ($model->tingkat_kesegaran_jasmani == 'Low') ? $model->tingkat_kesegaran_jasmani : '<span style="text-decoration: line-through;"> Low </span>';
+                echo ' / ';
+                echo ($model->tingkat_kesegaran_jasmani == 'Fair') ? $model->tingkat_kesegaran_jasmani : '<span style="text-decoration: line-through;"> Fair </span>';
+                echo ' / ';
+                echo ($model->tingkat_kesegaran_jasmani == 'Average') ? $model->tingkat_kesegaran_jasmani : '<span style="text-decoration: line-through;"> Average </span>';
+                echo ' / ';
+                echo ($model->tingkat_kesegaran_jasmani == 'Good') ? $model->tingkat_kesegaran_jasmani : '<span style="text-decoration: line-through;"> Good </span>';
+                echo ' / ';
+                echo ($model->tingkat_kesegaran_jasmani == 'High') ? $model->tingkat_kesegaran_jasmani : '<span style="text-decoration: line-through;"> High </span>';
+                if ($model->tingkat_kesegaran_jasmani != 'Low' && $model->tingkat_kesegaran_jasmani != 'Fair' && $model->tingkat_kesegaran_jasmani != 'Average' && $model->tingkat_kesegaran_jasmani != 'Good' && $model->tingkat_kesegaran_jasmani != 'High') {
+                    echo ' / ';
+                    echo $model->tingkat_kesegaran_jasmani;
+                }
+                ?>
+            </td>
         </tr>
         <tr>
             <td class="td-tebal">Kelas Fungsional</td>
             <td>:</td>
-            <td><?= $model->kelas_fungsional ?></td>
+            <td>
+                <?php
+                echo ($model->kelas_fungsional == 'III') ? $model->kelas_fungsional : '<span style="text-decoration: line-through;"> III </span>';
+                echo '&nbsp; / &nbsp;';
+                echo ($model->kelas_fungsional == 'II - III') ? $model->kelas_fungsional : '<span style="text-decoration: line-through;"> II - III </span>';
+                echo '&nbsp; / &nbsp;';
+                echo ($model->kelas_fungsional == 'II') ? $model->kelas_fungsional : '<span style="text-decoration: line-through;"> II </span>';
+                echo '&nbsp; / &nbsp;';
+                echo ($model->kelas_fungsional == 'I - II') ? $model->kelas_fungsional : '<span style="text-decoration: line-through;"> I - II </span>';
+                echo '&nbsp; / &nbsp;';
+                echo ($model->kelas_fungsional == 'NI') ? $model->kelas_fungsional : '<span style="text-decoration: line-through;"> NI </span>';
+                if ($model->kelas_fungsional != 'Low' && $model->kelas_fungsional != 'II - III' && $model->kelas_fungsional != 'II' && $model->kelas_fungsional != 'I - II' && $model->kelas_fungsional != 'NI') {
+                    echo '&nbsp; / &nbsp;';
+                    echo $model->kelas_fungsional;
+                }
+                ?>
+            </td>
         </tr>
         <tr>
             <td class="td-tebal">Kapasitas Aerobik</td>
@@ -207,9 +239,18 @@ use yii\helpers\Url;
             <td><?= $model->kapasitas_aerobik ?></td>
         </tr>
         <tr>
-            <td class="td-tebal">Respon Hemodinamik</td>
-            <td>:</td>
-            <td><?= $model->respon_hemodinamik ?></td>
+            <td style="vertical-align: top;" class="td-tebal">Respon Hemodinamik</td>
+            <td style="vertical-align: top;">:</td>
+            <td style="vertical-align: top;">
+                <?php
+                echo ($model->respon_hemodinamik == 'Normal') ? '- ' . $model->respon_hemodinamik . '<br>' : '<span style="text-decoration: line-through;"> - Normal<br> </span>';
+                echo ($model->respon_hemodinamik == 'Hipotensif') ? '- ' . $model->respon_hemodinamik . '<br>' : '<span style="text-decoration: line-through;"> - Hipotensif<br> </span>';
+                echo ($model->respon_hemodinamik == 'Hipertensif') ? '- ' . $model->respon_hemodinamik . '<br>' : '<span style="text-decoration: line-through;"> - Hipertensif<br> </span>';
+                if ($model->respon_hemodinamik != 'Normal' && $model->respon_hemodinamik != 'Hipotensif' && $model->respon_hemodinamik != 'Hipertensif') {
+                    echo $model->respon_hemodinamik;
+                }
+                ?>
+            </td>
         </tr>
         <tr>
             <td colspan="3">
@@ -225,9 +266,22 @@ use yii\helpers\Url;
             <td><?= $model->respon_iskemik ?></td>
         </tr>
         <tr>
-            <td class="td-tebal">Anjuran</td>
-            <td>:</td>
-            <td><?= $model->anjuran ?></td>
+            <td style="vertical-align: top;" class="td-tebal">Anjuran</td>
+            <td style="vertical-align: top;">:</td>
+            <td style="vertical-align: top;">
+                <?php
+                echo ($model->anjuran == 'Jalan') ? $model->anjuran : '<span style="text-decoration: line-through;"> Jalan </span>';
+                echo ' / ';
+                echo ($model->anjuran == 'Jogging') ? $model->anjuran : '<span style="text-decoration: line-through;"> Jogging </span>';
+                echo ' / ';
+                echo ($model->anjuran == 'Sepeda') ? $model->anjuran : '<span style="text-decoration: line-through;"> Sepeda </span>';
+                if ($model->anjuran != 'Jalan' && $model->anjuran != 'Jogging' && $model->anjuran != 'Sepeda') {
+                    echo ' / Lainnya';
+                    echo '<br>';
+                    echo $model->anjuran;
+                }
+                ?>
+            </td>
         </tr>
     </table>
 
