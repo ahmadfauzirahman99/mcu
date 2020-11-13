@@ -34,8 +34,8 @@ $config = [
             'class' => 'app\models\User',
             'identityClass' => 'app\models\Identitas',
             'enableAutoLogin' => true,
-            'loginUrl' => '@.sso/masuk?b=http://mcu.simrs.deku',
-            'identityCookie' => ['name' => '_identity-id', 'httpOnly' => true, 'domain' => 'simrs.deku'],
+            'loginUrl' => '@.sso/masuk?b=http://mcu.rsud-arifin.localhost',
+            'identityCookie' => ['name' => '_identity-id', 'httpOnly' => true, 'domain' => 'rsud-arifin.localhost'],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
