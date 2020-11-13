@@ -50,6 +50,8 @@ class McuSpesialisEkg extends \app\models\spesialis\BaseAR
             [['created_by', 'updated_by'], 'default', 'value' => null],
             [['created_by', 'updated_by'], 'integer'],
             [['no_rekam_medik'], 'string', 'max' => 120],
+
+            [['lain_lain', 'kesan_ekg_istirahat', 'anjuran'], 'default', 'value' => '-'],
         ];
     }
 
