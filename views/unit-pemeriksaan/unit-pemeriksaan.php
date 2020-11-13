@@ -8,6 +8,7 @@ use yii\helpers\Url;
 use app\assets\ItemFisikAsset;
 
 ItemFisikAsset::register($this);
+/* @var $dataLayanan app\models\ */
 
 ?>
 

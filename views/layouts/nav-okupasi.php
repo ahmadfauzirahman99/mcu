@@ -19,6 +19,12 @@ use yii\helpers\Url;
 <li>
     <a href="<?= Url::to(['/spesialis-mata/periksa']) ?>" class="waves-effect"><i class="fas fa-eye"></i> <span> Mata </span> </a>
 </li>
+<li>
+    <a href="<?= Url::to(['/pemeriksaan-treadmill/periksa']) ?>" class="waves-effect"><i class="fas fa-running"></i> <span> Pemeriksaan Treadmill </span> </a>
+</li>
+<li>
+    <a href="<?= Url::to(['/pemeriksaan-ekg/periksa']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Pemeriksaan EKG </span> </a>
+</li>
 
 <li class="has_sub">
     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> THT </span> <span class="menu-arrow"></span></a>
