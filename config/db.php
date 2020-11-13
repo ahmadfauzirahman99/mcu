@@ -9,7 +9,7 @@ return [
     'class' => 'yii\db\Connection',
     'dsn' => 'pgsql:host=localhost;port=5432;dbname=simrs',
     'username' => 'postgres',
-    'password' => 'kelasXITI2',
+    'password' => '',
     'charset' => 'utf8',
     // Schema cache options (for production environment)
     //'enableSchemaCache' => true,
