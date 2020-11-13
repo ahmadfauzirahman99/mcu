@@ -63,14 +63,9 @@ class McuSpesialisTreadmill extends BaseAR
      */
     public function attributeLabels()
     {
-        return [
+        return array_merge(parent::attributeLabels(), [
             'id_spesialis_treadmill' => 'Id Spesialis Treadmill',
             'no_rekam_medik' => 'No Rekam Medik',
-            'no_daftar' => 'No Daftar',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'created_by' => 'Created By',
-            'updated_by' => 'Updated By',
             'permintaan' => 'Permintaan',
             'metode' => 'Metode',
             'lama_latihan' => 'Lama Latihan',
@@ -89,7 +84,7 @@ class McuSpesialisTreadmill extends BaseAR
             'riwayat' => 'Riwayat',
             'kesan' => 'Kesan',
             'status_pemeriksaan' => 'Status Pemeriksaan',
-        ];
+        ]);
     }
 
     /**
