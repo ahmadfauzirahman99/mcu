@@ -171,12 +171,16 @@ class SpesialisPsikologiRsudController extends Controller
         if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-            $model->simptom = array_merge(array_merge($model->simptom1, $model->simptom2, $model->simptom3));
-
+            $model->simptom1 = $model->simptom1 == '' ? [] : $model->simptom1;
+            $model->simptom2 = $model->simptom2 == '' ? [] : $model->simptom2;
+            $model->simptom3 = $model->simptom3 == '' ? [] : $model->simptom3;
             // echo "<pre>";
+            // var_dump($model->simptom2);
             // print_r($model);
             // echo "</pre>";
             // die;
+            $model->simptom = array_merge(array_merge($model->simptom1, $model->simptom2), $model->simptom3);
+
             
             if ($model->save()) {
                 return [
