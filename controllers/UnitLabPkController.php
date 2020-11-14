@@ -11,6 +11,7 @@ class UnitLabPkController extends \yii\web\Controller
 {
     public function actionIndex($NoPasien = Null)
     {
+        
         $dataLab = Null;
         $dataApi = array();
         if (Yii::$app->request->isPost) {

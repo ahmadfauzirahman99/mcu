@@ -20,11 +20,15 @@ use yii\helpers\Url;
     <a href="<?= Url::to(['/spesialis-mata/periksa']) ?>" class="waves-effect"><i class="fas fa-eye"></i> <span> Mata </span> </a>
 </li>
 <li>
+    <a href="<?= Url::to(['/spesialis-tht/periksa']) ?>" class="waves-effect"><i class="fas fa-assistive-listening-systems"></i> <span> Spesialis THT </span> </a>
+</li>
+<li>
     <a href="<?= Url::to(['/spesialis-treadmill/create']) ?>" class="waves-effect"><i class="fas fa-running"></i> <span> Pemeriksaan Treadmill </span> </a>
 </li>
-<li style="display: none;">
-    <a href="<?= Url::to(['/pemeriksaan-ekg/periksa']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Pemeriksaan EKG </span> </a>
+<li>
+    <a href="<?= Url::to(['/spesialis-ekg/periksa']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Pemeriksaan EKG </span> </a>
 </li>
+
 
 <li class="has_sub">
     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> THT </span> <span class="menu-arrow"></span></a>
@@ -64,7 +68,7 @@ use yii\helpers\Url;
     <a href="<?= Url::to(['/gradding-mcu/index']) ?>" class="waves-effect"><i class="fa fa-list"></i> <span>Hasil Gradding Mcu </span> </a>
 </li>
 <li>
-    <a href="<?= Url::to(['/setting-global/index']) ?>" class="waves-effect"><i class="fa fa-setting"></i> <span> Setting Global </span> </a>
+    <a href="<?= Url::to(['/setting-global/index']) ?>" class="waves-effect"><i class="mdi mdi-texture"></i> <span> Setting Global </span> </a>
 </li>
 <li class="text-muted menu-title">Form Majelis</li>
 <li>
