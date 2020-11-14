@@ -1,0 +1,51 @@
+-- mcu.spesialis_psikologi definition
+
+-- Drop table
+
+-- DROP TABLE mcu.spesialis_psikologi;
+
+CREATE TABLE mcu.spesialis_psikologi (
+	id_spesialis_psikologi serial NOT NULL,
+	no_rekam_medik varchar(120) NOT NULL,
+	no_daftar varchar NULL,
+	created_at timestamp NULL,
+	updated_at timestamp NULL,
+	created_by int4 NULL,
+	updated_by int4 NULL,
+	pendidikan varchar NULL,
+	alamat varchar NULL,
+	jenis_kelamin varchar NULL,
+	urutan_kelahiran varchar NULL,
+	agama varchar NULL,
+	status varchar NULL,
+	pekerjaan varchar NULL,
+	tgl_pemeriksaan date NULL,
+	diagnosa_dokter varchar NULL,
+	keluhan_fisik text NULL,
+	keluhan_psikologis text NULL,
+	penampilan_umum varchar NULL,
+	sikap_terhadap_pemeriksa varchar NULL,
+	afek varchar NULL,
+	roman_muka varchar NULL,
+	proses_pikir varchar NULL,
+	gangguan_persepsi varchar NULL,
+	kognitif_memori varchar NULL,
+	kognitif_konsentrasi varchar NULL,
+	kognitif_orientasi varchar NULL,
+	kognitif_kemampuan_verbal varchar NULL,
+	emosi varchar NULL,
+	perilaku varchar NULL,
+	simptom _varchar NULL,
+	pendukung_1 varchar NULL,
+	pendukung_2 varchar NULL,
+	pendukung_3 varchar NULL,
+	pendukung_4 varchar NULL,
+	pendukung_5 varchar NULL,
+	pendukung_hasil_tes text NULL,
+	dinamika_psikologi text NULL,
+	kesimpulan text NULL,
+	riwayat text NULL,
+	kesan text NULL,
+	status_pemeriksaan text NULL,
+	CONSTRAINT spesialis_psikologi_pkey PRIMARY KEY (id_spesialis_psikologi)
+);
