@@ -201,4 +201,60 @@ class SpesialisEkgController extends Controller
             'pasien' => $pasien,
         ]);
     }
+
+    public function actionSimpanPenata($id = null)
+    {
+        $model = new McuPenatalaksanaanMcu();
+
+        if ($model->load(Yii::$app->request->post())) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            $model->jenis = 'spesialis_ekg';
+            $model->id_fk = $id;
+
+            if ($model->save()) {
+                return [
+                    's' => true,
+                    'e' => null
+                ];
+            } else {
+                return [
+                    's' => false,
+                    'e' => $model->errors
+                ];
+            }
+        }
+    }
+
+    public function actionCetak($no_rm, $no_daftar)
+    {
+        $model = McuSpesialisEkg::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
+
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'legal',
+            'margin_left' => 10,
+            'margin_right' => 10,
+            'margin_top' => 10,
+            'margin_bottom' => 10,
+            'margin_header' => 10,
+            'margin_footer' => 10
+        ]);
+        $mpdf->SetTitle('Spesialis Jantung ' . $model['no_rekam_medik']);
+        if ($model->kesan == 'Normal') {
+            $model->kesan = 'Normal';
+        }
+        // return $this->renderPartial('cetak', [
+        //     'model' => $model,
+        //     'no_rm' => $no_rm,
+        //     'pasien' => DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one(),
+        // ]);
+        $mpdf->WriteHTML($this->renderPartial('cetak', [
+            'model' => $model,
+            'no_rm' => $no_rm,
+            'pasien' => DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one(),
+        ]));
+        $mpdf->Output('Spesialis Gigi ' . $model['no_rekam_medik'] . '.pdf', 'I');
+        exit;
+    }
 }

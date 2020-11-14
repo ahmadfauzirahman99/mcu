@@ -161,12 +161,12 @@ use yii\helpers\Url;
         <tr>
             <td class="td-tebal">DJ Maksimal</td>
             <td>:</td>
-            <td><?= $model->dj_maksimal ?></td>
+            <td><?= $model->dj_maksimal ?> x/Menit</td>
         </tr>
         <tr>
             <td class="td-tebal">TD Maksimal</td>
             <td>:</td>
-            <td><?= $model->td_maksimal ?></td>
+            <td><?= $model->td_maksimal ?> mmHg</td>
         </tr>
         <tr>
             <td class="td-tebal" colspan="3">EKG</td>
@@ -236,7 +236,7 @@ use yii\helpers\Url;
         <tr>
             <td class="td-tebal">Kapasitas Aerobik</td>
             <td>:</td>
-            <td><?= $model->kapasitas_aerobik ?></td>
+            <td><?= $model->kapasitas_aerobik ?> Mets</td>
         </tr>
         <tr>
             <td style="vertical-align: top;" class="td-tebal">Respon Hemodinamik</td>
@@ -261,9 +261,15 @@ use yii\helpers\Url;
             <td class="td-tebal" colspan="3"><u>KESIMPULAN</u></td>
         </tr>
         <tr>
-            <td class="td-tebal">Respon Iskemik</td>
-            <td>:</td>
-            <td><?= $model->respon_iskemik ?></td>
+            <td style="vertical-align: top;" class="td-tebal">Respon Iskemik</td>
+            <td style="vertical-align: top;">:</td>
+            <td style="vertical-align: top;">
+                <?php
+                echo ($model->respon_iskemik == 'Negatif / tidak menunjukkan tanda-tanda iskemia miokard reversibel') ? '- ' . $model->respon_iskemik . '<br>' : '<span style="text-decoration: line-through;"> - Negatif / tidak menunjukkan tanda-tanda iskemia miokard reversibel<br> </span>';
+                echo ($model->respon_iskemik == 'Positif / menunjukkan tanda-tanda iskemia miokard reversibel, Ringan / Sedang / Berat') ? '- ' . $model->respon_iskemik . '<br>' : '<span style="text-decoration: line-through;"> - Positif / menunjukkan tanda-tanda iskemia miokard reversibel, Ringan / Sedang / Berat<br> </span>';
+                echo ($model->respon_iskemik == 'Negatif / tidak menunjukkan tanda-tanda iskemia miokard reversibel' || $model->respon_iskemik == 'Positif / menunjukkan tanda-tanda iskemia miokard reversibel, Ringan / Sedang / Berat') ? '<span style="text-decoration: line-through;">- <i>Uninterpratable</i> / tidak dapat diinterprestasi karena : </span><br>' : '- <i>Uninterpratable</i> / tidak dapat diinterprestasi karena : <br> ' . $model->respon_iskemik;
+                ?>
+            </td>
         </tr>
         <tr>
             <td style="vertical-align: top;" class="td-tebal">Anjuran</td>
@@ -275,10 +281,69 @@ use yii\helpers\Url;
                 echo ($model->anjuran == 'Jogging') ? $model->anjuran : '<span style="text-decoration: line-through;"> Jogging </span>';
                 echo ' / ';
                 echo ($model->anjuran == 'Sepeda') ? $model->anjuran : '<span style="text-decoration: line-through;"> Sepeda </span>';
-                if ($model->anjuran != 'Jalan' && $model->anjuran != 'Jogging' && $model->anjuran != 'Sepeda') {
+                if ($model->anjuran == 'Jalan' || $model->anjuran == 'Jogging' || $model->anjuran == 'Sepeda') {
+                    echo '<span style="text-decoration: line-through;">';
+                    echo ' / Lainnya';
+                    echo '</span>';
+                } else {
                     echo ' / Lainnya';
                     echo '<br>';
                     echo $model->anjuran;
+                }
+                ?>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">Kesan</td>
+            <td>: </td>
+            <td>
+                <?php
+                echo $model->kesan;
+                ?>
+            </td>
+        </tr>
+        <tr>
+            <td class="col-1" style="font-weight: bold;vertical-align:top">KESIMPULAN</td>
+            <td class="col-2" style="vertical-align:top">: </td>
+            <td class="col-3" style="height: 80px;vertical-align:top">
+                <?php
+                if ($model->kesan == 'Normal') {
+                    echo $model->kesan;
+                } else {
+                    $penata = McuPenatalaksanaanMcu::find()
+                        ->where(['jenis' => 'spesialis_treadmill'])
+                        ->andWhere(['id_fk' => $model->id_spesialis_treadmill])
+                        ->all();
+                    if ($penata) {
+                        echo '
+                                    <table class="tabel-penata" style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <td>Jenis Permasalahan</td>
+                                                <td>Rencana</td>
+                                                <td>Target Waktu</td>
+                                                <td>Hasil yang Diharapkan</td>
+                                                <td>Keterangan</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        ';
+                        foreach ($penata as $key => $value) {
+                            echo '
+                                            <tr>
+                                                <td>' . $value->jenis_permasalahan . '</td>
+                                                <td>' . $value->rencana . '</td>
+                                                <td>' . $value->target_waktu . '</td>
+                                                <td>' . $value->hasil_yang_diharapkan . '</td>
+                                                <td>' . $value->keterangan . '</td>
+                                            </tr>
+                                            ';
+                        }
+                        echo '
+                                        </tbody>
+                                    </table>
+                                ';
+                    }
                 }
                 ?>
             </td>

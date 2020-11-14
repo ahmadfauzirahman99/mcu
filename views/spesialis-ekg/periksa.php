@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-11-13 14:37:28
+ * @Last Modified time: 2020-11-14 10:06:10
  */
 
 use app\components\Helper;
@@ -210,7 +210,7 @@ $dataG = [
                 </td>
             </tr>
             <tr>
-                <td>Interal PR</td>
+                <td>Interval PR</td>
                 <td>:</td>
                 <td>
                     <?= $form->field($model, 'interval_pr')->textInput()->label(false) ?>
@@ -339,6 +339,22 @@ $dataG = [
                 <td>:</td>
                 <td>
                     <?= $form->field($model, 'anjuran')->textInput()->label(false) ?>
+                </td>
+            </tr>
+            <tr>
+                <td>Kesan</td>
+                <td>:</td>
+                <td>
+                    <?php
+                    echo $form->field($model, 'kesan')->radioList(
+                        ['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal',],
+                        [
+                            'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                                return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                            }
+                        ]
+                    )->label(false);
+                    ?>
                 </td>
             </tr>
         </tbody>
