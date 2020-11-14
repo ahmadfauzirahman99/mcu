@@ -23,7 +23,7 @@ use yii\helpers\Url;
     <a href="<?= Url::to(['/spesialis-tht/periksa']) ?>" class="waves-effect"><i class="fas fa-assistive-listening-systems"></i> <span> Spesialis THT </span> </a>
 </li>
 <li>
-    <a href="<?= Url::to(['/spesialis-treadmill/create']) ?>" class="waves-effect"><i class="fas fa-running"></i> <span> Pemeriksaan Treadmill </span> </a>
+    <a href="<?= Url::to(['/spesialis-treadmill/periksa']) ?>" class="waves-effect"><i class="fas fa-running"></i> <span> Pemeriksaan Treadmill </span> </a>
 </li>
 <li>
     <a href="<?= Url::to(['/spesialis-ekg/periksa']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Pemeriksaan EKG </span> </a>

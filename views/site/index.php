@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 
+use app\components\Helper;
 use \yii\web\User;
 
 $this->title = 'Dashboard';
@@ -14,5 +15,7 @@ $this->title = 'Dashboard';
         <h4>Selamat Datang !</h4>
         <p class="lead text-capitalize">MCU <br> RSUD ARIFIN ACHMAD<br></p>
     </div>
-
+    <?php
+    // var_dump($identitas_dokter = Helper::getRumpun());
+    ?>
 </div>

@@ -135,7 +135,7 @@ class SpesialisThtController extends Controller
     public function actionPeriksa($no_rm = null)
     {
         if ($no_rm != null) {
-            $pasien = DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->one();
+            $pasien = DataLayanan::find()->where(['id_data_pelayanan' => $no_rm])->one();
             if (!$pasien) {
                 return $this->redirect(['/site/ngga-nemu', 'no_rm' => $no_rm]);
             }

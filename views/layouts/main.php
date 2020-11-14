@@ -95,7 +95,7 @@ AppAsset::register($this);
                     </ul>
                 </div>
                 <!-- End User -->
-                <?php $identitas_dokter = Helper::getRumpun()  ?>
+                <?php $identitas_dokter = Helper::getRumpun();  ?>
 
                 <!--- Sidemenu -->
                 <div id="sidebar-menu">
@@ -138,6 +138,18 @@ AppAsset::register($this);
                         elseif ($identitas_dokter['kodejenis'] == 2) :
                         ?>
                             <?= $this->render('nav-gigi') ?>
+                        <?php
+                        elseif ($identitas_dokter['kodejenis'] == 35) :
+                        ?>
+                            <?= $this->render('nav-psikologi') ?>
+                        <?php
+                        elseif ($identitas_dokter['kodejenis'] == 35) :
+                        ?>
+                            <?= $this->render('nav-psikologi') ?>
+                        <?php
+                        elseif ($identitas_dokter['kodejenis'] == 13) :
+                        ?>
+                            <?= $this->render('nav-jantung') ?>
 
                         <?php else : ?>
                             <?= $this->render('nav-root') ?>
