@@ -29,6 +29,10 @@ use yii\helpers\Url;
     <a href="<?= Url::to(['/spesialis-ekg/periksa']) ?>" class="waves-effect"><i class="fas fa-heartbeat"></i> <span> Pemeriksaan EKG </span> </a>
 </li>
 
+<li>
+    <a href="<?= Url::to(['/spesialis-psikologi-rsud/periksa']) ?>" class="waves-effect"><i class="fas fa-sun"></i> <span> Psikologi </span> </a>
+</li>
+
 
 <li class="has_sub">
     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> THT </span> <span class="menu-arrow"></span></a>
