@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\DataLayanan;
+use app\models\spesialis\McuPenatalaksanaanMcu;
 use Yii;
 use app\models\spesialis\McuSpesialisTreadmill;
 use app\models\spesialis\McuSpesialisTreadmillSearch;
@@ -137,6 +138,101 @@ class SpesialisTreadmillController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
+    public function actionPeriksa($id = null)
+    {
+
+        $id_cari = $id;
+
+        $modelPenata = new McuPenatalaksanaanMcu();
+        if ($id_cari != null) {
+            $pasien = DataLayanan::find()->where(['id_data_pelayanan' => $id_cari])->one();
+            if (!$pasien) {
+                return $this->redirect(['/site/ngga-nemu', 'id' => $id_cari]);
+            }
+
+            $model = McuSpesialisTreadmill::find()
+                ->where(['no_rekam_medik' => $pasien->no_rekam_medik])
+                ->andWhere(['no_daftar' => $pasien->no_registrasi])
+                ->one();
+            if (!$model)
+                $model = new McuSpesialisTreadmill();
+
+            $modelPenata->no_rekam_medik = $pasien->no_rekam_medik;
+            $model->cari_pasien = $id_cari;
+            $no_rm = $pasien->no_rekam_medik;
+            $no_daftar = $pasien->no_registrasi;
+        } else {
+            $pasien = null;
+            $no_rm = null;
+            $no_daftar = null;
+            $model = new McuSpesialisTreadmill();
+        }
+        $modelPenataList = McuPenatalaksanaanMcu::find()
+            ->where(['jenis' => 'spesialis_treadmill'])
+            ->andWhere(['id_fk' => $model->id_spesialis_treadmill]);
+
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+
+            if ($model->save()) {
+                // echo "<pre>";
+                // print_r($model);
+                // echo "</pre>";
+                // die;
+                return [
+                    's' => true,
+                    'e' => null
+                ];
+            } else {
+                return [
+                    's' => false,
+                    'e' => $model->errors
+                ];
+            }
+        }
+
+        if ($model->isNewRecord) {
+            $model->tingkat_kesegaran_jasmani = 'Good';
+            $model->respon_hemodinamik = 'Normal';
+            $model->respon_iskemik = 'Negatif / tidak menunjukkan tanda-tanda iskemia miokard reversibel';
+            $model->kesan = 'Normal';
+        }
+
+        return $this->render('periksa', [
+            'model' => $model,
+            'modelPenata' => $modelPenata,
+            'modelPenataList' => $modelPenataList,
+            'no_rm' => $no_rm,
+            'no_daftar' => $no_daftar,
+            'pasien' => $pasien,
+        ]);
+    }
+
+    public function actionSimpanPenata($id = null)
+    {
+        $model = new McuPenatalaksanaanMcu();
+
+        if ($model->load(Yii::$app->request->post())) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            $model->jenis = 'spesialis_treadmill';
+            $model->id_fk = $id;
+
+            if ($model->save()) {
+                return [
+                    's' => true,
+                    'e' => null
+                ];
+            } else {
+                return [
+                    's' => false,
+                    'e' => $model->errors
+                ];
+            }
+        }
+    }
+
     public function actionCetak($no_rm, $no_daftar)
     {
         $model = McuSpesialisTreadmill::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
@@ -153,7 +249,7 @@ class SpesialisTreadmillController extends Controller
         ]);
         $mpdf->SetTitle('Spesialis Treadmill ' . $model['no_rekam_medik']);
         if ($model->kesan == 'Normal') {
-            $model->kesimpulan = 'Normal';
+            $model->kesan = 'Normal';
         }
         // return $this->renderPartial('cetak', [
         //     'model' => $model,
