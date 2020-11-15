@@ -95,7 +95,9 @@ AppAsset::register($this);
                     </ul>
                 </div>
                 <!-- End User -->
-                <?php $identitas_dokter = Helper::getRumpun();  ?>
+                <?php $identitas_dokter = Helper::getRumpun();
+                // var_dump($identitas_dokter);
+                ?>
 
                 <!--- Sidemenu -->
                 <div id="sidebar-menu">
@@ -104,56 +106,62 @@ AppAsset::register($this);
                         <li>
                             <a href="<?= Url::to(['/site/index']) ?>" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
                         </li>
+                        <?php if ($identitas_dokter) { ?>
+                            <li>
+                                <a href="<?= Url::to(['/unit-pemeriksaan/unit-pemeriksaan']) ?>" class="waves-effect"><i class="mdi mdi-google-street-view"></i> <span> Unit Pemeriksaan </span> </a>
+                            </li>
+                        <?php } ?>
 
-                        <li>
-                            <a href="<?= Url::to(['/unit-pemeriksaan/unit-pemeriksaan']) ?>" class="waves-effect"><i class="mdi mdi-google-street-view"></i> <span> Unit Pemeriksaan </span> </a>
-                        </li>
+                        <?php if ($identitas_dokter) { ?>
+                            <?php
+                            if ($identitas_dokter['kodejenis'] == 12) :
+                            ?>
+                                <?= $this->render('nav-tht') ?>
+                            <?php
+                            elseif ($identitas_dokter['kodejenis'] == 1) :
+                            ?>
+                                <?= $this->render('nav-umum') ?>
 
-                        <?php
-                        if ($identitas_dokter['kodejenis'] == 12) :
-                        ?>
-                            <?= $this->render('nav-tht') ?>
-                        <?php
-                        elseif ($identitas_dokter['kodejenis'] == 1) :
-                        ?>
-                            <?= $this->render('nav-umum') ?>
+                            <?php
+                            elseif ($identitas_dokter['kodejenis'] == 20) :
+                            ?>
+                                <?= $this->render('nav-okupasi') ?>
+                            <?php
+                            elseif ($identitas_dokter['kodejenis'] == 16) :
+                            ?>
+                                <?= $this->render('nav-mata') ?>
+                            <?php
+                            elseif ($identitas_dokter['kodejenis'] == 36) :
+                            ?>
+                                <?= $this->render('nav-perawat') ?>
+                            <?php
+                            elseif ($identitas_dokter['kodejenis'] == 37) :
+                            ?>
+                                <?= $this->render('nav-perawat') ?>
+                            <?php
+                            elseif ($identitas_dokter['kodejenis'] == 2) :
+                            ?>
+                                <?= $this->render('nav-gigi') ?>
+                            <?php
+                            elseif ($identitas_dokter['kodejenis'] == 35) :
+                            ?>
+                                <?= $this->render('nav-psikologi') ?>
+                            <?php
+                            elseif ($identitas_dokter['kodejenis'] == 35) :
+                            ?>
+                                <?= $this->render('nav-psikologi') ?>
+                            <?php
+                            elseif ($identitas_dokter['kodejenis'] == 13) :
+                            ?>
+                                <?= $this->render('nav-jantung') ?>
 
-                        <?php
-                        elseif ($identitas_dokter['kodejenis'] == 20) :
-                        ?>
-                            <?= $this->render('nav-okupasi') ?>
-                        <?php
-                        elseif ($identitas_dokter['kodejenis'] == 16) :
-                        ?>
-                            <?= $this->render('nav-mata') ?>
-                        <?php
-                        elseif ($identitas_dokter['kodejenis'] == 36) :
-                        ?>
-                            <?= $this->render('nav-perawat') ?>
-                        <?php
-                        elseif ($identitas_dokter['kodejenis'] == 37) :
-                        ?>
-                            <?= $this->render('nav-perawat') ?>
-                        <?php
-                        elseif ($identitas_dokter['kodejenis'] == 2) :
-                        ?>
-                            <?= $this->render('nav-gigi') ?>
-                        <?php
-                        elseif ($identitas_dokter['kodejenis'] == 35) :
-                        ?>
-                            <?= $this->render('nav-psikologi') ?>
-                        <?php
-                        elseif ($identitas_dokter['kodejenis'] == 35) :
-                        ?>
-                            <?= $this->render('nav-psikologi') ?>
-                        <?php
-                        elseif ($identitas_dokter['kodejenis'] == 13) :
-                        ?>
-                            <?= $this->render('nav-jantung') ?>
+                            <?php else : ?>
+                                <?= $this->render('nav-root') ?>
+                            <?php endif ?>
+                        <?php } else { ?>
+                            <?= $this->render('nav-belum-ada') ?>
 
-                        <?php else : ?>
-                            <?= $this->render('nav-root') ?>
-                        <?php endif ?>
+                        <?php } ?>
                 </div>
             </div>
             <!-- Sidebar -->

@@ -162,6 +162,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $master_pemeriksaan_fisik->paru_jantung_palpasi = "Normal";
             $master_pemeriksaan_fisik->paru_jantung_perkusi_iktus_kanan = "Normal";
             $master_pemeriksaan_fisik->paru_jantung_perkusi_kiri = "Sonor";
+            $master_pemeriksaan_fisik->paru_jantung_perkusi_kanan = "Sonor";
             $master_pemeriksaan_fisik->paru_jantung_perkusi_iktus_kanan = "Normal";
             $master_pemeriksaan_fisik->paru_jantung_perkusi_batas_jantung_kanan = "Normal";
             $master_pemeriksaan_fisik->paru_jantung_auskultasi_bunyi_nafas_kanan = "Vesikuler";
@@ -237,6 +238,8 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $master_pemeriksaan_fisik->tulang_bawah_oedema_kiri = "Tidak Ada";
             $master_pemeriksaan_fisik->tulang_bawah_vaskularisasi_kiri = "Baik";
             $master_pemeriksaan_fisik->tulang_bawah_kelainan_kuku_kiri = "Tidak Ada";
+            $master_pemeriksaan_fisik->mata_visus_tanpa_koreksi = "VOD: 20/20";
+            $master_pemeriksaan_fisik->mata_visus_tanpa_koreksi_kiri = "VOS: 20/20";
 
             $master_pemeriksaan_fisik->otot_motorik_trofi_kanan = "Normal";
             $master_pemeriksaan_fisik->otot_motorik_tonus_kanan = "Normal";

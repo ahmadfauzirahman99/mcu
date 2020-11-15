@@ -196,7 +196,7 @@ class SpesialisPsikologiRsudController extends Controller
         }
 
         if ($model->isNewRecord) {
-            $model->tgl_pemeriksaan = date('d-m-Y');
+            $model->tgl_pemeriksaan = date('Y-m-d');
 
             $model->penampilan_umum = 'Terawat';
             $model->sikap_terhadap_pemeriksa = 'Kooperatif';
@@ -212,7 +212,7 @@ class SpesialisPsikologiRsudController extends Controller
             $model->perilaku = 'Normal';
             $model->kesan = 'Normal';
         }else{
-            $model->tgl_pemeriksaan = Yii::$app->formatter->asDate($model->tgl_pemeriksaan, 'php:d-m-Y');
+            // $model->tgl_pemeriksaan = Yii::$app->formatter->asDate($model->tgl_pemeriksaan, 'php:d-m-Y');
 
             $model->simptom1 = $model->simptom;
             $model->simptom2 = $model->simptom;
