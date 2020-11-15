@@ -132,23 +132,40 @@ class SpesialisThtController extends Controller
     }
 
     //------------------------------------------------
-    public function actionPeriksa($no_rm = null)
+    public function actionPeriksa($id = null)
     {
-        if ($no_rm != null) {
-            $pasien = DataLayanan::find()->where(['id_data_pelayanan' => $no_rm])->one();
+
+        $id_cari = $id;
+
+        $modelPenata = new McuPenatalaksanaanMcu();
+        if ($id_cari != null) {
+            $pasien = DataLayanan::find()->where(['id_data_pelayanan' => $id_cari])->one();
             if (!$pasien) {
-                return $this->redirect(['/site/ngga-nemu', 'no_rm' => $no_rm]);
+                return $this->redirect(['/site/ngga-nemu', 'id' => $id_cari]);
             }
-            $model = McuSpesialisTht::find()->where(['no_rekam_medik' => $no_rm])->one();
+
+            $model = McuSpesialisTht::find()
+                ->where(['no_rekam_medik' => $pasien->no_rekam_medik])
+                ->andWhere(['no_daftar' => $pasien->no_registrasi])
+                ->one();
             if (!$model)
                 $model = new McuSpesialisTht();
-            $model->cari_pasien = $no_rm;
+
+            $modelPenata->no_rekam_medik = $pasien->no_rekam_medik;
+            $model->cari_pasien = $id_cari;
+            $no_rm = $pasien->no_rekam_medik;
+            $no_daftar = $pasien->no_registrasi;
         } else {
             $pasien = null;
+            $no_rm = null;
+            $no_daftar = null;
             $model = new McuSpesialisTht();
         }
+        $modelPenataList = McuPenatalaksanaanMcu::find()
+            ->where(['jenis' => 'spesialis_tht'])
+            ->andWhere(['id_fk' => $model->id_spesialis_tht]);
 
-        if ($model->load(Yii::$app->request->post())) {
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
             if ($model->save()) {
@@ -219,11 +236,16 @@ class SpesialisThtController extends Controller
                     $model->tl_test_garpu_tala_rinne_telinga_kiri = 'Positif (AC > BC)';
                 }
             }
+            
+            $model->kesan = 'Normal';
         }
 
         return $this->render('periksa', [
             'model' => $model,
+            'modelPenata' => $modelPenata,
+            'modelPenataList' => $modelPenataList,
             'no_rm' => $no_rm,
+            'no_daftar' => $no_daftar,
             'pasien' => $pasien,
         ]);
     }
@@ -232,22 +254,22 @@ class SpesialisThtController extends Controller
     {
         $pasien = DataLayanan::find()->where(['no_rekam_medik' => $no_rm])->andWhere(['no_registrasi' => $no_daftar])->one();
 
-        $model = MasterPemeriksaanFisik::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
+        $model = McuSpesialisTht::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
         if (!$model) {
-            $model = new MasterPemeriksaanFisik();
+            $model = new McuSpesialisTht();
         }
         $modelAudiometri = McuSpesialisAudiometri::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
         if (!$modelAudiometri) {
             $modelAudiometri = new McuSpesialisAudiometri();
         }
-        $modelBerbisik = McuSpesialisThtBerbisik::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
-        if (!$modelBerbisik) {
-            $modelBerbisik = new McuSpesialisThtBerbisik();
-        }
-        $modelGarpuTala = McuSpesialisThtGarpuTala::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
-        if (!$modelGarpuTala) {
-            $modelGarpuTala = new McuSpesialisThtGarpuTala();
-        }
+        // $modelBerbisik = McuSpesialisThtBerbisik::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
+        // if (!$modelBerbisik) {
+        //     $modelBerbisik = new McuSpesialisThtBerbisik();
+        // }
+        // $modelGarpuTala = McuSpesialisThtGarpuTala::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
+        // if (!$modelGarpuTala) {
+        //     $modelGarpuTala = new McuSpesialisThtGarpuTala();
+        // }
 
         $mpdf = new \Mpdf\Mpdf([
             'mode' => 'utf-8',
@@ -273,8 +295,8 @@ class SpesialisThtController extends Controller
         $mpdf->WriteHTML($this->renderPartial('cetak', [
             'model' => $model,
             'modelAudiometri' => $modelAudiometri,
-            'modelBerbisik' => $modelBerbisik,
-            'modelGarpuTala' => $modelGarpuTala,
+            // 'modelBerbisik' => $modelBerbisik,
+            // 'modelGarpuTala' => $modelGarpuTala,
             'no_rm' => $no_rm,
             'pasien' => $pasien,
         ]));
@@ -503,6 +525,30 @@ class SpesialisThtController extends Controller
         ]));
         $mpdf->Output('Tes Berbisik ' . $pasien['no_rekam_medik'] . '.pdf', 'I');
         exit;
+    }
+
+    public function actionSimpanPenata($id = null)
+    {
+        $model = new McuPenatalaksanaanMcu();
+
+        if ($model->load(Yii::$app->request->post())) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            $model->jenis = 'spesialis_tht';
+            $model->id_fk = $id;
+
+            if ($model->save()) {
+                return [
+                    's' => true,
+                    'e' => null
+                ];
+            } else {
+                return [
+                    's' => false,
+                    'e' => $model->errors
+                ];
+            }
+        }
     }
 
     public function actionSimpanPenataBerbisik($id = null)
