@@ -195,11 +195,32 @@ class Pegawai extends \yii\db\ActiveRecord
 
     public function getNama()
     {
-        return ($this->gelar_sarjana_depan ? $this->gelar_sarjana_depan .' ' : null) . $this->nama_lengkap . ($this->gelar_sarjana_belakang ? ', ' . $this->gelar_sarjana_belakang : null);
+        return ($this->gelar_sarjana_depan ? $this->gelar_sarjana_depan . ' ' : null) . $this->nama_lengkap . ($this->gelar_sarjana_belakang ? ', ' . $this->gelar_sarjana_belakang : null);
     }
 
     public function getNo()
     {
-        return $this->isPns() ? 'NIP. '. $this->id_nip_nrp : null;
+        // return $this->isPns() ? 'NIP. '. $this->id_nip_nrp : null;
+        if ($this->status_kepegawaian_id == 121) {
+            $id = "NIP. " . $this->id_nip_nrp;
+        } else if ($this->status_kepegawaian_id == 122) {
+            $id = "NIP. " . $this->id_nip_nrp;
+        } else if ($this->status_kepegawaian_id == 141) {
+            $id = "NIPTK. " . $this->id_nip_nrp;
+        } else if ($this->status_kepegawaian_id == 142) {
+            $id = "NIK. " . $this->id_nip_nrp;
+        } else if ($this->status_kepegawaian_id == 143) {
+            $id = "NIK. " . $this->id_nip_nrp;
+        } else if ($this->status_kepegawaian_id == 144) {
+            $id = "NIK. " . $this->id_nip_nrp;
+        } else if ($this->status_kepegawaian_id == 145) {
+            $id = "NIK. " . $this->id_nip_nrp;
+        } else if ($this->status_kepegawaian_id == 321) {
+            $id = "NIK. " . $this->id_nip_nrp;
+        } else {
+            $id = "NIP. " . $this->id_nip_nrp;
+        }
+
+        return $id;
     }
 }
