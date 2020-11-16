@@ -730,6 +730,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $model->abdomen_nyeri_costo_vertebrae_kanan = "Tidak Ada";
             $model->abdomen_nyeri_costo_vertebrae_kiri = "Tidak Ada";
             $model->tulang_atas_vaskularisasi_kanan = "Baik";
+            $model->tulang_bawah_vaskularisasi_kanan = "Baik";
             $model->tulang_atas_vaskularisasi_kiri = "Baik";
             $model->mata_lensa_mata_kanan = "Normal";
             $model->mata_lensa_mata_kiri = "Normal";
