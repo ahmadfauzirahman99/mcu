@@ -273,12 +273,13 @@ class SpesialisThtController extends Controller
 
         $mpdf = new \Mpdf\Mpdf([
             'mode' => 'utf-8',
-            'format' => 'legal',
-            'margin_left' => 10,
-            'margin_right' => 10,
-            'margin_top' => 10,
+            // 'format' => 'legal',
+            'format' => [210, 330],
+            'margin_left' => 5,
+            'margin_right' => 5,
+            'margin_top' => 5,
             'margin_bottom' => 5,
-            'margin_header' => 10,
+            'margin_header' => 5,
             'margin_footer' => 5
         ]);
         $mpdf->shrink_tables_to_fit = 1;

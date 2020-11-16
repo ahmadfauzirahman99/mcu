@@ -99,7 +99,7 @@ use yii\helpers\Url;
         <h3 style="font-weight: bold; margin-top: 0px;">PEMERIKSAAN THT KESEHATAN TENAGA KERJA</h3>
     </div>
 
-    <table class="tabel-tht" style="width: 100%;">
+    <table class="tabel-tht" style="width: 100%; font-size: 11.5px;">
         <tbody>
             <tr>
                 <th colspan="7" style="text-align: left;">I. TELINGA</th>
@@ -450,7 +450,7 @@ use yii\helpers\Url;
         <tbody>
             <tr>
                 <td style="width: 60%;border-left: 1px solid #000000;"></td>
-                <td style="border-right: 1px solid #000000; padding-top: 15px;">
+                <td style="border-right: 1px solid #000000; padding-top: 0px;">
                     <!-- <br><br><br><br><br><br><br> -->
                     <!-- PEKANBARU, <?= Yii::$app->formatter->asDate(date('Y-m-d'), 'php:d F Y') ?> -->
                 </td>
@@ -466,7 +466,7 @@ use yii\helpers\Url;
             <tr>
                 <td class="col-1" style="border-left: 1px solid #000000;"></td>
                 <td class="col-2" style="text-align: center;border-right: 1px solid #000000;">
-                    <br><br><br><br>
+                    <br><br>
                     <b>
                         <?= $model->createdByTeks->pegawai->nama ?>
                     </b>
