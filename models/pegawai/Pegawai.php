@@ -210,7 +210,7 @@ class Pegawai extends \yii\db\ActiveRecord
         } else if ($this->status_kepegawaian_id == 142) {
             $id = "NIK. " . $this->id_nip_nrp;
         } else if ($this->status_kepegawaian_id == 143) {
-            $id = "NIK. " . $this->id_nip_nrp;
+            $id = "NIP. " . $this->id_nip_nrp;
         } else if ($this->status_kepegawaian_id == 144) {
             $id = "NIK. " . $this->id_nip_nrp;
         } else if ($this->status_kepegawaian_id == 145) {
