@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-10 11:48:55
+ * @Last Modified time: 2020-10-13 12:52:15
  */
 
 use app\components\Helper;
@@ -224,7 +224,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </label>
                 <label style="margin-left: 20px;">
                     <input <?= ($model->konjungtiva_mata_kanan == 'Sekret (-)') ? 'checked' : null ?> type="radio" id="mcuspesialismata_konjungtiva_mata_kanan_2" name="McuSpesialisMata[konjungtiva_mata_kanan]" value="Sekret (-)">
-                    Sekret (-)
+                    Sekret 
                 </label>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
@@ -237,7 +237,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </label>
                 <label style="margin-left: 20px;">
                     <input <?= ($model->konjungtiva_mata_kiri == 'Sekret (-)') ? 'checked' : null ?> type="radio" id="mcuspesialismata_konjungtiva_mata_kiri_2" name="McuSpesialisMata[konjungtiva_mata_kiri]" value="Sekret (-)">
-                    Sekret (-)
+                    Sekret
                 </label>
             </td>
         </tr>
@@ -443,7 +443,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </label>
             </td>
         </tr>
-        <tr>
+        <tr style="display: none;">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=top sdval="10" sdnum="1033;">
                 <font color="#000000">10</font>
             </td>
@@ -608,6 +608,9 @@ $this->params['breadcrumbs'][] = $this->title;
         ]); ?>
 
         <div class="row">
+
+            <?php echo $form->field($modelPenata, 'no_rekam_medik')->hiddenInput()->label(false); ?>
+
             <div class="col-sm-3">
                 <?php echo $form->field($modelPenata, 'jenis_permasalahan')->textArea(['rows' => 2]); ?>
             </div>

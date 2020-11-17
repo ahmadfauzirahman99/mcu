@@ -24,8 +24,8 @@ use yii\helpers\Url;
         border: 1px solid #000000;
     }
 
-    .tbl-tht tr th,
-    .tbl-tht tr td {
+    .tabel-tht tr th,
+    .tabel-tht tr td {
         border: 1px solid #000000;
         vertical-align: top;
         height: 2px !important;
@@ -96,138 +96,152 @@ use yii\helpers\Url;
 
     <div style="text-align: center; font-size: small;">
         <h3 style="font-weight: bold; margin-bottom: 0px;">UNIT MEDICAL CHECK UP</h3>
-        <h3 style="font-weight: bold; margin-top: 0px;">PEMERIKSAAN KESEHATAN THT TENAGA KERJA</h3>
+        <h3 style="font-weight: bold; margin-top: 0px;">PEMERIKSAAN THT KESEHATAN TENAGA KERJA</h3>
     </div>
 
-    <table class="tbl-tht" style="width: 100%;">
-        <thead>
+    <table class="tabel-tht" style="width: 100%; font-size: 11.5px;">
+        <tbody>
             <tr>
                 <th colspan="7" style="text-align: left;">I. TELINGA</th>
             </tr>
-        </thead>
-        <tbody>
             <tr>
-                <td colspan="3"></td>
-                <td colspan="2" style="text-align: center;">TELINGA KANAN</td>
-                <td colspan="2" style="text-align: center;">TELINGA KIRI</td>
+                <th colspan="3"></th>
+                <th colspan="2">TELINGA KANAN</th>
+                <th colspan="2">TELINGA KIRI</th>
             </tr>
             <tr>
-                <td>1</td>
-                <td>Daun Telinga</td>
-                <td>:</td>
-                <td><?= $model->telinga_daun_telinga_kanan == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->telinga_daun_telinga_kanan == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
-                <td><?= $model->telinga_daun_telinga_kiri == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->telinga_daun_telinga_kiri == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
+                <td style="width: 2%;">1</td>
+                <td style="width: 28%;">Daun Telinga</td>
+                <td style="width: 2%;"> : </td>
+                <td style="width: 17%;"> <?= $model->tl_daun_telinga_kanan == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td style="width: 17%;"> <?= $model->tl_daun_telinga_kanan == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
+                <td style="width: 17%;"> <?= $model->tl_daun_telinga_kiri == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td style="width: 17%;"> <?= $model->tl_daun_telinga_kiri == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>Liang Telinga</td>
-                <td>:</td>
-                <td><?= $model->telinga_liang_telinga_kanan == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->telinga_liang_telinga_kanan == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
-                <td><?= $model->telinga_liang_telinga_kiri == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->telinga_liang_telinga_kiri == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
+                <td> : </td>
+                <td> <?= $model->tl_liang_telinga_kanan == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tl_liang_telinga_kanan == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
+                <td> <?= $model->tl_liang_telinga_kiri == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tl_liang_telinga_kiri == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
             </tr>
             <tr>
                 <td rowspan="2">3</td>
                 <td rowspan="2">Serumen</td>
-                <td>:</td>
-                <td><?= $model->telinga_serumen_kanan == 'Tidak Ada' ? '&#9632;' : '&#9633;' ?> Tidak Ada</td>
-                <td><?= $model->telinga_serumen_kanan == 'Ada Serumen' ? '&#9632;' : '&#9633;' ?> Ada Serumen</td>
-                <td><?= $model->telinga_serumen_kiri == 'Tidak Ada' ? '&#9632;' : '&#9633;' ?> Tidak Ada</td>
-                <td><?= $model->telinga_serumen_kiri == 'Ada Serumen' ? '&#9632;' : '&#9633;' ?> Ada Serumen</td>
+                <td rowspan="2"> : </td>
+                <td> <?= $model->tl_serumen_telinga_kanan == 'Tidak Ada' ? '&#9632;' : '&#9633;' ?> Tidak Ada </td>
+                <td> <?= $model->tl_serumen_telinga_kanan == 'Ada Serumen' ? '&#9632;' : '&#9633;' ?> Ada Serumen </td>
+                <td> <?= $model->tl_serumen_telinga_kiri == 'Tidak Ada' ? '&#9632;' : '&#9633;' ?> Tidak Ada </td>
+                <td> <?= $model->tl_serumen_telinga_kiri == 'Ada Serumen' ? '&#9632;' : '&#9633;' ?> Ada Serumen </td>
             </tr>
             <tr>
                 <td></td>
+                <td> <?= $model->tl_serumen_telinga_kanan == 'Menyumbat (Prop)' ? '&#9632;' : '&#9633;' ?> Menyumbat (Prop) </td>
                 <td></td>
-                <td><?= $model->telinga_serumen_kanan == 'Menyumbat (Prop)' ? '&#9632;' : '&#9633;' ?> Menyumbat (Prop)</td>
-                <td></td>
-                <td><?= $model->telinga_serumen_kiri == 'Menyumbat (Prop)' ? '&#9632;' : '&#9633;' ?> Menyumbat (Prop)</td>
+                <td> <?= $model->tl_serumen_telinga_kiri == 'Menyumbat (Prop)' ? '&#9632;' : '&#9633;' ?> Menyumbat (Prop) </td>
             </tr>
             <tr>
                 <td rowspan="2">4</td>
                 <td rowspan="2">Membrana Timpani</td>
-                <td>:</td>
-                <td><?= $model->telinga_timpani_kanan == 'Intak' ? '&#9632;' : '&#9633;' ?> Intak</td>
-                <td><?= $model->telinga_timpani_kanan == 'Tidak Intak' ? '&#9632;' : '&#9633;' ?> Tidak Intak</td>
-                <td><?= $model->telinga_timpani_kiri == 'Intak' ? '&#9632;' : '&#9633;' ?> Intak</td>
-                <td><?= $model->telinga_timpani_kiri == 'Tidak Intak' ? '&#9632;' : '&#9633;' ?> Tidak Intak</td>
+                <td rowspan="2"> : </td>
+                <td> <?= $model->tl_membrana_timpani_telinga_kanan == 'Intak' ? '&#9632;' : '&#9633;' ?> Intak </td>
+                <td> <?= $model->tl_membrana_timpani_telinga_kanan == 'Tidak Intak' ? '&#9632;' : '&#9633;' ?> Tidak Intak </td>
+                <td> <?= $model->tl_membrana_timpani_telinga_kiri == 'Intak' ? '&#9632;' : '&#9633;' ?> Intak </td>
+                <td> <?= $model->tl_membrana_timpani_telinga_kiri == 'Tidak Intak' ? '&#9632;' : '&#9633;' ?> Tidak Intak </td>
             </tr>
             <tr>
                 <td></td>
+                <td> <?= $model->tl_membrana_timpani_telinga_kanan == 'Lainnya' ? '&#9632;' : '&#9633;' ?> Lainnya </td>
                 <td></td>
-                <td><?= $model->telinga_timpani_kanan == 'Lainnya' ? '&#9632;' : '&#9633;' ?> Lainnya</td>
-                <td></td>
-                <td><?= $model->telinga_timpani_kiri == 'Lainnya' ? '&#9632;' : '&#9633;' ?> Lainnya</td>
+                <td> <?= $model->tl_membrana_timpani_telinga_kiri == 'Lainnya' ? '&#9632;' : '&#9633;' ?> Lainnya </td>
             </tr>
             <tr>
-                <td rowspan="3">5</td>
-                <td rowspan="2">Test Berbisik</td>
-                <td>:</td>
-                <td><?= $modelBerbisik->tl_test_berbisik_telinga_kanan == 'Dalam Batas Normal' ? '&#9632;' : '&#9633;' ?> Dalam Batas Normal</td>
-                <td><?= $modelBerbisik->tl_test_berbisik_telinga_kanan == 'Tuli Ringan' ? '&#9632;' : '&#9633;' ?> Tuli Ringan</td>
-                <td><?= $modelBerbisik->tl_test_berbisik_telinga_kiri == 'Dalam Batas Normal' ? '&#9632;' : '&#9633;' ?> Dalam Batas Normal</td>
-                <td><?= $modelBerbisik->tl_test_berbisik_telinga_kiri == 'Tuli Ringan' ? '&#9632;' : '&#9633;' ?> Tuli Ringan</td>
+                <td rowspan="5">5</td>
+                <th colspan="6" style="text-align: left;">Tes Berbisik</th>
             </tr>
             <tr>
-                <td></td>
-                <td><?= $modelBerbisik->tl_test_berbisik_telinga_kanan == 'Tuli Sedang' ? '&#9632;' : '&#9633;' ?> Tuli Sedang</td>
-                <td><?= $modelBerbisik->tl_test_berbisik_telinga_kanan == 'Tuli Berat' ? '&#9632;' : '&#9633;' ?> Tuli Berat</td>
-                <td><?= $modelBerbisik->tl_test_berbisik_telinga_kiri == 'Tuli Sedang' ? '&#9632;' : '&#9633;' ?> Tuli Sedang</td>
-                <td><?= $modelBerbisik->tl_test_berbisik_telinga_kiri == 'Tuli Berat' ? '&#9632;' : '&#9633;' ?> Tuli Berat</td>
+                <td>Jarak 6-5 Meter</td>
+                <td> : </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kanan_6 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kanan_6 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kiri_6 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kiri_6 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
             </tr>
             <tr>
-                <td><b>Kesan</b></td>
-                <td>:</td>
-                <td colspan="4" style="font-weight: bold;"><?= $modelBerbisik->kesan ?></td>
+                <td>Jarak 4 Meter</td>
+                <td> : </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kanan_4 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kanan_4 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kiri_4 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kiri_4 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
             </tr>
             <tr>
-                <td rowspan="7">6</td>
-                <td>Test Garpu Tala</td>
-                <td></td>
-                <td colspan="4"></td>
+                <td>Jarak 3-2 Meter</td>
+                <td> : </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kanan_3 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kanan_3 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kiri_3 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kiri_3 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
+            </tr>
+            <tr>
+                <td>Jarak ≥ 1 Meter</td>
+                <td> : </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kanan_1 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kanan_1 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kiri_1 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tl_test_berbisik_telinga_kiri_1 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
+            </tr>
+            <tr>
+                <td rowspan="6">6</td>
+                <th colspan="6" style="text-align: left;">Tes Garpu Tala</th>
             </tr>
             <tr>
                 <td>Rinne</td>
-                <td>:</td>
-                <td><?= $modelGarpuTala->tl_test_garpu_tala_rinne_telinga_kanan == 'Negatif (AC < BC)' ? '&#9632;' : '&#9633;' ?> Negatif (AC < BC)</td> <td><?= $modelGarpuTala->tl_test_garpu_tala_rinne_telinga_kanan == 'Positif (AC > BC)' ? '&#9632;' : '&#9633;' ?> Positif (AC > BC)</td>
-                <td><?= $modelGarpuTala->tl_test_garpu_tala_rinne_telinga_kiri == 'Negatif (AC < BC)' ? '&#9632;' : '&#9633;' ?> Negatif (AC < BC)</td> <td><?= $modelGarpuTala->tl_test_garpu_tala_rinne_telinga_kiri == 'Positif (AC > BC)' ? '&#9632;' : '&#9633;' ?> Positif (AC > BC)</td>
+                <td> : </td>
+                <td> <?= $model->tl_test_garpu_tala_rinne_telinga_kanan == 'Negatif (AC < BC)' ? '&#9632;' : '&#9633;' ?> Negatif (AC < BC) </td> <td> <?= $model->tl_test_garpu_tala_rinne_telinga_kanan == 'Positif (AC > BC)' ? '&#9632;' : '&#9633;' ?> Positif (AC > BC) </td>
+                <td> <?= $model->tl_test_garpu_tala_rinne_telinga_kiri == 'Negatif (AC < BC)' ? '&#9632;' : '&#9633;' ?> Negatif (AC < BC) </td> <td> <?= $model->tl_test_garpu_tala_rinne_telinga_kiri == 'Positif (AC > BC)' ? '&#9632;' : '&#9633;' ?> Positif (AC > BC) </td>
             </tr>
             <tr>
                 <td>Weber</td>
-                <td>:</td>
-                <td><?= $modelGarpuTala->tl_weber_telinga_kanan == 'Tidak Ada Lateralisasi' ? '&#9632;' : '&#9633;' ?> Tidak Ada Lateralisasi</td>
-                <td><?= $modelGarpuTala->tl_weber_telinga_kanan == 'Lateralisasi Kanan' ? '&#9632;' : '&#9633;' ?> Lateralisasi Kanan</td>
-                <td><?= $modelGarpuTala->tl_weber_telinga_kiri == 'Tidak Ada Lateralisasi' ? '&#9632;' : '&#9633;' ?> Tidak Ada Lateralisasi</td>
-                <td><?= $modelGarpuTala->tl_weber_telinga_kiri == 'Lateralisasi Kanan' ? '&#9632;' : '&#9633;' ?> Lateralisasi Kanan</td>
+                <td> : </td>
+                <td> <?= $model->tl_weber_telinga_kanan == 'Tidak Ada Lateralisasi' ? '&#9632;' : '&#9633;' ?> Tidak Ada Lateralisasi </td>
+                <td> <?= $model->tl_weber_telinga_kanan == 'Lateralisasi Kanan' ? '&#9632;' : '&#9633;' ?> Lateralisasi Kanan </td>
+                <td> <?= $model->tl_weber_telinga_kiri == 'Tidak Ada Lateralisasi' ? '&#9632;' : '&#9633;' ?> Tidak Ada Lateralisasi </td>
+                <td> <?= $model->tl_weber_telinga_kiri == 'Lateralisasi Kanan' ? '&#9632;' : '&#9633;' ?> Lateralisasi Kanan </td>
             </tr>
             <tr>
                 <td rowspan="2">Swabach</td>
-                <td rowspan="2">:</td>
-                <td><?= $modelGarpuTala->tl_swabach_telinga_kanan == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $modelGarpuTala->tl_swabach_telinga_kanan == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
-                <td><?= $modelGarpuTala->tl_swabach_telinga_kiri == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $modelGarpuTala->tl_swabach_telinga_kiri == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
+                <td rowspan="2"> : </td>
+                <td> <?= $model->tl_swabach_telinga_kanan == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tl_swabach_telinga_kanan == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
+                <td> <?= $model->tl_swabach_telinga_kiri == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tl_swabach_telinga_kiri == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
             </tr>
             <tr>
-                <td><?= $modelGarpuTala->tl_swabach_telinga_kanan == 'Memendek' ? '&#9632;' : '&#9633;' ?> Memendek</td>
-                <td><?= $modelGarpuTala->tl_swabach_telinga_kanan == 'Memanjang' ? '&#9632;' : '&#9633;' ?> Memanjang</td>
-                <td><?= $modelGarpuTala->tl_swabach_telinga_kiri == 'Memendek' ? '&#9632;' : '&#9633;' ?> Memendek</td>
-                <td><?= $modelGarpuTala->tl_swabach_telinga_kiri == 'Memanjang' ? '&#9632;' : '&#9633;' ?> Memanjang</td>
+                <td> <?= $model->tl_swabach_telinga_kanan == 'Memendek' ? '&#9632;' : '&#9633;' ?> Memendek </td>
+                <td> <?= $model->tl_swabach_telinga_kanan == 'Memanjang' ? '&#9632;' : '&#9633;' ?> Memanjang </td>
+                <td> <?= $model->tl_swabach_telinga_kiri == 'Memendek' ? '&#9632;' : '&#9633;' ?> Memendek </td>
+                <td> <?= $model->tl_swabach_telinga_kiri == 'Memanjang' ? '&#9632;' : '&#9633;' ?> Memanjang </td>
             </tr>
             <tr>
                 <td>Bing</td>
-                <td>:</td>
-                <td><?= $modelGarpuTala->tl_bing_telinga_kanan == 'Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Bertambah Keras</td>
-                <td><?= $modelGarpuTala->tl_bing_telinga_kanan == 'Tidak Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Tidak Bertambah Keras</td>
-                <td><?= $modelGarpuTala->tl_bing_telinga_kiri == 'Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Bertambah Keras</td>
-                <td><?= $modelGarpuTala->tl_bing_telinga_kiri == 'Tidak Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Tidak Bertambah Keras</td>
+                <td> : </td>
+                <td> <?= $model->tl_bing_telinga_kanan == 'Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Bertambah Keras </td>
+                <td> <?= $model->tl_bing_telinga_kanan == 'Tidak Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Tidak Bertambah Keras </td>
+                <td> <?= $model->tl_bing_telinga_kiri == 'Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Bertambah Keras </td>
+                <td> <?= $model->tl_bing_telinga_kiri == 'Tidak Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Tidak Bertambah Keras </td>
             </tr>
             <tr>
-                <td><b>Kesan</b></td>
-                <td>:</td>
-                <td colspan="4" style="font-weight: bold;"><?= $modelGarpuTala->kesan ?></td>
+                <td>7</td>
+                <td>Lain-lain</td>
+                <td> : </td>
+                <td rowspan="2" colspan="4"><?= $model->tl_lain_lain ?></td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <th colspan="7" style="text-align: left;">II. HIDUNG</th>
@@ -235,56 +249,57 @@ use yii\helpers\Url;
             <tr>
                 <td>1</td>
                 <td>Meatus Nasi</td>
-                <td>:</td>
-                <td><?= $model->hidung_meatus_nasi == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->hidung_meatus_nasi == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
-                <td></td>
-                <td></td>
+                <td> : </td>
+                <td> <?= $model->hd_meatus_nasi == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->hd_meatus_nasi == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
+                <td> &nbsp; </td>
+                <td> &nbsp; </td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>Septum Nasi</td>
-                <td>:</td>
-                <td><?= $model->hidung_septum_nasi == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->hidung_septum_nasi == 'Deviasi Ke' ? '&#9632;' : '&#9633;' ?> Deviasi Ke</td>
-                <td></td>
-                <td></td>
+                <td> : </td>
+                <td> <?= $model->hd_septum_nasi == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->hd_septum_nasi == 'Deviasi ke' ? '&#9632; Deviasi ke ' . $model->hd_septum_nasi_lainnya : '&#9633; Deviasi ke ...' ?></td>
+                <td> &nbsp; </td>
+                <td> &nbsp; </td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>Konka Nasal</td>
-                <td>:</td>
-                <td><?= $model->hidung_konka_nasal == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->hidung_konka_nasal == 'Oedema Lubang Hidung...' ? '&#9632;' : '&#9633;' ?> Oedema Lubang Hidung...</td>
-                <td></td>
-                <td></td>
+                <td> : </td>
+                <td> <?= $model->hd_konka_nasal == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->hd_konka_nasal == 'Oedema Lubang Hidung' ? '&#9632; Oedema Lubang Hidung ' . $model->hd_konka_nasal_lainnya : '&#9633; Oedema Lubang Hidung ...' ?></td>
+                <td> &nbsp; </td>
+                <td> &nbsp; </td>
             </tr>
             <tr>
                 <td>4</td>
-                <td>Nyeri Ketok Sinus Maksilar</td>
-                <td>:</td>
-                <td><?= $model->hidung_nyeri_ketok_sinus == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->hidung_nyeri_ketok_sinus == 'Nyeri Tekan Positif di...' ? '&#9632;' : '&#9633;' ?> Nyeri Tekan Positif di...</td>
-                <td></td>
-                <td></td>
+                <td>Nyeri Ketok Sinus maksilar</td>
+                <td> : </td>
+                <td> <?= $model->hd_nyeri_ketok_sinus_maksilar == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->hd_nyeri_ketok_sinus_maksilar == 'Nyeri Tekan Positif di' ? '&#9632; Nyeri Tekan Positif di ' . $model->hd_nyeri_ketok_sinus_maksilar_lainnya : '&#9633; Nyeri Tekan Positif di ...' ?></td>
+                <td> &nbsp; </td>
+                <td> &nbsp; </td>
             </tr>
             <tr>
                 <td>5</td>
                 <td>Penciuman</td>
-                <td>:</td>
-                <td><?= $model->hidung_penciuman == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->hidung_penciuman == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal</td>
-                <td></td>
-                <td></td>
+                <td> : </td>
+                <td> <?= $model->hd_penciuman == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->hd_penciuman == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
+                <td> &nbsp; </td>
+                <td> &nbsp; </td>
             </tr>
             <tr>
                 <td>6</td>
                 <td>Lain-lain</td>
-                <td>:</td>
-                <td colspan="4" rowspan="2"><?= $model->hidung ?></td>
+                <td> : </td>
+                <td rowspan="2" colspan="4"><?= $model->hd_lain_lain ?></td>
             </tr>
             <tr>
-                <td colspan="3" style="height: 20;"></td>
+                <td colspan="2"></td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <th colspan="7" style="text-align: left;">III. TENGGOROKAN</th>
@@ -292,181 +307,141 @@ use yii\helpers\Url;
             <tr>
                 <td>1</td>
                 <td>Pharynx</td>
-                <td>:</td>
-                <td><?= $model->tenggorokan_pharynx == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->tenggorokan_pharynx == 'Hiperemis' ? '&#9632;' : '&#9633;' ?> Hiperemis</td>
-                <td><?= $model->tenggorokan_pharynx == 'Granulasi' ? '&#9632;' : '&#9633;' ?> Granulasi</td>
-                <td></td>
+                <td> : </td>
+                <td> <?= $model->tg_pharynx == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tg_pharynx == 'Hiperemis' ? '&#9632;' : '&#9633;' ?> Hiperemis </td>
+                <td> <?= $model->tg_pharynx == 'Granulasi' ? '&#9632;' : '&#9633;' ?> Granulasi </td>
+                <td> &nbsp; </td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>Tonsil</td>
-                <td>:</td>
-                <td colspan="2" style="text-align: center;"><b>Kanan</b> :
-                    <?= $model->tenggorokan_tonsil_kanan == 'T0' ? '&#9673;' : '&#9675;' ?> T0
-                    <?= $model->tenggorokan_tonsil_kanan == 'T1' ? '&#9673;' : '&#9675;' ?> T1
-                    <?= $model->tenggorokan_tonsil_kanan == 'T2' ? '&#9673;' : '&#9675;' ?> T2
-                    <?= $model->tenggorokan_tonsil_kanan == 'T3' ? '&#9673;' : '&#9675;' ?> T3
+                <td> : </td>
+                <td colspan="2" style="text-align: center;">
+                    <?php
+                    switch ($model->tg_tonsil_kanan) {
+                        case 'T0':
+                            $t0 = '&#9632;';
+                            $t1 = '&#9633;';
+                            $t2 = '&#9633;';
+                            $t3 = '&#9633;';
+                            break;
+                        case 'T1':
+                            $t0 = '&#9633;';
+                            $t1 = '&#9632;';
+                            $t2 = '&#9633;';
+                            $t3 = '&#9633;';
+                            break;
+                        case 'T2':
+                            $t0 = '&#9633;';
+                            $t1 = '&#9633;';
+                            $t2 = '&#9632;';
+                            $t3 = '&#9633;';
+                            break;
+                        case 'T3':
+                            $t0 = '&#9633;';
+                            $t1 = '&#9633;';
+                            $t2 = '&#9633;';
+                            $t3 = '&#9632;';
+                            break;
+
+                        default:
+                            $t0 = '&#9633;';
+                            $t1 = '&#9633;';
+                            $t2 = '&#9633;';
+                            $t3 = '&#9633;';
+                            break;
+                    }
+                    echo 'Kanan : ' . $t0 .' T0 '. $t1 .' T1 '. $t2 .' T2 '. $t3 .' T3 ';
+                    ?>
                 </td>
-                <td colspan="2" style="text-align: center;"><b>Kiri</b> :
-                    <?= $model->tenggorokan_tonsil_kiri == 'T0' ? '&#9673;' : '&#9675;' ?> T0
-                    <?= $model->tenggorokan_tonsil_kiri == 'T1' ? '&#9673;' : '&#9675;' ?> T1
-                    <?= $model->tenggorokan_tonsil_kiri == 'T2' ? '&#9673;' : '&#9675;' ?> T2
-                    <?= $model->tenggorokan_tonsil_kiri == 'T3' ? '&#9673;' : '&#9675;' ?> T3
+                <td colspan="2" style="text-align: center;">
+                    <?php
+                    switch ($model->tg_tonsil_kiri) {
+                        case 'T0':
+                            $t0 = '&#9632;';
+                            $t1 = '&#9633;';
+                            $t2 = '&#9633;';
+                            $t3 = '&#9633;';
+                            break;
+                        case 'T1':
+                            $t0 = '&#9633;';
+                            $t1 = '&#9632;';
+                            $t2 = '&#9633;';
+                            $t3 = '&#9633;';
+                            break;
+                        case 'T2':
+                            $t0 = '&#9633;';
+                            $t1 = '&#9633;';
+                            $t2 = '&#9632;';
+                            $t3 = '&#9633;';
+                            break;
+                        case 'T3':
+                            $t0 = '&#9633;';
+                            $t1 = '&#9633;';
+                            $t2 = '&#9633;';
+                            $t3 = '&#9632;';
+                            break;
+
+                        default:
+                            $t0 = '&#9633;';
+                            $t1 = '&#9633;';
+                            $t2 = '&#9633;';
+                            $t3 = '&#9633;';
+                            break;
+                    }
+                    echo 'Kanan : ' . $t0 .' T0 '. $t1 .' T1 '. $t2 .' T2 '. $t3 .' T3 ';
+                    ?>
                 </td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>Ukuran</td>
-                <td>:</td>
-                <td><?= $model->tenggorokan_tonsil_ukuran_kanan == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->tenggorokan_tonsil_ukuran_kanan == 'Hiperemis' ? '&#9632;' : '&#9633;' ?> Hiperemis</td>
-                <td><?= $model->tenggorokan_tonsil_ukuran_kiri == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal</td>
-                <td><?= $model->tenggorokan_tonsil_ukuran_kiri == 'Hiperemis' ? '&#9632;' : '&#9633;' ?> Hiperemis</td>
+                <td> : </td>
+                <td> <?= $model->tg_ukuran_kanan == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tg_ukuran_kanan == 'Hiperemis' ? '&#9632;' : '&#9633;' ?> Hiperemis </td>
+                <td> <?= $model->tg_ukuran_kiri == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tg_ukuran_kiri == 'Hiperemis' ? '&#9632;' : '&#9633;' ?> Hiperemis </td>
             </tr>
             <tr>
-                <td>6</td>
+                <td>4</td>
+                <td>Palatum</td>
+                <td> : </td>
+                <td> <?= $model->tg_palatum == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td> <?= $model->tg_palatum == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
+                <td> &nbsp; </td>
+                <td> &nbsp; </td>
+            </tr>
+            <tr>
+                <td>5</td>
                 <td>Lain-lain</td>
-                <td>:</td>
-                <td colspan="4" rowspan="2"><?= $model->tenggorokan ?></td>
+                <td> : </td>
+                <td rowspan="2" colspan="4"><?= $model->tg_lain_lain ?></td>
             </tr>
             <tr>
-                <td colspan="3" style="height: 20;"></td>
+                <td colspan="2"></td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                <th colspan="2" style="text-align: left;">IV. AUDIOMETRI</th>
-                <td>:</td>
-                <td colspan="4" style="font-weight: bold;">
-                    <?php
-                    if ($modelAudiometri->kesan == 'Normal') {
-                        echo $modelAudiometri->kesan;
-                    } else {
-                        $penata = McuPenatalaksanaanMcu::find()
-                            ->where(['jenis' => 'spesialis_audiometri'])
-                            ->andWhere(['id_fk' => $modelAudiometri->id_spesialis_audiometri])
-                            ->all();
-                        if ($penata) {
-                            echo '
-                                    <b>' . $modelAudiometri->kesan . '</b>
-                                    <table class="tabel-penata" style="width: 100%; font-size: 11px;">
-                                        <thead>
-                                            <tr>
-                                                <td style="width: 15px;">Jenis Permasalahan</td>
-                                                <td style="width: 15px;">Rencana</td>
-                                                <td style="width: 15px;">Target Waktu</td>
-                                                <td style="width: 10px;">Hasil yang Diharapkan</td>
-                                                <td style="width: 15px;">Keterangan</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        ';
-                            foreach ($penata as $key => $value) {
-                                echo '
-                                            <tr>
-                                                <td>' . $value->jenis_permasalahan . '</td>
-                                                <td>' . $value->rencana . '</td>
-                                                <td>' . $value->target_waktu . '</td>
-                                                <td>' . $value->hasil_yang_diharapkan . '</td>
-                                                <td>' . $value->keterangan . '</td>
-                                            </tr>
-                                            ';
-                            }
-                            echo '
-                                        </tbody>
-                                    </table>
-                                ';
-                        }
-                    } ?>
-                </td>
+                <th colspan="2" rowspan="2" style="text-align: left;">IV. AUDIOMETRI<br>&nbsp;<br>&nbsp;</th>
+                <td rowspan="2"> : </td>
+                <td rowspan="2" colspan="4"><?= $model->tg_lain_lain ?></td>
             </tr>
             <tr>
-                <th colspan="2" style="text-align: left;">V. KESIMPULAN</th>
-                <td>:</td>
-                <td colspan="4">
-                    <?php
-                    if ($modelBerbisik->kesan == 'Normal') {
-                        echo '<b>Berbisik</b>: ' . $modelBerbisik->kesan;
-                        echo '<br>';
-                    } else {
-                        $penata = McuPenatalaksanaanMcu::find()
-                            ->where(['jenis' => 'spesialis_tht_berbisik'])
-                            ->andWhere(['id_fk' => $model->id_spesialis_tht_berbisik])
-                            ->all();
-                        if ($penata) {
-                            echo '
-                                    <b>Berbisik</b>
-                                    <table class="tabel-penata" style="width: 100%; font-size: 11px;">
-                                        <thead>
-                                            <tr>
-                                                <td style="width: 15px;">Jenis Permasalahan</td>
-                                                <td style="width: 15px;">Rencana</td>
-                                                <td style="width: 15px;">Target Waktu</td>
-                                                <td style="width: 10px;">Hasil yang Diharapkan</td>
-                                                <td style="width: 15px;">Keterangan</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        ';
-                            foreach ($penata as $key => $value) {
-                                echo '
-                                            <tr>
-                                                <td>' . $value->jenis_permasalahan . '</td>
-                                                <td>' . $value->rencana . '</td>
-                                                <td>' . $value->target_waktu . '</td>
-                                                <td>' . $value->hasil_yang_diharapkan . '</td>
-                                                <td>' . $value->keterangan . '</td>
-                                            </tr>
-                                            ';
-                            }
-                            echo '
-                                        </tbody>
-                                    </table>
-                                ';
-                        }
-                    }
-                    // echo '<span></span>';
-                    if ($modelGarpuTala->kesan == 'Normal') {
-                        echo '<b>Garpu Tala</b>: ' . $modelGarpuTala->kesan;
-                        echo '<br>';
-                    } else {
-                        $penata = McuPenatalaksanaanMcu::find()
-                            ->where(['jenis' => 'spesialis_tht_garpu_tala'])
-                            ->andWhere(['id_fk' => $modelGarpuTala->id_spesialis_tht_garpu_tala])
-                            ->all();
-                        if ($penata) {
-                            echo '
-                                    <b>Garpu Tala</b>
-                                    <table class="tabel-penata" style="width: 100%; font-size: 11px;">
-                                        <thead>
-                                            <tr>
-                                                <td style="width: 15px;">Jenis Permasalahan</td>
-                                                <td style="width: 15px;">Rencana</td>
-                                                <td style="width: 15px;">Target Waktu</td>
-                                                <td style="width: 10px;">Hasil yang Diharapkan</td>
-                                                <td style="width: 15px;">Keterangan</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        ';
-                            foreach ($penata as $key => $value) {
-                                echo '
-                                            <tr>
-                                                <td>' . $value->jenis_permasalahan . '</td>
-                                                <td>' . $value->rencana . '</td>
-                                                <td>' . $value->target_waktu . '</td>
-                                                <td>' . $value->hasil_yang_diharapkan . '</td>
-                                                <td>' . $value->keterangan . '</td>
-                                            </tr>
-                                            ';
-                            }
-                            echo '
-                                        </tbody>
-                                    </table>
-                                ';
-                        }
-                    }
-                    ?>
-                </td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <th colspan="2" rowspan="2" style="text-align: left;">V. KESIMPULAN<br>&nbsp;<br>&nbsp;</th>
+                <td rowspan="2"> : </td>
+                <td rowspan="2" colspan="4"><?= $model->kesimpulan ?></td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <th colspan="2" rowspan="2" style="text-align: left;">VI. KESAN<br>&nbsp;<br>&nbsp;</th>
+                <td rowspan="2"> : </td>
+                <td rowspan="2" colspan="4"><?= $model->kesan ?></td>
             </tr>
         </tbody>
     </table>
@@ -475,26 +450,28 @@ use yii\helpers\Url;
         <tbody>
             <tr>
                 <td style="width: 60%;border-left: 1px solid #000000;"></td>
-                <td style="border-right: 1px solid #000000; padding-top: 15px;">
+                <td style="border-right: 1px solid #000000; padding-top: 0px;">
                     <!-- <br><br><br><br><br><br><br> -->
-                    PEKANBARU, <?= Yii::$app->formatter->asDate(date('Y-m-d'), 'php:d F Y') ?>
+                    <!-- PEKANBARU, <?= Yii::$app->formatter->asDate(date('Y-m-d'), 'php:d F Y') ?> -->
                 </td>
             </tr>
             <tr>
                 <td style="border-left: 1px solid #000000;"></td>
                 <td style="text-align: center;border-right: 1px solid #000000;">
+                    PEKANBARU, <?= Yii::$app->formatter->asDate($model->created_at, 'php:d F Y') ?>
+                    <br>
                     DOKTER PEMERIKSA
                 </td>
             </tr>
             <tr>
                 <td class="col-1" style="border-left: 1px solid #000000;"></td>
                 <td class="col-2" style="text-align: center;border-right: 1px solid #000000;">
-                    <br><br><br><br>
+                    <br><br>
                     <b>
-                        <?= $modelBerbisik->updatedByTeks->pegawai->nama ?>
+                        <?= $model->createdByTeks->pegawai->nama ?>
                     </b>
                     <br>
-                    <?= $modelBerbisik->updatedByTeks->pegawai->no ?>
+                    <?= $model->createdByTeks->pegawai->no ?>
                 </td>
             </tr>
         </tbody>

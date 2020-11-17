@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-10-10 14:53:53
+ * @Last Modified time: 2020-10-13 12:49:01
  */
 
 use app\components\Helper;
@@ -174,10 +174,10 @@ $optionBerbisik = [
                         "select2:select" => "function(e) { 
                             let dipilih = e.params.data.id
                             let optionBerbisik = {
-                                'Jarak &ge; 1 Meter' : 'Dalam Batas Normal',
+                                'Jarak &ge; 1 Meter' : 'Tuli Berat',
                                 'Jarak 3-2 Meter' : 'Tuli Ringan',
                                 'Jarak 4 Meter' : 'Tuli Sedang',
-                                'Jarak 6-5 Meter' : 'Tuli Berat',
+                                'Jarak 6-5 Meter' : 'Dalam Batas Normal',
                             }
                             $('#mcuspesialisthtberbisik-tl_test_berbisik_telinga_kanan').val(optionBerbisik[dipilih]).trigger('change')
                         }",
@@ -199,10 +199,10 @@ $optionBerbisik = [
                         "select2:select" => "function(e) { 
                             let dipilih = e.params.data.id
                             let optionBerbisik = {
-                                'Jarak &ge; 1 Meter' : 'Dalam Batas Normal',
+                                'Jarak &ge; 1 Meter' : 'Tuli Berat',
                                 'Jarak 3-2 Meter' : 'Tuli Ringan',
                                 'Jarak 4 Meter' : 'Tuli Sedang',
-                                'Jarak 6-5 Meter' : 'Tuli Berat',
+                                'Jarak 6-5 Meter' : 'Dalam Batas Normal',
                             }
                             $('#mcuspesialisthtberbisik-tl_test_berbisik_telinga_kiri').val(optionBerbisik[dipilih]).trigger('change')
                         }",
@@ -252,7 +252,7 @@ $optionBerbisik = [
         if (array_key_exists('id', $_GET))
             echo Html::submitButton('Simpan', ['class' => 'btn btn-success']);
         if (!$model->isNewRecord)
-            echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-tht/cetak', 'no_rm' => $no_rm, 'no_daftar' => $no_daftar], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
+            echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-tht/cetak-berbisik', 'no_rm' => $no_rm, 'no_daftar' => $no_daftar], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
         ?>
     </div>
     <?php
@@ -281,6 +281,7 @@ $optionBerbisik = [
         ]); ?>
 
         <div class="row">
+                <?php echo $form->field($modelPenata, 'no_rekam_medik')->hiddenInput()->label(false); ?>
             <div class="col-sm-3">
                 <?php echo $form->field($modelPenata, 'jenis_permasalahan')->textArea(['rows' => 2]); ?>
             </div>

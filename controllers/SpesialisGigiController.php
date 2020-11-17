@@ -134,6 +134,7 @@ class SpesialisGigiController extends Controller
 
         $id_cari = $id;
 
+        $modelPenata = new McuPenatalaksanaanMcu();
         if ($id_cari != null) {
             $pasien = DataLayanan::find()->where(['id_data_pelayanan' => $id_cari])->one();
             if (!$pasien) {
@@ -147,6 +148,7 @@ class SpesialisGigiController extends Controller
             if (!$model)
                 $model = new McuSpesialisGigi();
 
+            $modelPenata->no_rekam_medik = $pasien->no_rekam_medik;
             $model->cari_pasien = $id_cari;
             $no_rm = $pasien->no_rekam_medik;
             $no_daftar = $pasien->no_registrasi;
@@ -159,7 +161,6 @@ class SpesialisGigiController extends Controller
         $modelPenataList = McuPenatalaksanaanMcu::find()
             ->where(['jenis' => 'spesialis_gigi'])
             ->andWhere(['id_fk' => $model->id_spesialis_gigi]);
-        $modelPenata = new McuPenatalaksanaanMcu();
 
         if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;

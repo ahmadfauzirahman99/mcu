@@ -16,6 +16,7 @@ use app\models\spesialis\McuSpesialisGigi;
 use app\models\spesialis\McuSpesialisMata;
 use app\models\spesialis\McuSpesialisThtBerbisik;
 use app\models\spesialis\McuSpesialisThtGarpuTala;
+use app\models\PembedaanCpns;
 
 class SiteController extends Controller
 {
@@ -33,7 +34,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'dokter', 'test', 'item-mcu', 'ubah-semua-pemeriksaan'],
+                        'actions' => ['logout', 'index', 'dokter', 'test', 'item-mcu', 'ubah-semua-pemeriksaan','perawat','test-dump'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -97,7 +98,8 @@ class SiteController extends Controller
     // data dokter 
     public function actionDokter()
     {
-        $query = "select
+        $query =
+         "select
         tp.id_nip_nrp,
         tp.nama_lengkap,
         sr.kode as koderumpun,
@@ -122,6 +124,36 @@ class SiteController extends Controller
 
         $ex = Yii::$app->db->createCommand($query)->queryAll();
         return $this->render('dokter', ['data' => $ex]);
+    }
+
+    public function actionPerawat()
+    {
+ $query =
+         "select
+        tp.id_nip_nrp,
+        tp.nama_lengkap,
+        sr.kode as koderumpun,
+        sr.nama as rumpun,
+        ssr.kode as kodesubrumpun,
+        ssr.nama as subrumpun,
+        sj.kode as kodejenis,
+        sj.nama as jenis
+    from
+        pegawai.tb_pegawai tp
+        --pegawai.tb_pegawai tp
+    inner join pegawai.tb_riwayat_penempatan trp on
+        trp.id_nip_nrp = tp.id_nip_nrp
+    inner join pegawai.dm_sdm_rumpun sr on
+        sr.kode = trp.sdm_rumpun
+    inner join pegawai.dm_sdm_sub_rumpun ssr on
+        ssr.kode = trp.sdm_sub_rumpun
+    inner join pegawai.dm_sdm_jenis sj on
+        sj.kode = trp.sdm_jenis
+    where
+        sr.kode = '3'";
+
+        $ex = Yii::$app->db->createCommand($query)->queryAll();
+        return $this->render('perawat', ['data' => $ex]);
     }
 
     /**
@@ -294,5 +326,19 @@ class SiteController extends Controller
         // $response = new \Phalcon\Http\Response();
         // return $response->setContent(json_encode($_res));
         return $_res;
+    }
+
+    public function actionTestDump()
+    {
+        $data = DataLayanan::find()->where(['kode_debitur' =>'0129'])->andWhere(['not in','no_rekam_medik',['01051168','01051149','01051132','01051132']])->all();
+        foreach($data as $item){
+                    $model = new PembedaanCpns();
+
+            $model->no_rekam_medik = $item->no_rekam_medik;
+            $model->pilhan_terima_jabatan = "A";
+            $model->status = "tidak dengan kelonggaran";
+            $model->save();
+        }
+        // exit();
     }
 }
