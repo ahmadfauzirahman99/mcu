@@ -2,6 +2,10 @@
 
 namespace app\components;
 
+use app\models\DataLayanan;
+use app\models\PemeriksaanFisik;
+use app\models\UserRegister;
+use DateTime;
 use Yii;
 
 class Helper
@@ -82,5 +86,40 @@ class Helper
         $data = Yii::$app->db->createCommand($query)->queryOne();
 
         return $data;
+    }
+
+    static function getDataLayanan($p)
+    {
+        $v = DataLayanan::findOne($p);
+        return $v;
+    }
+
+    static function getDataPemeriksaanFisik($p)
+    {
+        $query = "SELECT status_gizi_tinggi_badan, status_gizi_berat_badan FROM ".PemeriksaanFisik::tableName()." WHERE no_rekam_medik='$p'";
+        $data = Yii::$app->db->createCommand($query)->queryOne();
+
+        return $data;
+    }
+
+    static function getDataRegistrasi($p)
+    {
+        $query = UserRegister::findOne(['u_rm'=>$p]);
+
+
+        return $query;
+    }
+
+    static function hitung_umur($tanggal_lahir){
+        $birthDate = new DateTime($tanggal_lahir);
+        $today = new DateTime("today");
+        if ($birthDate > $today) { 
+            exit("0 tahun 0 bulan 0 hari");
+        }
+        $y = $today->diff($birthDate)->y;
+        $m = $today->diff($birthDate)->m;
+        $d = $today->diff($birthDate)->d;
+        //return $y." tahun ".$m." bulan ".$d." hari";
+        return $y;
     }
 }

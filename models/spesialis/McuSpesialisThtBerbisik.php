@@ -61,6 +61,7 @@ class McuSpesialisThtBerbisik extends BaseAR
                     'tl_test_berbisik_telinga_kiri',
                 ], 'safe'
             ],
+            ['no_daftar', 'unique'],
             [
                 [
                     'tl_test_berbisik_telinga_kanan_option',

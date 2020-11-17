@@ -26,17 +26,17 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        // 'user' => [
-        //     'identityClass' => 'app\models\User',
-        //     'enableAutoLogin' => true,
-        // ],
         'user' => [
-            'class' => 'app\models\User',
-            'identityClass' => 'app\models\Identitas',
+            'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-            'loginUrl' => '@.sso/masuk?b=http://mcu.rsud-arifin.localhost',
-            'identityCookie' => ['name' => '_identity-id', 'httpOnly' => true, 'domain' => 'rsud-arifin.localhost'],
         ],
+        // 'user' => [
+        //     'class' => 'app\models\User',
+        //     'identityClass' => 'app\models\Identitas',
+        //     'enableAutoLogin' => true,
+        //     'loginUrl' => '@.sso/masuk?b=http://mcu.rsud-arifin.localhost',
+        //     'identityCookie' => ['name' => '_identity-id', 'httpOnly' => true, 'domain' => 'rsud-arifin.localhost'],
+        // ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],

@@ -82,8 +82,8 @@ AppAsset::register($this);
                         <img src="<?= Yii::$app->request->baseUrl ?>/img/user.png" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail img-responsive">
                         <div class="user-status offline"><i class="mdi mdi-adjust"></i></div>
                     </div>
-                    <h5><a href="#"><?= Yii::$app->user->identity->nama ?></a> </h5>
-                    <h5><a class="text-capitalize" href="#"><b><i><?= Yii::$app->user->identity->roles ?></i></b></a> </h5>
+                    <h5><a href="#">Afdhal</a> </h5>
+                    <h5><a class="text-capitalize" href="#"><b><i>ksdjbgksdjg</i></b></a> </h5>
                     <ul class="list-inline">
 
 
@@ -98,6 +98,7 @@ AppAsset::register($this);
                 <?php $identitas_dokter = Helper::getRumpun();
                 // var_dump($identitas_dokter);
                 ?>
+                <?php //$identitas_dokter = Helper::getRumpun()  ?>
 
                 <!--- Sidemenu -->
                 <div id="sidebar-menu">
@@ -110,6 +111,24 @@ AppAsset::register($this);
                         <li>
                             <a href="<?= Url::to(['/unit-pemeriksaan/unit-pemeriksaan']) ?>" class="waves-effect"><i class="mdi mdi-google-street-view"></i> <span> Unit Pemeriksaan </span> </a>
                         </li>
+                            <a href="<?= Url::to(['/unit-pemeriksaan/pemeriksaan-fisik']) ?>" class="waves-effect"><i class="mdi mdi-google-street-view"></i> <span> Unit Pemeriksaan </span> </a>
+                        </li>
+
+                        <li>
+                            <a href="<?= Url::to(['/unit-lab-pk/index']) ?>" class="waves-effect"><i class=" mdi mdi-microscope"></i> <span> Unit Lab. Patologi Klinik </span> </a>
+                        </li>
+
+                        <li>
+                            <a href="<?= Url::to(['/radiologi/index']) ?>" class="waves-effect"><i class=" mdi mdi-clipboard-pulse"></i> <span> Unit Radiologi </span> </a>
+                        </li>
+
+                        <!-- <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> Setting Labs. </span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="<?= Url::to(['/mcu-item-lab/index']) ?>"">Item Pemeriksaan</a></li>
+                                <li><a href="#">Setting Global</a></li>
+                            </ul>
+                        </li> -->
 
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-search"></i> <span> Setting </span> <span class="menu-arrow"></span></a>
@@ -118,6 +137,7 @@ AppAsset::register($this);
                                 <li><a href=" <?= Url::to(['/item-setting/index']) ?>"">Item Setting</a></li>
                                 <li><a href="<?= Url::to(['/setting-manual/index']) ?>"">Setting Manual</a></li>
                                 <li><a href=" <?= Url::to(['/setting-global/index']) ?>"">Setting Global</a></li>
+                                <li><a href="<?= Url::to(['/gradding-mcu/index']) ?>"">Gradding MCU</a></li>
                             </ul>
                         </li>
 
@@ -224,6 +244,8 @@ AppAsset::register($this);
                             <?= $this->render('nav-belum-ada') ?>
 
                         <?php } ?>
+
+
                 </div>
             </div>
             <!-- Sidebar -->

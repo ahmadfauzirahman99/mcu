@@ -20,6 +20,19 @@ class Laporan extends Model
     
 
         $data = \Yii::$app->db->createCommand("
+        SELECT * FROM ".GraddingMcu::tableName()." ORDER BY poin DESC")->queryAll();
+        
+        return $data;
+    }
+    
+    public function getDataLaporanPaket($KodeDebitur)
+    {
+        $data = GraddingMcu::find()
+        ->andWhere(['kode_debitur'=>$KodeDebitur])
+        ->asArray()
+        ->all();
+
+        $data = \Yii::$app->db->createCommand("
         select
         data_pelayanan.nama as nama_peserta,
         data_pelayanan.no_rekam_medik as no_rekam_medik,

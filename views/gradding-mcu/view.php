@@ -61,6 +61,16 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'is_reset',
             // 'poin',
 			//'hasil'
+            'id_gradding',
+            'id_data_pelayanan',
+            'no_rekam_medik',
+            'no_registrasi',
+            'no_mcu',
+            'kode_debitur',
+            'hasil',
+            'status',
+            'is_reset',
+            'poin',
         ],
     ]) ?>
 
