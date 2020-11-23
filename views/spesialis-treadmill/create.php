@@ -4,17 +4,18 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\spesialis\McuSpesialisTreadmill */
+/* @var $dataLayanan app\models\DataLayanan */
 
-$this->title = 'Create Mcu Spesialis Treadmill';
-$this->params['breadcrumbs'][] = ['label' => 'Mcu Spesialis Treadmills', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = "HASIL UJI LATIH JANTUNG DENGAN BEBAN";
+$this->params['breadcrumbs'][] = Html::decode($this->title);
 ?>
 <div class="mcu-spesialis-treadmill-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
+        'dataLayanan' => $modelDataLayanan
+
     ]) ?>
 
 </div>

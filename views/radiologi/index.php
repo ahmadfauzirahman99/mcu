@@ -47,21 +47,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'templateResult' => new JsExpression('function(data) { return data.text; }'),
             'templateSelection' => new JsExpression('function (data) { return data.text; }'),
         ],
-        // 'pluginEvents' => [
-        //     "select2:select" => "function(e) { 
-        //         let data = e.params.data
-        //         let diagnosis_kerja = $('#masterpemeriksaanfisik-diagnosis_kerja').val()
-        //         if(diagnosis_kerja==null || diagnosis_kerja=='')
-        //             diagnosis_kerja += data.id
-        //         else
-        //             diagnosis_kerja += ','+data.id
-        //         $('#masterpemeriksaanfisik-diagnosis_kerja').val(diagnosis_kerja)
-        //     }",
-        // ]
+        'pluginEvents' => [
+
+            "select2:select" => "function(e) { 
+                // alert('asdsadsa')
+                $('#btnSearch').click()
+            }",
+        ]
     ])->label(false);
     ?>
-    <?= Html::submitButton('Cari <span class="mdi mdi-file-search"></span>', ['class' => 'btn btn-success']) ?>
+    <div style="display: none;">
 
+        <?= Html::submitButton('Cari <span class="mdi mdi-file-search"></span>', ['class' => 'btn btn-success', 'id' => 'btnSearch']) ?>
+    </div>
     <?php ActiveForm::end(); ?>
 
     <br>
@@ -103,7 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $this->render('data-layanan', ['model' => $dataLayanan]) ?>
             </div>
             <div class="tab-pane p-t-10 fade" id="profile-tab-2">
-                <?= $this->render('hasil-rad.php', ['dataRad'=>$dataRad]) ?>
+                <?= $this->render('hasil-rad.php', ['dataRad' => $dataRad]) ?>
             </div>
             <ul class="list-inline mb-0 wizard">
                 <li class="previous list-inline-item first" style="display:none;"><a href="#">First</a>

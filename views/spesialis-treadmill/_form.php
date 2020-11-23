@@ -1,36 +1,89 @@
 <?php
 
+use app\models\spesialis\BaseModel;
+use kartik\select2\Select2;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\spesialis\McuSpesialisTreadmill */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $form yii\bootstrap4\ActiveForm */
+
+$this->title = "HASIL UJI LATIH JANTUNG DENGAN BEBAN";
+$this->params['breadcrumbs'][] = Html::decode($this->title);
 ?>
 
 <div class="mcu-spesialis-treadmill-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'no_rekam_medik')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-lg-12">
+            <label for="">Nama Pasien</label>
+            <?php
+            echo $form->field($dataLayanan, 'nama')->widget(Select2::classname(), [
+                'data' => BaseModel::getListPasien(),
+                'theme' => 'bootstrap',
+                'options' => ['placeholder' => 'Cari Pasien ...'],
+                'pluginOptions' => [
+                    'allowClear' => false
+                ],
+                'pluginEvents' => [
+                    "select2:select" => "function(e) { 
+                window.location = baseUrl + 'spesialis-treadmill/create?id=' + e.params.data.id
+            }",
+                ],
+            ])->label(false);
+            ?>'
+        </div>
+    </div>
+    <?php ActiveForm::end(); ?>
 
-    <?= $form->field($model, 'no_daftar')->textInput() ?>
+    <?php $form = ActiveForm::begin(); ?>
+    <div class="row">
+        <div class="col-lg-12">
+            <?= $form->field($model, 'permintaan')->textInput(['placeholder' => 'Permintaan']) ?>
+            <h1 class="text-center"><?= Html::decode($this->title) ?> <i>TREADMILL TEST</i></h1>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="">Nama</label>
+                <input readonly type="text" class="form-control" value="<?= $pasien->nama ?? null ?>" id="nama_pasien">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'no_rekam_medik')->textInput(['maxlength' => true, 'readonly' => true, 'placeholder' => 'Nomor Rekam Medik']) ?>
+        </div>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'no_daftar')->textInput(['readonly' => true, 'placeholder' => 'No Daftar']) ?>
+        </div>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    </div>
 
-    <?= $form->field($model, 'created_by')->textInput() ?>
 
-    <?= $form->field($model, 'updated_by')->textInput() ?>
+    <?php $form->field($model, 'created_at')->textInput() ?>
 
-    <?= $form->field($model, 'permintaan')->textInput() ?>
+    <?php $form->field($model, 'updated_at')->textInput() ?>
 
-    <?= $form->field($model, 'metode')->textInput() ?>
+    <?php $form->field($model, 'created_by')->textInput() ?>
 
-    <?= $form->field($model, 'lama_latihan')->textInput() ?>
+    <?php $form->field($model, 'updated_by')->textInput() ?>
 
-    <?= $form->field($model, 'test_dihentikan_karena')->textInput() ?>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <?= $form->field($model, 'metode')->textInput(['placeholder' => 'Metode']) ?>
+        </div>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'lama_latihan')->textInput(['placeholder' => 'Lama Latihan']) ?>
+        </div>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'test_dihentikan_karena')->textInput(['placeholder' => 'Test Dihentikan Karena']) ?>
+        </div>
+    </div>
+
+
 
     <?= $form->field($model, 'dj_maksimal')->textInput() ?>
 

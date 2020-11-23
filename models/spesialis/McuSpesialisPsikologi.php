@@ -5,7 +5,7 @@ namespace app\models\spesialis;
 use Yii;
 
 /**
- * This is the model class for table "mcu.spesialis_psikologi".
+ * This is the model class for table "mcu.spesialis_psikologi_rsud".
  *
  * @property int $id_spesialis_psikologi
  * @property string $no_rekam_medik
@@ -60,7 +60,7 @@ class McuSpesialisPsikologi extends \app\models\spesialis\BaseAR
      */
     public static function tableName()
     {
-        return 'mcu.spesialis_psikologi';
+        return 'mcu.spesialis_psikologi_rsud';
     }
 
     /**

@@ -48,11 +48,11 @@ class Helper
     public static function getRumpun()
     {
 
-        if (Yii::$app->user->identity->roles == 'Keperawatan') {
-            $type = "sr.kode='3'";
-        } else {
-            $type = "sr.kode='1'";
-        }
+        // if (Yii::$app->user->identity->roles == 'Keperawatan') {
+        //     $type = "sr.kode='3'";
+        // } else {
+        //     $type = "sr.kode='1'";
+        // }
 
         $query = "select
         tp.id_nip_nrp,
@@ -75,8 +75,8 @@ class Helper
     inner join pegawai.dm_sdm_jenis sj on
         sj.kode = trp.sdm_jenis
     where
-        " . $type . "
-        and tp.id_nip_nrp = '" . Yii::$app->user->identity->kodeAkun . "'
+        
+        tp.id_nip_nrp = '" . Yii::$app->user->identity->kodeAkun . "'
         order by trp.tanggal DESC limit 1";
 
         $data = Yii::$app->db->createCommand($query)->queryOne();

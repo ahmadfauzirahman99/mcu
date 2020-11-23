@@ -64,16 +64,27 @@ class SpesialisTreadmillController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id = null)
     {
-        $model = new McuSpesialisTreadmill();
+        if ($id != null) {
+            $modelDataLayanan = DataLayanan::findOne(['id_data_pelayanan' => $id]);
+            if (!$modelDataLayanan) {
+                return $this->redirect(['/site/ngga-nemu', 'id' => $id]);
+            }
+            
+            $model = McuSpesialisTreadmill::findOne(['no_rekam_medik' => $modelDataLayanan->no_rekam_medik]);
+            if(!$model){
+                return $this->redirect(['/site/ngga-nemu', 'id' => $id]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_spesialis_treadmill]);
+            }
+        } else {
+            $model = new McuSpesialisTreadmill();
+            $modelDataLayanan = new DataLayanan();
         }
 
-        return $this->render('create', [
+        return $this->render('_form', [
             'model' => $model,
+            'dataLayanan' => $modelDataLayanan
         ]);
     }
 
