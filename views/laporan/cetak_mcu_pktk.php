@@ -1279,56 +1279,56 @@ function tgl_indo($tanggal)
                         <tr>
                             <td style="width:25%">a. Persepsi Warna</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%">-</td>
-                            <td style="width:37%">-</td>
+                            <td style="width:37%"><?= $spesialis_mata->persepsi_warna_mata_kanan ?></td>
+                            <td style="width:37%"><?= $spesialis_mata->persepsi_warna_mata_kiri ?></td>
                         </tr>
                         <tr>
                             <td style="width:25%">b. Kelopak Mata</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%">-</td>
-                            <td style="width:37%">-</td>
+                            <td style="width:37%"><?= $spesialis_mata->kelopak_mata_kanan ?></td>
+                            <td style="width:37%"><?= $spesialis_mata->kelopak_mata_kiri ?></td>
                         </tr>
                         <tr>
                             <td style="width:25%">c. Konjungtiva</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%">-</td>
-                            <td style="width:37%">-</td>
+                            <td style="width:37%"><?= $spesialis_mata->konjungtiva_mata_kanan ?></td>
+                            <td style="width:37%"><?= $spesialis_mata->konjungtiva_mata_kiri ?></td>
                         </tr>
                         <tr>
                             <td style="width:25%">d. Kesegarisan</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%">-</td>
-                            <td style="width:37%">-</td>
+                            <td style="width:37%"><?= $spesialis_mata->kesegarisan_gerak_bola_mata_kanan ?></td>
+                            <td style="width:37%"><?= $spesialis_mata->kesegarisan_gerak_bola_mata_kiri ?></td>
                         </tr>
                         <tr>
                             <td style="width:25%">e. Sklera</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%">-</td>
-                            <td style="width:37%">-</td>
+                            <td style="width:37%"><?= $spesialis_mata->skiera_mata_kanan ?></td>
+                            <td style="width:37%"><?= $spesialis_mata->skiera_mata_kiri ?></td>
                         </tr>
                         <tr>
                             <td style="width:25%">f. Lensa Mata</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%">-</td>
-                            <td style="width:37%">-</td>
+                            <td style="width:37%"><?= $spesialis_mata->lensa_mata_kanan ?></td>
+                            <td style="width:37%"><?= $spesialis_mata->lensa_mata_kiri ?></td>
                         </tr>
                         <tr>
                             <td style="width:25%">g. Kornea</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%">-</td>
-                            <td style="width:37%">-</td>
+                            <td style="width:37%"><?= $spesialis_mata->kornea_mata_kanan ?></td>
+                            <td style="width:37%"><?= $spesialis_mata->kornea_mata_kiri ?></td>
                         </tr>
                         <tr>
                             <td style="width:25%">h. Bulu Mata</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%">-</td>
-                            <td style="width:37%">-</td>
+                            <td style="width:37%"><?= $spesialis_mata->bulu_mata_kanan ?></td>
+                            <td style="width:37%"><?= $spesialis_mata->bulu_mata_kiri ?></td>
                         </tr>
                         <tr>
                             <td style="width:25%">i. Tekanan Bola Mata</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%">-</td>
-                            <td style="width:37%">-</td>
+                            <td style="width:37%"><?= $spesialis_mata->tekanan_bola_mata_kanan ?></td>
+                            <td style="width:37%"><?= $spesialis_mata->tekanan_bola_mata_kiri ?></td>
                         </tr>
                         <tr>
                             <td style="width:25%">k. Visus Mata</td>
@@ -1339,14 +1339,14 @@ function tgl_indo($tanggal)
                         <tr>
                             <td style="width:25%"> - Tanpa Koreksi</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%">-</td>
-                            <td style="width:37%">-</td>
+                            <td style="width:37%"><?= $spesialis_mata->virus_mata_tanpa_koreksi_mata_kanan ?></td>
+                            <td style="width:37%"><?= $spesialis_mata->virus_mata_tanpa_koreksi_mata_kiri ?></td>
                         </tr>
                         <tr>
                             <td style="width:25%"> - Dengan Koreksi</td>
                             <td style="width:1%">:</td>
-                            <td style="width:37%">-</td>
-                            <td style="width:37%"></td>
+                            <td style="width:37%"><?= $spesialis_mata->virus_mata_dengan_koreksi_mata_kanan ?></td>
+                            <td style="width:37%"><?= $spesialis_mata->virus_mata_dengan_koreksi_mata_kiri ?></td>
                         </tr>
                     </table>
                 </td>
@@ -1406,20 +1406,20 @@ function tgl_indo($tanggal)
                         <tr>
                             <td style="width:30%">a. Daun Telinga</td>
                             <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_daun_telinga_kanan'] ?? '-' ?></td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_daun_telinga_kiri'] ?? '-' ?></td>
+                            <td style="width:34.5%"><?= $spesialis_tht->tl_daun_telinga_kanan ?? '-' ?></td>
+                            <td style="width:34.5%"><?= $spesialis_tht->tl_daun_telinga_kiri ?? '-' ?></td>
                         </tr>
                         <tr>
                             <td style="width:30%">b. Liang Telinga</td>
                             <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_liang_telinga_kanan'] ?? '-' ?></td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_liang_telinga_kiri'] ?? '-' ?></td>
+                            <td style="width:34.5%"><?= $spesialis_tht->tl_liang_telinga_kanan ?? '-' ?></td>
+                            <td style="width:34.5%"><?= $spesialis_tht->tl_liang_telinga_kiri ?? '-' ?></td>
                         </tr>
                         <tr>
                             <td style="width:30%"> - Serumen</td>
                             <td style="width:1%">:</td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_serumen_kanan'] ?? '-' ?></td>
-                            <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_serumen_kiri'] ?? '-' ?></td>
+                            <td style="width:34.5%"><?= $spesialis_tht->tl_serumen_telinga_kanan ?? '-' ?></td>
+                            <td style="width:34.5%"><?= $spesialis_tht->tl_serumen_telinga_kiri ?? '-' ?></td>
                         </tr>
                       
                     </table>
@@ -1436,22 +1436,40 @@ function tgl_indo($tanggal)
                         <tr>
                             <td style="width:26%">a. Meatus Nasi</td>
                             <td style="width:1%">:</td>
-                            <td style="width:69%"><?= $pemeriksaan_fisik['hidung_meatus_nasi'] ?? '-' ?></td>
+                            <td style="width:69%"><?= $spesialis_tht->hd_meatus_nasi ?? '-' ?></td>
                         </tr>
                         <tr>
                             <td>b.Septum Nasi </td>
                             <td>:</td>
-                            <td><?= $pemeriksaan_fisik['hidung_septum_nasi'] ?? '-' ?></td>
+                            <td><?php
+                                if($spesialis_tht->hd_septum_nasi){
+                                    echo $spesialis_tht->hd_septum_nasi == 'Normal' ? 'Normal' : 'Deviasi ke '. $spesialis_tht->hd_septum_nasi_lainnya;
+                                }else{
+                                    echo '-';
+                                }
+                            ?></td>
                         </tr>
                         <tr>
                             <td>c.Konka Nasal</td>
                             <td>:</td>
-                            <td><?= $pemeriksaan_fisik['hidung_konka_nasal'] ?? '-' ?></td>
+                            <td><?php
+                                if($spesialis_tht->hd_konka_nasal){
+                                    echo $spesialis_tht->hd_konka_nasal == 'Normal' ? 'Normal' : 'Oedema Lubang Hidung '. $spesialis_tht->hd_konka_nasal_lainnya;
+                                }else{
+                                    echo '-';
+                                }
+                            ?></td>
                         </tr>
                         <tr>
                             <td>d.Nyeri Ketok Sinus Maksilar</td>
                             <td>:</td>
-                            <td><?= $pemeriksaan_fisik['hidung_nyeri_ketok_sinus'] ?? '-' ?></td>
+                            <td><?php
+                                if($spesialis_tht->hd_nyeri_ketok_sinus_maksilar){
+                                    echo $spesialis_tht->hd_nyeri_ketok_sinus_maksilar == 'Normal' ? 'Normal' : 'Nyeri Tekan Positif di '. $spesialis_tht->hd_nyeri_ketok_sinus_maksilar_lainnya;
+                                }else{
+                                    echo '-';
+                                }
+                            ?></td>
                         </tr>
                     </table>
                 </td>
@@ -1512,7 +1530,7 @@ function tgl_indo($tanggal)
                         <tr>
                             <td style="width:17%">a. Pharynx</td>
                             <td style="width: 1%;">:</td>
-                            <td style="width:29%"><?= $pemeriksaan_fisik['tenggorokan_pharynx'] ?? '-' ?></td>
+                            <td style="width:29%"><?= $spesialis_tht->tg_pharynx ?? '-' ?></td>
                             <td style="width:29%"></td>
 
                         </tr>
@@ -1525,26 +1543,26 @@ function tgl_indo($tanggal)
                         <tr>
                             <td>-Ukuran</td>
                             <td>:</td>
-                            <td><?= $pemeriksaan_fisik['tenggorokan_tonsil_ukuran_kanan'] ?? '-' ?></td>
-                            <td><?= $pemeriksaan_fisik['tenggorokan_tonsil_ukuran_kiri'] ?? '-' ?></td>
+                            <td><?= $spesialis_tht->tg_ukuran_kanan ?? '-' ?></td>
+                            <td><?= $spesialis_tht->tg_ukuran_kiri ?? '-' ?></td>
                         </tr>
                         <tr>
                             <td>-Keterangan</td>
                             <td>:</td>
-                            <td><?= $pemeriksaan_fisik['tenggorokan_tonsil_kanan'] ?? '-' ?></td>
-                            <td><?= $pemeriksaan_fisik['tenggorokan_tonsil_kiri'] ?? '-' ?></td>
+                            <td><?= $spesialis_tht->tg_tonsil_kanan ?? '-' ?></td>
+                            <td><?= $spesialis_tht->tg_tonsil_kiri ?? '-' ?></td>
                         </tr>
 
                         <tr>
                             <td>c. palatum</td>
                             <td>:</td>
-                            <td><?= $pemeriksaan_fisik['tenggorokan_palatum'] ?? '-' ?></td>
+                            <td><?= $spesialis_tht->tg_palatum ?? '-' ?></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td>d. lainnya</td>
                             <td>:</td>
-                            <td><?= $pemeriksaan_fisik['tenggorokan_lainn'] ?? '-' ?></td>
+                            <td><?= $spesialis_tht->tg_lain_lain ?? '-' ?></td>
                             <td></td>
                         </tr>
                     </table>

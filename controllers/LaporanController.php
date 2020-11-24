@@ -21,6 +21,8 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use yii\helpers\Url;
 use app\models\AkunAknUser;
 use app\models\spesialis\McuPenatalaksanaanMcu;
+use app\models\spesialis\McuSpesialisMata;
+use app\models\spesialis\McuSpesialisTht;
 
 /**
  * SpesialisKejiwaanController implements the CRUD actions for SpesialisKejiwaan model.
@@ -133,6 +135,15 @@ class LaporanController extends Controller
     public function actionCetakPktk($id)
     {
 
+        // spesialis mata
+        $spesialis_mata = McuSpesialisMata::findOne(['no_rekam_medik' => $id]);
+        $spesialis_tht = McuSpesialisTht::findOne(['no_rekam_medik' => $id]);
+
+        // echo "<pre>";
+        // print_r($spesialis_tht);
+        // echo "</pre>";
+        // die;
+
 
         // Data Pelayanan
         $data_pelayanan = DataLayanan::findOne(['no_rekam_medik' => $id]);
@@ -207,9 +218,13 @@ class LaporanController extends Controller
             // 'pertanyaan_jawaban' => $pertanyaan_jawaban,
             'bahaya_potensial' => $bahaya_potensial,
             'pemeriksaan_fisik' => $pemeriksaan_fisik,
-            'penata_pelaksana' => $penata_pelaksana
+            'penata_pelaksana' => $penata_pelaksana,
             // 'body_dis' => $body_dis,
             // 'modelDetail'=>$modelDetail,
+
+            'spesialis_mata' => $spesialis_mata,
+            'spesialis_tht' => $spesialis_tht,
+
         ]));
         // $mpdf->Output('Surat Pengadaan  '.$model['no_po'].'.pdf','I');
         $mpdf->Output('Pemeriksaan Kesehatan Tenaga Kerja "yodhi".pdf', 'I');
