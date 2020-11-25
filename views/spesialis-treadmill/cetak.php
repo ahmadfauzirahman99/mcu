@@ -165,7 +165,7 @@ use yii\helpers\Url;
             <td><?= $model->dj_maksimal ?> x/Menit</td>
         </tr>
         <tr>
-            <td class="td-tebal">TD Minimal</td>
+            <td class="td-tebal">TD Awal</td>
             <td>:</td>
             <td><?= $model->td_minimal ?> mmHg</td>
         </tr>
