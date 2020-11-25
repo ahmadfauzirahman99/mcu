@@ -1102,7 +1102,7 @@ $helper = [
             <?php if ($identitas_dokter['kodejenis'] == 20) { ?>
                 <?= Html::submitButton('Save Pemeriksaan Fisik', ['class' => 'btn btn-success btn-block stiky', 'id' => 'btn-pemeriksaan-fisik']) ?>
             <?php } ?>
-            <?php if ($identitas_dokter['kodejenis'] == 1) { ?>
+            <?php if ($identitas_dokter['kodejenis'] == 1 || $identitas_dokter['kodejenis'] == 71) { ?>
                 <?= Html::submitButton('Save Pemeriksaan Fisik', ['class' => 'btn btn-success btn-block stiky', 'id' => 'btn-pemeriksaan-fisik']) ?>
             <?php } ?>
             <?php if (($identitas_dokter['kodejenis'] == 36) or $identitas_dokter['kodejenis'] == 37) { ?>
