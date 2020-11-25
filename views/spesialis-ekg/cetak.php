@@ -46,7 +46,7 @@ use yii\helpers\Url;
                     <img src="<?= Url::to('@web/img/kop.png') ?>" alt="" width="20px;">
                 </td>
                 <td class="td-kop" style="width: 50%;">
-                    <table style="width: 100%; font-size: 11px;">
+                    <table style="width: 100%; font-size: 13px;">
                         <tbody>
                             <tr>
                                 <td style="padding: 1px; width: 35%;">Nama Pasien</td>
@@ -87,7 +87,7 @@ use yii\helpers\Url;
     <br>
     <div style="text-align: center; font-size: small;">
         <h3 style="font-weight: bold; margin-bottom: 0px;">UNIT MEDICAL CHECK UP</h3>
-        <h3 style="font-weight: bold; margin-top: 0px;">PEMERIKSAAN KESEHATAN JANTUNG TENAGA KERJA</h3>
+        <h3 style="font-weight: bold; margin-top: 0px;">HASIL EKG</h3>
     </div>
 
     <table class="tabel-data" style="width: 100%; margin-top: 1rem;">
@@ -214,7 +214,7 @@ use yii\helpers\Url;
                     ?>
                 </td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td style="font-weight: bold;">Kesan</td>
                 <td>: </td>
                 <td>
@@ -268,7 +268,7 @@ use yii\helpers\Url;
                     }
                     ?>
                 </td>
-            </tr>
+            </tr> -->
         </tbody>
     </table>
 

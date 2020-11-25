@@ -19,6 +19,7 @@ use Yii;
  * @property string|null $lama_latihan
  * @property string|null $test_dihentikan_karena
  * @property string|null $dj_maksimal
+ * @property string|null $td_minimal
  * @property string|null $td_maksimal
  * @property string|null $ekg_istirahat
  * @property string|null $ekg_latihan
@@ -55,6 +56,8 @@ class McuSpesialisTreadmill extends BaseAR
             [['created_by', 'updated_by'], 'default', 'value' => null],
             [['created_by', 'updated_by'], 'integer'],
             [['no_rekam_medik'], 'string', 'max' => 120],
+
+            ['td_minimal', 'safe'],
         ];
     }
 
@@ -71,6 +74,7 @@ class McuSpesialisTreadmill extends BaseAR
             'lama_latihan' => 'Lama Latihan',
             'test_dihentikan_karena' => 'Test Dihentikan Karena',
             'dj_maksimal' => 'Dj Maksimal',
+            'td_minimal' => 'Td Minimal',
             'td_maksimal' => 'Td Maksimal',
             'ekg_istirahat' => 'Ekg Istirahat',
             'ekg_latihan' => 'Ekg Latihan',
