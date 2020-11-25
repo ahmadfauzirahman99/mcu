@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-11-14 10:06:10
+ * @Last Modified time: 2020-11-25 12:42:11
  */
 
 use app\components\Helper;
@@ -341,7 +341,7 @@ $dataG = [
                     <?= $form->field($model, 'anjuran')->textInput()->label(false) ?>
                 </td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td>Kesan</td>
                 <td>:</td>
                 <td>
@@ -356,7 +356,7 @@ $dataG = [
                     )->label(false);
                     ?>
                 </td>
-            </tr>
+            </tr> -->
         </tbody>
     </table>
 

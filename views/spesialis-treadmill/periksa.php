@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-11-14 09:45:25
+ * @Last Modified time: 2020-11-25 12:21:08
  */
 
 use app\components\Helper;
@@ -183,6 +183,20 @@ $dataG = [
                 <td>:</td>
                 <td>
                     <?= $form->field($model, 'dj_maksimal')->textInput()->label(false) ?>
+                </td>
+            </tr>
+            <tr>
+                <td>TD Minimal</td>
+                <td>:</td>
+                <td>
+                    <?= $form->field($model, 'td_minimal')->textInput()->label(false) ?>
+                </td>
+            </tr>
+            <tr>
+                <td>TD Maksimal</td>
+                <td>:</td>
+                <td>
+                    <?= $form->field($model, 'td_maksimal')->textInput()->label(false) ?>
                 </td>
             </tr>
             <tr>

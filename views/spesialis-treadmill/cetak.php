@@ -92,11 +92,11 @@ use yii\helpers\Url;
     <table class="tbl-kop" style="width: 100%;">
         <tbody>
             <tr>
-                <td class="td-kop" style="width: 50%;">
-                    <img src="<?= Url::to('@web/img/kop.png') ?>" alt="" width="20px;">
+                <td class="td-kop" style="width: 50%; vertical-align: middle;">
+                    <img src="<?= Url::to('@web/img/kop.png') ?>" alt="" width="20px;" style="align-items: center;">
                 </td>
                 <td class="td-kop" style="width: 50%;">
-                    <table style="width: 100%; font-size: 11px;">
+                    <table style="width: 100%; font-size: 13px;">
                         <tbody>
                             <tr>
                                 <td style="padding: 1px; width: 35%;">Nama Pasien</td>
@@ -134,10 +134,11 @@ use yii\helpers\Url;
         </tbody>
     </table>
 
-    <div style="margin-top: 1rem; margin-bottom: 2rem; font-size: small;">
+    <!-- <div style="margin-top: 1rem; margin-bottom: 2rem; font-size: small;">
         <b>PERMINTAAN</b> : <?= $model->permintaan ?>
-    </div>
+    </div> -->
 
+<br>
     <div style="text-align: center; font-size: small;">
         <h3 style="font-weight: bold; margin-top: 0px;">HASIL UJI LATIH JANTUNG DENGAN BEBAN <i>(TREADMILL TEST)</i></h3>
     </div>
@@ -164,6 +165,11 @@ use yii\helpers\Url;
             <td><?= $model->dj_maksimal ?> x/Menit</td>
         </tr>
         <tr>
+            <td class="td-tebal">TD Minimal</td>
+            <td>:</td>
+            <td><?= $model->td_minimal ?> mmHg</td>
+        </tr>
+        <tr>
             <td class="td-tebal">TD Maksimal</td>
             <td>:</td>
             <td><?= $model->td_maksimal ?> mmHg</td>
@@ -182,9 +188,9 @@ use yii\helpers\Url;
             <td><?= $model->ekg_latihan ?></td>
         </tr>
         <tr>
-            <td class="td-tebal" style="padding-left: 40px;">- Latihan</td>
+            <td class="td-tebal" style="padding-left: 40px;">- Pemulihan</td>
             <td>:</td>
-            <td><?= $model->ekg_latihan ?></td>
+            <td><?= $model->ekg_pemulihan ?></td>
         </tr>
         <tr>
             <td colspan="3">
