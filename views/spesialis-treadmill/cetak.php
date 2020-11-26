@@ -359,7 +359,7 @@ use yii\helpers\Url;
     <table class="tbl-ttd" style="width: 100%;">
         <tbody>
             <tr>
-                <td style="width: 60%;border-left: 1px solid #ffffff;"></td>
+                <td style="width: 50%;border-left: 1px solid #ffffff;"></td>
                 <td style="border-right: 1px solid #ffffff;">
                     <br><br><br>
                     PEKANBARU, <?= Yii::$app->formatter->asDate($model->created_at, 'php:d F Y') ?>
@@ -374,7 +374,7 @@ use yii\helpers\Url;
             <tr>
                 <td class="col-1" style="border-left: 1px solid #ffffff;"></td>
                 <td class="col-2" style="text-align: center;border-right: 1px solid #ffffff;">
-                    <br><br><br><br>
+                    <br><br>
                     <b>
                         <?= $model->updatedByTeks->pegawai->nama ?>
                     </b>
