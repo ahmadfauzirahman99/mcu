@@ -356,12 +356,11 @@ use yii\helpers\Url;
         </tr>
     </table>
 
-    <table class="tbl-ttd" style="width: 100%;">
+    <table class="tbl-ttd" style="width: 100%; margin-top: -10px;">
         <tbody>
             <tr>
                 <td style="width: 50%;border-left: 1px solid #ffffff;"></td>
                 <td style="border-right: 1px solid #ffffff;">
-                    <br><br><br>
                     PEKANBARU, <?= Yii::$app->formatter->asDate($model->created_at, 'php:d F Y') ?>
                 </td>
             </tr>
