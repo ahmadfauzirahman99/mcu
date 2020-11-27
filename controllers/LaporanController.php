@@ -21,6 +21,7 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use yii\helpers\Url;
 use app\models\AkunAknUser;
 use app\models\spesialis\McuPenatalaksanaanMcu;
+use app\models\spesialis\McuSpesialisGigi;
 use app\models\spesialis\McuSpesialisMata;
 use app\models\spesialis\McuSpesialisTht;
 
@@ -139,10 +140,7 @@ class LaporanController extends Controller
         $spesialis_mata = McuSpesialisMata::findOne(['no_rekam_medik' => $id]);
         $spesialis_tht = McuSpesialisTht::findOne(['no_rekam_medik' => $id]);
 
-        // echo "<pre>";
-        // print_r($spesialis_tht);
-        // echo "</pre>";
-        // die;
+        $spesialis_gigi = McuSpesialisGigi::findOne(['no_rekam_medik' => $id]);
 
 
         // Data Pelayanan
@@ -168,7 +166,7 @@ class LaporanController extends Controller
 
 
         //Penata
-        $penata_pelaksana = McuPenatalaksanaanMcu::find()->where(['no_rekam_medik'=>$id])->asArray()->all();
+        $penata_pelaksana = McuPenatalaksanaanMcu::find()->where(['no_rekam_medik' => $id])->asArray()->all();
         // var_dump($penata_pelaksana);
         // exit();
 
@@ -222,6 +220,7 @@ class LaporanController extends Controller
             // 'body_dis' => $body_dis,
             // 'modelDetail'=>$modelDetail,
 
+            'spesialis_gigi' => $spesialis_gigi,
             'spesialis_mata' => $spesialis_mata,
             'spesialis_tht' => $spesialis_tht,
 
@@ -345,7 +344,7 @@ class LaporanController extends Controller
         exit;
     }
 
-     public function actionCetakPerawat($id)
+    public function actionCetakPerawat($id)
     {
         // Data Pelayanan
         $data_pelayanan = DataLayanan::findOne(['no_rekam_medik' => $id]);
@@ -358,7 +357,7 @@ class LaporanController extends Controller
 
         $dataDokter = AkunAknUser::findOne(['userid' => $pemeriksaan_fisik['id_dokter_pemeriksaan_fisik']]);
 
-         //Biodata User
+        //Biodata User
         $dataBiodataUser = Yii::$app->dbRegisterMcu->createCommand("SELECT
         u.u_id,u.u_jabatan , ukb.* FROM `user` u LEFT JOIN 
         user_kusioner_biodata ukb  
