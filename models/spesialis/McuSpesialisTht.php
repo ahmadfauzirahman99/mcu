@@ -86,6 +86,13 @@ class McuSpesialisTht extends \app\models\spesialis\BaseAR
             [['created_by', 'updated_by'], 'integer'],
             [['no_rekam_medik'], 'string', 'max' => 120],
             [['tl_daun_telinga_kanan', 'tl_daun_telinga_kiri', 'tl_liang_telinga_kanan', 'tl_liang_telinga_kiri', 'tl_serumen_telinga_kanan', 'tl_serumen_telinga_kiri', 'tl_membrana_timpani_telinga_kanan', 'tl_membrana_timpani_telinga_kiri', 'tl_test_berbisik_telinga_kanan', 'tl_test_berbisik_telinga_kiri', 'tl_test_berbisik_telinga_kanan_6', 'tl_test_berbisik_telinga_kiri_6', 'tl_test_berbisik_telinga_kanan_4', 'tl_test_berbisik_telinga_kiri_4', 'tl_test_berbisik_telinga_kanan_3', 'tl_test_berbisik_telinga_kiri_3', 'tl_test_berbisik_telinga_kanan_1', 'tl_test_berbisik_telinga_kiri_1', 'tl_test_garpu_tala_rinne_telinga_kanan', 'tl_test_garpu_tala_rinne_telinga_kiri', 'tl_weber_telinga_kanan', 'tl_weber_telinga_kiri', 'tl_swabach_telinga_kanan', 'tl_swabach_telinga_kiri', 'tl_bing_telinga_kanan', 'tl_bing_telinga_kiri', 'tl_lain_lain', 'hd_meatus_nasi', 'hd_septum_nasi', 'hd_septum_nasi_lainnya', 'hd_konka_nasal', 'hd_konka_nasal_lainnya', 'hd_nyeri_ketok_sinus_maksilar', 'hd_nyeri_ketok_sinus_maksilar_lainnya', 'hd_penciuman', 'hd_lain_lain', 'tg_pharynx', 'tg_tonsil_kanan', 'tg_tonsil_kiri', 'tg_ukuran_kanan', 'tg_ukuran_kiri', 'tg_palatum', 'tg_lain_lain'], 'string', 'max' => 70],
+
+            [['tl_test_berbisik_telinga_kanan_option', 'tl_test_berbisik_telinga_kiri_option'], 'safe'],
+            [[
+                'tl_test_garpu_tala_periksa',
+                'tl_test_berbisik_periksa',
+                'tl_audiometri_periksa',
+            ], 'safe'],
         ];
     }
 

@@ -151,6 +151,13 @@ class SpesialisThtController extends Controller
             if (!$model)
                 $model = new McuSpesialisTht();
 
+                $modelAudiometri = McuSpesialisAudiometri::find()
+                ->where(['no_rekam_medik' => $pasien->no_rekam_medik])
+                ->andWhere(['no_daftar' => $pasien->no_registrasi])
+                ->one();
+            if (!$modelAudiometri)
+                $modelAudiometri = new McuSpesialisAudiometri();
+
             $modelPenata->no_rekam_medik = $pasien->no_rekam_medik;
             $model->cari_pasien = $id_cari;
             $no_rm = $pasien->no_rekam_medik;
@@ -160,15 +167,16 @@ class SpesialisThtController extends Controller
             $no_rm = null;
             $no_daftar = null;
             $model = new McuSpesialisTht();
+            $modelAudiometri = new McuSpesialisAudiometri();
         }
         $modelPenataList = McuPenatalaksanaanMcu::find()
             ->where(['jenis' => 'spesialis_tht'])
             ->andWhere(['id_fk' => $model->id_spesialis_tht]);
 
-        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $modelAudiometri->load(Yii::$app->request->post())) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-            if ($model->save()) {
+            if ($model->save() && $modelAudiometri->save()) {
                 return [
                     's' => true,
                     'e' => null
@@ -222,8 +230,14 @@ class SpesialisThtController extends Controller
             $model->tg_ukuran_kiri = 'Normal';
             $model->tg_palatum = 'Normal';
 
+            // gabung berbisik dan garpu tala
+            $model->tl_test_berbisik_telinga_kanan_option = 'Jarak 6-5 Meter';
+            $model->tl_test_berbisik_telinga_kiri_option = 'Jarak 6-5 Meter';
+            $model->tl_test_berbisik_telinga_kanan = 'Dalam Batas Normal';
+            $model->tl_test_berbisik_telinga_kiri = 'Dalam Batas Normal';
+
             // ambil data rinne dari perika audiometri
-            $dataAudiometri = McuSpesialisAudiometri::findOne(['no_rekam_medik' => $no_rm]);
+            $dataAudiometri = McuSpesialisAudiometri::findOne(['no_rekam_medik' => $no_rm, 'no_daftar' => $no_daftar]);
             if ($dataAudiometri) {
                 if ($dataAudiometri->rata_kanan_ac < $dataAudiometri->rata_kanan_bc) {
                     $model->tl_test_garpu_tala_rinne_telinga_kanan = 'Negatif (AC < BC)';
@@ -236,12 +250,16 @@ class SpesialisThtController extends Controller
                     $model->tl_test_garpu_tala_rinne_telinga_kiri = 'Positif (AC > BC)';
                 }
             }
+
+            $model->tl_test_berbisik_periksa = 'Ya';
+            $model->tl_audiometri_periksa = 'Ya';
             
             $model->kesan = 'Normal';
         }
 
         return $this->render('periksa', [
             'model' => $model,
+            'modelAudiometri' => $modelAudiometri,
             'modelPenata' => $modelPenata,
             'modelPenataList' => $modelPenataList,
             'no_rm' => $no_rm,
@@ -274,7 +292,7 @@ class SpesialisThtController extends Controller
         $mpdf = new \Mpdf\Mpdf([
             'mode' => 'utf-8',
             // 'format' => 'legal',
-            'format' => [210, 330],
+            'format' => [210, 330], // F4
             'margin_left' => 5,
             'margin_right' => 5,
             'margin_top' => 5,

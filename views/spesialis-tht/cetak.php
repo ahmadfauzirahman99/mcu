@@ -17,7 +17,7 @@ use yii\helpers\Url;
     }
 
     table td {
-        padding: 4.800;
+        padding: 3.800;
     }
 
     .tbl-kop tr td.td-kop {
@@ -44,6 +44,19 @@ use yii\helpers\Url;
     .tbl-ttd tr td.col-3 {
         border-bottom: 1px solid #000000;
         border-right: 1px solid #000000;
+    }
+
+    .tabel-kesimpulan tr th,
+    .tabel-kesimpulan tr td {
+        border: 1px solid #000000;
+    }
+
+    .tbl-hasil td.kotakin {
+        border: 1px solid #000000;
+    }
+
+    tr.tr-tengah td {
+        height: 18;
     }
 </style>
 
@@ -157,103 +170,254 @@ use yii\helpers\Url;
                 <td></td>
                 <td> <?= $model->tl_membrana_timpani_telinga_kiri == 'Lainnya' ? '&#9632;' : '&#9633;' ?> Lainnya </td>
             </tr>
+            <?php
+            if ($model->tl_test_garpu_tala_periksa == 'Tidak') {
+                echo '
+                    <tr>
+                        <td rowspan="1">5</td>
+                        <th style="text-align: left;">Tes Garpu Tala</th>
+                        <td> : </td>
+                        <th colspan="4" style="text-align: left;">Tidak Melakukan Pemeriksaan</th>
+                    </tr>
+                ';
+            } else {
+            ?>
+
+                <tr>
+                    <td rowspan="6">5</td>
+                    <th colspan="6" style="text-align: left;">Tes Garpu Tala</th>
+                </tr>
+                <tr>
+                    <td>Rinne</td>
+                    <td> : </td>
+                    <td> <?= $model->tl_test_garpu_tala_rinne_telinga_kanan == 'Negatif (AC < BC)' ? '&#9632;' : '&#9633;' ?> Negatif (AC < BC) </td> <td> <?= $model->tl_test_garpu_tala_rinne_telinga_kanan == 'Positif (AC > BC)' ? '&#9632;' : '&#9633;' ?> Positif (AC > BC) </td>
+                    <td> <?= $model->tl_test_garpu_tala_rinne_telinga_kiri == 'Negatif (AC < BC)' ? '&#9632;' : '&#9633;' ?> Negatif (AC < BC) </td> <td> <?= $model->tl_test_garpu_tala_rinne_telinga_kiri == 'Positif (AC > BC)' ? '&#9632;' : '&#9633;' ?> Positif (AC > BC) </td>
+                </tr>
+                <tr>
+                    <td>Weber</td>
+                    <td> : </td>
+                    <td> <?= $model->tl_weber_telinga_kanan == 'Tidak Ada Lateralisasi' ? '&#9632;' : '&#9633;' ?> Tidak Ada Lateralisasi </td>
+                    <td> <?= $model->tl_weber_telinga_kanan == 'Lateralisasi Kanan' ? '&#9632;' : '&#9633;' ?> Lateralisasi Kanan </td>
+                    <td> <?= $model->tl_weber_telinga_kiri == 'Tidak Ada Lateralisasi' ? '&#9632;' : '&#9633;' ?> Tidak Ada Lateralisasi </td>
+                    <td> <?= $model->tl_weber_telinga_kiri == 'Lateralisasi Kanan' ? '&#9632;' : '&#9633;' ?> Lateralisasi Kanan </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Swabach</td>
+                    <td rowspan="2"> : </td>
+                    <td> <?= $model->tl_swabach_telinga_kanan == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                    <td> <?= $model->tl_swabach_telinga_kanan == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
+                    <td> <?= $model->tl_swabach_telinga_kiri == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                    <td> <?= $model->tl_swabach_telinga_kiri == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
+                </tr>
+                <tr>
+                    <td> <?= $model->tl_swabach_telinga_kanan == 'Memendek' ? '&#9632;' : '&#9633;' ?> Memendek </td>
+                    <td> <?= $model->tl_swabach_telinga_kanan == 'Memanjang' ? '&#9632;' : '&#9633;' ?> Memanjang </td>
+                    <td> <?= $model->tl_swabach_telinga_kiri == 'Memendek' ? '&#9632;' : '&#9633;' ?> Memendek </td>
+                    <td> <?= $model->tl_swabach_telinga_kiri == 'Memanjang' ? '&#9632;' : '&#9633;' ?> Memanjang </td>
+                </tr>
+                <tr>
+                    <td>Bing</td>
+                    <td> : </td>
+                    <td> <?= $model->tl_bing_telinga_kanan == 'Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Bertambah Keras </td>
+                    <td> <?= $model->tl_bing_telinga_kanan == 'Tidak Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Tidak Bertambah Keras </td>
+                    <td> <?= $model->tl_bing_telinga_kiri == 'Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Bertambah Keras </td>
+                    <td> <?= $model->tl_bing_telinga_kiri == 'Tidak Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Tidak Bertambah Keras </td>
+                </tr>
+            <?php
+            }
+            ?>
+
+            <?php
+            if ($model->tl_test_berbisik_periksa == 'Tidak') {
+                echo '
+                    <tr>
+                        <td rowspan="1">6</td>
+                        <th style="text-align: left;">Tes Berbisik</th>
+                        <td> : </td>
+                        <th colspan="4" style="text-align: left;">Tidak Melakukan Pemeriksaan</th>
+                    </tr>
+                ';
+            } else {
+            ?>
+
+                <tr>
+                    <td rowspan="2">6</td>
+                    <td rowspan="2" style="font-weight: bold;">Test Berbisik</td>
+                    <td style="text-align: center;">:</td>
+                    <td><?= $model->tl_test_berbisik_telinga_kanan == 'Dalam Batas Normal' ? '&#9632;' : '&#9633;' ?> Dalam Batas Normal</td>
+                    <td><?= $model->tl_test_berbisik_telinga_kanan == 'Tuli Ringan' ? '&#9632;' : '&#9633;' ?> Tuli Ringan</td>
+                    <td><?= $model->tl_test_berbisik_telinga_kiri == 'Dalam Batas Normal' ? '&#9632;' : '&#9633;' ?> Dalam Batas Normal</td>
+                    <td><?= $model->tl_test_berbisik_telinga_kiri == 'Tuli Ringan' ? '&#9632;' : '&#9633;' ?> Tuli Ringan</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><?= $model->tl_test_berbisik_telinga_kanan == 'Tuli Sedang' ? '&#9632;' : '&#9633;' ?> Tuli Sedang</td>
+                    <td><?= $model->tl_test_berbisik_telinga_kanan == 'Tuli Berat' ? '&#9632;' : '&#9633;' ?> Tuli Berat</td>
+                    <td><?= $model->tl_test_berbisik_telinga_kiri == 'Tuli Sedang' ? '&#9632;' : '&#9633;' ?> Tuli Sedang</td>
+                    <td><?= $model->tl_test_berbisik_telinga_kiri == 'Tuli Berat' ? '&#9632;' : '&#9633;' ?> Tuli Berat</td>
+                </tr>
+
+            <?php
+            }
+            ?>
+
+        </tbody>
+    </table>
+
+    <?php
+    if ($model->tl_audiometri_periksa == 'Tidak') {
+        echo '
+        <table class="tabel-tht" style="width: 100%; font-size: 11.5px;">
+            <tbody>
+                    <tr>
+                        <td style="width: 2%;"  rowspan="1">7</td>
+                        <th style="width: 28%; text-align: left;">Audiometri</th>
+                        <td style="width: 2%;" > : </td>
+                        <th  colspan="4" style="text-align: left;">Tidak Melakukan Pemeriksaan</th>
+                    </tr>
+            </tbody>
+        </table>
+                ';
+    } else {
+    ?>
+
+        <table class="tbl-hasil" style="width: 100%;">
+            <tbody>
+
+                <tr>
+                    <td class="kotakin" style="background-color: #ccced0; text-align: left;" colspan="19"><b>7. Audiometri</b></td>
+                </tr>
+                <tr>
+                    <td class="kotakin" style="background-color: #e8ecef; text-align: left;" colspan="10"><b>Right/Kanan</b></td>
+                    <td class="kotakin" style="background-color: #e8ecef; text-align: left;" colspan="9"><b>Left/Kiri</b></td>
+                </tr>
+                <tr>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">125</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">250</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">500</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">1000</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">2000</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">3000</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">4000</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">6000</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">8000</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">125</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">250</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">500</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">1000</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">2000</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">3000</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">4000</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">6000</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">8000</td>
+                </tr>
+                <tr>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">AC</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_125_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_250_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_500_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_1000_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_2000_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_3000_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_4000_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_6000_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_8000_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_125_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_250_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_500_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_1000_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_2000_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_3000_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_4000_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_6000_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->ac_8000_kiri ?></td>
+                </tr>
+                <tr>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;">BC</td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_125_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_250_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_500_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_1000_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_2000_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_3000_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_4000_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_6000_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_8000_kanan ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_125_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_250_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_500_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_1000_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_2000_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_3000_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_4000_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_6000_kiri ?></td>
+                    <td class="kotakin" style="padding: 2px; font-size: 8px; width: 12px;"><?= $modelAudiometri->bc_8000_kiri ?></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="tabel-kesimpulan" style="width: 100%;">
+            <tbody>
+                <tr>
+                    <td colspan="4">
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="4" style="text-align: left;">Kesimpulan</th>
+                </tr>
+                <tr>
+                    <td style="width: 25%; text-align: center;">AC</td>
+                    <td style="width: 27.5%;"><?= $modelAudiometri->rata_kanan_ac ?></td>
+                    <td style="width: 22.5%; text-align: center;">AC</td>
+                    <td style="width: 25%;"><?= $modelAudiometri->rata_kiri_ac ?></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">BC</td>
+                    <td><?= $modelAudiometri->rata_kanan_bc ?></td>
+                    <td style="text-align: center;">BC</td>
+                    <td><?= $modelAudiometri->rata_kiri_bc ?></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">Kanan</td>
+                    <td><?= $modelAudiometri->kesimpulan_kanan ?></td>
+                    <td style="text-align: center;">Kiri</td>
+                    <td><?= $modelAudiometri->kesimpulan_kiri ?></td>
+                </tr>
+                <tr>
+                    <th style="text-align: left; vertical-align: top;">Catatan</th>
+                    <td colspan="3"><?= $modelAudiometri->kesimpulan ?></td>
+                </tr>
+                <tr>
+                    <th style="text-align: left;">Kesan</th>
+                    <td colspan="3"><?= $modelAudiometri->kesan ?></td>
+                </tr>
+            </tbody>
+        </table>
+
+    <?php
+    }
+    ?>
+
+    <table class="tabel-tht" style="width: 100%; font-size: 11.5px;">
+        <tbody>
             <tr>
-                <td rowspan="5">5</td>
-                <th colspan="6" style="text-align: left;">Tes Berbisik</th>
-            </tr>
-            <tr>
-                <td>Jarak 6-5 Meter</td>
-                <td> : </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kanan_6 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kanan_6 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kiri_6 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kiri_6 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
-            </tr>
-            <tr>
-                <td>Jarak 4 Meter</td>
-                <td> : </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kanan_4 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kanan_4 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kiri_4 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kiri_4 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
-            </tr>
-            <tr>
-                <td>Jarak 3-2 Meter</td>
-                <td> : </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kanan_3 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kanan_3 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kiri_3 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kiri_3 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
-            </tr>
-            <tr>
-                <td>Jarak ≥ 1 Meter</td>
-                <td> : </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kanan_1 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kanan_1 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kiri_1 == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
-                <td> <?= $model->tl_test_berbisik_telinga_kiri_1 == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
-            </tr>
-            <tr>
-                <td rowspan="6">6</td>
-                <th colspan="6" style="text-align: left;">Tes Garpu Tala</th>
-            </tr>
-            <tr>
-                <td>Rinne</td>
-                <td> : </td>
-                <td> <?= $model->tl_test_garpu_tala_rinne_telinga_kanan == 'Negatif (AC < BC)' ? '&#9632;' : '&#9633;' ?> Negatif (AC < BC) </td> <td> <?= $model->tl_test_garpu_tala_rinne_telinga_kanan == 'Positif (AC > BC)' ? '&#9632;' : '&#9633;' ?> Positif (AC > BC) </td>
-                <td> <?= $model->tl_test_garpu_tala_rinne_telinga_kiri == 'Negatif (AC < BC)' ? '&#9632;' : '&#9633;' ?> Negatif (AC < BC) </td> <td> <?= $model->tl_test_garpu_tala_rinne_telinga_kiri == 'Positif (AC > BC)' ? '&#9632;' : '&#9633;' ?> Positif (AC > BC) </td>
-            </tr>
-            <tr>
-                <td>Weber</td>
-                <td> : </td>
-                <td> <?= $model->tl_weber_telinga_kanan == 'Tidak Ada Lateralisasi' ? '&#9632;' : '&#9633;' ?> Tidak Ada Lateralisasi </td>
-                <td> <?= $model->tl_weber_telinga_kanan == 'Lateralisasi Kanan' ? '&#9632;' : '&#9633;' ?> Lateralisasi Kanan </td>
-                <td> <?= $model->tl_weber_telinga_kiri == 'Tidak Ada Lateralisasi' ? '&#9632;' : '&#9633;' ?> Tidak Ada Lateralisasi </td>
-                <td> <?= $model->tl_weber_telinga_kiri == 'Lateralisasi Kanan' ? '&#9632;' : '&#9633;' ?> Lateralisasi Kanan </td>
-            </tr>
-            <tr>
-                <td rowspan="2">Swabach</td>
-                <td rowspan="2"> : </td>
-                <td> <?= $model->tl_swabach_telinga_kanan == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
-                <td> <?= $model->tl_swabach_telinga_kanan == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
-                <td> <?= $model->tl_swabach_telinga_kiri == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
-                <td> <?= $model->tl_swabach_telinga_kiri == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
-            </tr>
-            <tr>
-                <td> <?= $model->tl_swabach_telinga_kanan == 'Memendek' ? '&#9632;' : '&#9633;' ?> Memendek </td>
-                <td> <?= $model->tl_swabach_telinga_kanan == 'Memanjang' ? '&#9632;' : '&#9633;' ?> Memanjang </td>
-                <td> <?= $model->tl_swabach_telinga_kiri == 'Memendek' ? '&#9632;' : '&#9633;' ?> Memendek </td>
-                <td> <?= $model->tl_swabach_telinga_kiri == 'Memanjang' ? '&#9632;' : '&#9633;' ?> Memanjang </td>
-            </tr>
-            <tr>
-                <td>Bing</td>
-                <td> : </td>
-                <td> <?= $model->tl_bing_telinga_kanan == 'Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Bertambah Keras </td>
-                <td> <?= $model->tl_bing_telinga_kanan == 'Tidak Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Tidak Bertambah Keras </td>
-                <td> <?= $model->tl_bing_telinga_kiri == 'Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Bertambah Keras </td>
-                <td> <?= $model->tl_bing_telinga_kiri == 'Tidak Bertambah Keras' ? '&#9632;' : '&#9633;' ?> Tidak Bertambah Keras </td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Lain-lain</td>
-                <td> : </td>
-                <td rowspan="2" colspan="4"><?= $model->tl_lain_lain ?></td>
-            </tr>
-            <tr>
-                <td colspan="2"></td>
-                <td>&nbsp;</td>
+                <td style="width: 2%;">8</td>
+                <td style="width: 28%;">Lain-lain</td>
+                <td style="width: 2%;"> : </td>
+                <td rowspan="0" colspan="4"><?= $model->tl_lain_lain ?></td>
             </tr>
             <tr>
                 <th colspan="7" style="text-align: left;">II. HIDUNG</th>
             </tr>
             <tr>
-                <td>1</td>
-                <td>Meatus Nasi</td>
-                <td> : </td>
-                <td> <?= $model->hd_meatus_nasi == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
-                <td> <?= $model->hd_meatus_nasi == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
-                <td> &nbsp; </td>
-                <td> &nbsp; </td>
+                <td style="width: 2%;">1</td>
+                <td style="width: 28%;">Meatus Nasi</td>
+                <td style="width: 2%;"> : </td>
+                <td style="width: 17%;"> <?= $model->hd_meatus_nasi == 'Normal' ? '&#9632;' : '&#9633;' ?> Normal </td>
+                <td style="width: 17%;"> <?= $model->hd_meatus_nasi == 'Tidak Normal' ? '&#9632;' : '&#9633;' ?> Tidak Normal </td>
+                <td style="width: 17%;"> &nbsp; </td>
+                <td style="width: 17%;"> &nbsp; </td>
             </tr>
             <tr>
                 <td>2</td>
@@ -295,11 +459,7 @@ use yii\helpers\Url;
                 <td>6</td>
                 <td>Lain-lain</td>
                 <td> : </td>
-                <td rowspan="2" colspan="4"><?= $model->hd_lain_lain ?></td>
-            </tr>
-            <tr>
-                <td colspan="2"></td>
-                <td>&nbsp;</td>
+                <td rowspan="1" colspan="4"><?= $model->hd_lain_lain ?></td>
             </tr>
             <tr>
                 <th colspan="7" style="text-align: left;">III. TENGGOROKAN</th>
@@ -352,7 +512,7 @@ use yii\helpers\Url;
                             $t3 = '&#9633;';
                             break;
                     }
-                    echo 'Kanan : ' . $t0 .' T0 '. $t1 .' T1 '. $t2 .' T2 '. $t3 .' T3 ';
+                    echo 'Kanan : ' . $t0 . ' T0 ' . $t1 . ' T1 ' . $t2 . ' T2 ' . $t3 . ' T3 ';
                     ?>
                 </td>
                 <td colspan="2" style="text-align: center;">
@@ -390,7 +550,7 @@ use yii\helpers\Url;
                             $t3 = '&#9633;';
                             break;
                     }
-                    echo 'Kanan : ' . $t0 .' T0 '. $t1 .' T1 '. $t2 .' T2 '. $t3 .' T3 ';
+                    echo 'Kanan : ' . $t0 . ' T0 ' . $t1 . ' T1 ' . $t2 . ' T2 ' . $t3 . ' T3 ';
                     ?>
                 </td>
             </tr>
@@ -416,28 +576,14 @@ use yii\helpers\Url;
                 <td>5</td>
                 <td>Lain-lain</td>
                 <td> : </td>
-                <td rowspan="2" colspan="4"><?= $model->tg_lain_lain ?></td>
+                <td rowspan="1" colspan="4"><?= $model->tg_lain_lain ?></td>
             </tr>
-            <tr>
-                <td colspan="2"></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <th colspan="2" rowspan="2" style="text-align: left;">IV. AUDIOMETRI<br>&nbsp;<br>&nbsp;</th>
-                <td rowspan="2"> : </td>
-                <td rowspan="2" colspan="4"><?= $model->tg_lain_lain ?></td>
-            </tr>
-            <tr>
+            <!-- <tr>
                 <td colspan="2"></td>
             </tr>
             <tr>
-                <th colspan="2" rowspan="2" style="text-align: left;">V. KESIMPULAN<br>&nbsp;<br>&nbsp;</th>
-                <td rowspan="2"> : </td>
-                <td rowspan="2" colspan="4"><?= $model->kesimpulan ?></td>
-            </tr>
-            <tr>
                 <td colspan="2"></td>
-            </tr>
+            </tr> -->
             <tr>
                 <th colspan="2" rowspan="2" style="text-align: left;">VI. KESAN<br>&nbsp;<br>&nbsp;</th>
                 <td rowspan="2"> : </td>

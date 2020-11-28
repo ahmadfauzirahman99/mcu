@@ -334,14 +334,14 @@ $dataG = [
                     <?= $form->field($model, 'kesan_ekg_istirahat')->textInput()->label(false) ?>
                 </td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td>Anjuran</td>
                 <td>:</td>
                 <td>
                     <?= $form->field($model, 'anjuran')->textInput()->label(false) ?>
                 </td>
-            </tr>
-            <!-- <tr>
+            </tr> -->
+            <tr>
                 <td>Kesan</td>
                 <td>:</td>
                 <td>
@@ -356,7 +356,7 @@ $dataG = [
                     )->label(false);
                     ?>
                 </td>
-            </tr> -->
+            </tr>
         </tbody>
     </table>
 
