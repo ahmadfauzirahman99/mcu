@@ -8,6 +8,7 @@ use app\models\Anamnesis;
 use app\models\BahayaPotensial;
 use app\models\BodyDiscomfort;
 use app\models\DataLayanan;
+use app\models\GraddingMcu;
 use app\models\JenisPekerjaan;
 use app\models\MasterPemeriksaanFisik;
 use app\models\McuBrief;
@@ -16,6 +17,8 @@ use app\models\UserKusionerBiodata;
 use app\models\UserRegister;
 use app\models\PenyakitSimrs;
 use app\models\spesialis\McuPenatalaksanaanMcu;
+use app\models\spesialis\McuSpesialisGigi;
+use app\models\spesialis\McuSpesialisMata;
 use Yii;
 
 class UnitPemeriksaanController extends \yii\web\Controller
@@ -65,15 +68,40 @@ class UnitPemeriksaanController extends \yii\web\Controller
             if (!$modelPemeriksaanBengkalis) {
                 $modelPemeriksaanBengkalis = new PemeriksaanDokterBengkalis();
             }
-            
-            $penata = McuPenatalaksanaanMcu::findOne(['no_rekam_medik'=>$modelDataLayanan->no_rekam_medik]);
-            if(!$penata){
-               $penata = new McuPenatalaksanaanMcu();
 
+            $penata = McuPenatalaksanaanMcu::findOne(['no_rekam_medik' => $modelDataLayanan->no_rekam_medik]);
+            if (!$penata) {
+                $penata = new McuPenatalaksanaanMcu();
+            }
+
+
+            $dataGradding = GraddingMcu::findOne(['no_rekam_medik' => $modelDataLayanan->no_rekam_medik]);
+
+            if (!$dataGradding) {
+                $dataGradding = new GraddingMcu();
+                $hasil_mcu_mata = null;
+                $hasil_mcu_gigi = null;
+                $hasil_lab = null;
+            } else {
+                $hasil_mcu_mata = json_decode($dataGradding->hasil);
+                $hasil_mcu_gigi = json_decode($dataGradding->hasil);
+                $hasil_lab = json_decode($dataGradding->hasil);
+            }
+
+            $modelMata = McuSpesialisMata::findOne(['no_rekam_medik' => $modelDataLayanan->no_rekam_medik]);
+            if (!$modelMata) {
+                $modelMata = new McuSpesialisMata();
+            }
+            $modelGigi = McuSpesialisGigi::findOne(['no_rekam_medik' => $modelDataLayanan->no_rekam_medik]);
+            if ($modelGigi) {
+                $modelGigi = new McuSpesialisGigi();
             }
             // $anamnesis = new Anamnesis();
 
         } else {
+            $modelMata = new McuSpesialisMata();
+            $modelGigi = new McuSpesialisGigi();
+            $dataGradding = new GraddingMcu();
             $anamnesis = new Anamnesis();
             $modelDataLayanan = new DataLayanan();
             $jenis_pekerjaan = new JenisPekerjaan();
@@ -83,6 +111,9 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $modelAnamnesaBengkalis = new AnamnesaBengkalis();
             $modelPemeriksaanBengkalis = new PemeriksaanDokterBengkalis();
             $penata = new McuPenatalaksanaanMcu();
+            $hasil_mcu_mata = null;
+            $hasil_mcu_gigi = null;
+            $hasil_lab = null;
         }
 
 
@@ -292,25 +323,29 @@ class UnitPemeriksaanController extends \yii\web\Controller
             $master_pemeriksaan_fisik->mata_lensa_mata_kanan = "Tidak Keruh";
             $master_pemeriksaan_fisik->mata_lensa_mata_kiri = "Tidak Keruh";
             $master_pemeriksaan_fisik->paru_jantung_perkusi_iktus_kiri = "Normal";
-            
+
             $master_pemeriksaan_fisik->tulang_atas_simetris = "Tidak Ada";
             $master_pemeriksaan_fisik->tulang_bawah_simetris = "Tidak Ada";
-
         }
-       $master_pemeriksaan_fisik->tulang_atas_simetris = "Ya";
-       $master_pemeriksaan_fisik->tulang_bawah_simetris = "Ya";
+        $master_pemeriksaan_fisik->tulang_atas_simetris = "Ya";
+        $master_pemeriksaan_fisik->tulang_bawah_simetris = "Ya";
 
 
         return $this->render('unit-pemeriksaan', [
             'dataLayanan' => $modelDataLayanan,
             'anamnesis' => $anamnesis,
             'jenis_pekerjaan' => $jenis_pekerjaan,
+            'hasil_mcu_mata' => $hasil_mcu_mata,
+            'hasil_mcu_gigi' => $hasil_mcu_gigi,
+            'modelMata' => $modelMata,
+            'modelGigi' => $modelGigi,
+            'hasil_lab' => $hasil_lab,
             'master_pemeriksaan_fisik' => $master_pemeriksaan_fisik,
             'modelBahayaPotensial' => $modelBahayaPotensial,
             'modelBrief' => $modelBrief,
             'modelAnamnesaBengkalis' => $modelAnamnesaBengkalis,
             'modelPemeriksaanBengkalis' => $modelPemeriksaanBengkalis,
-            'penata'=>$penata
+            'penata' => $penata
         ]);
     }
 
@@ -483,7 +518,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
                 if ($rm['kodejenis'] == 20) {
                     $master_pemeriksaan_fisik->id_dokter_fit_for_work = (string)Yii::$app->user->identity->id;
                     $IDCT10 = $p['MasterPemeriksaanFisik']['icdt10'];
-                if ($IDCT10 ==  null) {
+                    if ($IDCT10 ==  null) {
                         $IDCT10 = $master_pemeriksaan_fisik->icdt10;
                     } else {
                         $IDCT10 = implode(", ", $IDCT10);
@@ -494,9 +529,9 @@ class UnitPemeriksaanController extends \yii\web\Controller
                     $master_pemeriksaan_fisik->diagnosis_kerja = $d;
                     $master_pemeriksaan_fisik->icdt10 = $IDCT10;
                 }
-                  
-                    $master_pemeriksaan_fisik->no_daftar = $modelDataLayanan->no_registrasi; 
-            
+
+                $master_pemeriksaan_fisik->no_daftar = $modelDataLayanan->no_registrasi;
+
                 if ($master_pemeriksaan_fisik->save()) {
                     return [
                         's' => true,
@@ -521,22 +556,22 @@ class UnitPemeriksaanController extends \yii\web\Controller
             }
             if ($rm['kodejenis'] == 20) {
                 $model->id_dokter_fit_for_work = (string)Yii::$app->user->identity->id;
-               $IDCT10 = $p['MasterPemeriksaanFisik']['icdt10'];
-              if ($IDCT10 ==  null) {
-                  $IDCT10 = $model->icdt10;
-              } else {
-                  $IDCT10 = implode(", ", $IDCT10);
-              }
-                    // var_dump($IDCT10);
-                    // exit();
-              $d = $p['MasterPemeriksaanFisik']['diagnosis_kerja'];
-              $model->diagnosis_kerja = $d;
-              $model->icdt10 = $IDCT10;
+                $IDCT10 = $p['MasterPemeriksaanFisik']['icdt10'];
+                if ($IDCT10 ==  null) {
+                    $IDCT10 = $model->icdt10;
+                } else {
+                    $IDCT10 = implode(", ", $IDCT10);
+                }
+                // var_dump($IDCT10);
+                // exit();
+                $d = $p['MasterPemeriksaanFisik']['diagnosis_kerja'];
+                $model->diagnosis_kerja = $d;
+                $model->icdt10 = $IDCT10;
             }
-          
+
             $model->no_daftar = $modelDataLayanan->no_registrasi;
             $model->tingkat_kesadaran_kesadaran = "Compos Mentis";
-            
+
             $model->tulang_atas_simetris = "Ya";
             $model->tulang_bawah_simetris = "Ya";
             $model->tingkat_kesadaran_kualitas_kontak = "Baik";
@@ -852,7 +887,7 @@ class UnitPemeriksaanController extends \yii\web\Controller
     //penata save
     public function actionSavePenata()
     {
-      $formkhusus = new McuPenatalaksanaanMcu();
+        $formkhusus = new McuPenatalaksanaanMcu();
         if ($formkhusus->load(Yii::$app->request->post())) {
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             if ($formkhusus->save()) {
@@ -888,4 +923,21 @@ class UnitPemeriksaanController extends \yii\web\Controller
     }
 
 
+    public function actionDeletePenata()
+    {
+        $id = $_POST['id'];
+        $model = McuPenatalaksanaanMcu::findOne(['id_penata' => $id]);
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        if ($model->delete()) {
+            return [
+                's' => true,
+                'e' => null
+            ];
+        } else {
+            return [
+                's' => false,
+                'e' => $model->errors
+            ];
+        }
+    }
 }

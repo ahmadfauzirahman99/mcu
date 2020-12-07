@@ -2,6 +2,9 @@
 
 use app\assets\ItemFisikAsset;
 use app\components\Helper;
+use app\models\GraddingMcu;
+use app\models\spesialis\McuSpesialisGigi;
+use app\models\spesialis\McuSpesialisMata;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 use kartik\select2\Select2;
@@ -1029,8 +1032,7 @@ $helper = [
                         // var_dump($resume_kelainan);
                         ?>
                         <hr>
-                        <h4>Liat Hasil Resemu Kelainan</h4>
-                        <a target="_blank" href="<?= Url::to(['/gradding-mcu/liat-hasil-resume','id'=> $dataLayanan->no_rekam_medik]) ?>">Liat Hasil Resemu</a>
+                        <button class="btn btn-primary waves-effect waves-light" type="button" data-toggle="modal" data-target=".bs-example-modal-lg">Liat Hasil Resume</button>
                         <hr>
                         <?= $form->field($master_pemeriksaan_fisik, 'hasil_body_map')->textarea(['maxlength' => true, 'rows' => 9, 'placeholder' => 'Hasil Body Map']) ?>
                         <?= $form->field($master_pemeriksaan_fisik, 'hasil_brief_survey')->textarea(['maxlength' => true, 'placeholder' => 'Hasil Brief Survey']) ?>
@@ -1069,7 +1071,7 @@ $helper = [
                                         $('#masterpemeriksaanfisik-diagnosis_kerja').val(diagnosis_kerja)
                                     }",
                             ]
-                        ]);
+                        ])->label("IDC10");
 
 
                         ?>
@@ -1113,3 +1115,50 @@ $helper = [
     <?php ActiveForm::end(); ?>
 
 </div>
+
+
+<!--  Modal content for the above example -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Hasil Lab</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group">
+                    <?php if (!is_null($hasil_lab)) { ?>
+                        <?php foreach ($hasil_lab->lab as $items) { ?>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <?= $items->item ?>
+                                <span class="badge badge-primary badge-pill"><?= $items->value ?></span>
+                            </li>
+
+                        <?php } ?>
+                    <?php } ?>
+
+                    <?php if (!is_null($hasil_mcu_mata)) { ?>
+                        <?php foreach ($hasil_mcu_mata->mata as $items) { ?>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <?= $modelMata->getAttributeLabel($items->item) ?>
+                                <span class="badge badge-primary badge-pill"><?= $items->value ?></span>
+                            </li>
+                        <?php } ?>
+                    <?php } ?>
+                    <?php if (!is_null($hasil_mcu_gigi)) { ?>
+
+                        <?php foreach ($hasil_mcu_gigi->gigi as $items) { ?>
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <?= $modelGigi->getAttributeLabel($items->item) ?>
+                                <span class="badge badge-primary badge-pill"><?= $items->value ?></span>
+                            </li>
+                        <?php } ?>
+                    <?php } ?>
+
+
+                </ul>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

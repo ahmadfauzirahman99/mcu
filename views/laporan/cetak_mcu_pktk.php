@@ -1173,12 +1173,10 @@ function tgl_indo($tanggal)
                             <td>c. Tekanan Darah</td>
                             <td>:</td>
                             <td style="width:72%;height:10px">
-
-
-                                <?php if ($data_pelayanan->kode_debitur == "0129") { ?>
-                                    <?= $pemeriksaan_fisik['sistolik'] ?> / <?= $pemeriksaan_fisik['diastolik'] ?>
-                                <?php } else { ?>
+                                <?php if ($data_pelayanan->kode_debitur == "0127") { ?>
                                     <?= $pemeriksaan_fisik['tanda_vital_tekanan_darah'] ?? '-' ?>
+                                    <?php } else { ?>
+                                        <?= $pemeriksaan_fisik['sistolik'] ?> / <?= $pemeriksaan_fisik['diastolik'] ?>
 
                                 <?php } ?>
                                 mm Hg</td>
