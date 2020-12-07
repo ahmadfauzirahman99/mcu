@@ -176,12 +176,18 @@ class SpesialisThtController extends Controller
         if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) && $modelAudiometri->load(Yii::$app->request->post())) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
+            $modelAudiometri->no_rekam_medik = $model->no_rekam_medik;
+            
             if ($model->save() && $modelAudiometri->save()) {
                 return [
                     's' => true,
                     'e' => null
                 ];
             } else {
+                echo "<pre>";
+                print_r($model->errors);
+                print_r($modelAudiometri->errors);
+                echo "</pre>";
                 return [
                     's' => false,
                     'e' => $model->errors

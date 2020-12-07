@@ -56,6 +56,8 @@ class BaseAR extends \yii\db\ActiveRecord
             $this->riwayat = Json::encode($oldRiwayat, JSON_PRETTY_PRINT);
             $this->updateAttributes(['riwayat']);
         } else {
+            $this->updated_by = Yii::$app->user->id;
+            $this->updateAttributes(['updated_by']);
             if (count($changedAttributes) > 0) {
                 $newRow = $this->attributes;
                 unset($newRow['riwayat']);
@@ -94,5 +96,4 @@ class BaseAR extends \yii\db\ActiveRecord
     {
         return $this->hasOne(AkunAknUser::className(), ['userid' => 'updated_by']);
     }
-    
 }

@@ -107,7 +107,7 @@ class McuSpesialisAudiometri extends BaseAR
             [['rata_kanan_ac', 'rata_kanan_bc', 'rata_kiri_ac', 'rata_kiri_bc'], 'number'],
             ['riwayat', 'safe'],
             
-            ['kesan', 'required'],
+            // ['kesan', 'required'],
             ['no_daftar', 'unique'],
         ];
     }

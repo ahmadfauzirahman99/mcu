@@ -614,10 +614,10 @@ use yii\helpers\Url;
                 <td class="col-2" style="text-align: center;border-right: 1px solid #000000;">
                     <br><br>
                     <b>
-                        <?= $model->createdByTeks->pegawai->nama ?>
+                        <?= $model->updatedByTeks->pegawai->nama ?>
                     </b>
                     <br>
-                    <?= $model->createdByTeks->pegawai->no ?>
+                    <?= $model->updatedByTeks->pegawai->no ?>
                 </td>
             </tr>
         </tbody>
