@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\DataLayanan;
 use app\models\MasterPemeriksaanFisik;
+use app\models\resume\Resume;
 use app\models\spesialis\McuPenatalaksanaanMcu;
 use app\models\spesialis\McuSpesialisAudiometri;
 use Yii;
@@ -151,7 +152,7 @@ class SpesialisThtController extends Controller
             if (!$model)
                 $model = new McuSpesialisTht();
 
-                $modelAudiometri = McuSpesialisAudiometri::find()
+            $modelAudiometri = McuSpesialisAudiometri::find()
                 ->where(['no_rekam_medik' => $pasien->no_rekam_medik])
                 ->andWhere(['no_daftar' => $pasien->no_registrasi])
                 ->one();
@@ -177,12 +178,20 @@ class SpesialisThtController extends Controller
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
             $modelAudiometri->no_rekam_medik = $model->no_rekam_medik;
-            
+
             if ($model->save() && $modelAudiometri->save()) {
-                return [
-                    's' => true,
-                    'e' => null
-                ];
+                $cekTidakNormal = Resume::cekNormal('THT', $model->attributes);
+                if ($cekTidakNormal['s']) {
+                    return [
+                        's' => true,
+                        'e' => null
+                    ];
+                } else {
+                    return [
+                        's' => false,
+                        'e' => $cekTidakNormal['e']
+                    ];
+                }
             } else {
                 echo "<pre>";
                 print_r($model->errors);
@@ -259,7 +268,7 @@ class SpesialisThtController extends Controller
 
             $model->tl_test_berbisik_periksa = 'Ya';
             $model->tl_audiometri_periksa = 'Ya';
-            
+
             $model->kesan = 'Normal';
         }
 

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\DataLayanan;
+use app\models\resume\Resume;
 use app\models\spesialis\McuPenatalaksanaanMcu;
 use Yii;
 use app\models\spesialis\McuSpesialisGigi;
@@ -171,10 +172,18 @@ class SpesialisGigiController extends Controller
             // die;
 
             if ($model->save()) {
-                return [
-                    's' => true,
-                    'e' => null
-                ];
+                $cekTidakNormal = Resume::cekNormal('GIGI', $model->attributes);
+                if ($cekTidakNormal['s']) {
+                    return [
+                        's' => true,
+                        'e' => null
+                    ];
+                } else {
+                    return [
+                        's' => false,
+                        'e' => $cekTidakNormal['e']
+                    ];
+                }
             } else {
                 return [
                     's' => false,

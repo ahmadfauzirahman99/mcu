@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\DataLayanan;
+use app\models\resume\Resume;
 use app\models\spesialis\McuPenatalaksanaanMcu;
 use Yii;
 use app\models\spesialis\McuSpesialisMata;
@@ -229,10 +230,18 @@ class SpesialisMataController extends Controller
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
             if ($model->save()) {
-                return [
-                    's' => true,
-                    'e' => null
-                ];
+                $cekTidakNormal = Resume::cekNormal('MATA', $model->attributes);
+                if ($cekTidakNormal['s']) {
+                    return [
+                        's' => true,
+                        'e' => null
+                    ];
+                } else {
+                    return [
+                        's' => false,
+                        'e' => $cekTidakNormal['e']
+                    ];
+                }
             } else {
                 return [
                     's' => false,
