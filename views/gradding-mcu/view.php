@@ -35,21 +35,20 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'id_gradding',
             // 'id_data_pelayanan',
             [
-                'label'=>'Nama',
+                'label' => 'Nama',
                 'attribute' => 'no_rekam_medik',
                 'value' => $model->data->nama
             ],
             [
-                'label'=>'No Rekam Medik',
+                'label' => 'No Rekam Medik',
                 'attribute' => 'no_rekam_medik',
                 'value' => $model->data->no_rekam_medik
             ],
             [
-                'label'=>'Pekerjaan',
+                'label' => 'Pekerjaan',
                 'attribute' => 'no_rekam_medik',
-                'value' => function($model)
-                {
-                    $user = UserRegister::findOne(['u_rm'=>$model->no_rekam_medik]);
+                'value' => function ($model) {
+                    $user = UserRegister::findOne(['u_rm' => $model->no_rekam_medik]);
                     return $user->u_jabatan;
                 }
             ],
@@ -60,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'status',
             // 'is_reset',
             // 'poin',
-			//'hasil'
+            //'hasil'
         ],
     ]) ?>
 
@@ -69,79 +68,94 @@ $this->params['breadcrumbs'][] = $this->title;
 $hasil_mcu_mata = json_decode($model->hasil);
 $hasil_mcu_gigi = json_decode($model->hasil);
 $hasil_mcu_tht_berbisik = json_decode($model->hasil);
+$hasil_lab = json_decode($model->hasil);
 // echo '<pre>';
 // var_dump($hasil_mcu->mata);
 // $ms = $model->attributeLabels('persepsi_warna_mata_kanan');
-// print_r($ms);
-$modelMata = new McuSpesialisMata();
-$modelGigi = new McuSpesialisGigi();
-$modelThtBerbisik = new McuSpesialisThtBerbisik();
+// print_r($hasil_mcu_tht_berbisik->tht_berbisik);
+$modelMata = McuSpesialisMata::findOne(['no_rekam_medik' => $model->no_rekam_medik]);
+$modelGigi = McuSpesialisGigi::findOne(['no_rekam_medik' => $model->no_rekam_medik]);
+$modelThtBerbisik = McuSpesialisThtBerbisik::findOne(['no_rekam_medik' => $model->no_rekam_medik]);
 ?>
-<h4 class="text-center">Mata Tidak Normal</h4>
-<hr>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Item</th>
-            <th>Value</th>
-        </tr>
-    </thead>
-    <?php foreach ($hasil_mcu_mata->mata as $items) { ?>
+<?php if ($modelMata->kesan != 'Normal') { ?>
+    <h4 class="text-center">Mata Tidak Normal</h4>
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <?php foreach ($hasil_mcu_mata->mata as $items) { ?>
 
-        <?php if ($items->result == 1) { ?>
-            <tbody>
-                <tr>
-                    <td width='50%'><?= $modelMata->getAttributeLabel($items->item) ?></td>
-                    <td><?= $items->value ?></td>
-                </tr>
-            </tbody>
+            <?php if ($items->result == 1) { ?>
+                <tbody>
+                    <tr>
+                        <td width='50%'><?= $modelMata->getAttributeLabel($items->item) ?></td>
+                        <td><?= $items->value ?></td>
+                    </tr>
+                </tbody>
+            <?php } ?>
+
         <?php } ?>
+    </table>
+<?php } ?>
+<?php if ($modelGigi->kesan != 'Normal') { ?>
+    <h4 class="text-center">Gigi Tidak Normal</h4>
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <?php foreach ($hasil_mcu_gigi->gigi as $items) { ?>
 
-    <?php } ?>
-</table>
+            <?php if ($items->result == 1) { ?>
+                <tbody>
+                    <tr>
+                        <td width='50%'><?= $modelGigi->getAttributeLabel($items->item) ?></td>
+                        <td><?= $items->value ?></td>
+                    </tr>
+                </tbody>
+            <?php } ?>
 
-<h4 class="text-center">Gigi Tidak Normal</h4>
-<hr>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Item</th>
-            <th>Value</th>
-        </tr>
-    </thead>
-    <?php foreach ($hasil_mcu_gigi->gigi as $items) { ?>
-
-        <?php if ($items->result == 1) { ?>
-            <tbody>
-                <tr>
-                    <td width='50%'><?= $modelGigi->getAttributeLabel($items->item) ?></td>
-                    <td><?= $items->value ?></td>
-                </tr>
-            </tbody>
         <?php } ?>
+    </table>
+<?php } ?>
+<?php if ($modelThtBerbisik->kesan != 'Normal') { ?>
 
-    <?php } ?>
-</table>
+    <h4 class="text-center">THT Berbisik Tidak Normal</h4>
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <?php foreach ($hasil_mcu_tht_berbisik->tht_berbisik as $items) { ?>
 
-<h4 class="text-center">THT Berbisik Tidak Normal</h4>
-<hr>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Item</th>
-            <th>Value</th>
-        </tr>
-    </thead>
-    <?php foreach ($hasil_mcu_tht_berbisik->tht_berbisik as $items) { ?>
+            <?php if ($items->result == 1) { ?>
+                <tbody>
+                    <tr>
+                        <td width='50%'><?= $modelThtBerbisik->getAttributeLabel($items->item) ?></td>
+                        <td><?= $items->value ?></td>
+                    </tr>
+                </tbody>
+            <?php } ?>
 
-        <?php if ($items->result == 1) { ?>
-            <tbody>
-                <tr>
-                    <td width='50%'><?= $modelThtBerbisik->getAttributeLabel($items->item) ?></td>
-                    <td><?= $items->value ?></td>
-                </tr>
-            </tbody>
         <?php } ?>
-
-    <?php } ?>
-</table>
+    </table>
+<?php } ?>
+<ul class="list-group">
+<?php foreach($hasil_lab as $items) {?>
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+<?php } ?>
+</ul>

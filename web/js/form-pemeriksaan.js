@@ -366,3 +366,17 @@ $(document).ready(function () {
 
 })
 
+function hapus(e) {
+    console.log($(e).data("value"));
+    $.post(baseUrl + "unit-pemeriksaan/delete-penata", {
+        id: $(e).data("value")
+    }, function (r) {
+        if (r.s) {
+            toastr["success"]("Mantap, Sukses menghapus boooyyyy... Reload Halaman")
+        } else {
+            toastr["warning"]("Huuft, Gagal menghapus boooyyyy...<br>" + JSON.stringify(r.e))
+        }
+    }, 'JSON')
+    return false
+
+}

@@ -26,6 +26,10 @@ $body = Url::to('@web/img/body.png');
         border-radius: 5px;
     }
 
+    .tbl-gigi tr th,
+    .tbl-gigi tr td {
+        border: 1px solid #000000;
+    }
     #datapribadi {
         border-collapse: collapse;
     }
@@ -443,7 +447,7 @@ function tgl_indo($tanggal)
                             <td style="width:37%"><?= $pemeriksaan_fisik['mata_tekanan_bola_mata_kanan'] ?? '-' ?></td>
                             <td style="width:37%"><?= $pemeriksaan_fisik['mata_tekanan_bola_mata_kiri'] ?? '-' ?></td>
                         </tr>
-                        
+
                         <tr>
                             <td style="width:25%">k. Visus Mata</td>
                             <td style="width:1%">:</td>
@@ -512,7 +516,7 @@ function tgl_indo($tanggal)
             <tr>
                 <td>
                     <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-top-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
-                         <tr>
+                        <tr>
                             <td colspan="2" style="font-weight:bold">7. Telinga</td>
                             <td style="font-weight:bold"> Kanan</td>
                             <td style="font-weight:bold">Kiri</td>
@@ -529,13 +533,13 @@ function tgl_indo($tanggal)
                             <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_liang_telinga_kanan'] ?? '-' ?></td>
                             <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_liang_telinga_kiri'] ?? '-' ?></td>
                         </tr>
-                        <tr >
+                        <tr>
                             <td style="width:30%"> - Serumen</td>
                             <td style="width:1%">:</td>
                             <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_serumen_kanan'] ?? '-' ?></td>
                             <td style="width:34.5%"><?= $pemeriksaan_fisik['telinga_serumen_kiri'] ?? '-' ?></td>
                         </tr>
-                      
+
                     </table>
                 </td>
             </tr>
@@ -605,16 +609,13 @@ function tgl_indo($tanggal)
         <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-bottom-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
 
         </table>
-        <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-bottom-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
-            <tr>
-                <td style="width:32%">
-                    <p>10. Gigi geligi</p>
-                </td>
-                <td style="width:1%">:</td>
-                <td style="width:67%;">
-                    <?= $pemeriksaan_fisik['gigi'] ?>
-                </td>
-            </tr>
+        <table class="tbl-gigi" width="100%" border="0" cellpadding="1" cellspacing="0" style="border-bottom-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
+            <thead>
+                <tr>
+                    <th style="font-size: 15px; padding: 2px;" colspan="2">KETERANGAN</th>
+                    <th style="font-size: 15px; padding: 2px;" colspan="2">KETERANGAN</th>
+                </tr>
+            </thead>
         </table>
         <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-bottom-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
             <tr>
@@ -919,7 +920,7 @@ function tgl_indo($tanggal)
             <tr>
                 <td>
                     <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-bottom-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
-                         <tr>
+                        <tr>
                             <td colspan="3" style="font-weight:bold">16. Genitourinaria</td>
                         </tr>
                         <tr>
@@ -937,14 +938,14 @@ function tgl_indo($tanggal)
                             <td style="width:1%">:</td>
                             <td style="width:75.5%"><?= $pemeriksaan_fisik['genitourinaria_genitalia_eksternal'] ?? 'Tidak Dilakukan Pemeriksaan' ?></td>
                         </tr>
-                  <?php if($data_pelayanan->jenis_kelamin == 'L'){ ?>
-                        <tr>
-                            <td style="width:23.5%">d. Prostat (Khusus pria)</td>
-                            <td style="width:1%">:</td>
-                            <td style="width:75.5%"><?= $pemeriksaan_fisik['genitourinaria_prostat'] ?? 'Tidak Dilakukan Pemeriksaan' ?></td>
-                        </tr>
-                    <?php }?>
-                    
+                        <?php if ($data_pelayanan->jenis_kelamin == 'L') { ?>
+                            <tr>
+                                <td style="width:23.5%">d. Prostat (Khusus pria)</td>
+                                <td style="width:1%">:</td>
+                                <td style="width:75.5%"><?= $pemeriksaan_fisik['genitourinaria_prostat'] ?? 'Tidak Dilakukan Pemeriksaan' ?></td>
+                            </tr>
+                        <?php } ?>
+
                     </table>
                 </td>
             </tr>
@@ -1365,81 +1366,81 @@ function tgl_indo($tanggal)
             </tr>
         </table>
 
-    <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-bottom-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
+        <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-bottom-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
             <tr>
                 <td>
                     <table width="100%" border="" cellpadding="1" cellspacing="0" style="border-top-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
-            <tr>
-                <td style="width:27%;font-weight:bold">24. Refleks</td>
-                <td style="width:1%">:</td>
-                <td style="width:36%;font-weight:bold">Kanan</td>
-                <td style="width:36%;font-weight:bold">Kiri</td>
-            </tr>
-            <tr>
-                <td style="width:27%;">a. Refleks Fisiologis Patella</td>
-                <td style="width:1%">:</td>
-                <td style="width:36%;"><?= $pemeriksaan_fisik['reflek_fisiologis_patella_kanan'] ?? '-' ?></td>
-                <td style="width:36%;"><?= $pemeriksaan_fisik['reflek_fisiologis_patella_kiri'] ?? '-' ?></td>
-            </tr>
-            <tr>
-                <td style="width:27%;">Lainnya</td>
-                <td style="width:1%">:</td>
-                <td style="width:36%;"></td>
-                <td style="width:36%;"></td>
-            </tr>
-            <tr>
-                <td style="width:27%;">b. Refleks Patologis,Babinsky</td>
-                <td style="width:1%">:</td>
-                <td style="width:36%;"><?= $pemeriksaan_fisik['reflek_patologis_kanan'] ?? '-' ?></td>
-                <td style="width:36%;"><?= $pemeriksaan_fisik['reflek_patologis_kiri'] ?? '-' ?></td>
-            </tr>
-            <tr>
-                <td style="width:27%;">Lainnya</td>
-                <td style="width:1%">:</td>
-                <td style="width:36%;"></td>
-                <td style="width:36%;"></td>
-            </tr>
+                        <tr>
+                            <td style="width:27%;font-weight:bold">24. Refleks</td>
+                            <td style="width:1%">:</td>
+                            <td style="width:36%;font-weight:bold">Kanan</td>
+                            <td style="width:36%;font-weight:bold">Kiri</td>
+                        </tr>
+                        <tr>
+                            <td style="width:27%;">a. Refleks Fisiologis Patella</td>
+                            <td style="width:1%">:</td>
+                            <td style="width:36%;"><?= $pemeriksaan_fisik['reflek_fisiologis_patella_kanan'] ?? '-' ?></td>
+                            <td style="width:36%;"><?= $pemeriksaan_fisik['reflek_fisiologis_patella_kiri'] ?? '-' ?></td>
+                        </tr>
+                        <tr>
+                            <td style="width:27%;">Lainnya</td>
+                            <td style="width:1%">:</td>
+                            <td style="width:36%;"></td>
+                            <td style="width:36%;"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:27%;">b. Refleks Patologis,Babinsky</td>
+                            <td style="width:1%">:</td>
+                            <td style="width:36%;"><?= $pemeriksaan_fisik['reflek_patologis_kanan'] ?? '-' ?></td>
+                            <td style="width:36%;"><?= $pemeriksaan_fisik['reflek_patologis_kiri'] ?? '-' ?></td>
+                        </tr>
+                        <tr>
+                            <td style="width:27%;">Lainnya</td>
+                            <td style="width:1%">:</td>
+                            <td style="width:36%;"></td>
+                            <td style="width:36%;"></td>
+                        </tr>
 
 
-        </table>
-        <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-top-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
-            <tr>
-                <td style="width:26%;font-weight:bold">25. Kulit</td>
-                <td style="width:1%"></td>
-                <td style="width:73%;font-weight:bold"></td>
-            </tr>
-            <tr>
-                <td style="width:26%;">a. Kulit</td>
-                <td style="width:1%">:</td>
-                <td style="width:73%;"><?= $pemeriksaan_fisik['kulit_kulit'] ?></td>
-            </tr>
-            <tr>
-                <td style="width:26%;">b. Selaput Lendir</td>
-                <td style="width:1%">:</td>
-                <td style="width:73%;"><?= $pemeriksaan_fisik['kulit_selaput_lendir'] ?></td>
-            </tr>
-            <tr>
-                <td style="width:26%;">c. Kuku</td>
-                <td style="width:1%">:</td>
-                <td style="width:73%;"><?= $pemeriksaan_fisik['kulit_kuku'] ?></td>
-            </tr>
-            <tr>
-                <td style="width:26%;">d. Tato</td>
-                <td style="width:1%">:</td>
-                <td style="width:73%;"><?= $pemeriksaan_fisik['kulit_tato'] ?></td>
-            </tr>
-            <tr>
-                <td style="width:26%;">e. lain-lain</td>
-                <td style="width:1%">:</td>
-                <td style="width:73%;"><?= $pemeriksaan_fisik['kulit_lain'] ?></td>
-            </tr>
+                    </table>
+                    <table width="100%" border="0" cellpadding="1" cellspacing="0" style="border-top-color:#fff;border-collapse:collapse;text-align:left;font-size:12px">
+                        <tr>
+                            <td style="width:26%;font-weight:bold">25. Kulit</td>
+                            <td style="width:1%"></td>
+                            <td style="width:73%;font-weight:bold"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:26%;">a. Kulit</td>
+                            <td style="width:1%">:</td>
+                            <td style="width:73%;"><?= $pemeriksaan_fisik['kulit_kulit'] ?></td>
+                        </tr>
+                        <tr>
+                            <td style="width:26%;">b. Selaput Lendir</td>
+                            <td style="width:1%">:</td>
+                            <td style="width:73%;"><?= $pemeriksaan_fisik['kulit_selaput_lendir'] ?></td>
+                        </tr>
+                        <tr>
+                            <td style="width:26%;">c. Kuku</td>
+                            <td style="width:1%">:</td>
+                            <td style="width:73%;"><?= $pemeriksaan_fisik['kulit_kuku'] ?></td>
+                        </tr>
+                        <tr>
+                            <td style="width:26%;">d. Tato</td>
+                            <td style="width:1%">:</td>
+                            <td style="width:73%;"><?= $pemeriksaan_fisik['kulit_tato'] ?></td>
+                        </tr>
+                        <tr>
+                            <td style="width:26%;">e. lain-lain</td>
+                            <td style="width:1%">:</td>
+                            <td style="width:73%;"><?= $pemeriksaan_fisik['kulit_lain'] ?></td>
+                        </tr>
 
-        </table>
+                    </table>
                 </td>
             </tr>
         </table>
 
-        
+
     </div><br>
     <br>
     <br>

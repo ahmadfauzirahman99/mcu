@@ -70,6 +70,11 @@ ItemFisikAsset::register($this);
 <?= $this->render('item-fisik.php', [
     'master_pemeriksaan_fisik' => $master_pemeriksaan_fisik,
     'dataLayanan' => $dataLayanan,
+    'hasil_mcu_mata' => $hasil_mcu_mata,
+    'hasil_mcu_gigi' => $hasil_mcu_gigi,
+    'modelMata' => $modelMata,
+    'modelGigi' => $modelGigi,
+    'hasil_lab' => $hasil_lab,
 
 ]) ?>
 
@@ -87,7 +92,7 @@ if ($identitas_dokter['kodejenis'] == 12) :
 elseif ($identitas_dokter['kodejenis'] == 1) :
 ?>
     <a href='<?= Url::to(['/laporan/cetak-perawat/', 'id' => $dataLayanan->no_rekam_medik]) ?>' target='_blank' class='btn btn-danger btn-block'>Print Data Pelayanan, Anamensis, Anamensis Okupasi</a>
-    <a  href='<?= Url::to(['/laporan/cetak-dokter-umum/', 'id' => $dataLayanan->no_rekam_medik]) ?>' target='_blank' class='btn btn-primary btn-block'>Print Pemeriksaan Fisik</a>
+    <a href='<?= Url::to(['/laporan/cetak-dokter-umum/', 'id' => $dataLayanan->no_rekam_medik]) ?>' target='_blank' class='btn btn-primary btn-block'>Print Pemeriksaan Fisik</a>
 <?php
 elseif ($identitas_dokter['kodejenis'] == 20) :
 ?>

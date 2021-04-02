@@ -41,7 +41,7 @@ AppAsset::register($this);
 
             <!-- LOGO -->
             <div class="topbar-left">
-                <a href="<?= Url::to(['/site/index']) ?>" class="logo"><span>MCU<span> RSAA</span></span><i class="mdi mdi-layers"></i></a>
+                <a href="<?= Url::to(['/site/index']) ?>" class="logo"><span>MCU<span> </span></span><i class="mdi mdi-layers"></i></a>
             </div>
 
             <!-- Button mobile view to collapse sidebar menu -->
