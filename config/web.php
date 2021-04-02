@@ -1,5 +1,6 @@
 <?php
 
+$default_config = require __DIR__ . '/default_config.php';
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 $dbRegisterMcu = require __DIR__ . '/dbRegisterMcu.php';
@@ -14,6 +15,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'container' => $default_config,
     'components' => [
         'formatter' => [
             'class' => 'yii\i18n\Formatter',
@@ -34,8 +36,8 @@ $config = [
             'class' => 'app\models\User',
             'identityClass' => 'app\models\Identitas',
             'enableAutoLogin' => true,
-            'loginUrl' => '@.sso/masuk?b=http://mcu.rsud-arifin.localhost',
-            'identityCookie' => ['name' => '_identity-id', 'httpOnly' => true, 'domain' => 'rsud-arifin.localhost'],
+            'loginUrl' => '@.sso/masuk?b=http://mcu.simrs.deku',
+            'identityCookie' => ['name' => '_identity-id', 'httpOnly' => true, 'domain' => 'simrs.deku'],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

@@ -14,6 +14,8 @@ Thumbs.db
 
 # composer vendor dir
 /vendor
+/assets/AppAsset.php
+/config
 
 # composer itself is not needed
 composer.phar
