@@ -75,4 +75,6 @@ class McuResume extends \app\models\spesialis\BaseAR
     {
         return new McuResumeQuery(get_called_class());
     }
+
+    
 }
