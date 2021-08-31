@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use app\assets\FormWizard;
+use app\models\spesialis\BaseModel;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\web\JsExpression;
@@ -15,6 +16,7 @@ FormWizard::register($this);
 /* @var $anamnesis app\models\Anamnesis */
 /* @var $jenis_pekerjaan app\models\JenisPekerjaan */
 /* @var $master_pemeriksaan_fisik app\models\MasterPemeriksaanFisik */
+/* @var $modelRegister app\models\UserRegister */
 /* @var $form ActiveForm */
 
 $this->title = 'UNIT MEDICAL CHEK UP RSUD ARIFIN ACHMAD PROVINSI RIAU';
@@ -24,37 +26,21 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php $form = ActiveForm::begin(); ?>
     <label for="">No.Rekam Medik / Nama</label>
     <?php
-    $url = \yii\helpers\Url::to(['/unit-pemeriksaan/get-data-pelayanan']);
-    // $model->icdt10 = "";
+
+
     echo $form->field($dataLayanan, 'nama')->widget(Select2::classname(), [
-        'options' => ['placeholder' => 'Mencari Data Pelayanan ...'],
+        'data' => BaseModel::getListPasien(),
+        'theme' => 'bootstrap',
+        'options' => ['placeholder' => 'Cari Pasien ...'],
         'pluginOptions' => [
-            'allowClear' => true,
-            'minimumInputLength' => 3,
-            'language' => [
-                'errorLoading' => new JsExpression("function () { return 'Menunggu hasil cari bro...'; }"),
-            ],
-            'ajax' => [
-                'url' => $url,
-                'dataType' => 'json',
-                'data' => new JsExpression('function(params) { return {q:params.term}; }')
-            ],
-            'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
-            'templateResult' => new JsExpression('function(data) { return data.text; }'),
-            'templateSelection' => new JsExpression('function (data) { return data.text; }'),
+            'allowClear' => false
         ],
-        // 'pluginEvents' => [
-        //     "select2:select" => "function(e) { 
-        //         let data = e.params.data
-        //         let diagnosis_kerja = $('#masterpemeriksaanfisik-diagnosis_kerja').val()
-        //         if(diagnosis_kerja==null || diagnosis_kerja=='')
-        //             diagnosis_kerja += data.id
-        //         else
-        //             diagnosis_kerja += ','+data.id
-        //         $('#masterpemeriksaanfisik-diagnosis_kerja').val(diagnosis_kerja)
-        //     }",
-        // ]
-    ])->label(false);
+        'pluginEvents' => [
+            "select2:select" => "function(e) { 
+                window.location = baseUrl + 'unit-pemeriksaan/pemeriksaan-fisik?id=' + e.params.data.id
+            }",
+        ],
+    ]);
     ?>
     <?= Html::submitButton('Cari <span class="mdi mdi-file-search"></span>', ['class' => 'btn btn-success']) ?>
 
@@ -89,6 +75,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <li class="nav-item"><a href="#finish-2" data-toggle="tab" class="nav-link">II. ANAMNESIS OKUPASI</a></li>
             <li class="nav-item"><a href="#finish-4" data-toggle="tab" class="nav-link">Body Discomfort Map</a></li>
             <li class="nav-item"><a href="#finish-3" data-toggle="tab" class="nav-link">III. PEMERIKSAAN FISIK</a></li>
+            <li class="nav-item"><a href="#finish-5" data-toggle="tab" class="nav-link">Pemeriksaan Fisik Khusus</a>
+            </li>
         </ul>
 
         <div class="tab-content b-0 mb-0">
@@ -98,7 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
             <div class="tab-pane p-t-10 fade" id="account-2">
-                <?= $this->render('data-layanan', ['model' => $dataLayanan]) ?>
+                <?= $this->render('data-layanan', ['model' => $dataLayanan,]) ?>
             </div>
             <div class="tab-pane p-t-10 fade" id="profile-tab-2">
                 <?= $this->render('anamnesis.php', ['model' => $anamnesis, 'dataLayanan' => $dataLayanan]) ?>
@@ -129,12 +117,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 ]) ?>
             </div>
+            <div class="tab-pane p-t-10 fade" id="finish-5">
+                <?= $this->render('pemeriksaan-khusus.php', [
+                    'master_pemeriksaan_fisik' => $master_pemeriksaan_fisik,
+                    'dataLayanan' => $dataLayanan,
+
+                ]) ?>
+            </div>
             <ul class="list-inline mb-0 wizard">
                 <li class="previous list-inline-item first" style="display:none;"><a href="#">First</a>
                 </li>
-                <li class="previous list-inline-item"><a href="#" class="btn btn-primary waves-effect waves-light">Previous</a></li>
+                <li class="previous list-inline-item"><a href="#" class="btn btn-primary waves-effect waves-light">Previous</a>
+                </li>
                 <li class="next last list-inline-item" style="display:none;"><a href="#">Last</a></li>
-                <li class="next list-inline-item float-right"><a href="#" class="btn btn-primary waves-effect waves-light">Next</a></li>
+                <li class="next list-inline-item float-right"><a href="#" class="btn btn-primary waves-effect waves-light">Next</a>
+                </li>
             </ul>
         </div>
     </div>

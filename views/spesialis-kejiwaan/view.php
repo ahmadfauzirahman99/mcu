@@ -13,9 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="spesialis-kejiwaan-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
+        <?= Html::a('<i class="fa fa-backward"></i> Kembali', ['index'], ['class' => 'btn btn-warning']) ?>    
         <?= Html::a('Update', ['update', 'id' => $model->id_spesialis_kejiwaan], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id_spesialis_kejiwaan], [
             'class' => 'btn btn-danger',

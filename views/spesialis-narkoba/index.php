@@ -12,8 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="spesialis-narkoba-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a('Create Spesialis Narkoba', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
@@ -27,17 +25,27 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id_spesialis_narkoba',
-            'no_rekam_medik',
+            'nama_no_rm',
             'created_at',
             'updated_at',
             'created_by',
-            //'updated_by',
-            //'golongan_psikotropika',
-            //'hasil_psikotropika',
-            //'golongan_narkotika',
-            //'hasil_narkotika',
+            'updated_by',
+            //'benzodiazepin_hasil',
+            //'benzodiazepin_keterangan',
+            //'thc_hasil',
+            //'thc_keterangan',
+            //'piat_hasil',
+            //'piat_keterangan',
+            //'amphetammin_hasil',
+            //'amphetammin_keterangan',
+            //'kokain_hasil',
+            //'kokain_keterangan',
+            //'methamphetamin_hasil',
+            //'methamphetamin_keterangan',
+            //'carisoprodol_hasil',
+            //'carisoprodol_keterangan',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'app\components\ActionColumnPemeriksaan'],
         ],
     ]); ?>
 

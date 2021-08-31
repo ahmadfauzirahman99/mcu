@@ -1,5 +1,7 @@
 <?php
 
+use app\models\spesialis\BaseModel;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -41,10 +43,27 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?php
+    echo $form->field($model, 'cari_pasien')->widget(Select2::classname(), [
+        'data' => BaseModel::getListPasien(),
+        'theme' => 'bootstrap',
+        'options' => ['placeholder' => 'Cari Pasien ...'],
+        'pluginOptions' => [
+            'allowClear' => false
+        ],
+        'pluginEvents' => [
+            "select2:select" => "function(e) { 
+                window.location = baseUrl + 'spesialis-narkoba/create?no_rm=' + e.params.data.id
+            }",
+        ],
+    ]);
+    ?>
+    
     <div class="row">
         <div class="col-sm-3">
             <label for="">No. Rekam Medik</label>
             <?php
+            $model->no_rekam_medik = $no_rm;
             echo $form->field($model, 'no_rekam_medik')->textInput(['maxlength' => true, 'readonly' => true,])->label(false)
             ?>
         </div>
@@ -56,38 +75,91 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
 
-    <!-- <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?> -->
-
     <br/>
     <table class="table">
         <tr>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top><b>
-                <font color="#000000">Jenis Pemeriksaan</font>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" colspan="2" valign=top><b>
+                <font color="#000000">Hasil Pemeriksaan Screening Tes</font>
             </b></td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top><b>
-                <font color="#000000">Hasil</font>
+                <font color="#000000">Keterangan</font>
             </b></td>
         </tr>
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-                <?= $form->field($model, 'golongan_psikotropika')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Golongan Psikotropika"]) ?>
+            Benzodiazepin Hasil
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+                <?= $form->field($model, 'benzodiazepin_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <?= $form->field($model, 'hasil_psikotropika')->label(false)->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'benzodiazepin_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
             </td>
         </tr>
         <tr class="tr-ac-bc">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
-                <?= $form->field($model, 'golongan_narkotika')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Golongan Narkotika"]) ?>
+            THC Hasil
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+                <?= $form->field($model, 'thc_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
-                <?= $form->field($model, 'hasil_narkotika')->label(false)->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'thc_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
+            </td>
+        </tr>
+        <tr class="tr-ac-bc">
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            Opiat Hasil
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+                <?= $form->field($model, 'opiat_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($model, 'opiat_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
+            </td>
+        </tr>
+        <tr class="tr-ac-bc">
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            Amphetammin Hasil
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+                <?= $form->field($model, 'amphetammin_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($model, 'amphetammin_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
+            </td>
+        </tr>
+        <tr class="tr-ac-bc">
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            Kokain Hasil
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+                <?= $form->field($model, 'kokain_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($model, 'kokain_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
+            </td>
+        </tr>
+        <tr class="tr-ac-bc">
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            Methamphetamin Hasil
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+                <?= $form->field($model, 'methamphetamin_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($model, 'methamphetamin_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
+            </td>
+        </tr>
+        <tr class="tr-ac-bc">
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+            Carisoprodol Hasil
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="left" valign=middle>
+                <?= $form->field($model, 'carisoprodol_hasil')->label(false)->textInput(['maxlength' => true, 'placeholder' => "Positif / Negatif"]) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($model, 'carisoprodol_keterangan')->label(false)->textInput(['maxlength' => true]) ?>
             </td>
         </tr>
     </table>

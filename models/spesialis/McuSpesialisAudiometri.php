@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 12:12:24 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-15 00:20:11
+ * @Last Modified time: 2020-10-10 17:07:48
  */
 
 
@@ -19,6 +19,7 @@ use Yii;
  *
  * @property int $id_spesialis_audiometri
  * @property string $no_rekam_medik
+ * @property string $no_daftar
  * @property string|null $created_at
  * @property string|null $updated_at
  * @property int|null $created_by
@@ -75,6 +76,8 @@ use Yii;
  * @property string|null $rata_kiri_ac
  * @property string|null $rata_kiri_bc
  * @property string|null $gambar
+ * @property string|null $kesan
+ * @property string|null $status_pemeriksaan
  */
 class McuSpesialisAudiometri extends BaseAR
 {
@@ -103,8 +106,9 @@ class McuSpesialisAudiometri extends BaseAR
             [['kesimpulan_kanan', 'kesimpulan_kiri',], 'string', 'max' => 30],
             [['rata_kanan_ac', 'rata_kanan_bc', 'rata_kiri_ac', 'rata_kiri_bc'], 'number'],
             ['riwayat', 'safe'],
-
-            ['no_rekam_medik', 'unique'],
+            
+            // ['kesan', 'required'],
+            ['no_daftar', 'unique'],
         ];
     }
 
@@ -169,6 +173,7 @@ class McuSpesialisAudiometri extends BaseAR
             'rata_kiri_bc' => 'Rata Kiri Bc',
             'gambar' => 'Gambar',
             'riwayat' => 'Riwayat',
+            'kesan' => 'Kesan',
         ]);
     }
 

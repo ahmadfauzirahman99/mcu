@@ -21,14 +21,17 @@ $config = [
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => md5('mcu-rsud-arifin'),
+            'cookieValidationKey' => 'sso',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
-            'identityClass' => 'app\models\User',
+          'user' => [
+            'class' => 'app\models\User',
+            'identityClass' => 'app\models\Identitas',
             'enableAutoLogin' => true,
+            'loginUrl' => '@.sso/masuk?b=http://mcu.simrs.aa',
+            'identityCookie' => ['name' => '_identity-id', 'httpOnly' => true, 'domain' => 'simrs.aa'],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -138,7 +141,7 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '*'],
     ];
 }
 

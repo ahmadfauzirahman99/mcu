@@ -6,11 +6,12 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 12:12:24 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-15 00:20:21
+ * @Last Modified time: 2020-10-11 15:39:47
  */
 
 namespace app\models\spesialis;
 
+use app\models\AkunAknUser;
 use app\models\DataLayanan;
 use Yii;
 use yii\behaviors\BlameableBehavior;
@@ -29,7 +30,7 @@ class BaseAR extends \yii\db\ActiveRecord
                 'class' => TimestampBehavior::className(),
                 'value' => date('Y-m-d H:i:s'),
             ],
-            // BlameableBehavior::className(),
+            BlameableBehavior::className(),
         ];
     }
 
@@ -55,6 +56,8 @@ class BaseAR extends \yii\db\ActiveRecord
             $this->riwayat = Json::encode($oldRiwayat, JSON_PRETTY_PRINT);
             $this->updateAttributes(['riwayat']);
         } else {
+            $this->updated_by = Yii::$app->user->id;
+            $this->updateAttributes(['updated_by']);
             if (count($changedAttributes) > 0) {
                 $newRow = $this->attributes;
                 unset($newRow['riwayat']);
@@ -66,6 +69,14 @@ class BaseAR extends \yii\db\ActiveRecord
         }
     }
 
+    public static function getJk($index)
+    {
+        $jk = [
+            'L' => 'Laki-laki',
+            'P' => 'Perempuan',
+        ];
+        return $jk[$index];
+    }
 
     public function getPasien()
     {
@@ -75,5 +86,14 @@ class BaseAR extends \yii\db\ActiveRecord
     public function getNama_no_rm()
     {
         return $this->pasien->nama . ' (' . $this->no_rekam_medik . ')';
+    }
+
+    public function getCreatedByTeks()
+    {
+        return $this->hasOne(AkunAknUser::className(), ['userid' => 'created_by']);
+    }
+    public function getUpdatedByTeks()
+    {
+        return $this->hasOne(AkunAknUser::className(), ['userid' => 'updated_by']);
     }
 }
