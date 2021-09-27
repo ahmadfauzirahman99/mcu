@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap4\ActiveForm;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\UserRegister */
@@ -10,7 +10,7 @@ use yii\bootstrap4\ActiveForm;
 
 <div class="user-register-form">
 
-    <?php $form = ActiveForm::begin(['layout'=>'horizontal']); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'u_nik')->textInput(['maxlength' => true]) ?>
 
@@ -46,9 +46,9 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'u_last_login')->textInput() ?>
 
-    <?php $form->field($model, 'u_updated_at')->textInput() ?>
+    <?= $form->field($model, 'u_updated_at')->textInput() ?>
 
-    <?php $form->field($model, 'u_created_at')->textInput() ?>
+    <?= $form->field($model, 'u_created_at')->textInput() ?>
 
     <?= $form->field($model, 'u_agama')->textInput() ?>
 

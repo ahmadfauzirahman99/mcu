@@ -24,13 +24,42 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <style>
+        .select2-container .select2-selection--single .select2-selection__rendered {
+            line-height: 18.5px !important;
+            padding-left: 5px !important;
+        }
+
+        #sidebar-menu>ul>li>a {
+            color: #435966;
+            display: block;
+            padding: 5px 20px !important;
+            margin: 4px 0px;
+            background-color: #ffffff;
+            border-left: 3px solid transparent;
+        }
+
+        #sidebar-menu,
+        #sidebar-menu ul,
+        #sidebar-menu li,
+        #sidebar-menu a {
+            border: 0;
+            font-weight: normal;
+            line-height: 0 !important;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            text-decoration: none;
+        }
+    </style>
     <script>
         const baseUrl = '<?= Yii::$app->homeUrl ?>';
     </script>
     <?php $this->head() ?>
 </head>
 
-<body class="fixed-left">
+<body class="fixed-left text-sm">
     <?php $this->beginBody() ?>
 
     <!-- Begin page -->
@@ -41,7 +70,7 @@ AppAsset::register($this);
 
             <!-- LOGO -->
             <div class="topbar-left">
-                <a href="<?= Url::to(['/site/index']) ?>" class="logo"><span>MCU<span> RSAA</span></span><i class="mdi mdi-layers"></i></a>
+                <a href="<?= Url::to(['/site/index']) ?>" class="logo"><span>E-MCU<span></span></span><i class="mdi mdi-layers"></i></a>
             </div>
 
             <!-- Button mobile view to collapse sidebar menu -->
@@ -181,13 +210,11 @@ AppAsset::register($this);
         <!-- Start content -->
         <div class="content">
             <div class="container-fluid" style="margin-bottom: 25px;">
-                <div class="card card-body">
-                    <?= Breadcrumbs::widget([
-                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                    ]) ?>
-                    <?= Alert::widget() ?>
-                    <?= $content ?>
-                </div>
+                <?= Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
+                <?= Alert::widget() ?>
+                <?= $content ?>
             </div> <!-- container -->
 
         </div> <!-- content -->

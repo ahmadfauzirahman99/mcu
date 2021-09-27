@@ -69,11 +69,11 @@ class DataLayanan extends \yii\db\ActiveRecord
     {
         return [
             'id_data_pelayanan' => 'Id Data Pelayanan',
-            'no_rekam_medik' => 'No Rekam Medik',
-            'no_mcu' => 'No Mcu',
+            'no_rekam_medik' => 'No. RM',
+            'no_mcu' => 'No. MCU',
             'nama' => 'Nama',
             'tempat' => 'Tempat Lahir',
-            'tgl_lahir' => 'Tgl Lahir',
+            'tgl_lahir' => 'Tanggal Lahir',
             'agama' => 'Agama',
             'kedudukan_dalam_keluarga' => 'Kedudukan Dalam Keluarga',
             'status_perkawinan' => 'Status Perkawinan',
@@ -88,7 +88,7 @@ class DataLayanan extends \yii\db\ActiveRecord
             'kode_paket' => 'Kode Paket',
             'no_registrasi' => 'No Registrasi',
             'jenis_kelamin' => 'Jenis Kelamin',
-            'no_ujian' => 'No Ujian',
+            'no_ujian' => 'NIK',
         ];
     }
 }

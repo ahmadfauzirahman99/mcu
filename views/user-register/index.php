@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?php Html::a('Create User Register', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create User Register', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -27,13 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            // 'u_id',
+            'u_id',
             'u_nik',
             'u_rm',
-            // 'u_no_mcu',
-            // 'u_no_peserta',
-            'u_nama_depan',
-            'u_nama_belakang',
+            'u_no_mcu',
+            'u_no_peserta',
+            //'u_nama_depan',
+            //'u_nama_belakang',
             //'u_nama_petugas',
             //'u_email:email',
             //'u_alamat:ntext',
@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'u_status_nikah',
             //'u_pekerjaan',
             //'u_pekerjaan_nama',
-            'u_jabatan_pekerjaan',
+            //'u_jabatan_pekerjaan',
             //'u_pendidikan',
             //'u_nama_ayah',
             //'u_nama_ibu',
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'u_tgl_terakhir_mcu',
             //'u_dokter',
             //'u_alamat_dokter:ntext',
-            'u_jabatan',
+            //'u_jabatan',
             //'u_formasi',
             //'u_tempat_tugas',
             //'u_jadwal_id',
@@ -96,7 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'u_ktp:ntext',
             //'u_approve_status',
 
-            ['class' => 'app\components\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 

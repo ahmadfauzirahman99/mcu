@@ -32,7 +32,7 @@ ItemFisikAsset::register($this);
             }",
             ],
         ])->label(false);
-        ?>'
+        ?>
         <?php ActiveForm::end(); ?>
     </div>
 </div>
@@ -59,11 +59,11 @@ ItemFisikAsset::register($this);
     ) ?>
 <?php } ?>
 
-    <?= $this->render('anamnesa-bengkalis', [
-        'modelAnamnesaBengkalis' => $modelAnamnesaBengkalis,
-        'dataLayanan' => $dataLayanan,
-        'modelPemeriksaanBengkalis' => $modelPemeriksaanBengkalis
-    ]) ?>
+<?= $this->render('anamnesa-bengkalis', [
+    'modelAnamnesaBengkalis' => $modelAnamnesaBengkalis,
+    'dataLayanan' => $dataLayanan,
+    'modelPemeriksaanBengkalis' => $modelPemeriksaanBengkalis
+]) ?>
 
 
 <?= $this->render('item-fisik.php', [

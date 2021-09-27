@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Url;
+
 error_reporting(0);
 $logo = Url::to('@web/img/logo-rsud-basic.png');
 $logo2 = Url::to('@web/img/logo-kars1.png');
@@ -236,7 +237,8 @@ function tgl_indo($tanggal)
                     <img src="<?= ($result == 'unfit') ? $ceklis : $uncheck ?>" alt="logo" style="height: 15px; width: auto;">
                 </td>
                 <td style="text-decoration: <?= ($result == 'unfit') ? '' : $coret ?>;">TIdak Laik Kerja </span>
-                    <br><small><i>Unfit to work</i></small></td>
+                    <br><small><i>Unfit to work</i></small>
+                </td>
             </tr>
         </table>
         <br><br>
@@ -255,59 +257,90 @@ function tgl_indo($tanggal)
                     <b> Pekerjaan </b> <br><small><i>Occupation</i></small>
                 </td>
                 <td width="70%" style="text-align:left">:
-                        <?= $dataUser[0]['u_jabatan'] == null ? $dataUser[0]['ukb_krj_dituju'] : $dataUser[0]['u_jabatan'] ?></td>
+
+                    <?php
+                    if($data_pelayanan->kode_debitur == '0135'){
+                        echo $dataUser[0]['jabatan_pekerjaan'];
+                        
+                    }else{
+                        if (is_null($dataUser[0]['u_jabatan'])) {
+                            echo $dataUser[0]['ukb_krj_dituju'];
+                       
+                        } else {
+                            echo $dataUser[0]['u_jabatan'];
+                        }
+                    }
+                    ?>
 
             </tr>
             <tr>
                 <td style="height:10px"></td>
             </tr><!-- seperated -->
-                <?php if($data_pelayanan->kode_debitur == '0129' || $data_pelayanan->kode_debitur == '9999') {?>
+            <?php if ($data_pelayanan->kode_debitur == '0129' || $data_pelayanan->kode_debitur == '9999') { ?>
 
-            <tr>
-                <td width="30%" style="text-align:left">
-                    <b> Pada Instansi/Perusahaan </b> <br><small><i>In institution/Company Name</i></small>
-                </td>
-                <td width="70%" style="text-align:left">: <?= $dataUser[0]['u_tempat_tugas'] ?></td>
-            
-            </tr>
-            <tr>
-                <td style="height:10px"></td>
-            </tr><!-- seperated -->
+                <tr>
+                    <td width="30%" style="text-align:left">
+                        <b> Pada Instansi/Perusahaan </b> <br><small><i>In institution/Company Name</i></small>
+                    </td>
+                    <td width="70%" style="text-align:left">: <?= $dataUser[0]['u_tempat_tugas'] ?></td>
 
-            <tr>
-                <td width="30%" style="text-align:left">
-                    <b> Untuk Penempatan Di </b> <br><small><i>For Placement At</i></small>
-                </td>
-                <?php  if($data_pelayanan->kode_debitur == '0130'  || $data_pelayanan->kode_debitur == '9999') {?>
-                          <?php if($data_pelayanan['no_mcu'] == '01041641') { ?>
-                                                          <td width="70%" style="text-align:left">: PROVINSI RIAU</td>
+                </tr>
+                <tr>
+                    <td style="height:10px"></td>
+                </tr><!-- seperated -->
 
-                          <?php }else{ ?>
-                                                  <td width="70%" style="text-align:left">: <?= $dataUser[0]['u_tempat_tugas'] ?></td>
+                <tr>
+                    <td width="30%" style="text-align:left">
+                        <b> Untuk Penempatan Di </b> <br><small><i>For Placement At</i></small>
+                    </td>
+                    <?php if ($data_pelayanan->kode_debitur == '0130'  || $data_pelayanan->kode_debitur == '9999') { ?>
+                        <?php if ($data_pelayanan['no_mcu'] == '01041641') { ?>
+                            <td width="70%" style="text-align:left">: PROVINSI RIAU</td>
+                        <?php } else { ?>
+                            <td width="70%" style="text-align:left">: <?= $dataUser[0]['u_tempat_tugas'] ?></td>
 
-                          <?php  } ?>
-                <?php } ?>
-            </tr>
+                        <?php  } ?>
+                    <?php } ?>
+                </tr>
+
+            <?php } else if ($data_pelayanan->kode_debitur == '0135') { ?>
+                <tr>
+                    <td width="30%" style="text-align:left">
+                        <b> Pada Instansi/Perusahaan </b> <br><small><i>In institution/Company Name</i></small>
+                    </td>
+                    <td width="70%" style="text-align:left">: </td>
+
+                </tr>
+                <tr>
+                    <td style="height:10px"></td>
+                </tr><!-- seperated -->
+
+                <tr>
+                    <td width="30%" style="text-align:left">
+                        <b> Untuk Penempatan Di </b> <br><small><i>For Placement At</i></small>
+                    </td>
+                    <td width="70%" style="text-align:left">: BANK BNI</td>
+                </tr>
             <?php } else { ?>
-            <tr>
-                <td width="30%" style="text-align:left">
-                    <b> Pada Instansi/Perusahaan </b> <br><small><i>In institution/Company Name</i></small>
-                </td>
-                <td width="70%" style="text-align:left">: RSUD ARIFIN ACHMAD</td>
-            
-            </tr>
-            <tr>
-                <td style="height:10px"></td>
-            </tr><!-- seperated -->
+                <tr>
+                    <td width="30%" style="text-align:left">
+                        <b> Pada Instansi/Perusahaan </b> <br><small><i>In institution/Company Name</i></small>
+                    </td>
+                    <td width="70%" style="text-align:left">: RSUD ARIFIN ACHMAD</td>
 
-            <tr>
-                <td width="30%" style="text-align:left">
-                    <b> Untuk Penempatan Di </b> <br><small><i>For Placement At</i></small>
-                </td>
-                <td width="70%" style="text-align:left">: <?= $dataUser[0]['u_tempat_tugas']  ?></td>
-            </tr>
+                </tr>
+                <tr>
+                    <td style="height:10px"></td>
+                </tr><!-- seperated -->
+
+                <tr>
+                    <td width="30%" style="text-align:left">
+                        <b> Untuk Penempatan Di </b> <br><small><i>For Placement At</i></small>
+                    </td>
+                    <td width="70%" style="text-align:left">: <?= $dataUser[0]['u_tempat_tugas']  ?></td>
+                </tr>
             <?php } ?>
-            
+
         </table>
         <p style="font-size:12px">Sertifikat ini tidak dapat digunakan untuk kepentingan hukum lainnya <br><small><i>The
                     certificate cannot be used for other legal purposes.</i></small></p>

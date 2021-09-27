@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\DataLayanan;
+use app\models\HasilLis;
 use app\models\JenisPekerjaan;
 use app\models\PenunjangValidasiLab;
 use Yii;
@@ -22,7 +23,7 @@ class UnitLabPkController extends \yii\web\Controller
             if($dataLayanan != Null) {
                 $NoPasien = $dataLayanan['no_rekam_medik'];
                 $NoRegistrasi = $dataLayanan['no_registrasi'];
-                $dataLab = PenunjangValidasiLab::findOne(['pid'=>$NoPasien, 'apid'=> $NoRegistrasi, 'status'=>'2']);
+                $dataLab = HasilLis::findOne(['pid'=>$NoPasien, 'apid'=> $NoRegistrasi]);
                   //  var_dump($dataLab);
                   // exit();
                   if($dataLab != null){

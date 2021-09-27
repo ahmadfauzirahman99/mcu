@@ -133,19 +133,19 @@ class LaporanController extends Controller
         return $this->render('list-laporan');
     }
 
-    public function actionCetakPktk($id,$no_daftar = null)
+    public function actionCetakPktk($id, $no_daftar = null)
     {
         // exit();
 
         // spesialis mata
-        $spesialis_mata = McuSpesialisMata::findOne(['no_rekam_medik' => $id,'no_daftar'=>$no_daftar]);
-        $spesialis_tht = McuSpesialisTht::findOne(['no_rekam_medik' => $id,'no_daftar'=>$no_daftar]);
+        $spesialis_mata = McuSpesialisMata::findOne(['no_rekam_medik' => $id, 'no_daftar' => $no_daftar]);
+        $spesialis_tht = McuSpesialisTht::findOne(['no_rekam_medik' => $id, 'no_daftar' => $no_daftar]);
 
-        $spesialis_gigi = McuSpesialisGigi::findOne(['no_rekam_medik' => $id,'no_daftar'=>$no_daftar]);
+        $spesialis_gigi = McuSpesialisGigi::findOne(['no_rekam_medik' => $id, 'no_daftar' => $no_daftar]);
 
 
         // Data Pelayanan
-        $data_pelayanan = DataLayanan::findOne(['no_rekam_medik' => $id,'no_registrasi'=>$no_daftar]);
+        $data_pelayanan = DataLayanan::findOne(['no_rekam_medik' => $id, 'no_registrasi' => $no_daftar]);
 
         //Anamnesis
         $pertanyaananam = Anamnesis::find()->where(['nomor_rekam_medik' => $id])->one();
@@ -162,13 +162,13 @@ class LaporanController extends Controller
         $pendidikanUser = Yii::$app->dbRegisterMcu->createCommand("SELECT * FROM user_daftar WHERE ud_rm = '$id'")->queryOne();
         // var_dump($pendidikanUser['ud_pendidikan']);
         // exit();
-// var_dump($dataBiodataUser);
-// exit();
+        // var_dump($dataBiodataUser);
+        // exit();
         //Bahaya Potensial
         $bahaya_potensial = BahayaPotensial::find()->where(['no_rekam_medik' => $id])->all();
 
         //Pemeriksaan Fisik
-        $pemeriksaan_fisik = MasterPemeriksaanFisik::find()->where(['no_rekam_medik' => $id,'no_daftar'=>$no_daftar])->asArray()->one();
+        $pemeriksaan_fisik = MasterPemeriksaanFisik::find()->where(['no_rekam_medik' => $id, 'no_daftar' => $no_daftar])->asArray()->one();
 
 
         //Penata
@@ -213,7 +213,7 @@ class LaporanController extends Controller
         }
 
 
-        
+
         // $mpdf->WriteHTML($this->renderPartial('cetak','id'=>$model->id_kwitansi,['model'=>$model]));
         // $mpdf->WriteHTML($bootstrapCss, 1);
         $mpdf->WriteHTML($this->renderPartial('cetak_mcu_pktk', [
@@ -241,16 +241,20 @@ class LaporanController extends Controller
     }
 
 
-    public function actionCetakSertifikat($id,$no_daftar = null)
+    public function actionCetakSertifikat($id, $no_daftar = null)
     {
         //DataPelayanan
-        $data_pelayanan = DataLayanan::find()->where(['no_rekam_medik' => $id])->andWhere(['no_registrasi'=>$no_daftar])->one();
+        $data_pelayanan = DataLayanan::find()->where(['no_rekam_medik' => $id])->andWhere(['no_registrasi' => $no_daftar])->one();
 
         //Pemeriksaan Fisik
-        $pemeriksaan_fisik = MasterPemeriksaanFisik::find()->where(['no_rekam_medik' => $id,'no_daftar'=>$no_daftar])->asArray()->one();
+        $pemeriksaan_fisik = MasterPemeriksaanFisik::find()->where(['no_rekam_medik' => $id, 'no_daftar' => $no_daftar])->asArray()->one();
 
         //Data User
-        $dataUser = Yii::$app->dbRegisterMcu->createCommand("SELECT u.u_id , u.u_jabatan,u.u_tempat_tugas, ukb.* FROM `user` u LEFT JOIN user_kusioner_biodata ukb  on u.u_id  = ukb.ukb_user_id  WHERE u.u_rm = '$id'")->queryAll();
+        $dataUser = Yii::$app->dbRegisterMcu->createCommand("SELECT 
+        u.u_id , 
+        u.u_jabatan_pekerjaan,
+        u.u_jabatan,u.u_tempat_tugas, 
+        ukb.* FROM `user` u LEFT JOIN user_kusioner_biodata ukb  on u.u_id  = ukb.ukb_user_id  WHERE u.u_rm = '$id'")->queryAll();
 
         $NoFoot = 1;
         $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
@@ -296,7 +300,7 @@ class LaporanController extends Controller
     {
         // Data Pelayanan
         $data_pelayanan = DataLayanan::findOne(['no_rekam_medik' => $id]);
-         $spesialis_gigi = McuSpesialisGigi::findOne(['no_rekam_medik' => $id]);
+        $spesialis_gigi = McuSpesialisGigi::findOne(['no_rekam_medik' => $id]);
 
         // mata
         $spesialis_mata = McuSpesialisMata::findOne(['no_rekam_medik' => $id]);
@@ -350,7 +354,7 @@ class LaporanController extends Controller
             'pemeriksaan_fisik' => $pemeriksaan_fisik,
             'dataDokter' => $dataDokter,
             'spesialis_mata' => $spesialis_mata,
-                        'spesialis_gigi' => $spesialis_gigi,
+            'spesialis_gigi' => $spesialis_gigi,
 
 
             // 'body_dis' => $body_dis,

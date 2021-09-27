@@ -18,6 +18,7 @@ return [
     // // 'shared.cookie.domain' => 'simrs.aa',
     // // 'shared.session.name' => '__rsudaa-shared',
     //    'foto-default'
+    'bsVersion' => '4.x', // this will set globally `bsVersion` to Bootstrap 4.x for all Krajee Extensions
 
     'website' => 'http://rsudarifinachmad.riau.go.id/',
     'storage' => '../storage/peserta/',

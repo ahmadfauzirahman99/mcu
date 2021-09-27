@@ -21,6 +21,7 @@ use Yii;
  * @property int|null $a
  * @property int|null $h
  * @property string|null $jawaban8
+ * @property string|null $no_daftar
  */
 class Anamnesis extends \yii\db\ActiveRecord
 {
@@ -38,7 +39,7 @@ class Anamnesis extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['jawaban1', 'jawaban2', 'jawaban3', 'jawaban4', 'jawaban5', 'jawaban6', 'jawaban7', 'jawaban8'], 'string'],
+            [['jawaban1', 'jawaban2', 'jawaban3', 'jawaban4', 'jawaban5', 'jawaban6', 'jawaban7', 'jawaban8','no_daftar'], 'string'],
             [['nomor_rekam_medik', 'g', 'p', 'a', 'h'], 'default', 'value' => null],
             [['nomor_rekam_medik', 'g', 'p', 'a', 'h'], 'integer'],
         ];

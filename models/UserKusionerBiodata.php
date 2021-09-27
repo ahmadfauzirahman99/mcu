@@ -44,6 +44,9 @@ use Yii;
  */
 class UserKusionerBiodata extends \yii\db\ActiveRecord
 {
+
+    public $is_sebelum,$is_sekarang,$is_dituju;
+
     /**
      * {@inheritdoc}
      */
@@ -68,6 +71,8 @@ class UserKusionerBiodata extends \yii\db\ActiveRecord
         return [
             [['ukb_user_id'], 'required'],
             [['ukb_user_id'], 'integer'],
+            [['is_sebelum','is_sekarang','is_dituju'],'string','max'=>1],
+
             [['ukb_sblm_utama_uraian', 'ukb_sblm_utama_target', 'ukb_sblm_utama_cara', 'ukb_sblm_utama_alat', 'ukb_sblm_tambah_uraian', 'ukb_sblm_tambah_target', 'ukb_sblm_tambah_cara', 'ukb_sblm_tambah_alat', 'ukb_skrg_utama_uraian', 'ukb_skrg_utama_target', 'ukb_skrg_utama_cara', 'ukb_skrg_utama_alat', 'ukb_skrg_tambah_uraian', 'ukb_skrg_tambah_target', 'ukb_skrg_tambah_cara', 'ukb_skrg_tambah_alat', 'ukb_dituju_utama_uraian', 'ukb_dituju_utama_target', 'ukb_dituju_utama_cara', 'ukb_dituju_utama_alat', 'ukb_dituju_tambah_uraian', 'ukb_dituju_tambah_target', 'ukb_dituju_tambah_cara', 'ukb_dituju_tambah_alat'], 'string'],
             [['ukb_updated_at', 'ukb_created_at'], 'safe'],
             [['ukb_krj_sebelum', 'ukb_krj_sebelum_perusahaan', 'ukb_krj_skrg', 'ukb_krj_skrg_perusahaan', 'ukb_krj_dituju', 'ukb_krj_dituju_perusahaan'], 'string', 'max' => 255],
@@ -82,12 +87,12 @@ class UserKusionerBiodata extends \yii\db\ActiveRecord
         return [
             'ukb_id' => 'Ukb ID',
             'ukb_user_id' => 'Ukb User ID',
-            'ukb_krj_sebelum' => 'Ukb Krj Sebelum',
-            'ukb_krj_sebelum_perusahaan' => 'Ukb Krj Sebelum Perusahaan',
-            'ukb_krj_skrg' => 'Ukb Krj Skrg',
-            'ukb_krj_skrg_perusahaan' => 'Ukb Krj Skrg Perusahaan',
-            'ukb_krj_dituju' => 'Ukb Krj Dituju',
-            'ukb_krj_dituju_perusahaan' => 'Ukb Krj Dituju Perusahaan',
+            'ukb_krj_sebelum' => 'Pekerjaan Sebelumnya',
+            'ukb_krj_sebelum_perusahaan'=>'Perusahaan Sebelumnya',
+            'ukb_krj_skrg' => 'Pekerjaan Sekarang',
+            'ukb_krj_skrg_perusahaan'=>'Perusahaan Sekarang',
+            'ukb_krj_dituju' => 'Pekerjaan Dituju',
+            'ukb_krj_dituju_perusahaan'=>'Perusahaan Dituju',
             'ukb_sblm_utama_uraian' => 'Ukb Sblm Utama Uraian',
             'ukb_sblm_utama_target' => 'Ukb Sblm Utama Target',
             'ukb_sblm_utama_cara' => 'Ukb Sblm Utama Cara',
