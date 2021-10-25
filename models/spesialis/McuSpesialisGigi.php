@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $id_spesialis_gigi
  * @property string $no_rekam_medik
+ * @property string $no_daftar
  * @property string|null $created_at
  * @property string|null $updated_at
  * @property int|null $created_by
@@ -60,6 +61,7 @@ use Yii;
  * @property string|null $kesimpulan
  * @property string|null $saran
  * @property string|null $riwayat
+ * @property string|null $status_pemeriksaan
  */
 class McuSpesialisGigi extends BaseAR
 {
@@ -87,7 +89,9 @@ class McuSpesialisGigi extends BaseAR
             [['g18', 'g17', 'g16', 'g15', 'g14', 'g13', 'g12', 'g11', 'g21', 'g22', 'g23', 'g24', 'g25', 'g26', 'g27', 'g28', 'g38', 'g37', 'g36', 'g35', 'g34', 'g33', 'g32', 'g31', 'g41', 'g42', 'g43', 'g44', 'g45', 'g46', 'g47', 'g48'], 'safe',],
             [['oklusi', 'torus_palatinus', 'torus_mandibularis', 'palatum', 'supernumerary_teeth', 'diastema', 'spacing', 'oral_hygiene', 'gingiva_periodontal', 'oral_mucosa', 'tongue'], 'string', 'max' => 30],
 
-            ['no_rekam_medik', 'unique'],
+            // ['no_daftar', 'required'],
+            ['kesan', 'required'],
+            ['no_daftar', 'unique'],
         ];
     }
 
@@ -139,7 +143,7 @@ class McuSpesialisGigi extends BaseAR
             'diastema' => 'Diastema',
             'spacing' => 'Spacing',
             'oral_hygiene' => 'Oral Hygiene',
-            'gingiva_periodontal' => 'Gingiva Periodontal',
+            'gingiva_periodontal' => 'Gingiva & Periodontal',
             'oral_mucosa' => 'Oral Mucosa',
             'tongue' => 'Tongue',
             'lain_lain' => 'Lain Lain',

@@ -48,20 +48,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'templateResult' => new JsExpression('function(data) { return data.text; }'),
             'templateSelection' => new JsExpression('function (data) { return data.text; }'),
         ],
-        // 'pluginEvents' => [
-        //     "select2:select" => "function(e) { 
-        //         let data = e.params.data
-        //         let diagnosis_kerja = $('#masterpemeriksaanfisik-diagnosis_kerja').val()
-        //         if(diagnosis_kerja==null || diagnosis_kerja=='')
-        //             diagnosis_kerja += data.id
-        //         else
-        //             diagnosis_kerja += ','+data.id
-        //         $('#masterpemeriksaanfisik-diagnosis_kerja').val(diagnosis_kerja)
-        //     }",
-        // ]
+        'pluginEvents' => [
+
+            "select2:select" => "function(e) { 
+                // alert('asdsadsa')
+                $('#btnSearch').click()
+            }",
+        ]
     ])->label(false);
     ?>
-    <?= Html::submitButton('Cari <span class="mdi mdi-file-search"></span>', ['class' => 'btn btn-success']) ?>
+    <div style="display: none;">
+        <?= Html::submitButton('Cari <span class="mdi mdi-file-search"></span>', ['class' => 'btn btn-success', 'id' => 'btnSearch']) ?>
+    </div>
 
     <?php ActiveForm::end(); ?>
 
@@ -91,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <ul class="nav nav-tabs nav-justified">
             <li class="nav-item"><a href="#account-2" data-toggle="tab" class="nav-link">DATA PASIEN</a></li>
             <li class="nav-item"><a href="#profile-tab-2" data-toggle="tab" class="nav-link">I. HASIL LAB</a></li>
-            <li class="nav-item"><a href="#finish-2" data-toggle="tab" class="nav-link">II. SETTING HASIL</a></li>
+            <li style="display: none;" class="nav-item"><a href="#finish-2" data-toggle="tab" class="nav-link">II. SETTING HASIL</a></li>
         </ul>
 
         <div class="tab-content b-0 mb-0">
@@ -105,7 +103,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $this->render('data-layanan', ['model' => $dataLayanan]) ?>
             </div>
             <div class="tab-pane p-t-10 fade" id="profile-tab-2">
-                <?= $this->render('hasil-lab.php', ['dataLab'=>$dataLab, 'dataApi'=>$dataApi]) ?>
+                <?= $this->render('hasil-lab.php', ['dataLab' => $dataLab, 'dataApi' => $dataApi]) ?>
             </div>
             <div class="tab-pane p-t-10 fade" id="finish-2">
                 <?= $this->render('setting-lab.php', []) ?>

@@ -13,9 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="spesialis-narkoba-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
+        <?= Html::a('<i class="fa fa-backward"></i> Kembali', ['index'], ['class' => 'btn btn-warning']) ?>    
         <?= Html::a('Update', ['update', 'id' => $model->id_spesialis_narkoba], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id_spesialis_narkoba], [
             'class' => 'btn btn-danger',
@@ -35,10 +34,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'updated_at',
             'created_by',
             'updated_by',
-            'golongan_psikotropika',
-            'hasil_psikotropika',
-            'golongan_narkotika',
-            'hasil_narkotika',
+            'benzodiazepin_hasil',
+            'benzodiazepin_keterangan',
+            'thc_hasil',
+            'thc_keterangan',
+            'piat_hasil',
+            'piat_keterangan',
+            'amphetammin_hasil',
+            'amphetammin_keterangan',
+            'kokain_hasil',
+            'kokain_keterangan',
+            'methamphetamin_hasil',
+            'methamphetamin_keterangan',
+            'carisoprodol_hasil',
+            'carisoprodol_keterangan',
         ],
     ]) ?>
 

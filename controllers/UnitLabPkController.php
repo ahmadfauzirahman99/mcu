@@ -2,8 +2,8 @@
 
 namespace app\controllers;
 
-use app\models\Anamnesis;
 use app\models\DataLayanan;
+use app\models\HasilLis;
 use app\models\JenisPekerjaan;
 use app\models\PenunjangValidasiLab;
 use Yii;
@@ -13,7 +13,7 @@ class UnitLabPkController extends \yii\web\Controller
     public function actionIndex($NoPasien = Null)
     {
         $dataLab = Null;
-        $dataApi = Null;
+        $dataApi = array();
         if (Yii::$app->request->isPost) {
             $p = Yii::$app->request->post();
 
@@ -23,9 +23,16 @@ class UnitLabPkController extends \yii\web\Controller
             if($dataLayanan != Null) {
                 $NoPasien = $dataLayanan['no_rekam_medik'];
                 $NoRegistrasi = $dataLayanan['no_registrasi'];
-                $dataLab = PenunjangValidasiLab::findOne(['pid'=>$NoPasien, 'apid'=> $NoRegistrasi, 'status'=>'2']);
-                $dataApi = $dataLab->data_api;
+                $dataLab = HasilLis::findOne(['pid'=>$NoPasien, 'apid'=> $NoRegistrasi]);
+                  //  var_dump($dataLab);
+                  // exit();
+                  if($dataLab != null){
+                     $dataApi = $dataLab->data_api;
+                  }
+
+
             }
+
 
             return $this->render('index', [
                 'dataLayanan' => $dataLayanan,
@@ -50,7 +57,7 @@ class UnitLabPkController extends \yii\web\Controller
         if (!is_null($q)) {
             $dataPelayanan = DataLayanan::find()->select(["no_rekam_medik as id", "concat(nama,' ',no_rekam_medik) as text"])
                 // ->where(['ilike', 'no_rekam_medik', $q . '%', false])
-                ->Where(['ilike', 'nama', $q . '%', false])
+                ->Where(['ilike', 'nama', '%'.$q . '%', false])
                 ->orderBy('nama ASC')
                 ->asArray()
                 ->all();

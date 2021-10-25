@@ -6,8 +6,6 @@
  * Time: 4:09 PM
  */
 
-use kartik\date\DatePicker;
-use kartik\datetime\DateTimePicker;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use \kartik\select2\Select2;
@@ -18,8 +16,8 @@ use yii\helpers\ArrayHelper;
     <div class="modal-dialog modal-lg" role="document" style="margin-top: 0px;">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-                <h4 class="modal-title" id="formModalLabel"> Input Data Manual </h4>
+                <h4 class="modal-title" id="myLargeModalLabel"> Input Data Manual </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
             </div>
 
             <?php $form = ActiveForm::begin(['id'=>'McuSettingManualLab','action'=>'javascript::void(0)','options'=>['class'=>'form form-input-manual','role'=>'form']]); ?>

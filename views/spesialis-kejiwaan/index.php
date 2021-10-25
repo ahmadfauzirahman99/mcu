@@ -12,8 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="spesialis-kejiwaan-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a('Create Spesialis Kejiwaan', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
@@ -27,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id_spesialis_kejiwaan',
-            'no_rekam_medik',
+            'nama_no_rm',
             'created_at',
             'updated_at',
             'created_by',
@@ -48,8 +46,9 @@ $this->params['breadcrumbs'][] = $this->title;
             //'skala_9_ma',
             //'skala_0_si',
             //'kesimpulan',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'app\components\ActionColumnPemeriksaan',
+            ],
         ],
     ]); ?>
 

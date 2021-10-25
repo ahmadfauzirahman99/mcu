@@ -92,7 +92,7 @@ function RefreshManual() {
 
 <!-- BEGIN MY MODAL -->
 
-<div class="modal fade" id="mymodal" tabindex="false" data-keyboard='false' role="dialog"
-     aria-labelledby="myModalLabel"></div>
+<div class="modal fade bs-example-modal-lg" id="mymodal" tabindex="-1" data-keyboard='false' role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;"></div>
 
 <!-- END MY MODAL -->

@@ -5,7 +5,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-05 20:45:35 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-14 23:08:12
+ * @Last Modified time: 2020-10-08 16:54:22
  */
 
 const rataBerubah = _ => {
@@ -67,13 +67,41 @@ const rataBerubah = _ => {
 
 $(document).ready(function () {
 
+    $('#mcuspesialisaudiometri-kesan').on('change', function (e) {
+        let kesimpulan = $('#McuSpesialisAudiometri_kesan_0').prop('checked')
+        console.log(kesimpulan);
+        if (kesimpulan)
+            $('.div-penata').hide('slow')
+        else
+            $('.div-penata').show('slow')
+    });
+
     $("#form-spesialis-audiometri").on('submit', function (e) {
         e.preventDefault()
         e.stopImmediatePropagation()
         var kepalaform = $("#form-spesialis-audiometri").serialize()
-        $.post(baseUrl + 'spesialis-audiometri/periksa?no_rm=' + $('#mcuspesialisaudiometri-no_rekam_medik').val(), kepalaform, function (r) {
+        $.post(baseUrl + 'spesialis-audiometri/periksa?id=' + $('#mcuspesialisaudiometri-cari_pasien').val(), kepalaform, function (r) {
             console.log(r)
             if (r.s) {
+                $.pjax.reload({container: '#btn-cetak', async: false})
+                $.pjax.reload({container: '#btn-cetak-penata', async: false})
+                toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
+            } else {
+                toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))
+            }
+        }, 'JSON')
+        return false
+    })
+
+    $("#form-spesialis-audiometri-penata").on('submit', function (e) {
+        e.preventDefault()
+        e.stopImmediatePropagation()
+        var kepalaform = $("#form-spesialis-audiometri-penata").serialize()
+        $.post(baseUrl + 'spesialis-audiometri/simpan-penata?id=' + $('#mcuspesialisaudiometri-id_spesialis_audiometri').val(), kepalaform, function (r) {
+            console.log(r)
+            if (r.s) {
+                $.pjax.reload({container: '#btn-cetak-penata', async: false})
+                $.pjax.reload({container: '#tbl-penata', async: false})
                 toastr["success"]("Mantap, Sukses menyimpan boooyyyy...")
             } else {
                 toastr["warning"]("Huuft, Gagal menyimpan boooyyyy...<br>" + JSON.stringify(r.e))

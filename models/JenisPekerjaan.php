@@ -14,6 +14,7 @@ use Yii;
  * @property string|null $masa_kerja
  * @property string|null $no_rekam_medik
  * @property string|null $tanggal_created
+ * @property string|null $no_daftar
  */
 class JenisPekerjaan extends \yii\db\ActiveRecord
 {
@@ -31,7 +32,7 @@ class JenisPekerjaan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['jenis_pekerjaan', 'bahan_material'], 'string'],
+            [['jenis_pekerjaan','no_daftar' ,'bahan_material'], 'string'],
             [['tanggal_created'], 'safe'],
             [['tempat_kerja', 'masa_kerja', 'no_rekam_medik'], 'string', 'max' => 100],
         ];

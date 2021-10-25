@@ -11,6 +11,8 @@ use app\models\SpesialisKejiwaan;
  */
 class SpesialisKejiwaanSearch extends SpesialisKejiwaan
 {
+    public $nama_no_rm;
+
     /**
      * {@inheritdoc}
      */
@@ -19,6 +21,7 @@ class SpesialisKejiwaanSearch extends SpesialisKejiwaan
         return [
             [['id_spesialis_kejiwaan', 'created_by', 'updated_by', 'status'], 'integer'],
             [['no_rekam_medik', 'created_at', 'updated_at', 'rs_pendukung', 'dokter', 'skala_l', 'skala_p', 'skala_k', 'skala_1_hs', 'skala_2_d', 'skala_3_hy', 'skala_4_pd', 'skala_5_mf', 'skala_6_pa', 'skala_7_pt', 'skala_8_sc', 'skala_9_ma', 'skala_0_si', 'validitas', 'interpretasi_subtantif', 'saran', 'kesimpulan'], 'safe'],
+            ['nama_no_rm', 'safe'],
         ];
     }
 
@@ -40,13 +43,18 @@ class SpesialisKejiwaanSearch extends SpesialisKejiwaan
      */
     public function search($params)
     {
-        $query = SpesialisKejiwaan::find();
+        $query = SpesialisKejiwaan::find()->joinWith('pasien');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        $dataProvider->sort->attributes['nama_no_rm'] = [
+            'asc' => [DataLayanan::tableName() . '.nama' => SORT_ASC],
+            'desc' => [DataLayanan::tableName() . '.nama' => SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -85,8 +93,12 @@ class SpesialisKejiwaanSearch extends SpesialisKejiwaan
             ->andFilterWhere(['ilike', 'interpretasi_subtantif', $this->interpretasi_subtantif])
             ->andFilterWhere(['ilike', 'saran', $this->saran])
             ->andFilterWhere(['ilike', 'kesimpulan', $this->kesimpulan])
-            ->andFilterWhere(['ilike', 'status', $this->status]);
-
+            ->andFilterWhere(['ilike', 'status', $this->status])
+            ->andFilterWhere([
+                'or',
+                ['ilike', DataLayanan::tableName() . '.no_rekam_medik', $this->nama_no_rm],
+                ['ilike', DataLayanan::tableName() . '.nama', $this->nama_no_rm]
+            ]);
         return $dataProvider;
     }
 }

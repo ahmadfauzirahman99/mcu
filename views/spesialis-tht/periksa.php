@@ -6,7 +6,7 @@
  * @Linkedin: linkedin.com/in/dickyermawan 
  * @Date: 2020-09-13 18:14:13 
  * @Last Modified by: Dicky Ermawan S., S.T., MTA
- * @Last Modified time: 2020-09-17 11:59:31
+ * @Last Modified time: 2020-11-28 15:15:47
  */
 
 use app\components\Helper;
@@ -15,7 +15,11 @@ use app\models\spesialis\BaseModel;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use yii\data\ActiveDataProvider;
+use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
+use yii\web\JsExpression;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\spesialis\McuSpesialisTht */
@@ -35,6 +39,16 @@ $this->params['breadcrumbs'][] = $this->title;
     .tabel-tht label {
         margin-bottom: 0px !important;
     }
+
+    .tr-ac-bc td {
+        padding: 3px !important;
+    }
+
+    .tr-ac-bc .was-validated .form-control:valid,
+    .tr-ac-bc .form-control.is-valid {
+        padding: 0.75rem !important;
+        background-image: none;
+    }
 </style>
 
 <div class="mcu-spesialis-audiometri-form">
@@ -46,10 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <hr>
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'form-spesialis-tht',
-        'validateOnSubmit' => false, // agar submit ajax tidak 2 kali saat pertama kali reload
-    ]); ?>
+    <?php $form = ActiveForm::begin([]); ?>
 
     <?php
     echo $form->field($model, 'cari_pasien')->widget(Select2::classname(), [
@@ -61,12 +72,26 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         'pluginEvents' => [
             "select2:select" => "function(e) { 
-                window.location = baseUrl + 'spesialis-tht/periksa?no_rm=' + e.params.data.id
+                window.location = baseUrl + 'spesialis-tht/periksa?id=' + e.params.data.id
             }",
         ],
     ]);
     ?>
     <br>
+    <div class="form-group" style="margin-top: 5px; display: none;">
+        <?php
+        echo Html::submitButton('Simpan', ['class' => 'btn btn-success', 'id' => 'btn-form-cari']);
+        ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
+
+    <?php $form = ActiveForm::begin([
+        'id' => 'form-spesialis-tht',
+        'validateOnSubmit' => false, // agar submit ajax tidak 2 kali saat pertama kali reload
+    ]); ?>
+
+    <?= $form->field($model, 'cari_pasien')->hiddenInput()->label(false) ?>
 
     <div class="row">
         <div class="col-sm-3">
@@ -76,11 +101,18 @@ $this->params['breadcrumbs'][] = $this->title;
             echo $form->field($model, 'no_rekam_medik')->textInput(['maxlength' => true, 'readonly' => true,])->label(false)
             ?>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-6">
             <div class="form-group">
                 <label for="">Nama</label>
                 <input readonly type="text" class="form-control" value="<?= $pasien->nama ?? null ?>" id="nama_pasien">
             </div>
+        </div>
+        <div class="col-sm-3">
+            <label for="">No. Daftar</label>
+            <?php
+            $model->no_daftar = $no_daftar;
+            echo $form->field($model, 'no_daftar')->textInput(['maxlength' => true, 'readonly' => true,])->label(false)
+            ?>
         </div>
     </div>
 
@@ -264,67 +296,49 @@ $this->params['breadcrumbs'][] = $this->title;
             </td>
         </tr>
         <tr>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=top sdval="5" sdnum="1033;">
+            <td class="tr_test_garpu_tala_td_no" rowspan="<?= $model->tl_test_garpu_tala_periksa == 'Tidak' ? '1' : '6' ?>" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=top sdval="5" sdnum="1033;">
                 <font color="#000000">5</font>
             </td>
+            <td colspan="6" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <div class="row" style="padding-left: 10px;">
+
+                    <font color="#000000" style="font-weight: bold;">Tes Garpu Tala</font>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <?= $form->field($model, 'tl_test_garpu_tala_periksa')->inline()->radioList(['Ya' => 'Dilakukan Pemeriksaan', 'Tidak' => 'Tidak Melakukan Pemeriksaan',], [
+                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                        },
+                    ])->label(false) ?>
+                </div>
+            </td>
+        </tr>
+        <tr class="tr_test_garpu_tala" style="<?= $model->tl_test_garpu_tala_periksa == 'Tidak' ? 'display: none' : null ?>">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <font color="#000000">Test Berbisik</font>
+                <font color="#000000">Rinne</font>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top>
                 <font color="#000000">:</font>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_test_berbisik_telinga_kanan',  ['id' => 'mcuspesialistht_tl_test_berbisik_telinga_kanan_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
+                <?= Html::activeRadio($model, 'tl_test_garpu_tala_rinne_telinga_kanan',  ['id' => 'mcuspesialistht_tl_test_garpu_tala_rinne_telinga_kanan_0', 'value' => 'Negatif (AC < BC)', 'label' => 'Negatif (AC < BC)']) ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
                 <label>
-                    <input <?= ($model->tl_test_berbisik_telinga_kanan == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_berbisik_telinga_kanan_1" name="McuSpesialisTht[tl_test_berbisik_telinga_kanan]" value="Tidak Normal">
-                    Tidak Normal
+                    <input <?= ($model->tl_test_garpu_tala_rinne_telinga_kanan == 'Positif (AC > BC)') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_garpu_tala_rinne_telinga_kanan_1" name="McuSpesialisTht[tl_test_garpu_tala_rinne_telinga_kanan]" value="Positif (AC > BC)">
+                    Positif (AC > BC)
                 </label>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_test_berbisik_telinga_kiri',  ['id' => 'mcuspesialistht_tl_test_berbisik_telinga_kiri_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
+                <?= Html::activeRadio($model, 'tl_test_garpu_tala_rinne_telinga_kiri',  ['id' => 'mcuspesialistht_tl_test_garpu_tala_rinne_telinga_kiri_0', 'value' => 'Negatif (AC < BC)', 'label' => 'Negatif (AC < BC)']) ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
                 <label>
-                    <input <?= ($model->tl_test_berbisik_telinga_kiri == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_berbisik_telinga_kiri_1" name="McuSpesialisTht[tl_test_berbisik_telinga_kiri]" value="Tidak Normal">
-                    Tidak Normal
-                </label>
-            </td>
-        </tr>
-        <tr>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=top sdval="6" sdnum="1033;">
-                <font color="#000000">6</font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <font color="#000000">Test Garpu Tala Rinne</font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top>
-                <font color="#000000">:</font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_test_garpu_tala_rinne_telinga_kanan',  ['id' => 'mcuspesialistht_tl_test_garpu_tala_rinne_telinga_kanan_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <label>
-                    <input <?= ($model->tl_test_garpu_tala_rinne_telinga_kanan == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_garpu_tala_rinne_telinga_kanan_1" name="McuSpesialisTht[tl_test_garpu_tala_rinne_telinga_kanan]" value="Tidak Normal">
-                    Tidak Normal
-                </label>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_test_garpu_tala_rinne_telinga_kiri',  ['id' => 'mcuspesialistht_tl_test_garpu_tala_rinne_telinga_kiri_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <label>
-                    <input <?= ($model->tl_test_garpu_tala_rinne_telinga_kiri == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_garpu_tala_rinne_telinga_kiri_1" name="McuSpesialisTht[tl_test_garpu_tala_rinne_telinga_kiri]" value="Tidak Normal">
-                    Tidak Normal
+                    <input <?= ($model->tl_test_garpu_tala_rinne_telinga_kiri == 'Positif (AC > BC)') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_garpu_tala_rinne_telinga_kiri_1" name="McuSpesialisTht[tl_test_garpu_tala_rinne_telinga_kiri]" value="Positif (AC > BC)">
+                    Positif (AC > BC)
                 </label>
             </td>
         </tr>
-        <tr>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=top sdval="7" sdnum="1033;">
-                <font color="#000000">7</font>
-            </td>
+        <tr class="tr_test_garpu_tala" style="<?= $model->tl_test_garpu_tala_periksa == 'Tidak' ? 'display: none' : null ?>">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
                 <font color="#000000">Weber</font>
             </td>
@@ -332,32 +346,29 @@ $this->params['breadcrumbs'][] = $this->title;
                 <font color="#000000">:</font>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_weber_telinga_kanan',  ['id' => 'mcuspesialistht_tl_weber_telinga_kanan_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
+                <?= Html::activeRadio($model, 'tl_weber_telinga_kanan',  ['id' => 'mcuspesialistht_tl_weber_telinga_kanan_0', 'value' => 'Tidak Ada Lateralisasi', 'label' => 'Tidak Ada Lateralisasi']) ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
                 <label>
-                    <input <?= ($model->tl_weber_telinga_kanan == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_weber_telinga_kanan_1" name="McuSpesialisTht[tl_weber_telinga_kanan]" value="Tidak Normal">
-                    Tidak Normal
+                    <input <?= ($model->tl_weber_telinga_kanan == 'Lateralisasi Kanan') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_weber_telinga_kanan_1" name="McuSpesialisTht[tl_weber_telinga_kanan]" value="Lateralisasi Kanan">
+                    Lateralisasi Kanan
                 </label>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_weber_telinga_kiri',  ['id' => 'mcuspesialistht_tl_weber_telinga_kiri_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
+                <?= Html::activeRadio($model, 'tl_weber_telinga_kiri',  ['id' => 'mcuspesialistht_tl_weber_telinga_kiri_0', 'value' => 'Tidak Ada Lateralisasi', 'label' => 'Tidak Ada Lateralisasi']) ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
                 <label>
-                    <input <?= ($model->tl_weber_telinga_kiri == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_weber_telinga_kiri_1" name="McuSpesialisTht[tl_weber_telinga_kiri]" value="Tidak Normal">
-                    Tidak Normal
+                    <input <?= ($model->tl_weber_telinga_kiri == 'Lateralisasi Kiri') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_weber_telinga_kiri_1" name="McuSpesialisTht[tl_weber_telinga_kiri]" value="Lateralisasi Kiri">
+                    Lateralisasi Kiri
                 </label>
             </td>
         </tr>
-        <tr>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=top sdval="8" sdnum="1033;">
-                <font color="#000000">8</font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+        <tr class="tr_test_garpu_tala" style="<?= $model->tl_test_garpu_tala_periksa == 'Tidak' ? 'display: none' : null ?>">
+            <td rowspan="2" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
                 <font color="#000000">Swabach</font>
             </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top>
+            <td rowspan="2" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top>
                 <font color="#000000">:</font>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
@@ -379,10 +390,33 @@ $this->params['breadcrumbs'][] = $this->title;
                 </label>
             </td>
         </tr>
-        <tr>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=top sdval="9" sdnum="1033;">
-                <font color="#000000">9</font>
+        <tr class="tr_test_garpu_tala" style="<?= $model->tl_test_garpu_tala_periksa == 'Tidak' ? 'display: none' : null ?>">
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <label>
+                    <input <?= ($model->tl_swabach_telinga_kanan == 'Memendek') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_swabach_telinga_kanan_2" name="McuSpesialisTht[tl_swabach_telinga_kanan]" value="Memendek">
+                    Memendek
+                </label>
             </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <label>
+                    <input <?= ($model->tl_swabach_telinga_kanan == 'Memanjang') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_swabach_telinga_kanan_3" name="McuSpesialisTht[tl_swabach_telinga_kanan]" value="Memanjang">
+                    Memanjang
+                </label>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <label>
+                    <input <?= ($model->tl_swabach_telinga_kiri == 'Memendek') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_swabach_telinga_kiri" name="McuSpesialisTht[tl_swabach_telinga_kiri]" value="Memendek">
+                    Memendek
+                </label>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <label>
+                    <input <?= ($model->tl_swabach_telinga_kiri == 'Memanjang') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_swabach_telinga_kiri" name="McuSpesialisTht[tl_swabach_telinga_kiri]" value="Memanjang">
+                    Memanjang
+                </label>
+            </td>
+        </tr>
+        <tr class="tr_test_garpu_tala" style="<?= $model->tl_test_garpu_tala_periksa == 'Tidak' ? 'display: none' : null ?>">
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
                 <font color="#000000">Bing</font>
             </td>
@@ -390,27 +424,543 @@ $this->params['breadcrumbs'][] = $this->title;
                 <font color="#000000">:</font>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_bing_telinga_kanan',  ['id' => 'mcuspesialistht_tl_bing_telinga_kanan_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
+                <?= Html::activeRadio($model, 'tl_bing_telinga_kanan',  ['id' => 'mcuspesialistht_tl_bing_telinga_kanan_0', 'value' => 'Bertambah Keras', 'label' => 'Bertambah Keras']) ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
                 <label>
-                    <input <?= ($model->tl_bing_telinga_kanan == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_bing_telinga_kanan_1" name="McuSpesialisTht[tl_bing_telinga_kanan]" value="Tidak Normal">
-                    Tidak Normal
+                    <input <?= ($model->tl_bing_telinga_kanan == 'Tidak Bertambah Keras') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_bing_telinga_kanan_1" name="McuSpesialisTht[tl_bing_telinga_kanan]" value="Tidak Bertambah Keras">
+                    Tidak Bertambah Keras
                 </label>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
-                <?= Html::activeRadio($model, 'tl_bing_telinga_kiri',  ['id' => 'mcuspesialistht_tl_bing_telinga_kiri_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
+                <?= Html::activeRadio($model, 'tl_bing_telinga_kiri',  ['id' => 'mcuspesialistht_tl_bing_telinga_kiri_0', 'value' => 'Bertambah Keras', 'label' => 'Bertambah Keras']) ?>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
                 <label>
-                    <input <?= ($model->tl_bing_telinga_kiri == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_bing_telinga_kiri_1" name="McuSpesialisTht[tl_bing_telinga_kiri]" value="Tidak Normal">
-                    Tidak Normal
+                    <input <?= ($model->tl_bing_telinga_kiri == 'Tidak Bertambah Keras') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_bing_telinga_kiri_1" name="McuSpesialisTht[tl_bing_telinga_kiri]" value="Tidak Bertambah Keras">
+                    Tidak Bertambah Keras
                 </label>
             </td>
         </tr>
         <tr>
+            <td rowspan="2" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=top sdval="5" sdnum="1033;">
+                <font color="#000000">6</font>
+            </td>
+            <td colspan="6" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <div class="row" style="padding-left: 10px;">
+
+                    <font color="#000000" style="font-weight: bold;">Tes Berbisik</font>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <?= $form->field($model, 'tl_test_berbisik_periksa')->inline()->radioList(['Ya' => 'Dilakukan Pemeriksaan', 'Tidak' => 'Tidak Melakukan Pemeriksaan',], [
+                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                        },
+                    ])->label(false) ?>
+                </div>
+            </td>
+        </tr>
+        <tr style="<?= $model->tl_test_berbisik_periksa == 'Tidak' ? 'display: none' : null ?>" class="tr_test_berbisik">
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <font color="#000000">Tes Berbisik</font>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top>
+                <font color="#000000">:</font>
+            </td>
+            <td colspan="2" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <?php
+                $optionBerbisik = [
+                    'Jarak &ge; 1 Meter' => 'Jarak &ge; 1 Meter',
+                    'Jarak 3-2 Meter' => 'Jarak 3-2 Meter',
+                    'Jarak 4 Meter' => 'Jarak 4 Meter',
+                    'Jarak 6-5 Meter' => 'Jarak 6-5 Meter',
+                ];
+                ?>
+
+                <?php
+                echo $form->field($model, 'tl_test_berbisik_telinga_kanan_option')->widget(Select2::classname(), [
+                    'data' => $optionBerbisik,
+                    'theme' => 'bootstrap',
+                    'pluginOptions' => [
+                        'allowClear' => false,
+                        'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                            let dipilih = e.params.data.id
+                            let optionBerbisik = {
+                                'Jarak &ge; 1 Meter' : 'Tuli Berat',
+                                'Jarak 3-2 Meter' : 'Tuli Ringan',
+                                'Jarak 4 Meter' : 'Tuli Sedang',
+                                'Jarak 6-5 Meter' : 'Dalam Batas Normal',
+                            }
+                            $('#mcuspesialistht-tl_test_berbisik_telinga_kanan').val(optionBerbisik[dipilih]).trigger('change')
+                        }",
+                    ],
+                ])->label(false);
+                echo $form->field($model, 'tl_test_berbisik_telinga_kanan')->textInput(['maxlength' => true, 'readonly' => true, 'style' => 'margin-top: 5px;'])->label(false)
+                ?>
+            </td>
+            <td colspan="2" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <?php
+                echo $form->field($model, 'tl_test_berbisik_telinga_kiri_option')->widget(Select2::classname(), [
+                    'data' => $optionBerbisik,
+                    'theme' => 'bootstrap',
+                    'pluginOptions' => [
+                        'allowClear' => false,
+                        'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
+                    ],
+                    'pluginEvents' => [
+                        "select2:select" => "function(e) { 
+                            let dipilih = e.params.data.id
+                            let optionBerbisik = {
+                                'Jarak &ge; 1 Meter' : 'Tuli Berat',
+                                'Jarak 3-2 Meter' : 'Tuli Ringan',
+                                'Jarak 4 Meter' : 'Tuli Sedang',
+                                'Jarak 6-5 Meter' : 'Dalam Batas Normal',
+                            }
+                            $('#mcuspesialistht-tl_test_berbisik_telinga_kiri').val(optionBerbisik[dipilih]).trigger('change')
+                        }",
+                    ],
+                ])->label(false);
+                echo $form->field($model, 'tl_test_berbisik_telinga_kiri')->textInput(['maxlength' => true, 'readonly' => true, 'style' => 'margin-top: 5px;'])->label(false)
+                ?>
+            </td>
+            <!-- <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <label>
+                    <input <?= ($model->tl_test_berbisik_telinga_kanan_6 == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_berbisik_telinga_kanan_1" name="McuSpesialisTht[tl_test_berbisik_telinga_kanan_6]" value="Tidak Normal">
+                    Tidak Normal
+                </label>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <?= Html::activeRadio($model, 'tl_test_berbisik_telinga_kiri_6',  ['id' => 'mcuspesialistht_tl_test_berbisik_telinga_kiri_0', 'value' => 'Normal', 'label' => 'Normal']) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <label>
+                    <input <?= ($model->tl_test_berbisik_telinga_kiri_6 == 'Tidak Normal') ? 'checked' : null ?> type="radio" id="mcuspesialistht_tl_test_berbisik_telinga_kiri_1" name="McuSpesialisTht[tl_test_berbisik_telinga_kiri_6]" value="Tidak Normal">
+                    Tidak Normal
+                </label>
+            </td> -->
+        </tr>
+
+    </table>
+
+    <table class="table">
+        <colgroup span="19" width="53"></colgroup>
+        <tr>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=20 height="19" valign=top>
+                <div class="row">
+
+                    <b>
+                        <font color="#000000">7. Audiometri</font>
+                    </b>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <?= $form->field($model, 'tl_audiometri_periksa')->inline()->radioList(['Ya' => 'Dilakukan Pemeriksaan', 'Tidak' => 'Tidak Melakukan Pemeriksaan',], [
+                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                        },
+                    ])->label(false) ?>
+                </div>
+            </td>
+        </tr>
+        <tr style="<?= $model->tl_audiometri_periksa == 'Tidak' ? 'display: none' : null ?>" class="tr_audiometri_periksa">
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=10 height="19" align="center" valign=top><b>
+                    <font color="#000000">Right/Kanan</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=9 align="center" valign=top><b>
+                    <font color="#000000">Left/Kiri</font>
+                </b></td>
+        </tr>
+        <tr style="<?= $model->tl_audiometri_periksa == 'Tidak' ? 'display: none' : null ?>" class="tr_audiometri_periksa">
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="center" valign=middle><b>
+                    <font color="#000000"><br></font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="125" sdnum="1033;"><b>
+                    <font color="#000000">125</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="250" sdnum="1033;"><b>
+                    <font color="#000000">250</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="500" sdnum="1033;"><b>
+                    <font color="#000000">500</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="1000" sdnum="1033;"><b>
+                    <font color="#000000">1000</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="2000" sdnum="1033;"><b>
+                    <font color="#000000">2000</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="3000" sdnum="1033;"><b>
+                    <font color="#000000">3000</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="4000" sdnum="1033;"><b>
+                    <font color="#000000">4000</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="6000" sdnum="1033;"><b>
+                    <font color="#000000">6000</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="8000" sdnum="1033;"><b>
+                    <font color="#000000">8000</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="125" sdnum="1033;"><b>
+                    <font color="#000000">125</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="250" sdnum="1033;"><b>
+                    <font color="#000000">250</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="500" sdnum="1033;"><b>
+                    <font color="#000000">500</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="1000" sdnum="1033;"><b>
+                    <font color="#000000">1000</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="2000" sdnum="1033;"><b>
+                    <font color="#000000">2000</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="3000" sdnum="1033;"><b>
+                    <font color="#000000">3000</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="4000" sdnum="1033;"><b>
+                    <font color="#000000">4000</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="6000" sdnum="1033;"><b>
+                    <font color="#000000">6000</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle sdval="8000" sdnum="1033;"><b>
+                    <font color="#000000">8000</font>
+                </b></td>
+        </tr>
+        <tr style="<?= $model->tl_audiometri_periksa == 'Tidak' ? 'display: none' : null ?>" class="tr_audiometri_periksa tr-ac-bc">
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="center" valign=middle><b>
+                    <font color="#000000">AC</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_125_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_250_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_500_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_1000_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_2000_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_3000_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_4000_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_6000_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_8000_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_125_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_250_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_500_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_1000_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_2000_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_3000_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_4000_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_6000_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'ac_8000_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+        </tr>
+        <tr style="<?= $model->tl_audiometri_periksa == 'Tidak' ? 'display: none' : null ?>" class="tr_audiometri_periksa tr-ac-bc">
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="23" align="center" valign=middle><b>
+                    <font color="#000000">BC</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_125_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_250_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_500_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_1000_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_2000_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_3000_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_4000_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_6000_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_8000_kanan')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_125_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_250_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_500_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_1000_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_2000_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_3000_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_4000_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_6000_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle>
+                <?= $form->field($modelAudiometri, 'bc_8000_kiri')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+        </tr>
+        <tr style="<?= $model->tl_audiometri_periksa == 'Tidak' ? 'display: none' : null ?>" class="tr_audiometri_periksa">
+            <td style="border-top: 1px solid #000000; border-left: 1px solid #000000; font-weight: bold;" colspan=2 height="19" align="left" valign=top>
+                <font color="#000000">Kesimpulan:</font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td style="border-right: 1px solid #000000" align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+        </tr>
+        <tr style="<?= $model->tl_audiometri_periksa == 'Tidak' ? 'display: none' : null ?>" class="tr_audiometri_periksa">
+            <td style="border-left: 1px solid #000000" height="19" align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="center" valign=bottom>
+                AC
+            </td>
+            <td colspan=8 valign=bottom>
+                <?= $form->field($modelAudiometri, 'rata_kanan_ac')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td valign=bottom>
+                AC
+            </td>
+            <td style="border-right: 1px solid #000000" colspan=8 valign=bottom>
+                <?= $form->field($modelAudiometri, 'rata_kiri_ac')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+        </tr>
+        <tr style="<?= $model->tl_audiometri_periksa == 'Tidak' ? 'display: none' : null ?>" class="tr_audiometri_periksa">
+            <td style="border-left: 1px solid #000000" height="19" align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="center" valign=bottom>
+                BC
+            </td>
+            <td colspan=8 valign=bottom>
+                <?= $form->field($modelAudiometri, 'rata_kanan_bc')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+            <td valign=bottom>
+                BC
+            </td>
+            <td style="border-right: 1px solid #000000" colspan=8 valign=bottom>
+                <?= $form->field($modelAudiometri, 'rata_kiri_bc')->textInput(['maxlength' => true])->label(false) ?>
+            </td>
+        </tr>
+        <tr style="<?= $model->tl_audiometri_periksa == 'Tidak' ? 'display: none' : null ?>" class="tr_audiometri_periksa">
+            <td style="border-left: 1px solid #000000" height="19" align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="center" valign=bottom>
+                <font color="#000000">Kanan</font>
+            </td>
+            <td colspan=8 valign=bottom>
+                <?= $form->field($modelAudiometri, 'kesimpulan_kanan')->inline()->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal',], [
+                    'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                        return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                    }
+                ])->label(false) ?>
+            </td>
+            <td valign=bottom>
+                <font color="#000000">Kiri</font>
+            </td>
+            <td style="border-right: 1px solid #000000" colspan=8 valign=bottom>
+                <?= $form->field($modelAudiometri, 'kesimpulan_kiri')->inline()->radioList(['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal',], [
+                    'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                        return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                    }
+                ])->label(false) ?>
+            </td>
+        </tr>
+        <tr style="<?= $model->tl_audiometri_periksa == 'Tidak' ? 'display: none' : null ?>" class="tr_audiometri_periksa">
+            <td style="border-left: 1px solid #000000" height="19" align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td style="border-right: 1px solid #000000" align="left" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+        </tr>
+        <tr style="<?= $model->tl_audiometri_periksa == 'Tidak' ? 'display: none' : null ?>" class="tr_audiometri_periksa">
+            <td style="border-left: 1px solid #000000; border-bottom: 1px solid #000000; font-weight: bold;" colspan=2 height="19" align="left" valign=top>
+                <font color="#000000">Catatan</font>
+            </td>
+            <td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000;" colspan=17 rowspan=3 align="left" valign=top>
+                <?= $form->field($modelAudiometri, 'kesimpulan')->textarea(['rows' => 6])->label(false) ?>
+            </td>
+        </tr>
+    </table>
+
+    <table class="table table-sm tabel-tht">
+        <colgroup width="35"></colgroup>
+        <colgroup width="207"></colgroup>
+        <colgroup width="29"></colgroup>
+        <colgroup span="4" width="160"></colgroup>
+        <!-- <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=top sdval="10" sdnum="1033;">
-                <font color="#000000">10</font>
+                <font color="#000000">7</font>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+                <font color="#000000">AUDIOMETRI</font>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top>
+                <font color="#000000">:</font>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 rowspan=2 align="center" valign=top>
+                <?= $form->field($model, 'audiometri')->textArea(['rows' => 3])->label(false) ?>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 height="19" align="center" valign=bottom>
+                <font color="#000000"><br></font>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=top>
+                <font color="#000000"><br></font>
+            </td>
+        </tr> -->
+        <tr>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="19" align="center" valign=top sdval="10" sdnum="1033;">
+                <font color="#000000">8</font>
             </td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
                 <font color="#000000">Lain-lain</font>
@@ -720,24 +1270,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <font color="#000000"><br></font>
             </td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 rowspan=3 height="58" align="left" valign=middle><b>
-                    <font color="#000000">IV. AUDIOMETRI</font>
-                </b></td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=3 align="center" valign=middle>
-                <font color="#000000">:</font>
-            </td>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 rowspan=3 align="center" valign=bottom>
-                <?= $form->field($model, 'audiometri')->textArea(['rows' => 4])->label(false) ?>
-            </td>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 rowspan=3 height="58" align="left" valign=middle><b>
-                    <font color="#000000">V. KESIMPULAN</font>
+                    <font color="#000000">IV. KESIMPULAN</font>
                 </b></td>
             <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=3 align="center" valign=middle>
                 <font color="#000000">:</font>
@@ -749,18 +1284,146 @@ $this->params['breadcrumbs'][] = $this->title;
         <tr>
         </tr>
         <tr>
+        </tr> -->
+        <tr>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 rowspan=3 height="58" align="left" valign=middle><b>
+                    <font color="#000000">V. KESAN</font>
+                </b></td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=3 align="center" valign=middle>
+                <font color="#000000">:</font>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 rowspan=3 align="left" valign=bottom>
+                <?php
+                echo $form->field($model, 'kesan')->radioList(
+                    ['Normal' => 'Normal', 'Tidak Normal' => 'Tidak Normal',],
+                    [
+                        'item' => static function ($index, $label, $name, $checked, $value) use ($model) {
+                            return Helper::radioList($index, $label, $name, $checked, $value, $model);
+                        }
+                    ]
+                )->label(false);
+                ?>
+            </td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
         </tr>
     </table>
 
+    <?php
+    Pjax::begin(['id' => 'btn-cetak']);
+    if (!$model->isNewRecord) {
+        echo $form->field($model, 'id_spesialis_tht')->hiddenInput()->label(false);
+    }
+    ?>
+
     <div class="form-group">
         <?php
-        if (array_key_exists('no_rm', $_GET))
+        if (array_key_exists('id', $_GET))
             echo Html::submitButton('Simpan', ['class' => 'btn btn-success']);
+        if (!$model->isNewRecord)
+            echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-tht/cetak', 'no_rm' => $no_rm, 'no_daftar' => $no_daftar], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
         ?>
     </div>
+    <?php
+    Pjax::end();
+    ?>
 
     <?php ActiveForm::end(); ?>
 
+    <hr>
+
+    <?php
+    $displayPenata = 'none';
+    if ($model->kesan == 'Tidak Normal')
+        $displayPenata = 'block';
+    ?>
+    <div class="div-penata" style="display: <?= $displayPenata ?>;">
+
+        <h3>
+            PERMASALAHAN PASIEN & RENCANAN PENATALAKSANAAN
+        </h3>
+
+        <?php $form = ActiveForm::begin([
+            'id' => 'form-spesialis-tht-penata',
+            'validateOnSubmit' => false, // agar submit ajax tidak 2 kali saat pertama kali reload
+            'action' => ['/spesialis-tht/simpan-penata'],
+        ]); ?>
+
+        <div class="row">
+            <?php echo $form->field($modelPenata, 'no_rekam_medik')->hiddenInput()->label(false); ?>
+            <div class="col-sm-3">
+                <?php echo $form->field($modelPenata, 'jenis_permasalahan')->textArea(['rows' => 2]); ?>
+            </div>
+            <div class="col-sm-3">
+                <?php echo $form->field($modelPenata, 'rencana')->textArea(['rows' => 2]); ?>
+            </div>
+            <div class="col-sm-2">
+                <?php echo $form->field($modelPenata, 'target_waktu')->textArea(['rows' => 2]); ?>
+            </div>
+            <div class="col-sm-2">
+                <?php echo $form->field($modelPenata, 'hasil_yang_diharapkan')->textArea(['rows' => 2]); ?>
+            </div>
+            <div class="col-sm-2">
+                <?php echo $form->field($modelPenata, 'keterangan')->textArea(['rows' => 2]); ?>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 5px;">
+            <?php
+            Pjax::begin(['id' => 'btn-cetak-penata']);
+            if (!$model->isNewRecord)
+                echo Html::submitButton('Simpan', ['class' => 'btn btn-success']);
+            // if (!$model->isNewRecord && count($modelPenataList->all())) {
+            //     echo Html::a('<i class="far fa-file-excel"></i> Cetak Hard Copy', ['/spesialis-tht/cetak-penata', 'no_rm' => $no_rm], ['target' => 'blank', 'data-pjax' => 0, 'class' => 'btn btn-info', 'style' => 'margin-left: 10px;']);
+            // }
+            Pjax::end();
+            ?>
+        </div>
+
+        <?php ActiveForm::end(); ?>
+        <br>
+        <?php Pjax::begin(['id' => 'tbl-penata']); ?>
+
+        <?= GridView::widget([
+            'dataProvider' => new ActiveDataProvider([
+                'query' => $modelPenataList,
+            ]),
+            'tableOptions' => ['class' => 'table table-sm table-hover table-bordered'],
+            'columns' => [
+                [
+                    'class' => 'yii\grid\SerialColumn',
+                    'headerOptions' => ['style' => 'background-color: #e7ebee;',],
+                ],
+                [
+                    'headerOptions' => ['style' => 'width: 30%; background-color: #e7ebee;',],
+                    'attribute' => 'jenis_permasalahan',
+                ],
+                [
+                    'headerOptions' => ['style' => 'width: 30%; background-color: #e7ebee;',],
+                    'attribute' => 'rencana',
+                ],
+                [
+                    'headerOptions' => ['style' => 'width: 10%; background-color: #e7ebee;',],
+                    'attribute' => 'target_waktu',
+                ],
+                [
+                    'headerOptions' => ['style' => 'width: 15%; background-color: #e7ebee;',],
+                    'attribute' => 'hasil_yang_diharapkan',
+                ],
+                [
+                    'headerOptions' => ['style' => 'width: 15%; background-color: #e7ebee;',],
+                    'attribute' => 'keterangan',
+                ],
+            ],
+            'pager' => [
+                'class' => 'app\components\GridPager',
+            ],
+        ]); ?>
+        <?php Pjax::end(); ?>
+
+    </div>
 </div>
 
 <?php
