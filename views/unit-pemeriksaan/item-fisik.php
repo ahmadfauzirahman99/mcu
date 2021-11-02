@@ -53,6 +53,7 @@ $helper = [
                     <h4 class="header-title m-t-0 m-b-30">1. Tanda Vital</h4>
                     <hr>
                     <?= $form->field($master_pemeriksaan_fisik, 'no_rekam_medik')->hiddenInput(['maxlength' => true, 'value' => $dataLayanan->no_rekam_medik])->label(false) ?>
+                    <?= $form->field($master_pemeriksaan_fisik, 'no_daftar')->hiddenInput(['maxlength' => true, 'value' => $dataLayanan->no_registrasi])->label(false) ?>
 
                     <div class="row">
                         <div class="col-lg-6">

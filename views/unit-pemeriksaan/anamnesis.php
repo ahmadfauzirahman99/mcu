@@ -19,6 +19,7 @@ $this->title = "MCU RSAA"
 
     <?php $form = ActiveForm::begin(['id' => $model->formName(), 'action' => 'save-anamnesis']); ?>
     <?= $form->field($model, 'nomor_rekam_medik')->hiddenInput(['maxlength' => true, 'value' => $dataLayanan->no_rekam_medik, 'readonly' => true])->label(false) ?>
+    <?= $form->field($model, 'no_daftar')->hiddenInput(['maxlength' => true, 'value' => $dataLayanan->no_registrasi, 'readonly' => true])->label(false) ?>
 
     <div class="form-group">
         <p>Dilakukan Secara Allananmnesi / Autoananmnesis Dengan</p>

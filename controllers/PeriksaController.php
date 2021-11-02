@@ -57,4 +57,21 @@ class PeriksaController extends \yii\web\Controller
             'no_daftar' => $no_daftar
         ]);
     }
+
+    public function actionResume($no_rm = null, $id_pelayanan = null, $no_daftar = null)
+    {
+
+        $modelDataLayanan = DataLayanan::findOne(['id_data_pelayanan' => $id_pelayanan]);
+        if (!$modelDataLayanan) {
+            return $this->redirect(['/site/ngga-nemu', 'id' => $id_pelayanan]);
+        }
+        return $this->render('resume', [
+
+            'no_rm' => $no_rm,
+            'id_pelayanan' => $id_pelayanan,
+            'no_daftar' => $no_daftar,
+            'modelDataLayanan' => $modelDataLayanan,
+
+        ]);
+    }
 }
