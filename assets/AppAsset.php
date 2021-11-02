@@ -21,11 +21,14 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web/theme';
     public $css = [
-        "css/bootstrap.min.css",
+        // "css/bootstrap.min.css",
         "css/icons.css",
+        '../plugin/fontawesome-free/css/all.min.css',
         "css/style.css",
-
-        "js/modernizr.min.js"
+        
+        "js/modernizr.min.js",
+        'plugins/toastr/toastr.min.css',
+        '../css/app.css'
     ];
     public $js = [
         // jQuery
@@ -42,11 +45,13 @@ class AppAsset extends AssetBundle
         // App js
         "js/jquery.core.js",
         "js/jquery.app.js",
+        'plugins/toastr/toastr.min.js',
+        '../js/app.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\web\JqueryAsset',
 
-        // 'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap4\BootstrapAsset',
     ];
 }
